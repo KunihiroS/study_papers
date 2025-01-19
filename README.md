@@ -7,7 +7,7 @@ The aim of this repository is to publicly share and archive research findings, p
 
 ## Contents
 
-This repository is structured as follows:
+Each studies contain the following structure or subset of them:
 
 -   **papers/**: This directory contains the full text of each paper, organized by topic or publication venue.
 -   **presentations/**: This directory contains slides and other materials from presentations related to the research papers.
