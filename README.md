@@ -1,6 +1,6 @@
-# Kunihiro Sugiyama's Research Papers
+# KunihiroS's Research Papers
 
-This repository contains a collection of research papers authored by Kunihiro Sugiyama.
+This repository contains a collection of research papers authored by KunihiroS.
 ## Purpose
 
 The aim of this repository is to publicly share and archive research findings, promoting transparency and open access to scholarly work. It serves as a central location to keep track of published articles, preprints, and other academic outputs.
