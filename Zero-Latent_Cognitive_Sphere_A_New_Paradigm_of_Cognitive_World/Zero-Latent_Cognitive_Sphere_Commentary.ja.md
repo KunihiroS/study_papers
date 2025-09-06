@@ -1,13 +1,15 @@
-# Zero-Latent Cognitive Sphere: A New Paradigm of Cognitive World
+# Zero-Latent Cognitive Sphere 解説（A New Paradigm of Cognitive World）
 
 Created By: Kunihiro Sugiyama
-Created: 2025年9月6日 13:31
-Last Edited Time: 2025年9月6日 13:42
-URL: https://github.com/KunihiroS/study_papers/blob/main/Zero-Latent_Cognitive_Sphere_A_New_Paradigm_of_Cognitive_World/Zero_Latent_Cognitive_Sphere__A_New_Paradigm_of_Cognitive_World.pdf
-タグ: paper
-タグ 3: unifiedtheory
+ Created: 2025年9月6日 13:31
+ Last Edited Time: 2025年9月6日 13:42
+ URL: https://github.com/KunihiroS/study_papers/blob/main/Zero-Latent_Cognitive_Sphere_A_New_Paradigm_of_Cognitive_World/Zero_Latent_Cognitive_Sphere__A_New_Paradigm_of_Cognitive_World.pdf
+ タグ: paper
+ タグ 3: unifiedtheory
 
-# Summary
+# English version: [Zero-Latent_Cognitive_Sphere_Commentary.en.md](Zero-Latent_Cognitive_Sphere_Commentary.en.md)
+
+ # Summary
 
 本論文は、「ゼロ遅延認知球体（Zero-Latent Cognitive Sphere, ZLCS）」という新たなパラダイムを提唱するものです。この理論の核心は、認知主体にとっての「世界」は、客観的に存在するものではなく、認知の瞬間に生成技術によってゼロ遅延で生成・決定されるという考え方にあります。各主体の認知世界は独立していますが、相互に干渉し合うことで、他者の認知や社会・文化的背景といった要素を含む、多層的で複雑な「認知球体」を形成します。
 

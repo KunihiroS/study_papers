@@ -1,10 +1,12 @@
-# Encounter with Other Intelligent Life Forms and the Potential of Superintelligence
+# Encounter with Other Intelligent Life Forms and the Potential of Superintelligence 解説
 
 Created By: Kunihiro Sugiyama
 Created: 2025年9月6日 13:43
 Last Edited Time: 2025年9月6日 13:51
 URL: https://github.com/KunihiroS/study_papers/blob/main/Encounter_with_Other_Intelligent_Life_Forms_and_the_Potential_of_Superintelligence/Encounter_with_Other_Intelligent_Life_Forms_and_the_Potential_of_Superintelligence.pdf
 タグ: paper
+
+# English version: [Encounter_with_Other_Intelligent_Life_Forms_and_the_Potential_of_Superintelligence_Commentary.en.md](Encounter_with_Other_Intelligent_Life_Forms_and_the_Potential_of_Superintelligence_Commentary.en.md)
 
 # Summary
 

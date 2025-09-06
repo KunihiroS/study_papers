@@ -1,10 +1,12 @@
-# A Study on the Hierarchical Structure of Knowledge and the Cognition of Ignorance
+# A Study on the Hierarchical Structure of Knowledge and the Cognition of Ignorance 解説
 
 Created By: Kunihiro Sugiyama
 Created: 2025年9月6日 13:51
 Last Edited Time: 2025年9月6日 14:07
 URL: https://github.com/KunihiroS/study_papers/blob/main/A_Study_on_the_Hierarchical_Structure_of_Knowledge_and_the_Cognition_of_Ignorance/A_Study_on_the_Hierarchical_Structure_of_Knowledge_and_the_Cognition_of_Ignorance.pdf
 タグ: paper
+
+# English version: [A_Study_on_the_Hierarchical_Structure_of_Knowledge_and_the_Cognition_of_Ignorance_Commentary.en.md](A_Study_on_the_Hierarchical_Structure_of_Knowledge_and_the_Cognition_of_Ignorance_Commentary.en.md)
 
 # Summary
 
