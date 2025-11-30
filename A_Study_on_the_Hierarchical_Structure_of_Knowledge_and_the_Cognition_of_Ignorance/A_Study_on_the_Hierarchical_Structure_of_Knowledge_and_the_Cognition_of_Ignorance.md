@@ -76,32 +76,20 @@ The cognitive structure of knowledge is modeled using a **recursive metacognitiv
 
 The following diagram illustrates the recursive flow of the metacognitive model:
 
-```mermaid
-graph LR
-    subgraph Layer 0
-        S0["S₀: State<br/>(Knowledge)"]
-        R0["R₀: Self-Assessment<br/>(Confidence)"]
-    end
-    
-    subgraph Layer 1
-        M1{{"M: Metacognitive<br/>Function"}}
-        S1["S₁: Cognition<br/>(Self-Awareness)"]
-    end
-    
-    subgraph Layer 2
-        R1["R₁: Self-Assessment<br/>(Meta-Confidence)"]
-        M2{{"M"}}
-        S2["S₂: Understanding<br/>(Meta-Self-Awareness)"]
-    end
-    
-    S0 --> M1
-    R0 --> M1
-    M1 --> S1
-    S1 --> M2
-    R1 --> M2
-    M2 --> S2
-    S2 -.->|"..."| MORE["Sₙ"]
-```
+The recursive flow of the metacognitive model can be described as follows:
+
+1.  **Layer 0 (Base Layer):**
+    *   Input: State $S_0$ (Knowledge) and Self-Assessment $R_0$ (Confidence).
+    *   Process: The Metacognitive Function $M$ evaluates the alignment between $S_0$ and $R_0$.
+    *   Output: Cognition $S_1$ (Self-Awareness).
+
+2.  **Layer 1 (Meta-Layer):**
+    *   Input: Cognition $S_1$ (from Layer 0) and Self-Assessment $R_1$ (Meta-Confidence).
+    *   Process: The same function $M$ evaluates the alignment between $S_1$ and $R_1$.
+    *   Output: Understanding $S_2$ (Meta-Self-Awareness).
+
+3.  **Recursive Step:**
+    *   This process continues recursively: $S_{k+1} = M(S_k, R_k)$.
 
 **Key Insight:** The same function $M$ is applied recursively at each layer, enabling arbitrary depths of self-reflection while maintaining mathematical consistency.
 
