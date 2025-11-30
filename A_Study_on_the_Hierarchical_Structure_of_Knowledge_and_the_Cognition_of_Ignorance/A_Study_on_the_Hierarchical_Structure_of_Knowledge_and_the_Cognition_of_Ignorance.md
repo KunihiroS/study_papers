@@ -5,48 +5,181 @@ kunihiros@gmail.com
 
 ## Introduction
 
-Human knowledge possesses a multi-layered structure, and the ability to recognize one's own ignorance (metacognition) is crucial for learning and decision-making. This study proposes a continuous model of knowledge and ignorance based on four elements: "Existence," "State," "Cognition," and "Conceptual Understanding." This model integrates insights from **metacognition**, **knowledge representation models**, **research on the ambiguity of knowledge**, and **epistemology**. It aims to comprehensively capture three aspects that have not been sufficiently addressed in existing research: the **discrepancy between the subjectivity and objectivity of knowledge**, the **hierarchical structure of intrinsic knowledge**, and the **continuous gradation of knowledge**. By presenting a model that integrates these elements, this study seeks to deepen our understanding of the structure of knowledge and the cognitive mechanisms of ignorance.
+Human knowledge possesses a multi-layered structure, and the ability to recognize one's own ignorance (metacognition) is crucial for learning and decision-making. This study proposes a continuous model of knowledge and ignorance based on four core components: **Reference** (formalized as the Truth Function $T$), **State** ($S_k$), **Self-Assessment** ($R_k$), and **Metacognition** (the recursive function $M$). This model integrates insights from **metacognition**, **knowledge representation models**, **research on the ambiguity of knowledge**, and **epistemology**. It aims to comprehensively capture three aspects that have not been sufficiently addressed in existing research: the **discrepancy between the subjectivity and objectivity of knowledge**, the **hierarchical structure of intrinsic knowledge**, and the **continuous gradation of knowledge**. By presenting a model that integrates these elements, this study seeks to deepen our understanding of the structure of knowledge and the cognitive mechanisms of ignorance.
 
-## Distinguishing Existence and Subjective Knowledge
+## Philosophical Foundation and Interpretive Notes
 
-In this study, "**Existence**" is defined as follows:
+This section clarifies the philosophical motivation behind this paper and provides essential interpretive guidance to prevent misunderstanding of the proposed model.
 
-* **Existence**: A state where the subject's knowledge about an object is **objectively verifiable**.
-  * Existence is independent of the subject's intrinsic knowledge or perception and is verifiable by a third party.
+### Theoretical Rationale
 
-### The Position of Existence and Related Research
+This study is grounded in the logical structure of recursive ignorance, exemplified by the proposition **"I don't know what I don't know."** If "knowing one's ignorance" (Socratic wisdom) is a recognized concept, then logically, "not knowing one's ignorance" must also exist. And if that exists, then so must "not knowing that one doesn't know one's ignorance"—and so on, recursively.
 
-This study is based on the discussion of **the separation between the subjective and the objective** in epistemology, and clearly distinguishes between "Existence," the objective existence of knowledge, and subjective knowledge or perception. In his *Critique of Pure Reason*, Kant distinguished between phenomena (subjective experience) and the thing-in-itself (objective reality), and argued that humans cannot know the thing-in-itself (Kant, 1781). The "Existence" in this study is a concept similar to Kant's "thing-in-itself" and is considered to exist independently of the subject's perception. This distinction is an essential premise for considering the **discrepancy between the subjectivity and objectivity of knowledge**.
+The goal of this paper is to **mathematically formalize this recursive structure of knowledge and ignorance**, not to judge or rank cognitive states.
 
-## The Three-Stage Model of Knowledge
+### Descriptive Nature of the Scale
 
-The cognitive structure of knowledge is modeled in the following three stages. This model is based on research findings on **metacognition** and aims to express the **hierarchical structure of intrinsic knowledge**.
+The values $-1$, $0$, and $1$ in this model function as **epistemic state descriptors**. They serve as epistemic coordinates rather than normative metrics (e.g., "good" or "bad").
 
-### State (First Layer)
+| Value | Meaning |
+|:---:|:---|
+| $1$ | The subject holds correct knowledge. |
+| $0$ | The subject lacks knowledge (ignorance). |
+| $-1$ | The subject holds incorrect knowledge (misconception). |
 
-* **Definition**: The state of knowledge or misunderstanding that a subject intrinsically possesses (independent of perception or consciousness).
-* **Expression**: $$K(x) \in [-1, 1]$$
-  * $$1$$: The subject has correct knowledge.
-  * $$0$$: The subject knows nothing (ignorance).
-  * $$-1$$: The subject has incorrect knowledge.
+A subject in state $-1$ (misconception) is not normatively inferior to a subject in state $0$ (ignorance); they occupy **distinct epistemic loci**. Whether one state is "preferable" to another depends on context, goals, and values—domains outside the scope of this model.
 
-### Cognition (Second Layer)
+### Separation of Confidence and State
 
-* **Definition**: How accurately the subject recognizes their own state (First Layer).
-* **Expression**: $$K(K(x)) \in [-1, 1]$$
-  * $$1$$: The subject correctly recognizes their own knowledge (awareness of ignorance).
-  * $$0$$: The subject is unaware of their own knowledge (ignorance of ignorance).
-  * $$-1$$: The subject mistakenly believes incorrect knowledge to be correct.
+A fundamental distinction in this framework is that **the state variable $S_k$ does not encode confidence**. Confidence is handled by a separate variable $R_k$ (Representation/Self-Assessment).
 
-### Conceptual Understanding (Third Layer)
+* $S_k$: What the subject *actually* knows (epistemic state).
+* $R_k$: What the subject *believes* they know (confidence).
 
-* **Definition**: How much the subject understands the cognitive structure of the Second Layer itself.
-* **Expression**: $$K(K(K(x))) \in [-1, 1]$$
-  * $$1$$: The subject correctly understands the cognitive structure.
-  * $$0$$: The subject is unaware of their conceptual understanding (ignorance of ignorance of ignorance).
-  * $$-1$$: The subject believes in an incorrect cognitive structure.
+This separation is essential for capturing phenomena like the Dunning-Kruger effect, where $S_0 = 0$ (ignorance) but $R_0 = 1$ (high confidence).
 
-Flavell (1979) defined metacognition as "the ability to monitor and control one's own cognitive activities." The "Cognition" and "Conceptual Understanding" layers in this study are based on this concept of metacognition. Additionally, Dunning and Kruger (1999) demonstrated the tendency of individuals with low competence to overestimate their abilities (the Dunning-Kruger effect). This phenomenon corresponds to the discrepancy between "State" and "Cognition" in this study, particularly in the state where incorrect assessments are made at the Cognition layer. While many existing metacognition studies focus on verifying the role of metacognition in self-learning and problem-solving processes, this study is novel in that it treats metacognition as a part of the hierarchical structure of knowledge and models the mechanisms for evaluating the accuracy of one's own knowledge.
+## The Reference Point: Truth Function $T(x)$
+
+To analyze the discrepancy between what a subject believes and what is considered factual, we introduce a **Truth Function** $T(x)$.
+
+### Definition
+
+* **Symbol:** $T(x)$
+* **Definition:** A reference function that maps a proposition $x$ to a continuous value representing its "factual status" as understood within the cognitive context.
+* **Domain/Codomain:** $T: \mathcal{X} \to [-1, 1]$
+  * $1.0$: The proposition is considered fully accurate within the context.
+  * $0.0$: The proposition is undefined or undeterminable within the context.
+  * $-1.0$: The proposition is considered completely contrary to the understood facts.
+
+### Ontological Neutrality
+
+This paper deliberately adopts an **ontologically neutral** position regarding $T(x)$. We do not take a stance on whether $T(x)$ represents:
+
+* **Objective reality** (realism): Facts exist independently of observers.
+* **Phenomenal facts** (phenomenalism/relativism): Facts are constituted through the subject's cognitive context.
+
+What matters for this methodology is that $T(x)$ serves as a **reference point** against which the subject's state $S_0(x)$ can be compared. The ontological status of $T(x)$ is a separate philosophical question beyond the scope of this paper.
+
+This design allows users of this framework to adopt their preferred philosophical interpretation while maintaining the mathematical rigor of the model.
+
+### Connection with Epistemological Tradition
+
+This study acknowledges the discussion of **the separation between the subjective and the objective** in epistemology. In his *Critique of Pure Reason*, Kant distinguished between phenomena (subjective experience) and the thing-in-itself (objective reality), and argued that humans cannot directly know the thing-in-itself (Kant, 1781). 
+
+Rather than claiming access to the "thing-in-itself," our model uses $T(x)$ as a practical reference point that can be operationalized in specific contexts (e.g., as expert consensus, empirical measurement, or community agreement). This distinction is an essential premise for considering the **discrepancy between the subjectivity and objectivity of knowledge**.
+
+## The Recursive Metacognitive Model
+
+The cognitive structure of knowledge is modeled using a **recursive metacognitive framework**. This model is based on research findings on **metacognition** and aims to express the **hierarchical structure of intrinsic knowledge** while maintaining mathematical rigor.
+
+### Model Overview
+
+The following diagram illustrates the recursive flow of the metacognitive model:
+
+```mermaid
+graph LR
+    subgraph Layer 0
+        S0["S₀: State<br/>(Knowledge)"]
+        R0["R₀: Self-Assessment<br/>(Confidence)"]
+    end
+    
+    subgraph Layer 1
+        M1{{"M: Metacognitive<br/>Function"}}
+        S1["S₁: Cognition<br/>(Self-Awareness)"]
+    end
+    
+    subgraph Layer 2
+        R1["R₁: Self-Assessment<br/>(Meta-Confidence)"]
+        M2{{"M"}}
+        S2["S₂: Understanding<br/>(Meta-Self-Awareness)"]
+    end
+    
+    S0 --> M1
+    R0 --> M1
+    M1 --> S1
+    S1 --> M2
+    R1 --> M2
+    M2 --> S2
+    S2 -.->|"..."| MORE["Sₙ"]
+```
+
+**Key Insight:** The same function $M$ is applied recursively at each layer, enabling arbitrary depths of self-reflection while maintaining mathematical consistency.
+
+### Core Components
+
+#### State Variable: $S_k$
+
+The state at layer $k$ represents the epistemic condition at that level.
+
+* **Symbol:** $S_k(x) \in [-1, 1]$
+* **Meaning:**
+  * $1$: Holds correct knowledge (or accurate self-awareness at higher layers).
+  * $0$: Lacks knowledge (ignorance, or lack of self-awareness).
+  * $-1$: Holds incorrect knowledge (misconception).
+* **Important:** This is a **state descriptor**, not an evaluative score. $-1$ does not mean "bad."
+
+#### Representation Variable: $R_k$
+
+The representation at layer $k$ captures the subject's **confidence** or **self-assessment** regarding their state.
+
+* **Symbol:** $R_k \in [0, 1]$
+* **Meaning:**
+  * $0$: No confidence ("I don't know").
+  * $1$: Full confidence ("I know").
+
+#### Metacognitive Function: $M$
+
+The metacognitive function evaluates the **alignment** between a state and its subjective representation.
+
+* **Formula:** $S_{k+1} = M(S_k, R_k) = 1 - |S_k - R_k|$
+* **Domain:** $M: ([-1, 1] \times [0, 1]) \to [0, 1]$
+* **Output Interpretation:**
+  * $1$: Perfect alignment (the subject accurately recognizes their state).
+  * $0$: Complete misalignment (the subject is unaware of their state).
+
+### Layer Applications
+
+#### Layer 0: State ($S_0$)
+
+* **Definition:** The intrinsic state of knowledge regarding object $x$.
+* **Expression:** $S_0(x) \in [-1, 1]$
+* **Examples:**
+  * $S_0 = 1$: The subject knows that "water boils at 100°C."
+  * $S_0 = 0$: The subject does not know the boiling point of water.
+  * $S_0 = -1$: The subject believes "water boils at 50°C."
+
+#### Layer 1: Cognition ($S_1$)
+
+* **Definition:** How accurately the subject recognizes their own Layer 0 state.
+* **Expression:** $S_1 = M(S_0, R_0) = 1 - |S_0 - R_0|$
+* **Meaning:** This layer captures **"knowing one's ignorance"** (Socratic wisdom) vs. **"unknowing ignorance"** (Dunning-Kruger effect).
+
+#### Layer 2: Understanding ($S_2$)
+
+* **Definition:** How accurately the subject recognizes their own Layer 1 state.
+* **Expression:** $S_2 = M(S_1, R_1) = 1 - |S_1 - R_1|$
+* **Meaning:** This layer captures whether the subject is aware of their own metacognitive tendencies.
+
+### The Four Quadrants of Metacognition
+
+The relationship between $S_0$ (actual state) and $R_0$ (self-assessment) produces four archetypal cognitive patterns:
+
+| $S_0$ (State) | $R_0$ (Confidence) | $S_1$ (Cognition) | Classification |
+| :---: | :---: | :---: | :--- |
+| 1 (Know) | 1 (Confident) | **1** | **Knowing Knowledge** — Accurate self-awareness |
+| 0 (Unknown) | 0 (Unsure) | **1** | **Knowing Ignorance** — Socratic wisdom |
+| 0 (Unknown) | 1 (Confident) | **0** | **Unknowing Ignorance** — Dunning-Kruger effect |
+| 1 (Know) | 0 (Unsure) | **0** | **Unknowing Knowledge** — Underconfidence |
+
+**Note:** The value $S_1 = 0$ for "Unknowing Ignorance" does **not** mean it is "neutral" or "acceptable." It simply means the subject **lacks awareness** of their own state. Whether this is "good" or "bad" is a value judgment outside the scope of this model.
+
+### Connection with Metacognition Research
+
+Flavell (1979) defined metacognition as "the ability to monitor and control one's own cognitive activities." The recursive structure ($S_0 \to S_1 \to S_2$) in this study formalizes this concept mathematically.
+
+Dunning and Kruger (1999) demonstrated the tendency of individuals with low competence to overestimate their abilities (the Dunning-Kruger effect). In our model, this corresponds to the case where $S_0 = 0$ (ignorance) but $R_0 = 1$ (high confidence), resulting in $S_1 = 0$ (lack of self-awareness).
+
+While many existing metacognition studies focus on verifying the role of metacognition in self-learning and problem-solving processes, this study is novel in that it provides a **recursive mathematical formalization** that can extend to arbitrary depths of self-reflection.
 
 ## The Gradation Model of Knowledge and Ignorance
 
@@ -54,47 +187,89 @@ In this study, knowledge and ignorance are modeled as a **continuous value** rat
 
 ### Definition of the Model
 
-* **Range**: $$[-1, 1]$$
-  * $$1$$: Complete correct knowledge.
-  * $$0$$: Ignorance.
-  * $$-1$$: Complete misunderstanding.
+* **Range**: $[-1, 1]$
+  * $1$: Complete correct knowledge.
+  * $0$: Ignorance.
+  * $-1$: Complete misunderstanding.
 
 ### Connection with Related Research
 
 The perspective that knowledge is not always clear and complete but includes ambiguity and uncertainty is crucial for modeling knowledge as a continuous value. Zadeh's (1965) fuzzy theory provides a framework for mathematically handling ambiguous concepts, and Pearl's (1988) probabilistic reasoning provides a model for handling uncertain knowledge. These studies suggest that the continuous value model in this study is a valid approach for capturing the ambiguity of knowledge. While existing knowledge representation studies attempt to represent knowledge with clear symbols and combinations of concepts, this study is novel in that it numerically models the ambiguity and uncertainty of knowledge.
 
-## The Discrepancy between Subjectivity and Existence
+## Analyzing Discrepancies
 
-When subjective knowledge does not align with existence (objective facts), this discrepancy can lead to ignorance or misunderstanding. In this study, this discrepancy is viewed as the **discrepancy between the subjectivity and objectivity of knowledge** and analyzed from the following three aspects:
+When subjective knowledge does not align with the reference point (factual status), this discrepancy can lead to ignorance or misunderstanding. In this study, discrepancies are analyzed at multiple levels:
 
-### Discrepancy between Existence and State
-* **Definition**: The discrepancy between existence (objective facts) and the subject's state (subjective knowledge).
-* **Equation**: $$|E(x) - K(x)|$$
+### Discrepancy between Reference and State ($D_{TS}$)
 
-### Discrepancy between State and Cognition
-* **Definition**: The discrepancy between the subject's state (knowledge) and their recognition of that state.
-* **Equation**: $$|K(x) - K(K(x))|$$
+* **Definition:** The discrepancy between the reference point $T(x)$ and the subject's state $S_0(x)$.
+* **Equation:** $D_{TS} = |T(x) - S_0(x)|$
+* **Interpretation:** Measures how far the subject's belief deviates from the factual reference.
 
-### Discrepancy between Cognition and Conceptual Understanding
-* **Definition**: The discrepancy between the subject's cognition and their metacognition.
-* **Equation**: $$|K(K(x)) - K(K(K(x)))|$$
+### Discrepancy between State and Self-Assessment ($D_{SR}$)
+
+* **Definition:** The discrepancy between the subject's actual state $S_k$ and their self-assessment $R_k$.
+* **Equation:** $D_{SR}^{(k)} = |S_k - R_k|$
+* **Interpretation:** This discrepancy is central to the metacognitive function $M$. When $D_{SR}^{(0)} = 0$, we have $S_1 = 1$ (perfect self-awareness). When $D_{SR}^{(0)} = 1$, we have $S_1 = 0$ (complete lack of self-awareness).
+
+### Relationship to the Metacognitive Function
+
+The metacognitive function $M$ directly incorporates the discrepancy:
+
+$$S_{k+1} = M(S_k, R_k) = 1 - D_{SR}^{(k)} = 1 - |S_k - R_k|$$
+
+This formulation elegantly captures the insight that **accurate self-awareness** (high $S_{k+1}$) requires **minimal discrepancy** between one's actual state and one's self-assessment.
+
+## Proposed Experimental Design
+
+To demonstrate the falsifiability and measurability of this model, we propose the **Metacognitive Alignment Test (MAT)**.
+
+### Protocol
+
+1. **Measuring State ($S_0$):** Subject answers factual questions. Accuracy is measured relative to $T(x)$.
+2. **Measuring Representation ($R_0$):** Subject rates their confidence ("Do you know this for a fact?").
+3. **Deriving Cognition ($S_1$):** $S_1 = 1 - |S_0 - R_0|$ is calculated.
+4. **Measuring Understanding ($S_2$):** Subject rates confidence in their Step 2 self-assessment. $S_2 = 1 - |S_1 - R_1|$ is calculated.
+
+### Validation Hypothesis
+
+Subjects with high $S_1$ scores (accurate self-appraisal) are expected to perform better in subsequent decision-making tasks, regardless of their raw $S_0$ score. This would validate the model's claim that **metacognitive accuracy** (knowing what you know and don't know) is a distinct and measurable cognitive capacity.
+
+## Related Work
+
+### Metacognitive Sensitivity: meta-d'
+
+Maniscalco and Lau developed the *meta-d'* framework for measuring metacognitive sensitivity—the ability to discriminate between correct and incorrect responses. While meta-d' focuses on **discrimination ability**, our model focuses on the **structural hierarchy** of "knowing one's ignorance" vs. "unknowing ignorance."
+
+A key difference: existing metrics often treat "I don't know" as a failure or low confidence. In contrast, our model recognizes that $S_1 = 1$ when $S_0 = 0$ and $R_0 = 0$—meaning that **accurately knowing one's ignorance is a high metacognitive achievement** (Socratic wisdom).
+
+### Belief Functions and Uncertainty
+
+Dempster-Shafer theory and other belief function frameworks handle uncertainty and conflicting evidence. While these approaches are valuable for modeling **epistemic uncertainty**, our model specifically targets the **metacognitive discrepancy** ($|S_k - R_k|$) that produces phenomena like the Dunning-Kruger effect.
+
+The Truth Function $T(x)$ in our model can be interpreted within various frameworks (fuzzy logic, probability, belief functions) depending on the application context.
 
 ## Conclusion and Future Challenges
 
-This study constructed a four-layer model of "Existence," "State," "Cognition," and "Conceptual Understanding" based on the hierarchical structure of knowledge. Integrating research findings on **metacognition**, **knowledge representation models**, and the **ambiguity of knowledge**, we attempted to comprehensively capture three aspects: the **discrepancy between the subjectivity and objectivity of knowledge**, the **hierarchical structure of intrinsic knowledge**, and the **continuous gradation of knowledge**.
+This study constructed a recursive metacognitive model based on the hierarchical structure of knowledge. Using the components $T(x)$ (reference point), $S_k$ (state), $R_k$ (representation), and $M$ (metacognitive function), we provide a mathematical framework that captures:
+
+1. The **discrepancy between subjective belief and factual reference** ($D_{TS}$).
+2. The **hierarchical structure of self-awareness** ($S_0 \to S_1 \to S_2 \to \ldots$).
+3. The **continuous gradation of knowledge and metacognition**.
 
 ### Main Results
 
-1. We proposed a continuous value model of knowledge and demonstrated the potential for numerically modeling the ambiguity of knowledge.
-2. We separated subjective perception from objective existence and provided a framework for analyzing the discrepancies between the two.
-3. We proposed a hierarchical structure of knowledge based on metacognition, making it possible to understand the process of recognizing one's own ignorance in a multi-layered manner.
+1. We proposed a **recursive metacognitive model** that avoids the mathematical "type errors" of nested $K(K(x))$ notation while preserving the philosophical insight of recursive self-reflection.
+2. We introduced the **Truth Function $T(x)$** with **ontological neutrality**, allowing the framework to be used by researchers with different philosophical commitments.
+3. We provided the **Four Quadrants of Metacognition** table, clearly distinguishing "Knowing Ignorance" (Socratic wisdom) from "Unknowing Ignorance" (Dunning-Kruger effect).
+4. We proposed the **Metacognitive Alignment Test (MAT)** as an experimental protocol to validate the model.
 
 ### Future Challenges
 
-1. Empirical verification of the proposed model (collection and analysis of experimental data).
-2. Evaluation of the impact of social factors (culture and gender) on the structure of knowledge.
-3. Modeling of specific knowledge structures based on knowledge representation models.
-4. Examination of how to apply the conceptual framework raised in this study to specific educational and decision-making situations.
+1. Empirical verification of the proposed model through the MAT protocol.
+2. Simulation studies using LLM agents to validate the model's utility for AI safety (detecting "hallucination" as Unknowing Ignorance).
+3. Evaluation of the impact of social and cultural factors on metacognitive patterns.
+4. Application of the framework to educational interventions and decision-making support systems.
 
 ## References
 
@@ -103,3 +278,6 @@ This study constructed a four-layer model of "Existence," "State," "Cognition," 
 3. Dunning, D., & Kruger, J. (1999). Unskilled and unaware of it: How difficulties in recognizing one's own incompetence lead to inflated self-assessments. *Journal of personality and social psychology*, *77*(6), 1121.
 4. Zadeh, L. A. (1965). Fuzzy sets. *Information and control*, *8*(3), 338-353.
 5. Pearl, J. (1988). *Probabilistic reasoning in intelligent systems: networks of plausible inference*. Morgan Kaufmann.
+6. Maniscalco, B., & Lau, H. (2012). A signal detection theoretic approach for estimating metacognitive sensitivity from confidence ratings. *Consciousness and cognition*, *21*(1), 422-430.
+7. Shafer, G. (1976). *A Mathematical Theory of Evidence*. Princeton University Press.
+8. Fleming, S. M., & Daw, N. D. (2017). Self-evaluation of decision-making: A general Bayesian framework for metacognitive computation. *Psychological Review*, *124*(1), 91.
