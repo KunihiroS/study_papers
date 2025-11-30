@@ -1,9 +1,27 @@
 # KunihiroS's Research Papers
 
 This repository contains a collection of research papers authored by KunihiroS.
-## Purpose
 
-The aim of this repository is to publicly share and archive research findings, promoting transparency and open access to scholarly work. It serves as a central location to keep track of published articles, preprints, and other academic outputs.
+## Mission: The Convergence of Logic and Fiction
+
+The primary aim of this repository is to orchestrate a fusion of **Computer Science**, **Neuroscience**, **Science Fiction**, **Subculture**, and **the Unknown**. This project transcends traditional academic borders to pursue a **truly unrestricted inquiry**, recognizing that the seeds of future reality are often sown in the narratives of fiction and the vibrant energy of culture.
+
+It serves as a laboratory for concepts that may currently exceed available technologies, yet provide **essential heuristics for solving modern scientific challenges.** By extrapolating future realities, these documents offer a compass for navigating today's resource constraints.
+
+### Manifesto: The Role of Ideology
+
+In an era where scientific inquiry risks becoming a routine accumulation of data, this repository stands as a platform for the **Ideologue**.
+
+The contents herein are position papers, driven by strong conviction and distinct philosophical stances. We operate on the belief that true innovation—in science as in society—requires more than just facts; it requires the **guiding light of a strong Ideology.**
+
+Not merely observe the world; envision it. Dare to construct theoretical landscapes before the ground is paved. Prioritize the **Ideology** to give meaning to the Metric.
+
+> *No truth dwells in facts without Ideology.*<br>
+> *No future dwells in visions without Ideology.*<br>
+> *Truth dwells only in Ideology.*<br>
+> *Ideology is vision.*<br>
+> *Ideology is the very substance of fact.*<br>
+> **Ideology is the unseen future itself.**
 
 ## Contents
 
