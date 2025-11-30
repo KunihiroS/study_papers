@@ -115,8 +115,8 @@ type EpistemicState = Real[-1, 1]
 **Function Signature:**
 
 ```
-K : EpistemicObject → EpistemicState
-K : EpistemicObject → Real[-1, 1]
+K : EpistemicObject -> EpistemicState
+K : EpistemicObject -> Real[-1, 1]
 ```
 
 **Recursive Application:**
@@ -124,9 +124,9 @@ K : EpistemicObject → Real[-1, 1]
 Since `EpistemicState` is a subtype of `EpistemicObject`, we can apply $K$ recursively:
 
 ```
-K(x : Proposition) → s₀ : EpistemicState
-K(s₀ : EpistemicState) → s₁ : EpistemicState
-K(s₁ : EpistemicState) → s₂ : EpistemicState
+K(x : Proposition) -> s0 : EpistemicState
+K(s0 : EpistemicState) -> s1 : EpistemicState
+K(s1 : EpistemicState) -> s2 : EpistemicState
 ```
 
 **This is not a type error.** This is a **recursive type** with a well-defined structure, analogous to:
