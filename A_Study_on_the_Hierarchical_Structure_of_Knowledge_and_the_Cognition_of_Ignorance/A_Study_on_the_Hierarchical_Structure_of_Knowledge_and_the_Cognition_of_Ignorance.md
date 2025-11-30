@@ -84,49 +84,62 @@ The cognitive structure of knowledge is modeled using a **recursive epistemic fu
 
 ### Formal Definition of $K$
 
-**Definition:**
+We distinguish between two levels of the epistemic function $K$:
 
-$$K: \text{Object} \to [-1, 1]$$
+**1. Entry Mapping (Layer 0):**
 
-Where **Object** can be:
-- A proposition (e.g., "The Earth is round")
-- A cognitive state (e.g., $K(x) \in [-1, 1]$)
-- A metacognitive state (e.g., $K(K(x)) \in [-1, 1]$)
+For an abstract object $x$ (e.g., a proposition, a task item, or any epistemic target), the subject's first-order epistemic condition is represented as a continuous value:
 
-**Output Interpretation:**
-- $K(\text{object}) = 1$: The subject accurately recognizes the object.
-- $K(\text{object}) = 0$: The subject does not recognize the object (ignorance).
-- $K(\text{object}) = -1$: The subject misrecognizes the object (misconception).
+$$k_0(x) \in [-1, 1]$$
 
-**Key Insight:** The function $K$ has **consistent semantics** across all layers: "How accurately does the subject recognize this object?"
+This is the **only point** where the external object $x$ enters the model. The internal representation $k_0$ captures how the subject stands with respect to $x$.
+
+**2. Recursive Mapping (Layers $n \ge 1$):**
+
+At all higher layers, the operator $K$ acts entirely on epistemic states:
+
+$$K: [-1, 1] \to [-1, 1]$$
+$$k_{n+1} = K(k_n)$$
+
+The "object" of higher-order $K$ is not a world-side proposition but the subject's **own epistemic state as represented on $[-1, 1]$**.
+
+**Output Interpretation (Prototypical Anchor Points):**
+
+The values $-1$, $0$, and $1$ serve as **prototypical anchors** on the continuous scale $[-1, 1]$:
+
+- $K(\cdot) = 1$: The subject accurately recognizes the target (full knowledge or accurate metacognition).
+- $K(\cdot) = 0$: The subject has no determinate stance regarding the target (pure ignorance).
+- $K(\cdot) = -1$: The subject misrecognizes the target (misconception or metacognitive failure).
+
+All intermediate values represent **graded mixtures** of these prototypes (partial knowledge, partial misconception, uncertainty, etc.).
+
+**Key Insight:** The function $K$ has **consistent semantics** across all layers: "How accurately does the subject recognize this target?" At Layer 0, the target is an external object $x$. At Layers $n \ge 1$, the target is the subject's own epistemic state $k_{n-1}$.
 
 ### Type-Theoretic Foundation
 
 To address concerns about mathematical rigor, we provide a type-theoretic justification for the recursive structure.
 
-**Type Hierarchy:**
+**Core Principle:** All epistemic states live on a **single continuous scale** $[-1, 1]$. The recursive structure is well-defined because $K$ maps this space to itself.
+
+**Two-Stage Type Structure:**
 
 ```
-type EpistemicObject = Proposition | EpistemicState
-type Proposition = String
-type EpistemicState = Real[-1, 1]
-```
+-- Layer 0: Entry from abstract object to epistemic state
+k0 : Object -> Real[-1, 1]
 
-**Function Signature:**
-
-```
-K : EpistemicObject -> EpistemicState
-K : EpistemicObject -> Real[-1, 1]
+-- Layers n >= 1: Recursive self-application on the epistemic state space
+K  : Real[-1, 1] -> Real[-1, 1]
 ```
 
 **Recursive Application:**
 
-Since `EpistemicState` is a subtype of `EpistemicObject`, we can apply $K$ recursively:
+Once we are on the epistemic state space $[-1, 1]$, recursion is straightforward:
 
 ```
-K(x : Proposition) -> s0 : EpistemicState
-K(s0 : EpistemicState) -> s1 : EpistemicState
-K(s1 : EpistemicState) -> s2 : EpistemicState
+k0 = k0(x)           -- Entry: external object -> epistemic state
+k1 = K(k0)           -- Layer 1: metacognition of k0
+k2 = K(k1)           -- Layer 2: metacognition of k1
+...
 ```
 
 **This is not a type error.** This is a **recursive type** with a well-defined structure, analogous to:
@@ -135,6 +148,10 @@ K(s1 : EpistemicState) -> s2 : EpistemicState
 - **Recursive Types**: $\mu \alpha. \alpha \to \alpha$
 
 The recursive structure $K(K(x))$ is mathematically well-founded and has precedent in formal systems.
+
+**Scope Clarification:**
+
+The abstract object $x$ at Layer 0 (e.g., a proposition, a task item) is treated as an **external input** to the model. The philosophical nature of $x$ and its relationship to "truth" is **outside the scope** of this framework. Our focus is entirely on the **structure of the subject's epistemic states** as they live on $[-1, 1]$.
 
 ### Recursive Application
 
@@ -206,6 +223,36 @@ Dunning and Kruger (1999) demonstrated that individuals with low competence tend
 ## Measurement Theory
 
 This section describes how the theoretical constructs ($K(x)$, $K(K(x))$) can be operationalized and measured empirically.
+
+### Measurement-Theoretic Interpretation
+
+Mathematically, all epistemic states live on a **single continuous scale**:
+
+$$K_n \in [-1, 1] \quad (n = 0, 1, 2, \dots)$$
+
+The values $-1$, $0$, and $1$ function as **prototypical anchor points** on this continuum:
+
+| Value | Prototype | Interpretation |
+|:---:|:---|:---|
+| $1$ | Full correct knowledge | Subject's state is maximally aligned with the chosen reference |
+| $0$ | Pure ignorance | Subject has no determinate stance regarding the object |
+| $-1$ | Full misconception | Subject's state is maximally opposed to the reference |
+
+All intermediate values in $(-1, 0)$ and $(0, 1)$ represent **graded mixtures** of these prototypes (partial knowledge, partial misconception, uncertainty, mixtures across items, etc.).
+
+**Operationalization Options (always mapping back to $[-1, 1]$):**
+
+1. **Discrete elicitation → Discrete embedding**: Use trichotomous responses (True/False/I don't know), then embed into $[-1, 1]$ via $K(x) \in \{-1, 0, 1\}$ as prototype points.
+
+2. **Probabilistic elicitation → Continuous embedding**: Elicit a subjective probability $p(x)$ and map it into $[-1, 1]$ using a proper scoring rule or a simple linear transform (e.g., centered Brier-type scores).
+
+3. **Aggregation → Continuous embedding**: Average prototype-valued $K(x_i) \in \{-1, 0, 1\}$ across multiple items or contexts to obtain a continuous summary in $[-1, 1]$.
+
+Conceptually, the **continuum $[-1, 1]$ is primary**; the trichotomy $\{-1, 0, 1\}$ is a convenient way to name salient regions on this line, not a separate codomain. Experimental designs may choose discrete or continuous elicitation, but in all cases the resulting data are interpreted as points (or distributions) on the same underlying scale $[-1, 1]$.
+
+**Note on Reference Values ($T(x)$):**
+
+The reference function $T(x)$ introduced earlier serves as an **operational device** for comparing the subject's states to a chosen reference (e.g., expert consensus, empirical measurement). Its philosophical status (realism, relativism, etc.) is **outside the scope** of this framework. The model focuses solely on the structure of the subject's epistemic states on $[-1, 1]$, not on the metaphysics of truth.
 
 ### The Challenge of Measuring Second-Order States
 
@@ -343,6 +390,26 @@ This would validate the model's claim that:
 
 ## Related Work
 
+### Relationship to Epistemic Logic
+
+Traditional epistemic logics (e.g., S5, KD45) model knowledge via modal operators with introspection axioms:
+
+- **Positive Introspection**: $Kp \to KKp$ ("If I know $p$, I know that I know $p$")
+- **Negative Introspection**: $\neg Kp \to K\neg Kp$ ("If I don't know $p$, I know that I don't know $p$")
+
+**Comparison to Our Framework:**
+
+| Aspect | Epistemic Logic | Our $K(K(x))$ |
+|:---|:---|:---|
+| **Representation** | Binary (knows/doesn't know) | Continuous $[-1, 1]$ |
+| **Misconception** | Not modeled | $K(x) = -1$ |
+| **Metacognitive failure** | Violates introspection axioms | $K(K(x)) \neq \text{sign}(K(x))$ |
+| **Dunning-Kruger** | Not expressible | $K(x) = 0, K(K(x)) = -1$ |
+
+**Key Departure:** Epistemic logics typically assume idealized agents with perfect introspection. Our framework explicitly models **failures of introspection**—cases where $K(K(x)) \neq \text{sign}(K(x))$. This captures the Dunning-Kruger effect and imposter syndrome, which are empirically observed but cannot be expressed in standard epistemic logics without violating the introspection axioms.
+
+Our approach can be seen as a **graded, psychologically realistic** extension of epistemic logic that relaxes the introspection axioms to accommodate metacognitive failures.
+
 ### Metacognitive Sensitivity: meta-d'
 
 Maniscalco and Lau (2012) developed the *meta-d'* framework for measuring metacognitive sensitivity—the ability to discriminate between correct and incorrect responses via confidence ratings.
@@ -353,10 +420,17 @@ Maniscalco and Lau (2012) developed the *meta-d'* framework for measuring metaco
 |:---|:---|:---|
 | **Focus** | Discrimination ability (sensitivity) | Structural accuracy (recognition) |
 | **Measurement** | Statistical correlation across trials | Per-item metacognitive state |
+| **Granularity** | Aggregate across trials | Per-item |
 | **"I don't know"** | Treated as low confidence | $K(x)=0, K(K(x))=1$ (Socratic wisdom) |
+| **Statistical Model** | Noise-tolerant (SDT) | Deterministic match/mismatch |
 | **Theoretical Basis** | Signal Detection Theory | Recursive epistemology |
 
 **Key Difference:** meta-d' measures whether confidence ratings **correlate** with accuracy. Our model measures whether metacognitive claims **match** actual states. Crucially, we recognize that **accurately knowing one's ignorance** ($K(x) = 0, K(K(x)) = 1$) is a **high metacognitive achievement**, not a failure.
+
+**Complementary Relationship:** These approaches are **not mutually exclusive**. meta-d' provides a noise-tolerant aggregate measure of metacognitive sensitivity; our $K(K(x))$ provides per-item structural classification with explicit treatment of Socratic wisdom. An integrated approach could:
+- Use meta-d' for aggregate sensitivity analysis across trials
+- Use $K(K(x))$ for per-item classification and Socratic wisdom detection
+- Define a continuous version: $K(K(x)) = 2 \cdot P(\text{meta-claim matches actual state}) - 1$, estimated across trials via hierarchical Bayesian methods
 
 ### Calibration Metrics (Brier Score, ECE)
 
