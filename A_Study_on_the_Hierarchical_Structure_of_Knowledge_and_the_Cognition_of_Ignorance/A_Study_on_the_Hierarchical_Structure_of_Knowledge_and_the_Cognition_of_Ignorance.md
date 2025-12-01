@@ -48,35 +48,29 @@ A fundamental distinction in this framework is that **the function $K$ measures 
 This separation is essential for capturing phenomena like the Dunning-Kruger effect, where $K(x) = 0$ (the subject does not know) but $K(K(x)) = -1$ (the subject misrecognizes their ignorance), often accompanied by high subjective confidence.
 
 
-## The Reference Point: Truth Function $T(x)$
+## Scope Clarification: Methodological Relativism
 
-To analyze the discrepancy between what a subject believes and what is considered factual, we introduce a **Truth Function** $T(x)$.
+This section clarifies the scope and philosophical stance of this framework.
 
-### Definition
+### What This Model Does
 
-* **Symbol:** $T(x)$
-* **Definition:** A reference function that maps a proposition $x$ to a continuous value representing its "factual status" as understood within the cognitive context.
-* **Domain/Codomain:** $T: \mathcal{X} \to [-1, 1]$
-  * $1.0$: The proposition is considered fully accurate within the context.
-  * $0.0$: The proposition is undefined or undeterminable within the context.
-  * $-1.0$: The proposition is considered completely contrary to the understood facts.
+This model provides a **mathematical apparatus** for representing and manipulating the **structure of epistemic states** relative to a proposition. The function $K(x)$ measures the subject's epistemic state regarding proposition $x$:
 
-### Ontological Neutrality
+| $K(x)$ | State | Interpretation |
+|:---:|:---|:---|
+| $1$ | Aligned | Subject's belief is consistent with $x$ |
+| $0$ | Indeterminate | Subject has no determinate stance on $x$ |
+| $-1$ | Opposed | Subject's belief is contrary to $x$ |
 
-This paper deliberately adopts an **ontologically neutral** position regarding $T(x)$. We do not take a stance on whether $T(x)$ represents:
+### What This Model Does Not Do
 
-* **Objective reality** (realism): Facts exist independently of observers.
-* **Phenomenal facts** (phenomenalism/relativism): Facts are constituted through the subject's cognitive context.
+This model **does not adjudicate** what is "correct" or "true." The designation of a proposition as the "target" (such that $K(x) = 1$ represents success) is a **methodological choice** made by the experimenter, not a claim of this framework.
 
-What matters for this methodology is that $T(x)$ serves as a **reference point** against which the subject's state $K(x)$ can be compared. The ontological status of $T(x)$ is a separate philosophical question beyond the scope of this paper.
+The proposition $x$ itself serves as the **implicit reference point**. What counts as "aligned" ($K(x) = 1$) versus "opposed" ($K(x) = -1$) is determined by the **experimental context** (e.g., expert consensus, empirical measurement, community agreement), not by this model.
 
-This design allows users of this framework to adopt their preferred philosophical interpretation while maintaining the mathematical rigor of the model.
+### Methodological Relativism
 
-### Connection with Epistemological Tradition
-
-This study acknowledges the discussion of **the separation between the subjective and the objective** in epistemology. In his *Critique of Pure Reason*, Kant distinguished between phenomena (subjective experience) and the thing-in-itself (objective reality), and argued that humans cannot directly know the thing-in-itself (Kant, 1781). 
-
-Rather than claiming access to the "thing-in-itself," our model uses $T(x)$ as a practical reference point that can be operationalized in specific contexts (e.g., as expert consensus, empirical measurement, or community agreement). This distinction is an essential premise for considering the **discrepancy between the subjectivity and objectivity of knowledge**.
+This framework adopts a position of **methodological relativism**: the reference point is necessarily context-dependent, and the model operates on the structure of epistemic states relative to that chosen reference. This design allows researchers with different philosophical commitments (realism, relativism, pragmatism) to use the same mathematical framework while maintaining their preferred interpretation of what constitutes "correct" knowledge.
 
 ## The Recursive Structure: $K(K(K(x)))$
 
@@ -149,9 +143,38 @@ k2 = K(k1)           -- Layer 2: metacognition of k1
 
 The recursive structure $K(K(x))$ is mathematically well-founded and has precedent in formal systems.
 
-**Scope Clarification:**
+### Axiomatic Constraints on $K$
 
-The abstract object $x$ at Layer 0 (e.g., a proposition, a task item) is treated as an **external input** to the model. The philosophical nature of $x$ and its relationship to "truth" is **outside the scope** of this framework. Our focus is entirely on the **structure of the subject's epistemic states** as they live on $[-1, 1]$.
+We impose the following minimal constraints on the epistemic function $K$:
+
+**Definition: Objective Evaluation**
+
+The function $K$ represents an **objective evaluation** of the subject's epistemic state by an external observer (or the system), distinct from the subject's subjective feeling of confidence ($C$).
+
+- $K(x) = 1$: Objectively accurate recognition.
+- $K(x) = -1$: Objectively inverted recognition (misconception).
+
+**Anchor Preservation:**
+
+- $K(1) = 1$ (accurate recognition of knowledge)
+- $K(0) = 0$ (accurate recognition of ignorance)
+- $K(-1) = -1$ (accurate recognition of misconception)
+
+*Rationale for $K(-1) = -1$:* Even if a subject subjectively believes a misconception is true (high confidence), the **objective** relationship between their state and the proposition is inverted. Thus, $K$ must map this state to $-1$.
+
+**Monotonicity:**
+
+If $k_1 > k_2$, then $K(k_1) \geq K(k_2)$.
+
+More positive epistemic states are not mapped to more negative metacognitive states.
+
+**Boundedness:**
+
+$K: [-1, 1] \to [-1, 1]$
+
+The function is closed on the epistemic state space.
+
+**Note:** We deliberately refrain from specifying stronger constraints (e.g., odd symmetry, Lipschitz constant, contraction mapping) at this stage. The framework is intended to be **descriptive** rather than **predictive**—it provides a vocabulary for classifying observed metacognitive states, not a generative model of metacognitive dynamics. Specifying a particular functional form for $K$ is a task for domain-specific empirical research.
 
 ### Recursive Application
 
@@ -250,9 +273,33 @@ All intermediate values in $(-1, 0)$ and $(0, 1)$ represent **graded mixtures** 
 
 Conceptually, the **continuum $[-1, 1]$ is primary**; the trichotomy $\{-1, 0, 1\}$ is a convenient way to name salient regions on this line, not a separate codomain. Experimental designs may choose discrete or continuous elicitation, but in all cases the resulting data are interpreted as points (or distributions) on the same underlying scale $[-1, 1]$.
 
-**Note on Reference Values ($T(x)$):**
+### Continuous Estimation of $K(K(x))$
 
-The reference function $T(x)$ introduced earlier serves as an **operational device** for comparing the subject's states to a chosen reference (e.g., expert consensus, empirical measurement). Its philosophical status (realism, relativism, etc.) is **outside the scope** of this framework. The model focuses solely on the structure of the subject's epistemic states on $[-1, 1]$, not on the metaphysics of truth.
+The categorical inference of $K(K(x))$ from a single "Do you know?" claim is a **simplified operationalization**. For more robust measurement, we propose:
+
+**Option 1: Aggregation Across Items**
+
+For a subject responding to multiple items within a domain:
+
+$$K(K)_{aggregate} = 2 \cdot P(\text{meta-claim matches actual state}) - 1$$
+
+where $P$ is estimated across all items. This yields a continuous value in $[-1, 1]$.
+
+**Option 2: Hierarchical Bayesian Estimation**
+
+Model $K(K(x))$ as a latent variable with:
+- Prior distribution over subjects
+- Item-level random effects
+- Observation model linking latent $K(K(x))$ to categorical claims
+
+This approach accommodates noise, individual differences, and item difficulty.
+
+**Option 3: Probabilistic Elicitation**
+
+Instead of categorical "Yes/No/Unsure", elicit:
+- "How confident are you that your previous answer was correct?" (0-100%)
+
+Map this to $K(K(x))$ via a proper scoring rule or calibration analysis.
 
 ### The Challenge of Measuring Second-Order States
 
@@ -272,21 +319,21 @@ These are **orthogonal dimensions**. A subject can have:
 
 ### Measurement Protocol
 
-#### Step 1: Establish Ground Truth $T(x)$
+#### Step 1: Establish Reference Context
 
-For each proposition $x$, establish a reference truth value via expert consensus, empirical measurement, or community agreement.
+For each proposition $x$, establish what counts as "aligned" ($K(x) = 1$) via the experimental context (e.g., expert consensus, empirical measurement, community agreement). The proposition $x$ itself serves as the implicit reference point.
 
 #### Step 2: Measure $K(x)$ via Task Performance
 
 **Task:** Subject answers: "Is proposition $x$ true, false, or unknown?"
 
-| Subject's Answer | $T(x)$ | Inferred $K(x)$ |
+| Subject's Answer | Reference | Inferred $K(x)$ |
 |:---|:---:|:---:|
-| "True" | $1$ | $1$ (correct knowledge) |
-| "False" | $-1$ | $1$ (correct knowledge) |
+| "True" | Aligned | $1$ (correct knowledge) |
+| "False" | Aligned (proposition is false) | $1$ (correct knowledge) |
 | "I don't know" | any | $0$ (ignorance) |
-| "True" | $-1$ | $-1$ (misconception) |
-| "False" | $1$ | $-1$ (misconception) |
+| "True" | Opposed | $-1$ (misconception) |
+| "False" | Opposed (proposition is true) | $-1$ (misconception) |
 
 #### Step 3: Measure Confidence $C_0$
 
@@ -319,12 +366,6 @@ Compare the subject's **metacognitive claim** (Step 4) to their **actual state**
 
 ### Analyzing Discrepancies
 
-#### Discrepancy between Reference and State
-
-$$D_{TK} = |T(x) - K(x)|$$
-
-Measures how far the subject's recognition deviates from the factual reference.
-
 #### Metacognitive Discrepancy
 
 The discrepancy between actual state and metacognitive claim is captured directly by $K(K(x))$:
@@ -348,9 +389,9 @@ To demonstrate the falsifiability and measurability of this model, we propose th
 ### Protocol
 
 **Phase 1: Knowledge Assessment**
-- Present factual questions with established $T(x)$ values
+- Present factual questions with established reference answers (e.g., expert consensus)
 - Subject responds: True / False / I don't know
-- Calculate $K(x)$ based on correctness
+- Calculate $K(x)$ based on alignment with reference
 
 **Phase 2: Confidence Rating**
 - Subject rates confidence: "How confident are you?" (0-1 scale)
@@ -386,6 +427,28 @@ This would validate the model's claim that:
 | Accurate Expert | $1$ | $1$ | High | Confident and correct |
 | Imposter Syndrome | $1$ | $-1$ or $0$ | Low | Underconfident but correct |
 
+### Relationship to Established Metrics
+
+The MAT is designed to **complement, not replace**, existing metacognitive measures:
+
+| Metric | What it measures | Relationship to MAT |
+|:---|:---|:---|
+| **meta-d'** | Metacognitive sensitivity (discrimination) | Can be computed from MAT data; provides aggregate validation |
+| **Brier Score** | Probabilistic calibration | Applicable if confidence is elicited as probability |
+| **ECE** | Expected calibration error | Measures bias in confidence-accuracy relationship |
+| **AUROC** | Discrimination ability | Can be derived from confidence ratings vs. accuracy |
+| **IRT** | Item difficulty and discrimination | Can model item-level variance in MAT responses |
+
+**Recommended Analysis Pipeline:**
+
+1. Compute $K(x)$ and $K(K(x))$ per item using MAT protocol
+2. Compute meta-d' across trials as aggregate metacognitive sensitivity
+3. Compute calibration metrics (Brier, ECE) from confidence ratings
+4. Compare $K(K(x))$ patterns (Socratic, Dunning-Kruger, etc.) with meta-d' to validate convergent validity
+5. Use IRT to account for item-level heterogeneity
+
+**Hypothesis:** High $K(K(x))$ (accurate metacognition) should correlate with high meta-d'/d' ratio and good calibration, but $K(K(x))$ provides additional structural information (e.g., distinguishing Socratic wisdom from mere low confidence).
+
 
 
 ## Related Work
@@ -409,6 +472,27 @@ Traditional epistemic logics (e.g., S5, KD45) model knowledge via modal operator
 **Key Departure:** Epistemic logics typically assume idealized agents with perfect introspection. Our framework explicitly models **failures of introspection**—cases where $K(K(x)) \neq \text{sign}(K(x))$. This captures the Dunning-Kruger effect and imposter syndrome, which are empirically observed but cannot be expressed in standard epistemic logics without violating the introspection axioms.
 
 Our approach can be seen as a **graded, psychologically realistic** extension of epistemic logic that relaxes the introspection axioms to accommodate metacognitive failures.
+
+### Relationship to Graded Epistemic Logics
+
+Recent work in graded epistemic logics (e.g., S5G frameworks) models knowledge with continuous plausibility values in $[0, 1]$. Our framework differs in key respects:
+
+| Aspect | Graded Epistemic Logics | Our $K(K(x))$ |
+|:---|:---|:---|
+| **Scale** | $[0, 1]$ (plausibility) | $[-1, 1]$ (includes misconception) |
+| **Misconception** | Typically not modeled | $K(x) = -1$ |
+| **Metacognition** | Introspection axioms | Explicit recursive operator |
+| **Focus** | Idealized agents | Psychologically realistic failures |
+
+**Formal Correspondence:**
+
+Our $K$ can be viewed as a **graded, psychologically realistic** extension that:
+
+1. Relaxes positive/negative introspection axioms to accommodate metacognitive failures
+2. Extends the scale to include misconception (negative values)
+3. Focuses on the **gap** between actual and recognized epistemic states, rather than idealized consistency
+
+Whether $K$ is idempotent ($K(K(x)) = K(x)$ for accurate metacognizers) or contractive (higher-order reflection converges) is an **empirical question** that our framework can accommodate but does not presuppose.
 
 ### Metacognitive Sensitivity: meta-d'
 
@@ -458,7 +542,7 @@ Dempster-Shafer theory handles **epistemic uncertainty** and **conflicting evide
 | **Application** | Evidence combination | Self-awareness structure |
 | **Ignorance** | Represented as belief mass | $K(x) = 0$ (epistemic state) |
 
-**Complementary Relationship:** Dempster-Shafer theory could be used to model $T(x)$ when the reference itself is uncertain. Our model specifically targets the **gap between what one knows and what one thinks one knows**.
+**Complementary Relationship:** Dempster-Shafer theory could be used to model uncertainty about the reference point when expert consensus is incomplete. Our model specifically targets the **gap between what one knows and what one thinks one knows**.
 
 ### Dunning-Kruger Effect (Empirical Psychology)
 
@@ -496,8 +580,8 @@ This study constructed a recursive epistemic model based on the hierarchical str
 
 ### Main Results
 
-1. We proposed a **recursive epistemic function $K$** with type-theoretic justification, demonstrating that $K(K(x))$ is not a type error but a well-founded recursive structure.
-2. We introduced the **Truth Function $T(x)$** with **ontological neutrality**, allowing the framework to be used by researchers with different philosophical commitments.
+1. We proposed a **recursive epistemic function $K$** with type-theoretic justification and axiomatic constraints (anchor preservation, monotonicity, boundedness), demonstrating that $K(K(x))$ is not a type error but a well-founded recursive structure.
+2. We adopted a stance of **methodological relativism**, treating the proposition $x$ itself as the implicit reference point and leaving the designation of "correct" to the experimental context.
 3. We provided the **Four Quadrants of Metacognition**, clearly distinguishing "Knowing Ignorance" (Socratic wisdom, $K(x)=0, K(K(x))=1$) from "Unknowing Ignorance" (Dunning-Kruger effect, $K(x)=0, K(K(x))=-1$).
 4. We separated **epistemic state** ($K$) from **phenomenological confidence** ($C$), recognizing them as orthogonal dimensions.
 5. We proposed the **Metacognitive Alignment Test (MAT)** as an experimental protocol to validate the model, with specific predictions about the benefits of Socratic wisdom.
@@ -509,13 +593,27 @@ This study constructed a recursive epistemic model based on the hierarchical str
 - **Socratic Wisdom as Achievement**: Explicitly modeling "knowing ignorance" as a high metacognitive state
 - **Per-Item Granularity**: Measuring metacognition at the individual item level, complementing aggregate statistical measures
 
-### Future Challenges
+### Limitations
 
-1. **Empirical Validation**: Conduct MAT experiments to validate the model's predictions about Socratic wisdom and Dunning-Kruger effect.
-2. **AI Safety Applications**: Apply the framework to detect "hallucinations" in LLMs as instances of Unknowing Ignorance ($K(x)=0, K(K(x))=-1$).
-3. **Cultural Factors**: Evaluate how social and cultural contexts influence metacognitive patterns.
-4. **Educational Interventions**: Design interventions to cultivate Socratic wisdom (increasing $K(K(x))$ when $K(x)=0$).
-5. **Higher-Order Recursion**: Investigate the cognitive and computational limits of $K(K(K(...)))$ recursion.
+This framework is a **conceptual scaffold** for organizing metacognitive phenomena, not a complete predictive model. We acknowledge the following limitations:
+
+1. **Minimal Axiomatic Theory:** We provide basic constraints on $K$ (anchor preservation, monotonicity, boundedness) but do not specify a unique functional form. The specific dynamics of $K$ (e.g., whether it is contractive, has fixed points beyond $\{-1, 0, 1\}$) are empirical questions.
+
+2. **No Generative Model:** We do not provide a noise model or generative account of how $K$ values are produced. This is a task for computational cognitive modeling.
+
+3. **Simulation Validation Pending:** We have not yet provided simulated evidence that different metacognitive profiles (Socratic, Dunning-Kruger, Imposter) are identifiable under realistic noise. This is planned for future work.
+
+4. **Analogical Type Theory:** The type-theoretic justification is analogical rather than formally constructed. A full domain-theoretic or typed lambda-calculus treatment is beyond the current scope.
+
+5. **LLM Operationalization Incomplete:** Applying $K(K(x))$ to LLMs requires addressing question-side shortcuts and model-side signals. Specific methods (conformal coverage, debate protocols) are suggested but not developed here.
+
+### Future Directions
+
+1. **Empirical Validation**: Conduct MAT experiments to validate the model's predictions about Socratic wisdom and Dunning-Kruger effect, and compare with meta-d' and calibration metrics.
+2. **Simulation Studies**: Simulate agents with known $K$/$C$ profiles to demonstrate identifiability and estimate required sample sizes.
+3. **Formal Type Theory**: Develop a typed calculus or algebraic data type where $K$'s self-application is a well-typed endomorphism.
+4. **AI Safety Applications**: Operationalize $K(K(x))$ for LLMs using abstention behavior, self-consistency, and metamorphic testing.
+5. **Cultural and Domain Variation**: Investigate whether the symmetry assumption (misconception vs. knowledge) holds across cultures and domains.
 
 
 
