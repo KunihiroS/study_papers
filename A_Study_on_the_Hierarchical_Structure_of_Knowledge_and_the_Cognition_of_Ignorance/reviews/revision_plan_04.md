@@ -85,10 +85,17 @@
 
 We impose the following minimal constraints on the epistemic function K:
 
+**Definition: Objective Evaluation**
+The function $K$ represents an **objective evaluation** of the subject's epistemic state by an external observer (or the system), distinct from the subject's subjective feeling of confidence ($C$).
+- $K(x) = 1$: Objectively accurate recognition.
+- $K(x) = -1$: Objectively inverted recognition (misconception).
+
 **Anchor Preservation:**
-- K(1) = 1 (accurate recognition of knowledge)
-- K(0) = 0 (accurate recognition of ignorance)
-- K(-1) = -1 (accurate recognition of misconception)
+- $K(1) = 1$ (accurate recognition of knowledge)
+- $K(0) = 0$ (accurate recognition of ignorance)
+- $K(-1) = -1$ (accurate recognition of misconception)
+
+*Rationale for $K(-1)=-1$:* Even if a subject subjectively believes a misconception is true (high confidence), the **objective** relationship between their state and the proposition is inverted. Thus, $K$ must map this state to $-1$.
 
 **Monotonicity:**
 - If k₁ > k₂, then K(k₁) ≥ K(k₂)
@@ -108,41 +115,44 @@ We impose the following minimal constraints on the epistemic function K:
 
 ---
 
-#### A2: T(x)=0 と K(x)=0 の明確な区別
+#### A2: Removing T(x) — Proposition as Implicit Reference
 
-**現状:** T(x) の undefined と K(x) の ignorance が混同される可能性
-**批判:** "The treatment of '0' in T(x) (undefined) and '0' in K(x) (ignorance) risks conflation"
+**Current Issue:** T(x) is framed as a "Truth Function," leading to confusion about T(x)=0 (undefined truth) vs K(x)=0 (ignorance).
+**Critique:** "The treatment of '0' in T(x)... risks conflation"
 
-**対応:**
+**Response Strategy:**
+We eliminate the T(x) notation entirely. The proposition $x$ itself serves as the implicit reference point.
 
-新しいサブセクション「**Distinguishing Undefined Truth from Ignorance**」を追加：
+**1. Remove T(x) Notation**
+- We do not use a separate "Truth Function" or "Reference Value" symbol.
+- The proposition $x$ itself serves as the reference point.
+- What counts as "aligned" ($K(x)=1$) vs "opposed" ($K(x)=-1$) is determined by the **experimental context** (e.g., expert consensus, empirical measurement), not by this model.
 
+**2. Redefine K(x) as Epistemic State**
+
+$K(x)$ represents the subject's **epistemic state** regarding proposition $x$:
+
+| K(x) | State | Interpretation |
+|:---:|:---|:---|
+| $1$ | Aligned | Subject's belief is consistent with $x$ |
+| $0$ | Indeterminate | Subject has no determinate stance on $x$ |
+| $-1$ | Opposed | Subject's belief is contrary to $x$ |
+
+**3. Scope Clarification (Methodological Relativism)**
+
+```markdown
+### Scope Clarification
+
+This model does not adjudicate what is "correct" or "true." 
+It provides a mathematical apparatus for representing and manipulating 
+the **structure of epistemic states** relative to a proposition. 
+
+The designation of a proposition as the "target" (such that $K(x)=1$ 
+represents success) is a **methodological choice** made by the experimenter, 
+not a claim of this framework.
 ```
-### Distinguishing Undefined Truth from Ignorance
 
-We clarify the distinct meanings of "0" in our framework:
-
-| Symbol | Meaning | Example |
-|:---|:---|:---|
-| **T(x) = 0** | The proposition x has no determinate truth value (undefined, underdetermined, or contested) | "Is modern art valuable?" |
-| **K(x) = 0** | The subject has no determinate stance regarding x (ignorance) | "I don't know whether water boils at 100°C" |
-
-**Key Distinction:**
-
-- **T(x) = 0** is a property of the **proposition** (or its relationship to the reference frame)
-- **K(x) = 0** is a property of the **subject's epistemic state**
-
-A subject can have K(x) = 0 (ignorance) about a proposition with T(x) = 1 (defined true).
-A subject can have K(x) = 1 (knowledge) about a proposition with T(x) = 0 (undefined) — this represents a subject who has taken a determinate stance on an inherently contested matter.
-
-**Operational Recommendation:**
-
-For empirical studies, we recommend:
-1. **Exclude T(x) = 0 items** from primary analyses of K and K(K(x))
-2. **Or explicitly model** T(x) uncertainty via a separate dimension (e.g., Dempster-Shafer belief mass or a Bayesian prior over T)
-
-This distinction aligns with partial semantics in epistemic logic (cf. impure simplicial epistemic models) and avoids conflating "unknown because undefined" with "unknown though defined."
-```
+**Conclusion:** By removing T(x) and treating the proposition itself as the implicit reference, we eliminate the conflation of "undefined truth" and "ignorance." The model focuses purely on the **structure of epistemic states** — the T(x)=0 case simply does not exist in this framework.
 
 ---
 
