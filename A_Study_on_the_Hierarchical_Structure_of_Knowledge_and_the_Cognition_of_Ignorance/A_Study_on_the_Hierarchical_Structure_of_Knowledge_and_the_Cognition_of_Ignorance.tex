@@ -1,237 +1,458 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{adjustbox}
-\usepackage{hyperref}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{A Study on the Hierarchical Structure of Knowledge and the Cognition of Ignorance}
-\author{Kunihiro Sugiyama \\ \texttt{kunihiros@gmail.com}}
+\author{}
 \date{}
 
 \begin{document}
 
-\maketitle
+\hypertarget{a-study-on-the-hierarchical-structure-of-knowledge-and-the-cognition-of-ignorance}{%
+\section{A Study on the Hierarchical Structure of Knowledge and the
+Cognition of
+Ignorance}\label{a-study-on-the-hierarchical-structure-of-knowledge-and-the-cognition-of-ignorance}}
 
-\section{Introduction}
+\emph{Kunihiro Sugiyama}\\
+kunihiros@gmail.com
 
-Human knowledge possesses a multi-layered structure, and the ability to recognize one's own ignorance (metacognition) is crucial for learning and decision-making. This study proposes a recursive model of knowledge and ignorance based on a single core function: \textbf{$K$}, which represents epistemic recognition. By applying this function recursively—$K(x)$, $K(K(x))$, $K(K(K(x)))$, and so on—we formalize the hierarchical structure of self-awareness that distinguishes \textbf{Socratic wisdom} (``knowing that one does not know'') from the \textbf{Dunning-Kruger effect} (``not knowing that one does not know'').
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
 
-This model integrates insights from \textbf{metacognition research}, \textbf{epistemology}, and \textbf{type theory} to address three aspects that have not been sufficiently unified in existing research:
+Human knowledge possesses a multi-layered structure, and the ability to
+recognize one's own ignorance (metacognition) is crucial for learning
+and decision-making. This study proposes a recursive model of knowledge
+and ignorance based on a single core function: \textbf{\(K\)}, which
+represents epistemic recognition. By applying this function
+recursively---\(K(x)\), \(K(K(x))\), \(K(K(K(x)))\), and so on---we
+formalize the hierarchical structure of self-awareness that
+distinguishes \textbf{Socratic wisdom} (``knowing that one does not
+know'') from the \textbf{Dunning-Kruger effect} (``not knowing that one
+does not know'').
+
+This model integrates insights from \textbf{metacognition research},
+\textbf{epistemology}, and \textbf{type theory} to address three aspects
+that have not been sufficiently unified in existing research:
 
 \begin{enumerate}
-    \item The \textbf{recursive nature of self-awareness}: The same epistemic question (``Do I know?'') can be applied at every level of reflection.
-    \item The \textbf{continuous gradation of knowledge}: Knowledge states exist on a continuum from complete misconception ($-1$) through ignorance ($0$) to accurate knowledge ($1$).
-    \item The \textbf{distinction between epistemic state and phenomenological confidence}: What one knows versus how certain one feels are orthogonal dimensions.
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The \textbf{recursive nature of self-awareness}: The same epistemic
+  question (``Do I know?'') can be applied at every level of reflection.
+\item
+  The \textbf{continuous gradation of knowledge}: Knowledge states exist
+  on a continuum from complete misconception (\(-1\)) through ignorance
+  (\(0\)) to accurate knowledge (\(1\)).
+\item
+  The \textbf{distinction between epistemic state and phenomenological
+  confidence}: What one knows versus how certain one feels are
+  orthogonal dimensions.
 \end{enumerate}
 
-By presenting a mathematically rigorous yet philosophically grounded framework, this study seeks to deepen our understanding of the structure of knowledge and the cognitive mechanisms of ignorance.
+By presenting a mathematically rigorous yet philosophically grounded
+framework, this study seeks to deepen our understanding of the structure
+of knowledge and the cognitive mechanisms of ignorance.
 
-\subsection{Contribution: A Conceptual Foundation}
+\hypertarget{contribution-a-conceptual-foundation}{%
+\subsubsection{Contribution: A Conceptual
+Foundation}\label{contribution-a-conceptual-foundation}}
 
-This paper establishes the \textbf{conceptual foundation} for a unified theory of recursive metacognition. The trichotomy of epistemic states---\textbf{knowing}, \textbf{not knowing}, and \textbf{misunderstanding}---is a universal human experience that transcends cultures, domains, and disciplines. Before elaborating measurement-theoretic models or conducting empirical validation, we must first \textbf{settle the conceptual vocabulary}.
+This paper establishes the \textbf{conceptual foundation} for a unified
+theory of recursive metacognition. The trichotomy of epistemic
+states---\textbf{knowing}, \textbf{not knowing}, and
+\textbf{misunderstanding}---is a universal human experience that
+transcends cultures, domains, and disciplines. Before elaborating
+measurement-theoretic models or conducting empirical validation, we must
+first \textbf{settle the conceptual vocabulary}.
 
-\textbf{What this paper provides:}
-\begin{enumerate}
-    \item A \textbf{single, unified operator $K$} that applies recursively at all levels of self-reflection
-    \item A \textbf{purely observational framework} where $K$ is not a mental process but an \textbf{observation protocol}
-    \item A \textbf{complete taxonomy} (27 patterns) that classifies all possible metacognitive configurations
-    \item A \textbf{resolution of apparent contradictions} (e.g., $K(0) = 0$ vs $K_1 = -1$) through layer independence
-\end{enumerate}
+\textbf{What this paper provides:} 1. A \textbf{single, unified operator
+\(K\)} that applies recursively at all levels of self-reflection 2. A
+\textbf{purely observational framework} where \(K\) is not a mental
+process but an \textbf{observation protocol} 3. A \textbf{complete
+taxonomy} (27 patterns) that classifies all possible metacognitive
+configurations 4. A \textbf{resolution of apparent contradictions}
+(e.g., \(K(0) = 0\) vs \(K_1 = -1\)) through layer independence
 
-\textbf{What this paper deliberately does not provide:}
+\textbf{What this paper deliberately does not provide:} - Probabilistic
+measurement models (future work) - Empirical validation (orthogonal
+contribution) - Formal type-theoretic proofs (analogical treatment
+suffices for conceptual clarity)
+
+These omissions are not gaps but \textbf{scope boundaries}.
+Measurement-theoretic elaboration and empirical validation require this
+conceptual foundation to be settled first. We invite the research
+community to build upon this foundation.
+
+\hypertarget{philosophical-foundation-and-interpretive-notes}{%
+\subsection{Philosophical Foundation and Interpretive
+Notes}\label{philosophical-foundation-and-interpretive-notes}}
+
+This section clarifies the philosophical motivation behind this paper
+and provides essential interpretive guidance to prevent misunderstanding
+of the proposed model.
+
+\hypertarget{theoretical-rationale}{%
+\subsubsection{Theoretical Rationale}\label{theoretical-rationale}}
+
+This study is grounded in the logical structure of recursive ignorance,
+exemplified by the proposition \textbf{``I don't know what I don't
+know.''} If ``knowing one's ignorance'' (Socratic wisdom) is a
+recognized concept, then logically, ``not knowing one's ignorance'' must
+also exist. And if that exists, then so must ``not knowing that one
+doesn't know one's ignorance''---and so on, recursively.
+
+The goal of this paper is to \textbf{mathematically formalize this
+recursive structure of knowledge and ignorance}, not to judge or rank
+cognitive states.
+
+\hypertarget{descriptive-nature-of-the-scale}{%
+\subsubsection{Descriptive Nature of the
+Scale}\label{descriptive-nature-of-the-scale}}
+
+The values \(-1\), \(0\), and \(1\) in this model function as
+\textbf{epistemic state descriptors}. They serve as epistemic
+coordinates rather than normative metrics (e.g., ``good'' or ``bad'').
+
+\begin{longtable}[]{@{}cl@{}}
+\toprule\noalign{}
+Value & Meaning \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(1\) & The subject holds correct knowledge. \\
+\(0\) & The subject lacks knowledge (ignorance). \\
+\(-1\) & The subject holds incorrect knowledge (misconception). \\
+\end{longtable}
+
+A subject in state \(-1\) (misconception) is not normatively inferior to
+a subject in state \(0\) (ignorance); they occupy \textbf{distinct
+epistemic loci}. Whether one state is ``preferable'' to another depends
+on context, goals, and values---domains outside the scope of this model.
+
+\hypertarget{separation-of-knowledge-and-confidence}{%
+\subsubsection{Separation of Knowledge and
+Confidence}\label{separation-of-knowledge-and-confidence}}
+
+A fundamental distinction in this framework is that \textbf{the function
+\(K\) measures epistemic state, not phenomenological confidence}.
+Confidence is a separate dimension that will be introduced later in the
+measurement section.
+
 \begin{itemize}
-    \item Probabilistic measurement models (future work)
-    \item Empirical validation (orthogonal contribution)
-    \item Formal type-theoretic proofs (analogical treatment suffices for conceptual clarity)
+\tightlist
+\item
+  \(K(x)\): How accurately the subject recognizes object \(x\)
+  (epistemic state).
+\item
+  \(C\) (Confidence): How certain the subject feels about their
+  recognition (phenomenological experience).
 \end{itemize}
 
-These omissions are not gaps but \textbf{scope boundaries}. Measurement-theoretic elaboration and empirical validation require this conceptual foundation to be settled first. We invite the research community to build upon this foundation.
+This separation is essential for capturing phenomena like the
+Dunning-Kruger effect, where \(K(x) = 0\) (the subject does not know)
+but \(K(K(x)) = -1\) (the subject misrecognizes their ignorance), often
+accompanied by high subjective confidence.
 
-\section{Philosophical Foundation and Interpretive Notes}
+\hypertarget{scope-clarification-methodological-relativism}{%
+\subsection{Scope Clarification: Methodological
+Relativism}\label{scope-clarification-methodological-relativism}}
 
-This section clarifies the philosophical motivation behind this paper and provides essential interpretive guidance to prevent misunderstanding of the proposed model.
+This section clarifies the scope and philosophical stance of this
+framework.
 
-\subsection{Theoretical Rationale}
+\hypertarget{what-this-model-does}{%
+\subsubsection{What This Model Does}\label{what-this-model-does}}
 
-This study is grounded in the logical structure of recursive ignorance, exemplified by the proposition \textbf{``I don't know what I don't know.''} If ``knowing one's ignorance'' (Socratic wisdom) is a recognized concept, then logically, ``not knowing one's ignorance'' must also exist. And if that exists, then so must ``not knowing that one doesn't know one's ignorance''—and so on, recursively.
+This model provides a \textbf{mathematical apparatus} for representing
+and manipulating the \textbf{structure of epistemic states} relative to
+a proposition. The function \(K(x)\) measures the subject's epistemic
+state regarding proposition \(x\):
 
-The goal of this paper is to \textbf{mathematically formalize this recursive structure of knowledge and ignorance}, not to judge or rank cognitive states.
+\begin{longtable}[]{@{}cll@{}}
+\toprule\noalign{}
+\(K(x)\) & State & Interpretation \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(1\) & Aligned & Subject's belief is consistent with \(x\) \\
+\(0\) & Indeterminate & Subject has no determinate stance on \(x\) \\
+\(-1\) & Opposed & Subject's belief is contrary to \(x\) \\
+\end{longtable}
 
-\subsection{Descriptive Nature of the Scale}
+\hypertarget{what-this-model-does-not-do}{%
+\subsubsection{What This Model Does Not
+Do}\label{what-this-model-does-not-do}}
 
-The values $-1$, $0$, and $1$ in this model function as \textbf{epistemic state descriptors}. They serve as epistemic coordinates rather than normative metrics (e.g., ``good'' or ``bad'').
+This model \textbf{does not adjudicate} what is ``correct'' or ``true.''
+The designation of a proposition as the ``target'' (such that
+\(K(x) = 1\) represents success) is a \textbf{methodological choice}
+made by the experimenter, not a claim of this framework.
 
-\begin{table}[h]
-\centering
-\begin{tabular}{cl}
-\toprule
-\textbf{Value} & \textbf{Meaning} \\
-\midrule
-$1$ & The subject holds correct knowledge. \\
-$0$ & The subject lacks knowledge (ignorance). \\
-$-1$ & The subject holds incorrect knowledge (misconception). \\
-\bottomrule
-\end{tabular}
-\caption{Epistemic State Descriptors}
-\end{table}
+The proposition \(x\) itself serves as the \textbf{implicit reference
+point}. What counts as ``aligned'' (\(K(x) = 1\)) versus ``opposed''
+(\(K(x) = -1\)) is determined by the \textbf{experimental context}
+(e.g., expert consensus, empirical measurement, community agreement),
+not by this model.
 
-A subject in state $-1$ (misconception) is not normatively inferior to a subject in state $0$ (ignorance); they occupy \textbf{distinct epistemic loci}. Whether one state is ``preferable'' to another depends on context, goals, and values—domains outside the scope of this model.
+\hypertarget{methodological-relativism}{%
+\subsubsection{Methodological
+Relativism}\label{methodological-relativism}}
 
-\subsection{Separation of Knowledge and Confidence}
+This framework adopts a position of \textbf{methodological relativism}:
+the reference point is necessarily context-dependent, and the model
+operates on the structure of epistemic states relative to that chosen
+reference. This design allows researchers with different philosophical
+commitments (realism, relativism, pragmatism) to use the same
+mathematical framework while maintaining their preferred interpretation
+of what constitutes ``correct'' knowledge.
 
-A fundamental distinction in this framework is that \textbf{the function $K$ measures epistemic state, not phenomenological confidence}. Confidence is a separate dimension that will be introduced later in the measurement section.
+\hypertarget{the-recursive-structure-kkkx}{%
+\subsection{\texorpdfstring{The Recursive Structure:
+\(K(K(K(x)))\)}{The Recursive Structure: K(K(K(x)))}}\label{the-recursive-structure-kkkx}}
 
-\begin{itemize}
-    \item $K(x)$: How accurately the subject recognizes object $x$ (epistemic state).
-    \item $C$ (Confidence): How certain the subject feels about their recognition (phenomenological experience).
-\end{itemize}
+The cognitive structure of knowledge is modeled using a
+\textbf{recursive epistemic function} \(K\). This model formalizes the
+intuition that the same question---``Do I know?''---can be applied at
+every level of self-reflection.
 
-This separation is essential for capturing phenomena like the Dunning-Kruger effect, where $K(x) = 0$ (the subject does not know) but $K(K(x)) = -1$ (the subject misrecognizes their ignorance), often accompanied by high subjective confidence.
+\hypertarget{formal-definition-of-k}{%
+\subsubsection{\texorpdfstring{Formal Definition of
+\(K\)}{Formal Definition of K}}\label{formal-definition-of-k}}
 
-\section{Scope Clarification: Methodological Relativism}
-
-This section clarifies the scope and philosophical stance of this framework.
-
-\subsection{What This Model Does}
-
-This model provides a \textbf{mathematical apparatus} for representing and manipulating the \textbf{structure of epistemic states} relative to a proposition. The function $K(x)$ measures the subject's epistemic state regarding proposition $x$:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{ccl}
-\toprule
-$K(x)$ & \textbf{State} & \textbf{Interpretation} \\
-\midrule
-$1$ & Aligned & Subject's belief is consistent with $x$ \\
-$0$ & Indeterminate & Subject has no determinate stance on $x$ \\
-$-1$ & Opposed & Subject's belief is contrary to $x$ \\
-\bottomrule
-\end{tabular}
-\caption{Epistemic State Interpretations}
-\end{table}
-
-\subsection{What This Model Does Not Do}
-
-This model \textbf{does not adjudicate} what is ``correct'' or ``true.'' The designation of a proposition as the ``target'' (such that $K(x) = 1$ represents success) is a \textbf{methodological choice} made by the experimenter, not a claim of this framework.
-
-The proposition $x$ itself serves as the \textbf{implicit reference point}. What counts as ``aligned'' ($K(x) = 1$) versus ``opposed'' ($K(x) = -1$) is determined by the \textbf{experimental context} (e.g., expert consensus, empirical measurement, community agreement), not by this model.
-
-\subsection{Methodological Relativism}
-
-This framework adopts a position of \textbf{methodological relativism}: the reference point is necessarily context-dependent, and the model operates on the structure of epistemic states relative to that chosen reference. This design allows researchers with different philosophical commitments (realism, relativism, pragmatism) to use the same mathematical framework while maintaining their preferred interpretation of what constitutes ``correct'' knowledge.
-
-\section{The Recursive Structure: $K(K(K(x)))$}
-
-The cognitive structure of knowledge is modeled using a \textbf{recursive epistemic function} $K$. This model formalizes the intuition that the same question—``Do I know?''—can be applied at every level of self-reflection.
-
-\subsection{Formal Definition of $K$}
-
-We distinguish between two levels of the epistemic function $K$:
+We distinguish between two levels of the epistemic function \(K\):
 
 \textbf{1. Entry Mapping (Layer 0):}
 
-For an abstract object $x$ (e.g., a proposition, a task item, or any epistemic target), the subject's first-order epistemic condition is represented as a continuous value:
+For an abstract object \(x\) (e.g., a proposition, a task item, or any
+epistemic target), the subject's first-order epistemic condition is
+represented as a continuous value:
 
-$$k_0(x) \in [-1, 1]$$
+\[k_0(x) \in [-1, 1]\]
 
-This is the \textbf{only point} where the external object $x$ enters the model. The internal representation $k_0$ captures how the subject stands with respect to $x$.
+This is the \textbf{only point} where the external object \(x\) enters
+the model. The internal representation \(k_0\) captures how the subject
+stands with respect to \(x\).
 
-\textbf{2. Recursive Mapping (Layers $n \ge 1$):}
+\textbf{2. Recursive Mapping (Layers \(n \ge 1\)):}
 
-At all higher layers, the operator $K$ acts entirely on epistemic states:
+At all higher layers, the operator \(K\) acts entirely on epistemic
+states:
 
-$$K: [-1, 1] \to [-1, 1]$$
-$$k_{n+1} = K(k_n)$$
+\[K: [-1, 1] \to [-1, 1]\] \[k_{n+1} = K(k_n)\]
 
-The ``object'' of higher-order $K$ is not a world-side proposition but the subject's \textbf{own epistemic state as represented on $[-1, 1]$}.
+The ``object'' of higher-order \(K\) is not a world-side proposition but
+the subject's \textbf{own epistemic state as represented on
+\([-1, 1]\)}.
 
 \textbf{Output Interpretation (Prototypical Anchor Points):}
 
-The values $-1$, $0$, and $1$ serve as \textbf{prototypical anchors} on the continuous scale $[-1, 1]$:
+The values \(-1\), \(0\), and \(1\) serve as \textbf{prototypical
+anchors} on the continuous scale \([-1, 1]\):
 
 \begin{itemize}
-    \item $K(\cdot) = 1$: The subject accurately recognizes the target (full knowledge or accurate metacognition).
-    \item $K(\cdot) = 0$: The subject has no determinate stance regarding the target (pure ignorance).
-    \item $K(\cdot) = -1$: The subject misrecognizes the target (misconception or metacognitive failure).
+\tightlist
+\item
+  \(K(\cdot) = 1\): The subject accurately recognizes the target (full
+  knowledge or accurate metacognition).
+\item
+  \(K(\cdot) = 0\): The subject has no determinate stance regarding the
+  target (pure ignorance).
+\item
+  \(K(\cdot) = -1\): The subject misrecognizes the target (misconception
+  or metacognitive failure).
 \end{itemize}
 
-All intermediate values represent \textbf{graded mixtures} of these prototypes (partial knowledge, partial misconception, uncertainty, etc.).
+All intermediate values represent \textbf{graded mixtures} of these
+prototypes (partial knowledge, partial misconception, uncertainty,
+etc.).
 
-\textbf{Key Insight:} The function $K$ has \textbf{consistent semantics} across all layers: ``How accurately does the subject recognize this target?'' At Layer 0, the target is an external object $x$. At Layers $n \ge 1$, the target is the subject's own epistemic state $k_{n-1}$.
+\textbf{Key Insight:} The function \(K\) has \textbf{consistent
+semantics} across all layers: ``How accurately does the subject
+recognize this target?'' At Layer 0, the target is an external object
+\(x\). At Layers \(n \ge 1\), the target is the subject's own epistemic
+state \(k_{n-1}\).
 
-\subsection{Observation and Objects: The Purely Observational Framework}
+\hypertarget{observation-and-objects-the-purely-observational-framework}{%
+\subsubsection{Observation and Objects: The Purely Observational
+Framework}\label{observation-and-objects-the-purely-observational-framework}}
 
-This framework adopts a \textbf{purely observational stance}: epistemic states are operationalized as observable responses, and metacognitive states as observable alignments between claims and performance. We do not posit internal ``beliefs'' or ``perceptions'' --- only \textbf{states} that are measurable by an external observer.
+This framework adopts a \textbf{purely observational stance}: epistemic
+states are operationalized as observable responses, and metacognitive
+states as observable alignments between claims and performance. We do
+not posit internal ``beliefs'' or ``perceptions'' --- only
+\textbf{states} that are measurable by an external observer.
 
 \textbf{The Observer:}
 
-In experimental settings, the ``observer'' is the \textbf{experimenter} who:
-\begin{enumerate}
-    \item Presents a task/question
-    \item Records the respondent's answer
-    \item Compares the answer to a reference
-    \item Assigns a $K$ value based on the comparison
-\end{enumerate}
+In experimental settings, the ``observer'' is the \textbf{experimenter}
+who: 1. Presents a task/question 2. Records the respondent's answer 3.
+Compares the answer to a reference 4. Assigns a \(K\) value based on the
+comparison
 
-The Observer does not access internal ``perception'' or ``belief.'' The Observer only sees \textbf{observable behavior}: answers, claims, responses.
+The Observer does not access internal ``perception'' or ``belief.'' The
+Observer only sees \textbf{observable behavior}: answers, claims,
+responses.
 
-\textbf{Operational Definition of State$_n$:}
+\textbf{Operational Definition of State\(_n\):}
 
 \begin{itemize}
-    \item \textbf{State$_0$ (first-order epistemic state)}: The respondent's answer compared to a reference. Operationalized as: ``Is the answer correct, incorrect, or absent?''
-    \item \textbf{State$_1$ (metacognitive state)}: The alignment between the respondent's metacognitive claim and their actual State$_0$. Operationalized as: ``Does the claim `I know' match the actual correctness?''
-    \item \textbf{State$_2$ (meta-metacognitive state)}: The alignment between the respondent's meta-metacognitive claim and their actual State$_1$.
+\tightlist
+\item
+  \textbf{State\(_0\) (first-order epistemic state)}: The respondent's
+  answer compared to a reference.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Operationalized as: ``Is the answer correct, incorrect, or absent?''
+  \end{itemize}
+\item
+  \textbf{State\(_1\) (metacognitive state)}: The alignment between the
+  respondent's metacognitive claim and their actual State\(_0\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Operationalized as: ``Does the claim `I know' match the actual
+    correctness?''
+  \end{itemize}
+\item
+  \textbf{State\(_2\) (meta-metacognitive state)}: The alignment between
+  the respondent's meta-metacognitive claim and their actual
+  State\(_1\).
 \end{itemize}
+
+\textbf{Example:} - Respondent answers incorrectly → State\(_0\) =
+``ignorance'' → \(K_0 = 0\) - Respondent claims ``I know'' → State\(_1\)
+= ``misalignment'' → \(K_1 = -1\) - Respondent claims ``My
+self-assessment is accurate'' → State\(_2\) = ``misalignment'' →
+\(K_2 = -1\)
 
 \textbf{Critical Clarification:}
 
-Each $K_n$ is an \textbf{independent observation} of a \textbf{distinct object} (State$_n$):
+Each \(K_n\) is an \textbf{independent observation} of a
+\textbf{distinct object} (State\(_n\)):
 
 \begin{itemize}
-    \item $K_0(x)$: Observer's measurement of State$_0$
-    \item $K_1(x)$: Observer's measurement of State$_1$
-    \item $K_2(x)$: Observer's measurement of State$_2$
+\tightlist
+\item
+  \textbf{\(K_0(x)\)}: Observer's measurement of \textbf{State\(_0\)}
+\item
+  \textbf{\(K_1(x)\)}: Observer's measurement of \textbf{State\(_1\)}
+\item
+  \textbf{\(K_2(x)\)}: Observer's measurement of \textbf{State\(_2\)}
 \end{itemize}
 
-$$K_1(x) \neq K(K_0(x))$$
+\[K_1(x) \neq K(K_0(x))\]
 
-$K_1$ is \textbf{not} ``applying $K$ to the numerical value of $K_0$.'' $K_1$ is ``observing a different object (State$_1$) and reporting the measurement.''
+\(K_1\) is \textbf{not} ``applying \(K\) to the numerical value of
+\(K_0\).'' \(K_1\) is ``observing a different object (State\(_1\)) and
+reporting the measurement.''
 
-\textbf{Resolving the Apparent Contradiction ($K(0) = 0$ vs $K_1 = -1$):}
+\textbf{Resolving the Apparent Contradiction (\(K(0) = 0\) vs
+\(K_1 = -1\)):}
 
-The axiom $K(0) = 0$ means: ``If the observed state is `ignorance' (0), the measurement result is `ignorance' (0).''
+The axiom \(K(0) = 0\) means: ``If the observed state is `ignorance'
+(0), the measurement result is `ignorance' (0).''
 
-In the Dunning-Kruger case:
-\begin{itemize}
-    \item $K_0(x) = 0$: Observer measures State$_0$ $\to$ ``ignorance''
-    \item $K_1(x) = -1$: Observer measures State$_1$ $\to$ ``misalignment''
-\end{itemize}
+In the Dunning-Kruger case: - \(K_0(x) = 0\): Observer measures
+State\(_0\) → ``ignorance'' - \(K_1(x) = -1\): Observer measures
+State\(_1\) → ``misalignment''
 
-\textbf{State$_1$ is not ``0''.} State$_1$ is the metacognitive state (alignment/misalignment), which the observer measures as ``misrecognition'' (-1).
+\textbf{State\(_1\) is not ``0''.} State\(_1\) is the metacognitive
+state (alignment/misalignment), which the observer measures as
+``misrecognition'' (-1).
 
-The axiom $K(0) = 0$ does not apply because the input to $K_1$ is \textbf{not} the number ``0''. The input is \textbf{State$_1$}, a different object entirely.
+The axiom \(K(0) = 0\) does not apply because the input to \(K_1\) is
+\textbf{not} the number ``0''. The input is \textbf{State\(_1\)}, a
+different object entirely.
 
 \textbf{Analogy (Thermometer Calibration):}
 
-Consider a thermometer and its calibration:
-\begin{itemize}
-    \item State$_0$ (temperature): The actual temperature of water = 20°C
-    \item State$_1$ (thermometer accuracy): Whether the thermometer correctly reads State$_0$
-\end{itemize}
+Consider a thermometer and its calibration: - \textbf{State\(_0\)
+(temperature)}: The actual temperature of water = 20°C -
+\textbf{State\(_1\) (thermometer accuracy)}: Whether the thermometer
+correctly reads State\(_0\)
 
-Measuring State$_0$ = 20°C does not constrain State$_1$. The thermometer might be accurate (State$_1$ = correct, $K_1 = 1$) or miscalibrated (State$_1$ = incorrect, $K_1 = -1$).
+Measuring State\(_0\) = 20°C does not constrain State\(_1\). The
+thermometer might be: - Accurate (State\(_1\) = correct) → \(K_1 = 1\) -
+Miscalibrated (State\(_1\) = incorrect) → \(K_1 = -1\)
 
-$K_1$ measures a \textbf{property of the measuring instrument}, not the original object. Similarly, $K_1$ measures the accuracy of the respondent's self-monitoring, not the first-order state itself.
+\(K_1\) measures a \textbf{property of the measuring instrument}, not
+the original object. Similarly, \(K_1\) measures the accuracy of
+\textbf{the respondent's self-monitoring}, not the first-order state
+itself.
 
-\subsection{Type-Theoretic Foundation}
+\hypertarget{type-theoretic-foundation}{%
+\subsubsection{Type-Theoretic
+Foundation}\label{type-theoretic-foundation}}
 
-To address concerns about mathematical rigor, we provide a type-theoretic justification for the recursive structure.
+To address concerns about mathematical rigor, we provide a
+type-theoretic justification for the recursive structure.
 
-\textbf{Core Principle:} All epistemic states live on a \textbf{single continuous scale} $[-1, 1]$. The recursive structure is well-defined because $K$ maps this space to itself.
+\textbf{Core Principle:} All epistemic states live on a \textbf{single
+continuous scale} \([-1, 1]\). The recursive structure is well-defined
+because \(K\) maps this space to itself.
 
 \textbf{Two-Stage Type Structure:}
 
@@ -245,7 +466,8 @@ K  : Real[-1, 1] -> Real[-1, 1]
 
 \textbf{Recursive Application:}
 
-Once we are on the epistemic state space $[-1, 1]$, recursion is straightforward:
+Once we are on the epistemic state space \([-1, 1]\), recursion is
+straightforward:
 
 \begin{verbatim}
 k0 = k0(x)           -- Entry: external object -> epistemic state
@@ -254,151 +476,297 @@ k2 = K(k1)           -- Layer 2: metacognition of k1
 ...
 \end{verbatim}
 
-\textbf{This is not a type error.} This is a \textbf{recursive type} with a well-defined structure, analogous to:
-\begin{itemize}
-    \item \textbf{Lambda Calculus}: Self-application via $\lambda x. (\lambda y. y) x$
-    \item \textbf{Fixed-Point Combinators}: $Y = \lambda f. (\lambda x. f(x x))(\lambda x. f(x x))$
-    \item \textbf{Recursive Types}: $\mu \alpha. \alpha \to \alpha$
-\end{itemize}
+\textbf{This is not a type error.} This is a \textbf{recursive type}
+with a well-defined structure, analogous to: - \textbf{Lambda Calculus}:
+Self-application via \(\lambda x. (\lambda y. y) x\) -
+\textbf{Fixed-Point Combinators}:
+\(Y = \lambda f. (\lambda x. f(x x))(\lambda x. f(x x))\) -
+\textbf{Recursive Types}: \(\mu \alpha. \alpha \to \alpha\)
 
-The recursive structure $K(K(x))$ is mathematically well-founded and has precedent in formal systems.
+The recursive structure \(K(K(x))\) is mathematically well-founded and
+has precedent in formal systems.
 
-\textbf{Scope Clarification:}
+\hypertarget{axiomatic-constraints-on-k}{%
+\subsubsection{\texorpdfstring{Axiomatic Constraints on
+\(K\)}{Axiomatic Constraints on K}}\label{axiomatic-constraints-on-k}}
 
-The abstract object $x$ at Layer 0 (e.g., a proposition, a task item) is treated as an \textbf{external input} to the model. The philosophical nature of $x$ and its relationship to ``truth'' is \textbf{outside the scope} of this framework. Our focus is entirely on the \textbf{structure of the subject's epistemic states} as they live on $[-1, 1]$.
-
-\subsection{Axiomatic Constraints on $K$}
-
-We impose the following minimal constraints on the epistemic function $K$:
+We impose the following minimal constraints on the epistemic function
+\(K\):
 
 \textbf{Definition: Objective Evaluation}
 
-The function $K$ represents an \textbf{objective evaluation} of the subject's epistemic state by an external observer (or the system), distinct from the subject's subjective feeling of confidence ($C$).
+The function \(K\) represents an \textbf{objective evaluation} of the
+subject's epistemic state by an external observer (or the system),
+distinct from the subject's subjective feeling of confidence (\(C\)).
 
 \begin{itemize}
-    \item $K(x) = 1$: Objectively accurate recognition.
-    \item $K(x) = -1$: Objectively inverted recognition (misconception).
+\tightlist
+\item
+  \(K(x) = 1\): Objectively accurate recognition.
+\item
+  \(K(x) = -1\): Objectively inverted recognition (misconception).
 \end{itemize}
 
-\textbf{Anchor Preservation:}
+\textbf{Axiom Scope:}
+
+The axioms describe the behavior of the observation function \(K\)
+\textbf{within a single layer}.
 
 \begin{itemize}
-    \item $K(1) = 1$ (accurate recognition of knowledge)
-    \item $K(0) = 0$ (accurate recognition of ignorance)
-    \item $K(-1) = -1$ (accurate recognition of misconception)
+\tightlist
+\item
+  \(K(1) = 1\): If the observed state is ``knowledge'', report
+  ``knowledge''
+\item
+  \(K(0) = 0\): If the observed state is ``ignorance'', report
+  ``ignorance''
+\item
+  \(K(-1) = -1\): If the observed state is ``misconception'', report
+  ``misconception''
 \end{itemize}
 
-\textit{Rationale for $K(-1) = -1$:} Even if a subject subjectively believes a misconception is true (high confidence), the \textbf{objective} relationship between their state and the proposition is inverted. Thus, $K$ must map this state to $-1$.
+\textbf{Layer Independence:}
+
+Each \(K_n\) observes a \textbf{different object} (State\(_n\)). The
+axioms apply to each observation independently.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3846}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3077}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3077}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Layer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Object Observed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Axiom Application
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(K_0\) & State\(_0\) (first-order epistemic state) & \(K\)(State\(_0\))
+follows axioms \\
+\(K_1\) & State\(_1\) (metacognitive state) & \(K\)(State\(_1\)) follows
+axioms \\
+\(K_2\) & State\(_2\) (meta-metacognitive state) & \(K\)(State\(_2\))
+follows axioms \\
+\end{longtable}
+
+\textbf{Why \(K_0 = 0\) and \(K_1 = -1\) is NOT a contradiction:}
+
+\begin{itemize}
+\tightlist
+\item
+  \(K_0 = 0\): Observer measures State\(_0\) as ``ignorance''
+\item
+  \(K_1 = -1\): Observer measures State\(_1\) as ``misrecognition''
+\end{itemize}
+
+State\(_0 \neq\) State\(_1\). They are different objects. The axiom
+\(K(0) = 0\) applies to State\(_0\), not to State\(_1\).
 
 \textbf{Monotonicity:}
 
-If $k_1 > k_2$, then $K(k_1) \geq K(k_2)$.
+Monotonicity applies \textbf{within each layer}: if State \(>\) State',
+then \(K\)(State) \(\geq\) \(K\)(State').
 
-More positive epistemic states are not mapped to more negative metacognitive states.
+It does NOT constrain relationships \textbf{across layers} (e.g.,
+\(K_0\) vs \(K_1\)).
 
 \textbf{Boundedness:}
 
-$$K: [-1, 1] \to [-1, 1]$$
+\(K: [-1, 1] \to [-1, 1]\)
 
-The function is closed on the epistemic state space.
+Each observation is bounded on this interval.
 
-\textbf{Note:} We deliberately refrain from specifying stronger constraints (e.g., odd symmetry, Lipschitz constant, contraction mapping) at this stage. The framework is intended to be \textbf{descriptive} rather than \textbf{predictive}---it provides a vocabulary for classifying observed metacognitive states, not a generative model of metacognitive dynamics. Specifying a particular functional form for $K$ is a task for domain-specific empirical research.
+\textbf{Note:} We deliberately refrain from specifying stronger
+constraints (e.g., odd symmetry, Lipschitz constant, contraction
+mapping) at this stage. The framework is intended to be
+\textbf{descriptive} rather than \textbf{predictive}---it provides a
+vocabulary for classifying observed metacognitive states, not a
+generative model of metacognitive dynamics. Specifying a particular
+functional form for \(K\) is a task for domain-specific empirical
+research.
 
-\subsection{Recursive Application}
+\hypertarget{recursive-application}{%
+\subsubsection{Recursive Application}\label{recursive-application}}
 
 \textbf{Notation:}
 
-\begin{align*}
-K_0(x) &= K(x) \\
-K_1(x) &= K(K_0(x)) = K(K(x)) \\
-K_2(x) &= K(K_1(x)) = K(K(K(x)))
-\end{align*}
+We use subscript notation to denote the layer of observation:
+
+\[K_0(x) = K(\text{State}_0)\] \[K_1(x) = K(\text{State}_1)\]
+\[K_2(x) = K(\text{State}_2)\]
+
+\textbf{Important Clarification:}
+
+The traditional notation \(K(K(x))\) is \textbf{shorthand} for
+\(K_1(x)\), but it should \textbf{not} be interpreted as function
+composition (i.e., \(K(K_0(x))\) where the numerical value of \(K_0\) is
+passed to \(K\)).
+
+Each \(K_n\) observes a \textbf{distinct object} (State\(_n\)), not the
+numerical output of the previous layer.
 
 \textbf{Interpretation:}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-\toprule
-\textbf{Layer} & \textbf{Expression} & \textbf{Question} \\
-\midrule
-Layer 0 & $K(x)$ & ``How accurately do I recognize proposition $x$?'' \\
-Layer 1 & $K(K(x))$ & ``How accurately do I recognize my state $K(x)$?'' \\
-Layer 2 & $K(K(K(x)))$ & ``How accurately do I recognize my metacognitive state $K(K(x))$?'' \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Layer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Expression
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Object Observed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Question
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Layer 0} & \(K_0(x)\) & State\(_0\) (first-order epistemic
+state) & ``Is the respondent's answer correct?'' \\
+\textbf{Layer 1} & \(K_1(x)\) & State\(_1\) (metacognitive state) & ``Is
+the respondent's self-assessment aligned with their actual
+State\(_0\)?'' \\
+\textbf{Layer 2} & \(K_2(x)\) & State\(_2\) (meta-metacognitive state) &
+``Is the respondent's meta-self-assessment aligned with their actual
+State\(_1\)?'' \\
+\end{longtable}
 
-\textbf{Same question. Same function. Same semantics.}
+\textbf{Same observation function \(K\). Different objects
+(State\(_n\)). Independent measurements.}
 
-\subsection{Examples}
+\hypertarget{examples}{%
+\subsubsection{Examples}\label{examples}}
 
-\subsubsection{Example 1: Knowing Knowledge}
-
-\begin{itemize}
-    \item $K(x) = 1$: The subject knows that ``water boils at 100°C.''
-    \item $K(K(x)) = 1$: The subject accurately recognizes that they know this fact.
-    \item \textbf{Classification}: Knowing Knowledge (accurate self-awareness)
-\end{itemize}
-
-\subsubsection{Example 2: Socratic Wisdom}
-
-\begin{itemize}
-    \item $K(x) = 0$: The subject does not know the boiling point of water.
-    \item $K(K(x)) = 1$: The subject accurately recognizes their ignorance (``I know that I don't know'').
-    \item \textbf{Classification}: Knowing Ignorance (Socratic wisdom)
-\end{itemize}
-
-\subsubsection{Example 3: Dunning-Kruger Effect}
-
-\begin{itemize}
-    \item $K(x) = 0$: The subject does not know the boiling point of water.
-    \item $K(K(x)) = -1$: The subject misrecognizes their ignorance, believing they know.
-    \item \textbf{Classification}: Unknowing Ignorance (Dunning-Kruger effect)
-\end{itemize}
-
-\subsubsection{Example 4: Imposter Syndrome}
+\hypertarget{example-1-knowing-knowledge}{%
+\paragraph{Example 1: Knowing
+Knowledge}\label{example-1-knowing-knowledge}}
 
 \begin{itemize}
-    \item $K(x) = 1$: The subject knows that ``water boils at 100°C.''
-    \item $K(K(x)) = -1$ or $0$: The subject does not recognize their knowledge (``I don't think I know this'').
-    \item \textbf{Classification}: Unknowing Knowledge (imposter syndrome)
+\tightlist
+\item
+  \(K(x) = 1\): The subject knows that ``water boils at 100°C.''
+\item
+  \(K(K(x)) = 1\): The subject accurately recognizes that they know this
+  fact.
+\item
+  \textbf{Classification}: Knowing Knowledge (accurate self-awareness)
 \end{itemize}
 
-\subsection{The Four Quadrants of Metacognition}
+\hypertarget{example-2-socratic-wisdom}{%
+\paragraph{Example 2: Socratic Wisdom}\label{example-2-socratic-wisdom}}
 
-The relationship between $K(x)$ (actual state) and $K(K(x))$ (metacognitive accuracy) produces four archetypal patterns:
+\begin{itemize}
+\tightlist
+\item
+  \(K(x) = 0\): The subject does not know the boiling point of water.
+\item
+  \(K(K(x)) = 1\): The subject accurately recognizes their ignorance
+  (``I know that I don't know'').
+\item
+  \textbf{Classification}: Knowing Ignorance (Socratic wisdom)
+\end{itemize}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{ccll}
-\toprule
-\textbf{$K(x)$} & \textbf{$K(K(x))$} & \textbf{Classification} & \textbf{Interpretation} \\
-\midrule
-$1$ (Know) & $1$ (Accurate) & \textbf{Knowing Knowledge} & Accurate self-awareness \\
-$0$ (Ignorant) & $1$ (Accurate) & \textbf{Knowing Ignorance} & Socratic wisdom \\
-$0$ (Ignorant) & $-1$ (Misrecognition) & \textbf{Unknowing Ignorance} & Dunning-Kruger effect \\
-$1$ (Know) & $-1$ or $0$ & \textbf{Unknowing Knowledge} & Imposter syndrome \\
-\bottomrule
-\end{tabular}
-\caption{The Four Quadrants of Metacognition}
-\end{table}
+\hypertarget{example-3-dunning-kruger-effect}{%
+\paragraph{Example 3: Dunning-Kruger
+Effect}\label{example-3-dunning-kruger-effect}}
 
-\textbf{Important Note:} The value $K(K(x)) = -1$ for ``Unknowing Ignorance'' does \textbf{not} mean it is ``bad'' in a normative sense. It simply describes an epistemic state where the subject \textbf{misrecognizes their own ignorance}. Whether this is problematic depends on context and goals.
+\begin{itemize}
+\tightlist
+\item
+  \(K(x) = 0\): The subject does not know the boiling point of water.
+\item
+  \(K(K(x)) = -1\): The subject misrecognizes their ignorance, believing
+  they know.
+\item
+  \textbf{Classification}: Unknowing Ignorance (Dunning-Kruger effect)
+\end{itemize}
 
-\subsection{Complete Taxonomy: $K_0 \times K_1 \times K_2$ (27 Patterns)}
+\hypertarget{example-4-imposter-syndrome}{%
+\paragraph{Example 4: Imposter
+Syndrome}\label{example-4-imposter-syndrome}}
 
-With three prototypical values $\{-1, 0, 1\}$ at each of three layers, there are 27 possible configurations. This taxonomy demonstrates the theoretical value of higher-order reflection ($K_2$).
+\begin{itemize}
+\tightlist
+\item
+  \(K(x) = 1\): The subject knows that ``water boils at 100°C.''
+\item
+  \(K(K(x)) = -1\) or \(0\): The subject does not recognize their
+  knowledge (``I don't think I know this'').
+\item
+  \textbf{Classification}: Unknowing Knowledge (imposter syndrome)
+\end{itemize}
 
-\subsubsection{$K_0 = 1$ (Knowledge)}
+\hypertarget{the-four-quadrants-of-metacognition}{%
+\subsubsection{The Four Quadrants of
+Metacognition}\label{the-four-quadrants-of-metacognition}}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{cccp{7cm}}
-\toprule
-\textbf{$K_0$} & \textbf{$K_1$} & \textbf{$K_2$} & \textbf{Interpretation} \\
-\midrule
-1 & 1 & 1 & Perfect self-awareness (Ideal) \\
+The relationship between \(K(x)\) (actual state) and \(K(K(x))\)
+(metacognitive accuracy) produces four archetypal patterns:
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2778}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2778}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2222}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\(K(x)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K(K(x))\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classification
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(1\) (Know) & \(1\) (Accurate) & \textbf{Knowing Knowledge} & Accurate
+self-awareness \\
+\(0\) (Ignorant) & \(1\) (Accurate) & \textbf{Knowing Ignorance} &
+Socratic wisdom \\
+\(0\) (Ignorant) & \(-1\) (Misrecognition) & \textbf{Unknowing
+Ignorance} & Dunning-Kruger effect \\
+\(1\) (Know) & \(-1\) or \(0\) & \textbf{Unknowing Knowledge} & Imposter
+syndrome \\
+\end{longtable}
+
+\textbf{Important Note:} The value \(K(K(x)) = -1\) for ``Unknowing
+Ignorance'' does \textbf{not} mean it is ``bad'' in a normative sense.
+It simply describes an epistemic state where the subject
+\textbf{misrecognizes their own ignorance}. Whether this is problematic
+depends on context and goals.
+
+\hypertarget{complete-taxonomy-kux2080-kux2081-kux2082-27-patterns}{%
+\subsubsection{Complete Taxonomy: K$_0$ $\times$ K$_1$ $\times$ K$_2$ (27
+Patterns)}\label{complete-taxonomy-kux2080-kux2081-kux2082-27-patterns}}
+
+With three prototypical values \{-1, 0, 1\} at each of three layers,
+there are 27 possible configurations. This taxonomy demonstrates the
+theoretical value of higher-order reflection (\(K_2\)).
+
+\hypertarget{kux2080-1-knowledge}{%
+\paragraph{K$_0$ = 1 (Knowledge)}\label{kux2080-1-knowledge}}
+
+\begin{longtable}[]{@{}cccp{5.5cm}@{}}
+\toprule\noalign{}
+\(K_0\) & \(K_1\) & \(K_2\) & Interpretation \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 1 & 1 & $\checkmark$ Perfect self-awareness (Ideal) \\
 1 & 1 & 0 & Knowing Knowledge, uncertain about meta \\
 1 & 1 & -1 & Knowing Knowledge, misrecognizes meta \\
 1 & 0 & 1 & Uncertain about knowledge, recognizes uncertainty \\
@@ -407,20 +775,19 @@ With three prototypical values $\{-1, 0, 1\}$ at each of three layers, there are
 1 & -1 & 1 & \textbf{Imposter Syndrome (self-aware)} \\
 1 & -1 & 0 & Imposter Syndrome (ambiguous) \\
 1 & -1 & -1 & \textbf{Severe Imposter Syndrome} \\
-\bottomrule
-\end{tabular}
-\caption{27 Patterns: $K_0 = 1$ (Knowledge)}
-\end{table}
+\end{longtable}
 
-\subsubsection{$K_0 = 0$ (Ignorance)}
+\hypertarget{kux2080-0-ignorance}{%
+\paragraph{K$_0$ = 0 (Ignorance)}\label{kux2080-0-ignorance}}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{cccp{7cm}}
-\toprule
-\textbf{$K_0$} & \textbf{$K_1$} & \textbf{$K_2$} & \textbf{Interpretation} \\
-\midrule
-0 & 1 & 1 & \textbf{Perfect Socratic Wisdom} \\
+\begin{longtable}[]{@{}cccp{5.5cm}@{}}
+\toprule\noalign{}
+\(K_0\) & \(K_1\) & \(K_2\) & Interpretation \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & 1 & $\checkmark$ \textbf{Perfect Socratic Wisdom} \\
 0 & 1 & 0 & Socratic Wisdom, uncertain about meta \\
 0 & 1 & -1 & Socratic Wisdom, misrecognizes meta \\
 0 & 0 & 1 & Uncertain about ignorance, recognizes uncertainty \\
@@ -428,21 +795,21 @@ With three prototypical values $\{-1, 0, 1\}$ at each of three layers, there are
 0 & 0 & -1 & Uncertain about ignorance, misrecognizes it \\
 0 & -1 & 1 & \textbf{Dunning-Kruger (self-aware)} --- can improve \\
 0 & -1 & 0 & Dunning-Kruger (ambiguous) \\
-0 & -1 & -1 & \textbf{Severe Dunning-Kruger} --- resistant to correction \\
-\bottomrule
-\end{tabular}
-\caption{27 Patterns: $K_0 = 0$ (Ignorance)}
-\end{table}
+0 & -1 & -1 & \textbf{Severe Dunning-Kruger} --- resistant to
+correction \\
+\end{longtable}
 
-\subsubsection{$K_0 = -1$ (Misconception)}
+\hypertarget{kux2080--1-misconception}{%
+\paragraph{K$_0$ = -1 (Misconception)}\label{kux2080--1-misconception}}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{cccp{7cm}}
-\toprule
-\textbf{$K_0$} & \textbf{$K_1$} & \textbf{$K_2$} & \textbf{Interpretation} \\
-\midrule
--1 & 1 & 1 & Self-aware misconception (rare, correctable) \\
+\begin{longtable}[]{@{}cccp{5.5cm}@{}}
+\toprule\noalign{}
+\(K_0\) & \(K_1\) & \(K_2\) & Interpretation \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+-1 & 1 & 1 & $\checkmark$ Self-aware misconception (rare, correctable) \\
 -1 & 1 & 0 & Knowing Misconception, uncertain about meta \\
 -1 & 1 & -1 & Knowing Misconception, misrecognizes meta \\
 -1 & 0 & 1 & Uncertain about misconception, recognizes uncertainty \\
@@ -451,545 +818,1017 @@ With three prototypical values $\{-1, 0, 1\}$ at each of three layers, there are
 -1 & -1 & 1 & \textbf{Confident wrong (self-aware)} \\
 -1 & -1 & 0 & Confident wrong (ambiguous) \\
 -1 & -1 & -1 & \textbf{Most dangerous: Severe confident wrong} \\
-\bottomrule
-\end{tabular}
-\caption{27 Patterns: $K_0 = -1$ (Misconception)}
-\end{table}
+\end{longtable}
 
-\textbf{Theoretical Value of $K_2$:}
+\textbf{Theoretical Value of \(K_2\):}
 
-The third layer ($K_2$) enables modeling of \textbf{metacognitive interventions} and their effectiveness:
+The third layer (\(K_2\)) enables modeling of \textbf{metacognitive
+interventions} and their effectiveness:
 
 \begin{itemize}
-    \item $K_2 = 1$ with $K_1 = -1$: Subject recognizes their metacognitive failure $\to$ \textbf{teachable moment}
-    \item $K_2 = -1$ with $K_1 = -1$: Subject does not recognize their failure $\to$ \textbf{resistant to intervention}
+\tightlist
+\item
+  \(K_2 = 1\) with \(K_1 = -1\): Subject recognizes their metacognitive
+  failure → \textbf{teachable moment}
+\item
+  \(K_2 = -1\) with \(K_1 = -1\): Subject does not recognize their
+  failure → \textbf{resistant to intervention}
 \end{itemize}
 
-Higher-order reflection ($K_2$, $K_3$, ...) provides diagnostic power for identifying when and how metacognitive correction is possible.
+Higher-order reflection (\(K_2\), \(K_3\), \ldots) provides diagnostic
+power for identifying when and how metacognitive correction is possible.
 
-\subsection{Connection with Metacognition Research}
+\hypertarget{connection-with-metacognition-research}{%
+\subsubsection{Connection with Metacognition
+Research}\label{connection-with-metacognition-research}}
 
-Flavell (1979) defined metacognition as ``the ability to monitor and control one's own cognitive activities.'' The recursive structure ($K \to K(K) \to K(K(K))$) formalizes this concept mathematically.
+\textbf{Flavell (1979)} defined metacognition as ``the ability to
+monitor and control one's own cognitive activities.'' The recursive
+structure (\(K \to K(K) \to K(K(K))\)) formalizes this concept
+mathematically.
 
-Dunning and Kruger (1999) demonstrated that individuals with low competence tend to overestimate their abilities. In our model, this corresponds to $K(x) = 0$ (ignorance) but $K(K(x)) = -1$ (misrecognition of ignorance).
+\textbf{Nelson \& Narens (1990)} introduced the influential
+\textbf{monitoring/control framework}, distinguishing between the
+\textbf{object level} (cognitive processes) and the \textbf{meta level}
+(monitoring and control of cognition). Our framework directly
+corresponds to this structure:
 
-\textbf{Nelson \& Narens (1990)} introduced the influential \textbf{monitoring/control framework}, distinguishing between the object level and the meta level. Our $K_0$ and $K_1$ formalize this distinction with a single unified operator.
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Nelson \& Narens & This Framework \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Object level & State\(_0\) (first-order epistemic state) \\
+Meta level (monitoring) & State\(_1\) (metacognitive state) \\
+Control signal & Not modeled (orthogonal dimension) \\
+\end{longtable}
 
-\textbf{Koriat (1993)} proposed the \textbf{cue-utilization theory}, explaining how confidence arises from accessibility cues rather than direct access to accuracy. This corresponds to our separation of $C$ (confidence) and $K$ (epistemic state).
+Our \(K_0\) and \(K_1\) formalize the object/meta distinction with a
+\textbf{single unified operator}, providing mathematical precision to
+Nelson \& Narens' conceptual framework.
 
-\textbf{Meta-d' (Maniscalco \& Lau, 2012)} quantifies \textbf{how well} subjects discriminate correct from incorrect responses, while our $K$ classifies \textbf{what} metacognitive states exist. The two approaches are complementary.
+\textbf{Koriat (1993)} proposed the \textbf{cue-utilization theory},
+explaining how confidence arises from accessibility and familiarity cues
+rather than direct access to accuracy. This distinction between
+cue-based confidence and actual accuracy corresponds precisely to our
+separation of \(C\) (confidence) and \(K\) (epistemic state). Our
+framework accommodates cue-based confidence as a component of \(C\),
+while \(K\) measures the objective alignment between the subject's state
+and reality.
 
-\textbf{Novel Contribution:} Our model provides a \textbf{structural formalization} of recursive self-awareness that unifies the object/meta distinction with a single recursive operator, separates epistemic state from confidence, and classifies all possible metacognitive configurations.
+\textbf{Dunning and Kruger (1999)} demonstrated that individuals with
+low competence tend to overestimate their abilities. In our model, this
+corresponds to \(K_0 = 0\) (ignorance) but \(K_1 = -1\) (misrecognition
+of ignorance).
 
-\subsection{Why a Single Unified K?}
+\textbf{Meta-d' (Maniscalco \& Lau, 2012)} provides a signal
+detection-theoretic measure of metacognitive sensitivity. While meta-d'
+quantifies \textbf{how well} subjects discriminate their own correct
+from incorrect responses, our framework provides a \textbf{structural
+vocabulary} for \textbf{what} metacognitive states exist. The two
+approaches are complementary: meta-d' measures the quality of
+monitoring; our \(K\) classifies the content of monitoring.
 
-One might ask: ``Why not introduce separate operators for different levels?'' The answer lies in the \textbf{universality of the epistemic question}.
+\textbf{Novel Contribution:} Our model provides a \textbf{structural
+formalization} of recursive self-awareness that: 1. Unifies the
+object/meta distinction (Nelson \& Narens) with a single recursive
+operator 2. Separates epistemic state from cue-based confidence (Koriat)
+3. Classifies all possible metacognitive configurations (27 patterns) 4.
+Explicitly distinguishes ``Knowing Ignorance'' (Socratic wisdom) as a
+high metacognitive achievement
 
-The question ``Do I know?'' is the same at every level:
-\begin{itemize}
-    \item ``Do I know the answer?'' $\to$ $K_0$
-    \item ``Do I know whether I know the answer?'' $\to$ $K_1$
-    \item ``Do I know whether I know whether I know?'' $\to$ $K_2$
-\end{itemize}
+\hypertarget{why-a-single-unified-k}{%
+\subsubsection{Why a Single Unified K?}\label{why-a-single-unified-k}}
+
+One might ask: ``Why not introduce separate operators for different
+levels?'' The answer lies in the \textbf{universality of the epistemic
+question}.
+
+The question ``Do I know?'' is the same question at every level: - ``Do
+I know the answer?'' → \(K_0\) - ``Do I know whether I know the
+answer?'' → \(K_1\) - ``Do I know whether I know whether I know?'' →
+\(K_2\)
 
 \textbf{The question is universal. Only the object changes.}
 
-A thermometer measures temperature. The same thermometer can measure water, air, or metal. We do not need separate ``water-thermometers'' and ``air-thermometers.'' The instrument is the same; the objects differ.
+A thermometer measures temperature. The same thermometer can measure the
+temperature of water, air, or metal. We do not need separate
+``water-thermometers'' and ``air-thermometers.'' The instrument is the
+same; the objects differ.
 
-Similarly, $K$ is an \textbf{observation protocol}, not a mental process. Introducing separate operators ($R$, $E$, etc.) would obscure this fundamental unity.
+Similarly, \(K\) is an \textbf{observation protocol}, not a mental
+process. The same protocol applies to different objects (State\(_0\),
+State\(_1\), State\(_2\)). Introducing separate operators (\(R\), \(E\),
+etc.) would obscure this fundamental unity and sacrifice the elegance of
+a single recursive structure.
 
-\textbf{The beauty of $K$ is its universality.} Knowing, not knowing, and misunderstanding are universal human experiences. The same operator captures them all.
+\textbf{The beauty of \(K\) is its universality.} Knowing, not knowing,
+and misunderstanding are universal human experiences. The same operator
+captures them all.
 
-\section{Measurement Theory}
+\hypertarget{measurement-theory}{%
+\subsection{Measurement Theory}\label{measurement-theory}}
 
-This section describes how the theoretical constructs ($K(x)$, $K(K(x))$) can be operationalized and measured empirically.
+This section describes how the theoretical constructs (\(K(x)\),
+\(K(K(x))\)) can be operationalized and measured empirically.
 
-\subsection{Measurement-Theoretic Interpretation}
+\hypertarget{measurement-theoretic-interpretation}{%
+\subsubsection{Measurement-Theoretic
+Interpretation}\label{measurement-theoretic-interpretation}}
 
-Mathematically, all epistemic states live on a \textbf{single continuous scale}:
+Mathematically, all epistemic states live on a \textbf{single continuous
+scale}:
 
-$$K_n \in [-1, 1] \quad (n = 0, 1, 2, \dots)$$
+\[K_n \in [-1, 1] \quad (n = 0, 1, 2, \dots)\]
 
-The values $-1$, $0$, and $1$ function as \textbf{prototypical anchor points} on this continuum:
+The values \(-1\), \(0\), and \(1\) function as \textbf{prototypical
+anchor points} on this continuum:
 
-\begin{table}[h]
-\centering
-\begin{tabular}{cll}
-\toprule
-\textbf{Value} & \textbf{Prototype} & \textbf{Interpretation} \\
-\midrule
-$1$ & Full correct knowledge & Subject's state is maximally aligned with the chosen reference \\
-$0$ & Pure ignorance & Subject has no determinate stance regarding the object \\
-$-1$ & Full misconception & Subject's state is maximally opposed to the reference \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3846}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3077}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3077}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Prototype
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(1\) & Full correct knowledge & Subject's state is maximally aligned
+with the chosen reference \\
+\(0\) & Pure ignorance & Subject has no determinate stance regarding the
+object \\
+\(-1\) & Full misconception & Subject's state is maximally opposed to
+the reference \\
+\end{longtable}
 
-All intermediate values in $(-1, 0)$ and $(0, 1)$ represent \textbf{graded mixtures} of these prototypes (partial knowledge, partial misconception, uncertainty, mixtures across items, etc.).
+All intermediate values in \((-1, 0)\) and \((0, 1)\) represent
+\textbf{graded mixtures} of these prototypes (partial knowledge, partial
+misconception, uncertainty, mixtures across items, etc.).
 
-\textbf{Operationalization Options (always mapping back to $[-1, 1]$):}
+\textbf{Operationalization Options (always mapping back to
+\([-1, 1]\)):}
 
 \begin{enumerate}
-    \item \textbf{Discrete elicitation $\to$ Discrete embedding}: Use trichotomous responses (True/False/I don't know), then embed into $[-1, 1]$ via $K(x) \in \{-1, 0, 1\}$ as prototype points.
-    \item \textbf{Probabilistic elicitation $\to$ Continuous embedding}: Elicit a subjective probability $p(x)$ and map it into $[-1, 1]$ using a proper scoring rule or a simple linear transform (e.g., centered Brier-type scores).
-    \item \textbf{Aggregation $\to$ Continuous embedding}: Average prototype-valued $K(x_i) \in \{-1, 0, 1\}$ across multiple items or contexts to obtain a continuous summary in $[-1, 1]$.
-    \item \textbf{Continuous Estimation of $K(K(x))$}: 
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Discrete elicitation → Discrete embedding}: Use trichotomous
+  responses (True/False/I don't know), then embed into \([-1, 1]\) via
+  \(K(x) \in \{-1, 0, 1\}\) as prototype points.
+\item
+  \textbf{Probabilistic elicitation → Continuous embedding}: Elicit a
+  subjective probability \(p(x)\) and map it into \([-1, 1]\) using a
+  proper scoring rule or a simple linear transform (e.g., centered
+  Brier-type scores).
+\item
+  \textbf{Aggregation → Continuous embedding}: Average prototype-valued
+  \(K(x_i) \in \{-1, 0, 1\}\) across multiple items or contexts to
+  obtain a continuous summary in \([-1, 1]\).
 \end{enumerate}
 
-Conceptually, the \textbf{continuum $[-1, 1]$ is primary}; the trichotomy $\{-1, 0, 1\}$ is a convenient way to name salient regions on this line, not a separate codomain. Experimental designs may choose discrete or continuous elicitation, but in all cases the resulting data are interpreted as points (or distributions) on the same underlying scale $[-1, 1]$.
+Conceptually, the \textbf{continuum \([-1, 1]\) is primary}; the
+trichotomy \(\{-1, 0, 1\}\) is a convenient way to name salient regions
+on this line, not a separate codomain. Experimental designs may choose
+discrete or continuous elicitation, but in all cases the resulting data
+are interpreted as points (or distributions) on the same underlying
+scale \([-1, 1]\).
 
-\textbf{Note on Reference Values:}
+\hypertarget{continuous-estimation-of-kkx}{%
+\subsubsection{\texorpdfstring{Continuous Estimation of
+\(K(K(x))\)}{Continuous Estimation of K(K(x))}}\label{continuous-estimation-of-kkx}}
 
-The reference function introduced earlier serves as an \textbf{operational device} for comparing the subject's states to a chosen reference (e.g., expert consensus, empirical measurement). Its philosophical status (realism, relativism, etc.) is \textbf{outside the scope} of this framework. The model focuses solely on the structure of the subject's epistemic states on $[-1, 1]$, not on the metaphysics of truth.
+The categorical inference of \(K(K(x))\) from a single ``Do you know?''
+claim is a \textbf{simplified operationalization}. For more robust
+measurement, we propose:
 
-\subsection{The Challenge of Measuring Second-Order States}
+\textbf{Option 1: Aggregation Across Items}
 
-$K(K(x))$ is a \textbf{second-order epistemic state}: it represents the subject's recognition of their own first-order state $K(x)$. We cannot directly observe $K(K(x))$; we must infer it from observable behavior.
+For a subject responding to multiple items within a domain:
 
-\subsection{Introducing Confidence: $C$}
+\[K(K)_{aggregate} = 2 \cdot P(\text{meta-claim matches actual state}) - 1\]
 
-To fully characterize the phenomenological experience of metacognition, we additionally measure \textbf{subjective confidence} $C_k \in [0, 1]$.
+where \(P\) is estimated across all items. This yields a continuous
+value in \([-1, 1]\).
 
-\textbf{Important Distinction:}
+\textbf{Option 2: Hierarchical Bayesian Estimation}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{lcc}
-\toprule
-\textbf{Subject's Answer} & \textbf{Reference} & \textbf{Inferred $K(x)$} \\
-\midrule
-``True'' & Aligned & $1$ (correct knowledge) \\
-``False'' & Aligned (proposition is false) & $1$ (correct knowledge) \\
-``I don't know'' & any & $0$ (ignorance) \\
-``True'' & Opposed & $-1$ (misconception) \\
-``False'' & Opposed (proposition is true) & $-1$ (misconception) \\
-\bottomrule
-\end{tabular}
-\end{table}
+Model \(K(K(x))\) as a latent variable with: - Prior distribution over
+subjects - Item-level random effects - Observation model linking latent
+\(K(K(x))\) to categorical claims
 
-\subsubsection{Step 3: Measure Confidence $C_0$}
+This approach accommodates noise, individual differences, and item
+difficulty.
 
-\textbf{Question:} ``On a scale from 0 to 1, how confident are you in your answer?''
+\textbf{Option 3: Probabilistic Elicitation}
+
+Instead of categorical ``Yes/No/Unsure'', elicit: - ``How confident are
+you that your previous answer was correct?'' (0-100\%)
+
+Map this to \(K(K(x))\) via a proper scoring rule or calibration
+analysis.
+
+\hypertarget{the-challenge-of-measuring-second-order-states}{%
+\subsubsection{The Challenge of Measuring Second-Order
+States}\label{the-challenge-of-measuring-second-order-states}}
+
+\(K(K(x))\) is a \textbf{second-order epistemic state}: it represents
+the subject's recognition of their own first-order state \(K(x)\). We
+cannot directly observe \(K(K(x))\); we must infer it from observable
+behavior.
+
+\hypertarget{introducing-confidence-c}{%
+\subsubsection{\texorpdfstring{Introducing Confidence:
+\(C\)}{Introducing Confidence: C}}\label{introducing-confidence-c}}
+
+To fully characterize the phenomenological experience of metacognition,
+we additionally measure \textbf{subjective confidence}
+\(C_k \in [0, 1]\).
+
+\textbf{Important Distinction:} - \(K(x)\): Epistemic state (how
+accurately the subject recognizes \(x\)) - \(C\): Phenomenological
+confidence (how certain the subject feels)
+
+These are \textbf{orthogonal dimensions}. A subject can have: -
+\(K(x) = 0\) (ignorance) with \(C = 1\) (high confidence) ---
+Dunning-Kruger - \(K(x) = 1\) (knowledge) with \(C = 0.5\) (moderate
+confidence) --- Underconfidence
+
+\hypertarget{measurement-protocol}{%
+\subsubsection{Measurement Protocol}\label{measurement-protocol}}
+
+\hypertarget{step-1-establish-reference-context}{%
+\paragraph{Step 1: Establish Reference
+Context}\label{step-1-establish-reference-context}}
+
+For each proposition \(x\), establish what counts as ``aligned''
+(\(K(x) = 1\)) via the experimental context (e.g., expert consensus,
+empirical measurement, community agreement). The proposition \(x\)
+itself serves as the implicit reference point.
+
+\hypertarget{step-2-measure-kx-via-task-performance}{%
+\paragraph{\texorpdfstring{Step 2: Measure \(K(x)\) via Task
+Performance}{Step 2: Measure K(x) via Task Performance}}\label{step-2-measure-kx-via-task-performance}}
+
+\textbf{Task:} Subject answers: ``Is proposition \(x\) true, false, or
+unknown?''
+
+\begin{longtable}[]{@{}lcc@{}}
+\toprule\noalign{}
+Subject's Answer & Reference & Inferred \(K(x)\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+``True'' & Aligned & \(1\) (correct knowledge) \\
+``False'' & Aligned (proposition is false) & \(1\) (correct
+knowledge) \\
+``I don't know'' & any & \(0\) (ignorance) \\
+``True'' & Opposed & \(-1\) (misconception) \\
+``False'' & Opposed (proposition is true) & \(-1\) (misconception) \\
+\end{longtable}
+
+\hypertarget{step-3-measure-confidence-c_0}{%
+\paragraph{\texorpdfstring{Step 3: Measure Confidence
+\(C_0\)}{Step 3: Measure Confidence C\_0}}\label{step-3-measure-confidence-c_0}}
+
+\textbf{Question:} ``On a scale from 0 to 1, how confident are you in
+your answer?''
 
 This captures the phenomenological dimension of certainty.
 
-\subsubsection{Step 4: Elicit Metacognitive Claim}
+\hypertarget{step-4-elicit-metacognitive-claim}{%
+\paragraph{Step 4: Elicit Metacognitive
+Claim}\label{step-4-elicit-metacognitive-claim}}
 
 \textbf{Question:} ``Do you know the answer to the previous question?''
 
-\begin{table}[h]
-\centering
-\begin{tabular}{ll}
-\toprule
-\textbf{Subject's Claim} & \textbf{Interpretation} \\
-\midrule
-``Yes, I know'' & Subject claims $K(K(x)) = 1$ \\
-``No, I don't know'' & Subject claims $K(K(x)) = 0$ \\
-``I'm not sure'' & Subject claims $K(K(x)) \approx 0.5$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Subject's Claim & Interpretation \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+``Yes, I know'' & Subject claims \(K(K(x)) = 1\) \\
+``No, I don't know'' & Subject claims \(K(K(x)) = 0\) \\
+``I'm not sure'' & Subject claims \(K(K(x)) \approx 0.5\) \\
+\end{longtable}
 
-\subsubsection{Step 5: Infer Actual $K(K(x))$ via Comparison}
+\hypertarget{step-5-infer-actual-kkx-via-comparison}{%
+\paragraph{\texorpdfstring{Step 5: Infer Actual \(K(K(x))\) via
+Comparison}{Step 5: Infer Actual K(K(x)) via Comparison}}\label{step-5-infer-actual-kkx-via-comparison}}
 
-Compare the subject's \textbf{metacognitive claim} (Step 4) to their \textbf{actual state} (Step 2):
+Compare the subject's \textbf{metacognitive claim} (Step 4) to their
+\textbf{actual state} (Step 2):
 
-\begin{table}[h]
-\centering
-\begin{tabular}{llcl}
-\toprule
-\textbf{Actual $K(x)$} & \textbf{Subject's Claim} & \textbf{Inferred $K(K(x))$} & \textbf{Classification} \\
-\midrule
-$1$ (knows) & ``I know'' & $1$ & \textbf{Knowing Knowledge} \\
-$0$ (ignorant) & ``I don't know'' & $1$ & \textbf{Knowing Ignorance} (Socratic) \\
-$0$ (ignorant) & ``I know'' & $-1$ & \textbf{Unknowing Ignorance} (Dunning-Kruger) \\
-$1$ (knows) & ``I don't know'' & $-1$ or $0$ & \textbf{Unknowing Knowledge} (Imposter) \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2778}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2222}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2778}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2222}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Actual \(K(x)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Subject's Claim
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Inferred \(K(K(x))\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classification
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(1\) (knows) & ``I know'' & \(1\) & \textbf{Knowing Knowledge} \\
+\(0\) (ignorant) & ``I don't know'' & \(1\) & \textbf{Knowing Ignorance}
+(Socratic) \\
+\(0\) (ignorant) & ``I know'' & \(-1\) & \textbf{Unknowing Ignorance}
+(Dunning-Kruger) \\
+\(1\) (knows) & ``I don't know'' & \(-1\) or \(0\) & \textbf{Unknowing
+Knowledge} (Imposter) \\
+\end{longtable}
 
-\subsection{Analyzing Discrepancies}
+\textbf{Key Insight:} \(K(K(x))\) is inferred by checking whether the
+subject's \textbf{metacognitive claim matches their actual state}.
 
-\subsubsection{Metacognitive Discrepancy}
+\hypertarget{analyzing-discrepancies}{%
+\subsubsection{Analyzing Discrepancies}\label{analyzing-discrepancies}}
 
-The discrepancy between actual state and metacognitive claim is captured directly by $K(K(x))$:
-\begin{itemize}
-    \item $K(K(x)) = 1$: Accurate metacognition (claim matches reality)
-    \item $K(K(x)) = 0$: Partial metacognitive failure
-    \item $K(K(x)) = -1$: Complete metacognitive failure (claim contradicts reality)
-\end{itemize}
+\hypertarget{metacognitive-discrepancy}{%
+\paragraph{Metacognitive Discrepancy}\label{metacognitive-discrepancy}}
 
-\section{Experimental Design: The Metacognitive Alignment Test (MAT)}
+The discrepancy between actual state and metacognitive claim is captured
+directly by \(K(K(x))\): - \(K(K(x)) = 1\): Accurate metacognition
+(claim matches reality) - \(K(K(x)) = 0\): Partial metacognitive failure
+- \(K(K(x)) = -1\): Complete metacognitive failure (claim contradicts
+reality)
 
-To demonstrate the falsifiability and measurability of this model, we propose the \textbf{Metacognitive Alignment Test (MAT)}.
+\hypertarget{experimental-design-the-metacognitive-alignment-test-mat}{%
+\subsection{Experimental Design: The Metacognitive Alignment Test
+(MAT)}\label{experimental-design-the-metacognitive-alignment-test-mat}}
 
-\subsection{Objectives}
+To demonstrate the falsifiability and measurability of this model, we
+propose the \textbf{Metacognitive Alignment Test (MAT)}.
+
+\hypertarget{objectives}{%
+\subsubsection{Objectives}\label{objectives}}
 
 \begin{enumerate}
-    \item Measure $K(x)$ (first-order epistemic state)
-    \item Measure $K(K(x))$ (second-order metacognitive state)
-    \item Measure confidence $C$ (phenomenological dimension)
-    \item Validate the distinction between Socratic Wisdom and Dunning-Kruger effect
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Measure \(K(x)\) (first-order epistemic state)
+\item
+  Measure \(K(K(x))\) (second-order metacognitive state)
+\item
+  Measure confidence \(C\) (phenomenological dimension)
+\item
+  Validate the distinction between Socratic Wisdom and Dunning-Kruger
+  effect
 \end{enumerate}
 
-\subsection{Protocol}
+\hypertarget{protocol}{%
+\subsubsection{Protocol}\label{protocol}}
 
-\textbf{Phase 1: Knowledge Assessment}
-\begin{itemize}
-    \item Present factual questions with established reference answers (e.g., expert consensus)
-    \item Subject responds: True / False / I don't know
-    \item Calculate $K(x)$ based on correctness
-\end{itemize}
+\textbf{Phase 1: Knowledge Assessment} - Present factual questions with
+established reference answers (e.g., expert consensus) - Subject
+responds: True / False / I don't know - Calculate \(K(x)\) based on
+alignment with reference
 
-\textbf{Phase 2: Confidence Rating}
-\begin{itemize}
-    \item Subject rates confidence: ``How confident are you?'' (0-1 scale)
-    \item Record $C_0$
-\end{itemize}
+\textbf{Phase 2: Confidence Rating} - Subject rates confidence: ``How
+confident are you?'' (0-1 scale) - Record \(C_0\)
 
-\textbf{Phase 3: Metacognitive Claim}
-\begin{itemize}
-    \item Ask: ``Do you know the answer to the previous question?''
-    \item Subject responds: Yes / No / Unsure
-    \item Infer $K(K(x))$ by comparing claim to actual $K(x)$
-\end{itemize}
+\textbf{Phase 3: Metacognitive Claim} - Ask: ``Do you know the answer to
+the previous question?'' - Subject responds: Yes / No / Unsure - Infer
+\(K(K(x))\) by comparing claim to actual \(K(x)\)
 
-\textbf{Phase 4: Validation Tasks}
-\begin{itemize}
-    \item Present decision-making scenarios requiring self-assessment
-    \item Measure performance on tasks like:
-    \begin{itemize}
-        \item Deciding when to seek help
-        \item Allocating study time
-        \item Deferring to experts
-    \end{itemize}
-\end{itemize}
+\textbf{Phase 4: Validation Tasks} - Present decision-making scenarios
+requiring self-assessment - Measure performance on tasks like: -
+Deciding when to seek help - Allocating study time - Deferring to
+experts
 
-\subsection{Validation Hypothesis}
+\hypertarget{validation-hypothesis}{%
+\subsubsection{Validation Hypothesis}\label{validation-hypothesis}}
 
-\textbf{Hypothesis:} Subjects with high $K(K(x))$ (accurate metacognition) will perform better on validation tasks, \textbf{regardless of their raw $K(x)$ score}.
+\textbf{Hypothesis:} Subjects with high \(K(K(x))\) (accurate
+metacognition) will perform better on validation tasks,
+\textbf{regardless of their raw \(K(x)\) score}.
 
-This would validate the model's claim that:
-\begin{itemize}
-    \item \textbf{Knowing Ignorance} ($K(x) = 0, K(K(x)) = 1$) is a valuable cognitive state
-    \item Metacognitive accuracy is distinct from first-order knowledge
-    \item Socratic wisdom has measurable benefits
-\end{itemize}
+This would validate the model's claim that: - \textbf{Knowing Ignorance}
+(\(K(x) = 0, K(K(x)) = 1\)) is a valuable cognitive state -
+Metacognitive accuracy is distinct from first-order knowledge - Socratic
+wisdom has measurable benefits
 
-\subsection{Expected Patterns}
+\hypertarget{expected-patterns}{%
+\subsubsection{Expected Patterns}\label{expected-patterns}}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{lccll}
-\toprule
-\textbf{Pattern} & \textbf{$K(x)$} & \textbf{$K(K(x))$} & \textbf{$C$} & \textbf{Expected Behavior} \\
-\midrule
-Socratic Wisdom & $0$ & $1$ & Low & Seeks help appropriately \\
-Dunning-Kruger & $0$ & $-1$ & High & Overconfident errors \\
-Accurate Expert & $1$ & $1$ & High & Confident and correct \\
-Imposter Syndrome & $1$ & $-1$ or $0$ & Low & Underconfident but correct \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1739}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2174}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1739}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Pattern
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K(x)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K(K(x))\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(C\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Expected Behavior
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Socratic Wisdom & \(0\) & \(1\) & Low & Seeks help appropriately \\
+Dunning-Kruger & \(0\) & \(-1\) & High & Overconfident errors \\
+Accurate Expert & \(1\) & \(1\) & High & Confident and correct \\
+Imposter Syndrome & \(1\) & \(-1\) or \(0\) & Low & Underconfident but
+correct \\
+\end{longtable}
 
-\section{Related Work}
+\hypertarget{relationship-to-established-metrics}{%
+\subsubsection{Relationship to Established
+Metrics}\label{relationship-to-established-metrics}}
 
-\subsection{Relationship to Established Metrics}
+The MAT is designed to \textbf{complement, not replace}, existing
+metacognitive measures:
 
-The MAT is designed to \textbf{complement, not replace}, existing metacognitive measures:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-\toprule
-\textbf{Metric} & \textbf{What it measures} & \textbf{Relationship to MAT} \\
-\midrule
-meta-d' & Metacognitive sensitivity & Can be computed from MAT data \\
-Brier Score & Probabilistic calibration & Applicable if confidence elicited as probability \\
-ECE & Expected calibration error & Measures bias in confidence-accuracy relationship \\
-AUROC & Discrimination ability & Can be derived from confidence vs. accuracy \\
-IRT & Item difficulty/discrimination & Can model item-level variance \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Metric
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+What it measures
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Relationship to MAT
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{meta-d'} & Metacognitive sensitivity (discrimination) & Can be
+computed from MAT data; provides aggregate validation \\
+\textbf{Brier Score} & Probabilistic calibration & Applicable if
+confidence is elicited as probability \\
+\textbf{ECE} & Expected calibration error & Measures bias in
+confidence-accuracy relationship \\
+\textbf{AUROC} & Discrimination ability & Can be derived from confidence
+ratings vs.~accuracy \\
+\textbf{IRT} & Item difficulty and discrimination & Can model item-level
+variance in MAT responses \\
+\end{longtable}
 
 \textbf{Recommended Analysis Pipeline:}
 
 \begin{enumerate}
-    \item Compute $K(x)$ and $K(K(x))$ per item using MAT protocol
-    \item Compute meta-d' across trials as aggregate metacognitive sensitivity
-    \item Compute calibration metrics (Brier, ECE) from confidence ratings
-    \item Compare $K(K(x))$ patterns with meta-d' to validate convergent validity
-    \item Use IRT to account for item-level heterogeneity
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compute \(K(x)\) and \(K(K(x))\) per item using MAT protocol
+\item
+  Compute meta-d' across trials as aggregate metacognitive sensitivity
+\item
+  Compute calibration metrics (Brier, ECE) from confidence ratings
+\item
+  Compare \(K(K(x))\) patterns (Socratic, Dunning-Kruger, etc.) with
+  meta-d' to validate convergent validity
+\item
+  Use IRT to account for item-level heterogeneity
 \end{enumerate}
 
-\textbf{Hypothesis:} High $K(K(x))$ should correlate with high meta-d'/d' ratio and good calibration, but $K(K(x))$ provides additional structural information.
+\textbf{Hypothesis:} High \(K(K(x))\) (accurate metacognition) should
+correlate with high meta-d'/d' ratio and good calibration, but
+\(K(K(x))\) provides additional structural information (e.g.,
+distinguishing Socratic wisdom from mere low confidence).
 
-\subsection{Relationship to Epistemic Logic}
+\hypertarget{related-work}{%
+\subsection{Related Work}\label{related-work}}
 
-Traditional epistemic logics (e.g., S5, KD45) model knowledge via modal operators with introspection axioms:
+\hypertarget{relationship-to-epistemic-logic}{%
+\subsubsection{Relationship to Epistemic
+Logic}\label{relationship-to-epistemic-logic}}
+
+Traditional epistemic logics (e.g., S5, KD45) model knowledge via modal
+operators with introspection axioms:
 
 \begin{itemize}
-    \item \textbf{Positive Introspection}: $Kp \to KKp$ (``If I know $p$, I know that I know $p$'')
-    \item \textbf{Negative Introspection}: $\neg Kp \to K\neg Kp$ (``If I don't know $p$, I know that I don't know $p$'')
+\tightlist
+\item
+  \textbf{Positive Introspection}: \(Kp \to KKp\) (``If I know \(p\), I
+  know that I know \(p\)'')
+\item
+  \textbf{Negative Introspection}: \(\neg Kp \to K\neg Kp\) (``If I
+  don't know \(p\), I know that I don't know \(p\)'')
 \end{itemize}
 
 \textbf{Comparison to Our Framework:}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-\toprule
-\textbf{Aspect} & \textbf{Epistemic Logic} & \textbf{Our $K(K(x))$} \\
-\midrule
-Representation & Binary (knows/doesn't know) & Continuous $[-1, 1]$ \\
-Misconception & Not modeled & $K(x) = -1$ \\
-Metacognitive failure & Violates introspection axioms & $K(K(x)) \neq \text{sign}(K(x))$ \\
-Dunning-Kruger & Not expressible & $K(x) = 0, K(K(x)) = -1$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Aspect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Epistemic Logic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Our \(K(K(x))\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Representation} & Binary (knows/doesn't know) & Continuous
+\([-1, 1]\) \\
+\textbf{Misconception} & Not modeled & \(K(x) = -1\) \\
+\textbf{Metacognitive failure} & Violates introspection axioms &
+\(K(K(x)) \neq \text{sign}(K(x))\) \\
+\textbf{Dunning-Kruger} & Not expressible &
+\(K(x) = 0, K(K(x)) = -1\) \\
+\end{longtable}
 
-\textbf{Key Departure:} Epistemic logics typically assume idealized agents with perfect introspection. Our framework explicitly models \textbf{failures of introspection}—cases where $K(K(x)) \neq \text{sign}(K(x))$. This captures the Dunning-Kruger effect and imposter syndrome, which are empirically observed but cannot be expressed in standard epistemic logics without violating the introspection axioms.
+\textbf{Key Departure:} Epistemic logics typically assume idealized
+agents with perfect introspection. Our framework explicitly models
+\textbf{failures of introspection}---cases where
+\(K(K(x)) \neq \text{sign}(K(x))\). This captures the Dunning-Kruger
+effect and imposter syndrome, which are empirically observed but cannot
+be expressed in standard epistemic logics without violating the
+introspection axioms.
 
-Our approach can be seen as a \textbf{graded, psychologically realistic} extension of epistemic logic that relaxes the introspection axioms to accommodate metacognitive failures.
+Our approach can be seen as a \textbf{graded, psychologically realistic}
+extension of epistemic logic that relaxes the introspection axioms to
+accommodate metacognitive failures.
 
-\subsection{Relationship to Graded Epistemic Logics}
+\hypertarget{relationship-to-graded-epistemic-logics}{%
+\subsubsection{Relationship to Graded Epistemic
+Logics}\label{relationship-to-graded-epistemic-logics}}
 
-Recent work in graded epistemic logics (e.g., S5G frameworks) models knowledge with continuous plausibility values in $[0, 1]$. Our framework differs in key respects:
+Recent work in graded epistemic logics (e.g., S5G frameworks) models
+knowledge with continuous plausibility values in \([0, 1]\). Our
+framework differs in key respects:
 
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-\toprule
-\textbf{Aspect} & \textbf{Graded Epistemic Logics} & \textbf{Our $K(K(x))$} \\
-\midrule
-Scale & $[0, 1]$ (plausibility) & $[-1, 1]$ (includes misconception) \\
-Misconception & Typically not modeled & $K(x) = -1$ \\
-Metacognition & Introspection axioms & Explicit recursive operator \\
-Focus & Idealized agents & Psychologically realistic failures \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Aspect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Graded Epistemic Logics
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Our \(K(K(x))\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Scale} & \([0, 1]\) (plausibility) & \([-1, 1]\) (includes
+misconception) \\
+\textbf{Misconception} & Typically not modeled & \(K(x) = -1\) \\
+\textbf{Metacognition} & Introspection axioms & Explicit recursive
+operator \\
+\textbf{Focus} & Idealized agents & Psychologically realistic
+failures \\
+\end{longtable}
 
-\textbf{Formal Correspondence:} Our $K$ can be viewed as a \textbf{graded, psychologically realistic} extension that:
+\textbf{Formal Correspondence:}
+
+Our \(K\) can be viewed as a \textbf{graded, psychologically realistic}
+extension that:
 
 \begin{enumerate}
-    \item Relaxes positive/negative introspection axioms to accommodate metacognitive failures
-    \item Extends the scale to include misconception (negative values)
-    \item Focuses on the \textbf{gap} between actual and recognized epistemic states
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Relaxes positive/negative introspection axioms to accommodate
+  metacognitive failures
+\item
+  Extends the scale to include misconception (negative values)
+\item
+  Focuses on the \textbf{gap} between actual and recognized epistemic
+  states, rather than idealized consistency
 \end{enumerate}
 
-Whether $K$ is idempotent ($K(K(x)) = K(x)$ for accurate metacognizers) or contractive is an \textbf{empirical question} that our framework can accommodate but does not presuppose.
+Whether \(K\) is idempotent (\(K(K(x)) = K(x)\) for accurate
+metacognizers) or contractive (higher-order reflection converges) is an
+\textbf{empirical question} that our framework can accommodate but does
+not presuppose.
 
-\subsection{Metacognitive Sensitivity: meta-d'}
+\hypertarget{metacognitive-sensitivity-meta-d}{%
+\subsubsection{Metacognitive Sensitivity:
+meta-d'}\label{metacognitive-sensitivity-meta-d}}
 
-Maniscalco and Lau (2012) developed the \textit{meta-d'} framework for measuring metacognitive sensitivity—the ability to discriminate between correct and incorrect responses via confidence ratings.
+Maniscalco and Lau (2012) developed the \emph{meta-d'} framework for
+measuring metacognitive sensitivity---the ability to discriminate
+between correct and incorrect responses via confidence ratings.
 
 \textbf{Comparison:}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-\toprule
-\textbf{Aspect} & \textbf{meta-d'} & \textbf{Our $K(K(x))$} \\
-\midrule
-Focus & Discrimination ability (sensitivity) & Structural accuracy (recognition) \\
-Measurement & Statistical correlation across trials & Per-item metacognitive state \\
-``I don't know'' & Treated as low confidence & $K(x)=0, K(K(x))=1$ (Socratic wisdom) \\
-Theoretical Basis & Signal Detection Theory & Recursive epistemology \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Aspect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+meta-d'
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Our \(K(K(x))\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Focus} & Discrimination ability (sensitivity) & Structural
+accuracy (recognition) \\
+\textbf{Measurement} & Statistical correlation across trials & Per-item
+metacognitive state \\
+\textbf{Granularity} & Aggregate across trials & Per-item \\
+\textbf{``I don't know''} & Treated as low confidence &
+\(K(x)=0, K(K(x))=1\) (Socratic wisdom) \\
+\textbf{Statistical Model} & Noise-tolerant (SDT) & Deterministic
+match/mismatch \\
+\textbf{Theoretical Basis} & Signal Detection Theory & Recursive
+epistemology \\
+\end{longtable}
 
-\textbf{Key Difference:} meta-d' measures whether confidence ratings \textbf{correlate} with accuracy. Our model measures whether metacognitive claims \textbf{match} actual states. Crucially, we recognize that \textbf{accurately knowing one's ignorance} ($K(x) = 0, K(K(x)) = 1$) is a \textbf{high metacognitive achievement}, not a failure.
+\textbf{Key Difference:} meta-d' measures whether confidence ratings
+\textbf{correlate} with accuracy. Our model measures whether
+metacognitive claims \textbf{match} actual states. Crucially, we
+recognize that \textbf{accurately knowing one's ignorance}
+(\(K(x) = 0, K(K(x)) = 1\)) is a \textbf{high metacognitive
+achievement}, not a failure.
 
-\textbf{Complementary Relationship:} These approaches are \textbf{not mutually exclusive}. meta-d' provides a noise-tolerant aggregate measure of metacognitive sensitivity; our $K(K(x))$ provides per-item structural classification with explicit treatment of Socratic wisdom. An integrated approach could:
+\textbf{Complementary Relationship:} These approaches are \textbf{not
+mutually exclusive}. meta-d' provides a noise-tolerant aggregate measure
+of metacognitive sensitivity; our \(K(K(x))\) provides per-item
+structural classification with explicit treatment of Socratic wisdom. An
+integrated approach could: - Use meta-d' for aggregate sensitivity
+analysis across trials - Use \(K(K(x))\) for per-item classification and
+Socratic wisdom detection - Define a continuous version:
+\(K(K(x)) = 2 \cdot P(\text{meta-claim matches actual state}) - 1\),
+estimated across trials via hierarchical Bayesian methods
 
-\begin{itemize}
-    \item Use meta-d' for aggregate sensitivity analysis across trials
-    \item Use $K(K(x))$ for per-item classification and Socratic wisdom detection
-    \item Define a continuous version: $K(K(x)) = 2 \cdot P(\text{meta-claim matches actual state}) - 1$, estimated across trials via hierarchical Bayesian methods
-\end{itemize}
+\hypertarget{calibration-metrics-brier-score-ece}{%
+\subsubsection{Calibration Metrics (Brier Score,
+ECE)}\label{calibration-metrics-brier-score-ece}}
 
-\subsection{Calibration Metrics (Brier Score, ECE)}
-
-Calibration metrics measure whether confidence aligns with accuracy across many trials.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-\toprule
-\textbf{Aspect} & \textbf{Calibration Metrics} & \textbf{Our $K(K(x))$} \\
-\midrule
-Granularity & Aggregate statistics & Individual items \\
-Purpose & Probabilistic accuracy & Epistemic state recognition \\
-Socratic Wisdom & Not explicitly modeled & Explicitly formalized \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\textbf{Complementary Relationship:} Calibration metrics and $K(K(x))$ measure different aspects of metacognition. A subject can have good calibration (confidence matches accuracy on average) but poor $K(K(x))$ on specific items (e.g., confidently wrong about specific facts).
-
-\subsection{Belief Functions and Uncertainty (Dempster-Shafer Theory)}
-
-Dempster-Shafer theory handles \textbf{epistemic uncertainty} and \textbf{conflicting evidence} via belief functions.
+Calibration metrics measure whether confidence aligns with accuracy
+across many trials.
 
 \textbf{Comparison:}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-\toprule
-\textbf{Aspect} & \textbf{Dempster-Shafer} & \textbf{Our Model} \\
-\midrule
-Focus & Uncertainty quantification & Metacognitive discrepancy \\
-Application & Evidence combination & Self-awareness structure \\
-Ignorance & Represented as belief mass & $K(x) = 0$ (epistemic state) \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}lcl@{}}
+\toprule\noalign{}
+Aspect & Calibration Metrics & Our \(K(K(x))\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Granularity} & Aggregate statistics & Individual items \\
+\textbf{Purpose} & Probabilistic accuracy & Epistemic state
+recognition \\
+\textbf{Socratic Wisdom} & Not explicitly modeled & Explicitly
+formalized \\
+\end{longtable}
 
-\textbf{Complementary Relationship:} Dempster-Shafer theory could be used to model uncertainty about the reference point when expert consensus is incomplete. Our model specifically targets the \textbf{gap between what one knows and what one thinks one knows}.
+\textbf{Complementary Relationship:} Calibration metrics and \(K(K(x))\)
+measure different aspects of metacognition. A subject can have good
+calibration (confidence matches accuracy on average) but poor
+\(K(K(x))\) on specific items (e.g., confidently wrong about specific
+facts).
 
-\subsection{Dunning-Kruger Effect (Empirical Psychology)}
+\hypertarget{belief-functions-and-uncertainty-dempster-shafer-theory}{%
+\subsubsection{Belief Functions and Uncertainty (Dempster-Shafer
+Theory)}\label{belief-functions-and-uncertainty-dempster-shafer-theory}}
 
-Dunning and Kruger (1999) empirically demonstrated that low-competence individuals overestimate their abilities.
+Dempster-Shafer theory handles \textbf{epistemic uncertainty} and
+\textbf{conflicting evidence} via belief functions.
 
-\textbf{Our Contribution:} We provide a \textbf{formal mathematical model} of this phenomenon:
-\begin{itemize}
-    \item $K(x) = 0$ (low competence)
-    \item $K(K(x)) = -1$ (misrecognition: believes they have competence)
-    \item Often accompanied by $C = 1$ (high confidence)
-\end{itemize}
+\textbf{Comparison:}
 
-This formalization enables:
-\begin{enumerate}
-    \item Precise measurement protocols
-    \item Distinction from related phenomena (e.g., imposter syndrome)
-    \item Extension to arbitrary depths of self-reflection
-\end{enumerate}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Aspect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dempster-Shafer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Our Model
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Focus} & Uncertainty quantification & Metacognitive
+discrepancy \\
+\textbf{Application} & Evidence combination & Self-awareness
+structure \\
+\textbf{Ignorance} & Represented as belief mass & \(K(x) = 0\)
+(epistemic state) \\
+\end{longtable}
 
-\subsection{Novel Contributions}
+\textbf{Complementary Relationship:} Dempster-Shafer theory could be
+used to model uncertainty about the reference point when expert
+consensus is incomplete. Our model specifically targets the \textbf{gap
+between what one knows and what one thinks one knows}.
+
+\hypertarget{dunning-kruger-effect-empirical-psychology}{%
+\subsubsection{Dunning-Kruger Effect (Empirical
+Psychology)}\label{dunning-kruger-effect-empirical-psychology}}
+
+Dunning and Kruger (1999) empirically demonstrated that low-competence
+individuals overestimate their abilities.
+
+\textbf{Our Contribution:} We provide a \textbf{formal mathematical
+model} of this phenomenon: - \(K(x) = 0\) (low competence) -
+\(K(K(x)) = -1\) (misrecognition: believes they have competence) - Often
+accompanied by \(C = 1\) (high confidence)
+
+This formalization enables: 1. Precise measurement protocols 2.
+Distinction from related phenomena (e.g., imposter syndrome) 3.
+Extension to arbitrary depths of self-reflection
+
+\hypertarget{novel-contributions}{%
+\subsubsection{Novel Contributions}\label{novel-contributions}}
 
 This study is novel in:
 
 \begin{enumerate}
-    \item \textbf{Recursive Formalization}: Extending metacognition to arbitrary depths ($K \to K(K) \to K(K(K))$)
-    \item \textbf{Socratic Wisdom as Achievement}: Explicitly modeling ``knowing ignorance'' as $K(x)=0, K(K(x))=1$
-    \item \textbf{Type-Theoretic Foundation}: Justifying $K(K(x))$ via recursive types
-    \item \textbf{Orthogonal Dimensions}: Separating epistemic state ($K$) from phenomenological confidence ($C$)
-    \item \textbf{Per-Item Granularity}: Measuring metacognition at the individual item level, not just aggregate statistics
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Recursive Formalization}: Extending metacognition to arbitrary
+  depths (\(K \to K(K) \to K(K(K))\))
+\item
+  \textbf{Socratic Wisdom as Achievement}: Explicitly modeling ``knowing
+  ignorance'' as \(K(x)=0, K(K(x))=1\)
+\item
+  \textbf{Type-Theoretic Foundation}: Justifying \(K(K(x))\) via
+  recursive types
+\item
+  \textbf{Orthogonal Dimensions}: Separating epistemic state (\(K\))
+  from phenomenological confidence (\(C\))
+\item
+  \textbf{Per-Item Granularity}: Measuring metacognition at the
+  individual item level, not just aggregate statistics
 \end{enumerate}
 
-\section{Conclusion and Future Challenges}
+\hypertarget{conclusion-and-future-challenges}{%
+\subsection{Conclusion and Future
+Challenges}\label{conclusion-and-future-challenges}}
 
-This study constructed a recursive epistemic model based on the hierarchical structure of knowledge. Using a single core function $K$ applied recursively—$K(x)$, $K(K(x))$, $K(K(K(x)))$—we provide a mathematically rigorous yet philosophically grounded framework that captures:
+This study constructed a recursive epistemic model based on the
+hierarchical structure of knowledge. Using a single core function \(K\)
+applied recursively---\(K(x)\), \(K(K(x))\), \(K(K(K(x)))\)---we provide
+a mathematically rigorous yet philosophically grounded framework that
+captures:
 
 \begin{enumerate}
-    \item The \textbf{recursive nature of self-awareness}: The same epistemic question applies at every level of reflection.
-    \item The \textbf{hierarchical structure of metacognition}: Distinguishing ``knowing ignorance'' (Socratic wisdom) from ``unknowing ignorance'' (Dunning-Kruger effect).
-    \item The \textbf{continuous gradation of knowledge}: Knowledge states exist on a continuum from misconception ($-1$) through ignorance ($0$) to accurate knowledge ($1$).
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The \textbf{recursive nature of self-awareness}: The same epistemic
+  question applies at every level of reflection.
+\item
+  The \textbf{hierarchical structure of metacognition}: Distinguishing
+  ``knowing ignorance'' (Socratic wisdom) from ``unknowing ignorance''
+  (Dunning-Kruger effect).
+\item
+  The \textbf{continuous gradation of knowledge}: Knowledge states exist
+  on a continuum from misconception (\(-1\)) through ignorance (\(0\))
+  to accurate knowledge (\(1\)).
 \end{enumerate}
 
-\subsection{Main Results}
+\hypertarget{main-results}{%
+\subsubsection{Main Results}\label{main-results}}
 
 \begin{enumerate}
-    \item We proposed a \textbf{recursive epistemic function $K$} with type-theoretic justification and axiomatic constraints (anchor preservation, monotonicity, boundedness), demonstrating that $K(K(x))$ is not a type error but a well-founded recursive structure.
-    \item We adopted a stance of \textbf{methodological relativism}, treating the proposition $x$ itself as the implicit reference point and leaving the designation of ``correct'' to the experimental context.
-    \item We provided the \textbf{Four Quadrants of Metacognition}, clearly distinguishing ``Knowing Ignorance'' (Socratic wisdom, $K(x)=0, K(K(x))=1$) from ``Unknowing Ignorance'' (Dunning-Kruger effect, $K(x)=0, K(K(x))=-1$).
-    \item We separated \textbf{epistemic state} ($K$) from \textbf{phenomenological confidence} ($C$), recognizing them as orthogonal dimensions.
-    \item We proposed the \textbf{Metacognitive Alignment Test (MAT)} as an experimental protocol to validate the model, with specific predictions about the benefits of Socratic wisdom.
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We proposed a \textbf{recursive epistemic function \(K\)} with
+  type-theoretic justification and axiomatic constraints (anchor
+  preservation, monotonicity, boundedness), demonstrating that
+  \(K(K(x))\) is not a type error but a well-founded recursive
+  structure.
+\item
+  We adopted a stance of \textbf{methodological relativism}, treating
+  the proposition \(x\) itself as the implicit reference point and
+  leaving the designation of ``correct'' to the experimental context.
+\item
+  We provided the \textbf{Four Quadrants of Metacognition}, clearly
+  distinguishing ``Knowing Ignorance'' (Socratic wisdom,
+  \(K(x)=0, K(K(x))=1\)) from ``Unknowing Ignorance'' (Dunning-Kruger
+  effect, \(K(x)=0, K(K(x))=-1\)).
+\item
+  We separated \textbf{epistemic state} (\(K\)) from
+  \textbf{phenomenological confidence} (\(C\)), recognizing them as
+  orthogonal dimensions.
+\item
+  We proposed the \textbf{Metacognitive Alignment Test (MAT)} as an
+  experimental protocol to validate the model, with specific predictions
+  about the benefits of Socratic wisdom.
 \end{enumerate}
 
-\subsection{Theoretical Contributions}
+\hypertarget{theoretical-contributions}{%
+\subsubsection{Theoretical
+Contributions}\label{theoretical-contributions}}
 
 \begin{itemize}
-    \item \textbf{Recursive Formalization}: Extending metacognition to arbitrary depths while maintaining mathematical consistency
-    \item \textbf{Type-Theoretic Foundation}: Justifying self-application via recursive types
-    \item \textbf{Socratic Wisdom as Achievement}: Explicitly modeling ``knowing ignorance'' as a high metacognitive state
-    \item \textbf{Per-Item Granularity}: Measuring metacognition at the individual item level, complementing aggregate statistical measures
+\tightlist
+\item
+  \textbf{Recursive Formalization}: Extending metacognition to arbitrary
+  depths while maintaining mathematical consistency
+\item
+  \textbf{Type-Theoretic Foundation}: Justifying self-application via
+  recursive types
+\item
+  \textbf{Socratic Wisdom as Achievement}: Explicitly modeling ``knowing
+  ignorance'' as a high metacognitive state
+\item
+  \textbf{Per-Item Granularity}: Measuring metacognition at the
+  individual item level, complementing aggregate statistical measures
 \end{itemize}
 
-\subsection{Limitations}
+\hypertarget{limitations}{%
+\subsubsection{Limitations}\label{limitations}}
 
-This framework is a \textbf{conceptual scaffold} for organizing metacognitive phenomena, not a complete predictive model. We acknowledge the following limitations:
-
-\begin{enumerate}
-    \item \textbf{Notational Clarification}: The original $K(K(x))$ notation could be misread as function composition. We clarify that each $K_n$ is an independent observation of a distinct state (State$_n$), not the application of $K$ to the numerical output of the previous layer.
-    \item \textbf{Minimal Axiomatic Theory}: We provide basic constraints on $K$ (anchor preservation, monotonicity, boundedness) but do not specify a unique functional form. The specific dynamics of $K$ (e.g., whether it is contractive, has fixed points beyond $\{-1, 0, 1\}$) are empirical questions.
-    \item \textbf{No Generative Model}: We do not provide a noise model or generative account of how states are produced. This is a task for computational cognitive modeling.
-    \item \textbf{Observation Protocol}: The mapping from observable behavior to $K_n$ values requires operational definitions. While we provide guidelines (e.g., alignment between claims and performance), the specific elicitation methods depend on the application domain.
-    \item \textbf{Simulation Validation Pending}: We have not yet provided simulated evidence that different metacognitive profiles (Socratic, Dunning-Kruger, Imposter) are identifiable under realistic noise. This is planned for future work.
-    \item \textbf{Analogical Type Theory}: The type-theoretic justification is analogical rather than formally constructed. A full domain-theoretic or typed lambda-calculus treatment is beyond the current scope.
-    \item \textbf{LLM Operationalization Incomplete}: Applying $K_n$ to LLMs requires addressing question-side shortcuts and model-side signals. Specific methods (conformal coverage, debate protocols) are suggested but not developed here.
-\end{enumerate}
-
-\subsection{Future Directions}
+This framework is a \textbf{conceptual scaffold} for organizing
+metacognitive phenomena, not a complete predictive model. We acknowledge
+the following limitations:
 
 \begin{enumerate}
-    \item \textbf{Empirical Validation}: Conduct MAT experiments to validate the model's predictions about Socratic wisdom and Dunning-Kruger effect, and compare with meta-d' and calibration metrics.
-    \item \textbf{Simulation Studies}: Simulate agents with known $K$/$C$ profiles to demonstrate identifiability and estimate required sample sizes.
-    \item \textbf{Formal Type Theory}: Develop a typed calculus or algebraic data type where $K$'s self-application is a well-typed endomorphism.
-    \item \textbf{AI Safety Applications}: Operationalize $K(K(x))$ for LLMs using abstention behavior, self-consistency, and metamorphic testing.
-    \item \textbf{Cultural and Domain Variation}: Investigate whether the symmetry assumption (misconception vs. knowledge) holds across cultures and domains.
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Notational Clarification:} The original \(K(K(x))\) notation
+  could be misread as function composition. We clarify that each \(K_n\)
+  is an independent observation of a distinct state (State\(_n\)), not
+  the application of \(K\) to the numerical output of the previous
+  layer.
+\item
+  \textbf{Minimal Axiomatic Theory:} We provide basic constraints on
+  \(K\) (anchor preservation, monotonicity, boundedness) but do not
+  specify a unique functional form. The specific dynamics of \(K\)
+  (e.g., whether it is contractive, has fixed points beyond
+  \(\{-1, 0, 1\}\)) are empirical questions.
+\item
+  \textbf{No Generative Model:} We do not provide a noise model or
+  generative account of how states are produced. This is a task for
+  computational cognitive modeling.
+\item
+  \textbf{Observation Protocol:} The mapping from observable behavior to
+  \(K_n\) values requires operational definitions. While we provide
+  guidelines (e.g., alignment between claims and performance), the
+  specific elicitation methods depend on the application domain.
+\item
+  \textbf{Simulation Validation Pending:} We have not yet provided
+  simulated evidence that different metacognitive profiles (Socratic,
+  Dunning-Kruger, Imposter) are identifiable under realistic noise. This
+  is planned for future work.
+\item
+  \textbf{Analogical Type Theory:} The type-theoretic justification is
+  analogical rather than formally constructed. A full domain-theoretic
+  or typed lambda-calculus treatment is beyond the current scope.
+\item
+  \textbf{LLM Operationalization Incomplete:} Applying \(K_n\) to LLMs
+  requires addressing question-side shortcuts and model-side signals.
+  Specific methods (conformal coverage, debate protocols) are suggested
+  but not developed here.
 \end{enumerate}
 
-\subsection{Why R/E Separation is Unnecessary}
+\hypertarget{future-directions}{%
+\subsubsection{Future Directions}\label{future-directions}}
 
-One alternative formalization might introduce two separate maps: a subject-level recognition/report map $R$ and an evaluator/alignment map $E$. We argue that such separation is \textbf{unnecessary} for our framework.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Empirical Validation}: Conduct MAT experiments to validate the
+  model's predictions about Socratic wisdom and Dunning-Kruger effect,
+  and compare with meta-d' and calibration metrics.
+\item
+  \textbf{Simulation Studies}: Simulate agents with known \(K\)/\(C\)
+  profiles to demonstrate identifiability and estimate required sample
+  sizes.
+\item
+  \textbf{Formal Type Theory}: Develop a typed calculus or algebraic
+  data type where \(K\)'s self-application is a well-typed endomorphism.
+\item
+  \textbf{AI Safety Applications}: Operationalize \(K(K(x))\) for LLMs
+  using abstention behavior, self-consistency, and metamorphic testing.
+\item
+  \textbf{Cultural and Domain Variation}: Investigate whether the
+  symmetry assumption (misconception vs.~knowledge) holds across
+  cultures and domains.
+\end{enumerate}
+
+\hypertarget{why-re-separation-is-unnecessary}{%
+\subsubsection{Why R/E Separation is
+Unnecessary}\label{why-re-separation-is-unnecessary}}
+
+One alternative formalization might introduce two separate maps: a
+subject-level recognition/report map \(R\) and an evaluator/alignment
+map \(E\). We argue that such separation is \textbf{unnecessary} for our
+framework.
 
 \textbf{The Misunderstanding:}
 
-Such a proposal typically interprets $K(K(x))$ as:
-\begin{enumerate}
-    \item $K(x)$ = first-order state (a number)
-    \item $K(K(x))$ = applying $K$ to that number
-    \item Therefore $K(0)$ should equal $0$
-\end{enumerate}
+Such a proposal typically interprets \(K(K(x))\) as: 1. \(K(x)\) =
+first-order state (a number) 2. \(K(K(x))\) = applying \(K\) to that
+number 3. Therefore \(K(0)\) should equal \(0\)
 
 \textbf{The Reality:}
 
-Our $K$ is purely \textbf{observational}:
-\begin{enumerate}
-    \item $K_0$ = observation of State$_0$ (first-order epistemic state)
-    \item $K_1$ = observation of State$_1$ (metacognitive state)
-    \item $K_2$ = observation of State$_2$ (meta-metacognitive state)
-\end{enumerate}
+Our \(K\) is purely \textbf{observational}: 1. \(K_0\) = observation of
+State\(_0\) (first-order epistemic state) 2. \(K_1\) = observation of
+State\(_1\) (metacognitive state) 3. \(K_2\) = observation of
+State\(_2\) (meta-metacognitive state)
 
-\textbf{Each layer observes a different object.} There is no ``subject's report'' vs ``evaluator's assessment'' --- there is only \textbf{observation of states}.
+\textbf{Each layer observes a different object.} There is no ``subject's
+report'' vs ``evaluator's assessment'' --- there is only
+\textbf{observation of states}.
 
 \textbf{Why R/E Adds Unnecessary Complexity:}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{ll}
-\toprule
-\textbf{R/E Approach} & \textbf{Our Approach} \\
-\midrule
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+R/E Approach & Our Approach \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
 Introduces ``subject'' as agent & No subject, only states \\
 Requires modeling ``perception'' & States exist, observer measures \\
-Two functions (R, E) & One function ($K$) \\
+Two functions (R, E) & One function (\(K\)) \\
 Subjective/objective split & Purely objective \\
-\bottomrule
-\end{tabular}
-\end{table}
+\end{longtable}
 
-\textbf{Our framework is simpler and more elegant because it does not reify ``the subject'' as a separate entity with ``perceptions.''}
+\textbf{Our framework is simpler and more elegant because it does not
+reify ``the subject'' as a separate entity with ``perceptions.''}
 
-All that exists are \textbf{states} and \textbf{observations}. $K$ observes states. That's it.
+All that exists are \textbf{states} and \textbf{observations}. \(K\)
+observes states. That's it.
 
-\section{References}
+\hypertarget{references}{%
+\subsection{References}\label{references}}
 
 \begin{enumerate}
-    \item Kant, I. (1781). \textit{Critique of Pure Reason}.
-    \item Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitive-developmental inquiry. \textit{American Psychologist}, \textit{34}(10), 906-911.
-    \item Nelson, T. O., \& Narens, L. (1990). Metamemory: A theoretical framework and new findings. In G. H. Bower (Ed.), \textit{The Psychology of Learning and Motivation} (Vol. 26, pp. 125-173). Academic Press.
-    \item Koriat, A. (1993). How do we know that we know? The accessibility model of the feeling of knowing. \textit{Psychological Review}, \textit{100}(4), 609-639.
-    \item Dunning, D., \& Kruger, J. (1999). Unskilled and unaware of it: How difficulties in recognizing one's own incompetence lead to inflated self-assessments. \textit{Journal of Personality and Social Psychology}, \textit{77}(6), 1121-1134.
-    \item Maniscalco, B., \& Lau, H. (2012). A signal detection theoretic approach for estimating metacognitive sensitivity from confidence ratings. \textit{Consciousness and Cognition}, \textit{21}(1), 422-430.
-    \item Shafer, G. (1976). \textit{A Mathematical Theory of Evidence}. Princeton University Press.
-    \item Fleming, S. M., \& Daw, N. D. (2017). Self-evaluation of decision-making: A general Bayesian framework for metacognitive computation. \textit{Psychological Review}, \textit{124}(1), 91-114.
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Kant, I. (1781). \emph{Critique of Pure Reason}.
+\item
+  Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new
+  area of cognitive-developmental inquiry. \emph{American Psychologist},
+  \emph{34}(10), 906-911.
+\item
+  Nelson, T. O., \& Narens, L. (1990). Metamemory: A theoretical
+  framework and new findings. In G. H. Bower (Ed.), \emph{The Psychology
+  of Learning and Motivation} (Vol. 26, pp.~125-173). Academic Press.
+\item
+  Koriat, A. (1993). How do we know that we know? The accessibility
+  model of the feeling of knowing. \emph{Psychological Review},
+  \emph{100}(4), 609-639.
+\item
+  Dunning, D., \& Kruger, J. (1999). Unskilled and unaware of it: How
+  difficulties in recognizing one's own incompetence lead to inflated
+  self-assessments. \emph{Journal of Personality and Social Psychology},
+  \emph{77}(6), 1121-1134.
+\item
+  Maniscalco, B., \& Lau, H. (2012). A signal detection theoretic
+  approach for estimating metacognitive sensitivity from confidence
+  ratings. \emph{Consciousness and Cognition}, \emph{21}(1), 422-430.
+\item
+  Shafer, G. (1976). \emph{A Mathematical Theory of Evidence}. Princeton
+  University Press.
+\item
+  Fleming, S. M., \& Daw, N. D. (2017). Self-evaluation of
+  decision-making: A general Bayesian framework for metacognitive
+  computation. \emph{Psychological Review}, \emph{124}(1), 91-114.
 \end{enumerate}
 
 \end{document}
