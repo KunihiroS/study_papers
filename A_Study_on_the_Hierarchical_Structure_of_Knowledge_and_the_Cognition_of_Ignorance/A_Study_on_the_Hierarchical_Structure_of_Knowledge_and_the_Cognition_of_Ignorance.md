@@ -7,6 +7,10 @@ kunihiros@gmail.com
 
 Human knowledge possesses a multi-layered structure, and the ability to recognize one's own ignorance (metacognition) is crucial for learning and decision-making. This study proposes a recursive model of knowledge and ignorance based on a single core function: **$K$**, which represents epistemic recognition. By applying this function recursively—$K(x)$, $K(K(x))$, $K(K(K(x)))$, and so on—we formalize the hierarchical structure of self-awareness that distinguishes **Socratic wisdom** ("knowing that one does not know") from the **Dunning-Kruger effect** ("not knowing that one does not know").
 
+Kant (1781), in his *Critique of Pure Reason*, posed the foundational question of epistemology: what are the limits of human cognition, and can reason examine itself? His answer—that reason must critique reason—established the recursive structure of self-reflection as a philosophical problem. Yet Kant's contribution was **descriptive**: he demonstrated that limits exist, but provided no apparatus for locating their precise coordinates or guiding their correction.
+
+This study provides what classical epistemology could not: a **mathematical framework** that transforms the Kantian question from philosophical meditation into **operational methodology**. The function $K$ does not merely describe where cognition fails—it provides the coordinates for **targeted intervention**. By representing epistemic states on a continuous scale, we gain the capacity to **observe the phenomenon of intelligence itself, and to intervene in its structure**. This framework opens the possibility of not only understanding cognition but **actively shaping its trajectory toward new forms of knowing**.
+
 This model integrates insights from **metacognition research**, **epistemology**, and **type theory** to address three aspects that have not been sufficiently unified in existing research:
 
 1. The **recursive nature of self-awareness**: The same epistemic question ("Do I know?") can be applied at every level of reflection.
@@ -95,7 +99,41 @@ The cognitive structure of knowledge is modeled using a **recursive epistemic fu
 
 ### Formal Definition of $K$
 
-We distinguish between two levels of the epistemic function $K$:
+We adopt an **observational family** interpretation of $K$, which provides a clear and consistent framework for understanding recursive metacognition.
+
+#### Formal Framework: Layered Observation Model
+
+**Definition (Observation Family):**
+
+Let $\{K^{(n)}\}_{n=0}^{\infty}$ be a family of observation functions, where each $K^{(n)}$ maps from a layer-specific state space to the epistemic scale $[-1, 1]$:
+
+$$K^{(n)}: \mathcal{S}_n \to [-1, 1]$$
+
+**Definition (State Hierarchy):**
+
+- $\mathcal{S}_0$: First-order epistemic states (correctness of responses)
+- $\mathcal{S}_1$: Metacognitive states (alignment between claims and $\mathcal{S}_0$)
+- $\mathcal{S}_n$: n-th order states (alignment between claims and $\mathcal{S}_{n-1}$)
+
+**Notational Convention:**
+
+The notation $K(K(x))$ is a **shorthand** for $K^{(1)}(\text{State}_1(x))$, not numerical composition.
+
+More precisely:
+- $K_0(x) := K^{(0)}(\text{State}_0(x))$
+- $K_1(x) := K^{(1)}(\text{State}_1(x))$
+- $K_n(x) := K^{(n)}(\text{State}_n(x))$
+
+**Shared Anchor Semantics:**
+
+All $K^{(n)}$ share the same anchor constraints:
+- $K^{(n)}(\text{"knowledge"}) = 1$
+- $K^{(n)}(\text{"ignorance"}) = 0$
+- $K^{(n)}(\text{"misconception"}) = -1$
+
+This ensures cross-layer comparability while allowing distinct measurement procedures per layer.
+
+#### Entry and Recursive Mappings
 
 **1. Entry Mapping (Layer 0):**
 
@@ -107,12 +145,11 @@ This is the **only point** where the external object $x$ enters the model. The i
 
 **2. Recursive Mapping (Layers $n \ge 1$):**
 
-At all higher layers, the operator $K$ acts entirely on epistemic states:
+At all higher layers, the observation family $\{K^{(n)}\}$ acts on layer-specific states:
 
-$$K: [-1, 1] \to [-1, 1]$$
-$$k_{n+1} = K(k_n)$$
+$$K^{(n)}: \mathcal{S}_n \to [-1, 1]$$
 
-The "object" of higher-order $K$ is not a world-side proposition but the subject's **own epistemic state as represented on $[-1, 1]$**.
+The "object" of higher-order $K^{(n)}$ is not the numerical output of the previous layer but the **distinct state object** $\text{State}_n$.
 
 **Output Interpretation (Prototypical Anchor Points):**
 
@@ -140,7 +177,43 @@ In experimental settings, the "observer" is the **experimenter** who:
 
 The Observer does not access internal "perception" or "belief." The Observer only sees **observable behavior**: answers, claims, responses.
 
-**Operational Definition of State$_n$:**
+**Formal Definition of State$_n$:**
+
+**State$_0$ (First-Order Epistemic State):**
+
+$$\text{State}_0(x) = f_0(\text{Response}(x), \text{Reference}(x))$$
+
+Where:
+- $\text{Response}(x)$: Subject's answer to item $x$
+- $\text{Reference}(x)$: Ground truth or expert consensus
+- $f_0$: Comparison function yielding {correct, incorrect, absent}
+
+**State$_1$ (Metacognitive State):**
+
+$$\text{State}_1(x) = f_1(\text{Claim}_1(x), \text{State}_0(x))$$
+
+Where:
+- $\text{Claim}_1(x)$: Subject's metacognitive claim ("I know" / "I don't know" / "I'm wrong")
+- $f_1$: Alignment function yielding {aligned, uncertain, misaligned}
+
+**State$_n$ (n-th Order State):**
+
+$$\text{State}_n(x) = f_n(\text{Claim}_n(x), \text{State}_{n-1}(x))$$
+
+**Graphical Model:**
+
+```
+Response(x) ──┐
+              ├─→ f_0 ──→ State_0 ──→ K^(0) ──→ K_0
+Reference(x) ─┘              │
+                             ↓
+Claim_1(x) ─────────────→ f_1 ──→ State_1 ──→ K^(1) ──→ K_1
+                                    │
+                                    ↓
+Claim_2(x) ─────────────────────→ f_2 ──→ State_2 ──→ K^(2) ──→ K_2
+```
+
+**Operational Interpretation:**
 
 - **State$_0$ (first-order epistemic state)**: The respondent's answer compared to a reference.
   - Operationalized as: "Is the answer correct, incorrect, or absent?"
@@ -412,7 +485,9 @@ Our $K_0$ and $K_1$ formalize the object/meta distinction with a **single unifie
 
 **Koriat (1993)** proposed the **cue-utilization theory**, explaining how confidence arises from accessibility and familiarity cues rather than direct access to accuracy. This distinction between cue-based confidence and actual accuracy corresponds precisely to our separation of $C$ (confidence) and $K$ (epistemic state). Our framework accommodates cue-based confidence as a component of $C$, while $K$ measures the objective alignment between the subject's state and reality.
 
-**Dunning and Kruger (1999)** demonstrated that individuals with low competence tend to overestimate their abilities. In our model, this corresponds to $K_0 = 0$ (ignorance) but $K_1 = -1$ (misrecognition of ignorance).
+**Kruger and Dunning (1999)** demonstrated that individuals with low competence tend to overestimate their abilities. In our model, this corresponds to $K_0 = 0$ (ignorance) but $K_1 = -1$ (misrecognition of ignorance).
+
+**Fleming and Daw (2017)** proposed a general Bayesian framework for metacognitive computation, modeling metacognition as "second-order inference" about the reliability of first-order cognitive processes. Their distinction between first-order states and second-order inference corresponds to our State$_0$/State$_1$ hierarchy. While their approach is Bayesian (modeling uncertainty about internal states) and ours is observational (measuring alignment between claims and performance), both frameworks capture the fundamental insight that metacognition operates on a different level from cognition itself. The K-C dissociation in our framework (epistemic state vs phenomenological confidence) parallels their analysis of how confidence can diverge from accuracy.
 
 **Meta-d' (Maniscalco & Lau, 2012)** provides a signal detection-theoretic measure of metacognitive sensitivity. While meta-d' quantifies **how well** subjects discriminate their own correct from incorrect responses, our framework provides a **structural vocabulary** for **what** metacognitive states exist. The two approaches are complementary: meta-d' measures the quality of monitoring; our $K$ classifies the content of monitoring.
 
@@ -426,6 +501,8 @@ Our $K_0$ and $K_1$ formalize the object/meta distinction with a **single unifie
 
 One might ask: "Why not introduce separate operators for different levels?" The answer lies in the **universality of the epistemic question**.
 
+**Philosophical Motivation:**
+
 The question "Do I know?" is the same question at every level:
 - "Do I know the answer?" → $K_0$
 - "Do I know whether I know the answer?" → $K_1$
@@ -437,6 +514,26 @@ A thermometer measures temperature. The same thermometer can measure the tempera
 
 Similarly, $K$ is an **observation protocol**, not a mental process. The same protocol applies to different objects (State$_0$, State$_1$, State$_2$). Introducing separate operators ($R$, $E$, etc.) would obscure this fundamental unity and sacrifice the elegance of a single recursive structure.
 
+**Practical Implementation:**
+
+While the **semantic anchors** are shared (-1/0/1 for misconception/ignorance/knowledge), the **measurement procedures** $K^{(n)}$ may differ:
+
+| Layer | Observable | Measurement Procedure |
+|:---:|:---|:---|
+| $K^{(0)}$ | Response vs Reference | Accuracy scoring |
+| $K^{(1)}$ | Claim vs State$_0$ | Alignment scoring |
+| $K^{(2)}$ | Meta-claim vs State$_1$ | Meta-alignment scoring |
+
+**Parameter Tying (Optional):**
+
+For parsimony, one may assume:
+- Same noise model across layers
+- Same link function (e.g., logistic)
+
+Or allow layer-specific parameters if data supports it.
+
+**The key constraint is shared anchor semantics, not identical functional forms.**
+
 **The beauty of $K$ is its universality.** Knowing, not knowing, and misunderstanding are universal human experiences. The same operator captures them all.
 
 
@@ -444,6 +541,55 @@ Similarly, $K$ is an **observation protocol**, not a mental process. The same pr
 ## Measurement Theory
 
 This section describes how the theoretical constructs ($K(x)$, $K(K(x))$) can be operationalized and measured empirically.
+
+### Why Continuous Scale?
+
+The continuous scale $[-1, 1]$ provides several advantages over binary or categorical representations:
+
+**1. Intermediate States:**
+
+Captures partial knowledge, uncertain beliefs, and mixed states that binary representations cannot express.
+
+- Example: $K_0 = 0.3$ represents "mostly ignorant but with some relevant information"
+- Example: $K_1 = -0.5$ represents "moderate overconfidence, not extreme"
+
+**2. Change Tracking:**
+
+Enables measurement of **gradual transitions and intervention effects**.
+
+- Example: After metacognitive training, $K_1$ moves from $-0.8$ to $-0.2$
+  - This shows improvement within the "overconfidence" category
+  - Binary classification would show no change (both are "overconfident")
+
+**3. Aggregation:**
+
+Permits meaningful averaging across items, domains, or time points.
+
+- Example: Average $K_1$ across 50 items yields a stable estimate
+- Example: Compare $K_1$ across domains (math vs. history)
+
+**4. Statistical Modeling:**
+
+Compatible with standard regression, Bayesian inference, and psychometric methods.
+
+- Linear models: $K_1 \sim K_0 + \text{training} + \epsilon$
+- Hierarchical models: Subject-level and item-level random effects
+
+**5. Geometric Extension (Future Work):**
+
+Enables connection to **information geometry** and manifold-based analysis:
+
+- Cognitive states as points on a manifold
+- Interventions as trajectories
+- Distance metrics for comparing metacognitive profiles
+- Curvature analysis for stability of states
+
+**Design Choice:**
+
+The trichotomy $\{-1, 0, 1\}$ represents **prototypical anchors** on the continuous scale, not the only valid values. Researchers may:
+- Use discrete elicitation and embed into continuous scale
+- Use probabilistic elicitation for direct continuous measurement
+- Aggregate discrete responses to obtain continuous estimates
 
 ### Measurement-Theoretic Interpretation
 
@@ -503,11 +649,58 @@ Map this to $K(K(x))$ via a proper scoring rule or calibration analysis.
 
 $K(K(x))$ is a **second-order epistemic state**: it represents the subject's recognition of their own first-order state $K(x)$. We cannot directly observe $K(K(x))$; we must infer it from observable behavior.
 
-### Introducing Confidence: $C$
+### Operational Definition of Confidence ($C$)
 
-To fully characterize the phenomenological experience of metacognition, we additionally measure **subjective confidence** $C_k \in [0, 1]$.
+To fully characterize the phenomenological experience of metacognition, we additionally measure **subjective confidence** $C$.
 
-**Important Distinction:**
+**Definition:**
+
+Confidence $C$ is a **phenomenological self-report** of subjective certainty, measured on a scale (e.g., 0-100% or 1-7 Likert).
+
+$$C(x) \in [0, 1] \quad \text{(or any bounded interval)}$$
+
+**Key Distinction: K vs C**
+
+| Dimension | K (Epistemic State) | C (Confidence) |
+|:---|:---|:---|
+| **What it measures** | Alignment with reference | Subjective feeling |
+| **Anchor** | Correct/Incorrect/Absent | Certain/Uncertain |
+| **Sign** | Signed (−1 to 1) | Unsigned (0 to 1) |
+| **Basis** | External validation | Internal experience |
+
+**Orthogonality:**
+
+$K$ and $C$ are **conceptually orthogonal**:
+
+| Pattern | $K_0$ | $C$ | Interpretation |
+|:---|:---:|:---:|:---|
+| Confident correct | 1 | High | Ideal |
+| Confident wrong | −1 | High | Dangerous misconception |
+| Unconfident correct | 1 | Low | Imposter-like |
+| Unconfident wrong | −1 | Low | Appropriate uncertainty |
+
+**Diagnostic Role:**
+
+$C$ helps distinguish subtypes within the same $K$ pattern:
+- DK ($K_0=0$, $K_1=-1$) with **high $C$** → Overconfident ignorance
+- DK ($K_0=0$, $K_1=-1$) with **low $C$** → Uncertain but still wrong claim
+
+**K-C Dissociation Hypothesis:**
+
+Subjects can have:
+- High $K_0$ with low $C$ (Imposter syndrome)
+- Low $K_0$ with high $C$ (Dunning-Kruger effect)
+
+This dissociation is empirically testable and clinically meaningful.
+
+**Measurement Protocol for C:**
+
+1. Elicit response → compute $K_0$
+2. Elicit confidence (0-100%) → record $C$
+3. Elicit metacognitive claim ("Do you know?") → compute $K_1$
+4. Analyze $K \times C$ jointly for full characterization
+
+**Important Distinction (Summary):**
 - $K(x)$: Epistemic state (how accurately the subject recognizes $x$)
 - $C$: Phenomenological confidence (how certain the subject feels)
 
@@ -714,6 +907,44 @@ Maniscalco and Lau (2012) developed the *meta-d'* framework for measuring metaco
 - Use $K(K(x))$ for per-item classification and Socratic wisdom detection
 - Define a continuous version: $K(K(x)) = 2 \cdot P(\text{meta-claim matches actual state}) - 1$, estimated across trials via hierarchical Bayesian methods
 
+### Information-Theoretic Metacognition: meta-I
+
+Dayan (2023) introduced *meta-I*, a **model-free** information-theoretic measure of metacognitive sensitivity:
+
+$$\text{meta-I} = H(\text{accuracy}) - H(\text{accuracy} | \text{confidence})$$
+
+This measures mutual information between confidence and accuracy, quantifying how much confidence reduces uncertainty about accuracy.
+
+**Comparison:**
+
+| Aspect | meta-I | Our $K$ Framework |
+|:---|:---|:---|
+| **Theoretical Basis** | Information Theory | Recursive Epistemology |
+| **Model Dependency** | Model-free | Model-free (observational) |
+| **Direction** | Unsigned (sensitivity only) | **Signed** (over/under-confidence) |
+| **Layers** | Single layer | **Recursive** ($K_0, K_1, K_2, \ldots$) |
+| **Output** | Bits (continuous) | $[-1, 1]$ (continuous) |
+| **Granularity** | Can measure response granularity | Per-item structural classification |
+
+**Key Distinction:**
+
+Both meta-I and $K$ are **model-free** (unlike meta-d' which requires SDT assumptions), but they serve different purposes:
+
+- **meta-I** answers: "How well does confidence track accuracy?" (quantitative sensitivity)
+- **$K$** answers: "What type of metacognitive pattern is this?" (qualitative classification)
+
+**Complementary Use Case:**
+
+Two subjects with identical meta-I = 0.3 bits (low sensitivity):
+- Subject A: $K_0=0$, $K_1=-1$ → Dunning-Kruger → needs awareness intervention
+- Subject B: $K_0=1$, $K_1=-1$ → Imposter → needs confidence-building
+
+meta-I cannot distinguish these cases; $K$ can.
+
+**Analogy:**
+- meta-d' / meta-I = **Thermometer** (measures metacognitive temperature)
+- $K$ = **Weather map** (classifies metacognitive patterns, guides intervention)
+
 ### Calibration Metrics (Brier Score, ECE)
 
 Calibration metrics measure whether confidence aligns with accuracy across many trials.
@@ -744,7 +975,7 @@ Dempster-Shafer theory handles **epistemic uncertainty** and **conflicting evide
 
 ### Dunning-Kruger Effect (Empirical Psychology)
 
-Dunning and Kruger (1999) empirically demonstrated that low-competence individuals overestimate their abilities.
+Kruger and Dunning (1999) empirically demonstrated that low-competence individuals overestimate their abilities.
 
 **Our Contribution:** We provide a **formal mathematical model** of this phenomenon:
 - $K(x) = 0$ (low competence)
@@ -755,6 +986,44 @@ This formalization enables:
 1. Precise measurement protocols
 2. Distinction from related phenomena (e.g., imposter syndrome)
 3. Extension to arbitrary depths of self-reflection
+
+### Application to AI Metacognition
+
+The $K$ framework provides a structured vocabulary for evaluating metacognition in Large Language Models (LLMs), an increasingly important area as AI systems are deployed in high-stakes domains.
+
+**Mapping LLM Behaviors:**
+
+| LLM Pattern | $K_0$ | $K_1$ | $K_2$ | Interpretation |
+|:---|:---:|:---:|:---:|:---|
+| Correct + confident | 1 | 1 | 1 | Ideal calibration |
+| Hallucination + confident | −1 | −1 | ? | Confident wrong (dangerous) |
+| Correct + hedging | 1 | −1 | ? | Underconfident (imposter-like) |
+| Admits uncertainty | 0 | 1 | 1 | Appropriate uncertainty (Socratic) |
+| "I don't know" when wrong | −1 | 1 | ? | Partial awareness of limits |
+
+**Testbed Proposal:**
+
+Using decoupled confidence elicitation (analogous to AFCE-style protocols):
+
+1. **Query LLM for answer** → compute $K_0$ (against ground truth)
+2. **Query LLM for confidence** → record $C$ (0-100%)
+3. **Query LLM: "Do you know this?"** → elicit $\text{Claim}_1$
+4. **Compute $K_1$** from $\text{Claim}_1$ vs $K_0$
+
+This protocol allows testing:
+- **K vs C dissociation** in LLMs (do they exhibit Dunning-Kruger or Imposter patterns?)
+- **Domain-specific calibration** (are LLMs more self-aware in some domains?)
+- **Intervention effects** (does prompting for self-reflection improve $K_1$?)
+
+**Why K is Useful for LLM Evaluation:**
+
+Current LLM calibration research focuses primarily on confidence-accuracy correlation (analogous to meta-d' or meta-I). The $K$ framework adds:
+
+1. **Pattern classification**: Identifying *which type* of miscalibration
+2. **Directional information**: Distinguishing overconfidence from underconfidence
+3. **Intervention guidance**: Suggesting targeted prompting strategies
+
+**Future Work:** Operationalizing $K_n$ for LLMs using abstention behavior, self-consistency checks, and metamorphic testing remains an open challenge (see Limitations).
 
 ### Novel Contributions
 
@@ -795,19 +1064,30 @@ This study constructed a recursive epistemic model based on the hierarchical str
 
 This framework is a **conceptual scaffold** for organizing metacognitive phenomena, not a complete predictive model. We acknowledge the following limitations:
 
-1. **Notational Clarification:** The original $K(K(x))$ notation could be misread as function composition. We clarify that each $K_n$ is an independent observation of a distinct state (State$_n$), not the application of $K$ to the numerical output of the previous layer.
+1. **Formal Model:** We adopt an observational family interpretation to resolve the recursion/observation tension. This is a modeling choice, not the only possibility.
 
-2. **Minimal Axiomatic Theory:** We provide basic constraints on $K$ (anchor preservation, monotonicity, boundedness) but do not specify a unique functional form. The specific dynamics of $K$ (e.g., whether it is contractive, has fixed points beyond $\{-1, 0, 1\}$) are empirical questions.
+2. **Single Dimension (Scope Boundary):** 
+   - The $[-1,1]$ scale assumes a **single axis of correctness** with one "opposite" direction.
+   - **What this captures:** Directional errors (overconfidence vs underconfidence, correct vs incorrect).
+   - **What this does NOT capture:** Multiple, qualitatively different misconceptions (e.g., "thinks A" vs "thinks B" when truth is C).
+   - **Design rationale:** This simplification enables tractable measurement and clear intervention design. Multi-dimensional misconceptions require a different formalism (e.g., vector-valued $K$ or belief distributions) and are outside the current scope.
+   - **Future extension:** Vector-valued $K \in [-1,1]^d$ or embedding in a latent space could address this limitation.
 
-3. **No Generative Model:** We do not provide a noise model or generative account of how states are produced. This is a task for computational cognitive modeling.
+3. **Minimal Axiomatic Theory:** We provide basic constraints on $K$ (anchor preservation, monotonicity, boundedness) but do not specify a unique functional form. The specific dynamics of $K$ (e.g., whether it is contractive, has fixed points beyond $\{-1, 0, 1\}$) are empirical questions.
 
-4. **Observation Protocol:** The mapping from observable behavior to $K_n$ values requires operational definitions. While we provide guidelines (e.g., alignment between claims and performance), the specific elicitation methods depend on the application domain.
+4. **No Generative Model:** We do not provide a noise model or generative account of how states are produced. This is a task for computational cognitive modeling.
 
-5. **Simulation Validation Pending:** We have not yet provided simulated evidence that different metacognitive profiles (Socratic, Dunning-Kruger, Imposter) are identifiable under realistic noise. This is planned for future work.
+5. **Observation Protocol:** The mapping from observable behavior to $K_n$ values requires operational definitions. While we provide guidelines (e.g., alignment between claims and performance), the specific elicitation methods depend on the application domain.
 
-6. **Analogical Type Theory:** The type-theoretic justification is analogical rather than formally constructed. A full domain-theoretic or typed lambda-calculus treatment is beyond the current scope.
+6. **$K_2$ Identifiability:** Higher-order estimates ($K_2$, $K_3$) require more items and may be less reliable.
+   - **Guideline:** For reliable $K_2$ estimation, use $N \geq 50$ items with noise $< 0.2$.
+   - **Confidence intervals:** Report 95% CI via bootstrap; if CI width $> 0.3$, interpret with caution.
 
-7. **LLM Operationalization Incomplete:** Applying $K_n$ to LLMs requires addressing question-side shortcuts and model-side signals. Specific methods (conformal coverage, debate protocols) are suggested but not developed here.
+7. **Simulation Validation Pending:** We have not yet provided simulated evidence that different metacognitive profiles (Socratic, Dunning-Kruger, Imposter) are identifiable under realistic noise. This is planned for future work.
+
+8. **Analogical Type Theory:** The type-theoretic justification is analogical rather than formally constructed. A full domain-theoretic or typed lambda-calculus treatment is beyond the current scope.
+
+9. **LLM Operationalization Incomplete:** Applying $K_n$ to LLMs requires addressing question-side shortcuts and model-side signals. Specific methods (conformal coverage, debate protocols) are suggested but not developed here.
 
 ### Future Directions
 
@@ -858,7 +1138,8 @@ All that exists are **states** and **observations**. $K$ observes states. That's
 2. Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitive-developmental inquiry. *American Psychologist*, *34*(10), 906-911.
 3. Nelson, T. O., & Narens, L. (1990). Metamemory: A theoretical framework and new findings. In G. H. Bower (Ed.), *The Psychology of Learning and Motivation* (Vol. 26, pp. 125-173). Academic Press.
 4. Koriat, A. (1993). How do we know that we know? The accessibility model of the feeling of knowing. *Psychological Review*, *100*(4), 609-639.
-5. Dunning, D., & Kruger, J. (1999). Unskilled and unaware of it: How difficulties in recognizing one's own incompetence lead to inflated self-assessments. *Journal of Personality and Social Psychology*, *77*(6), 1121-1134.
+5. Kruger, J., & Dunning, D. (1999). Unskilled and unaware of it: How difficulties in recognizing one's own incompetence lead to inflated self-assessments. *Journal of Personality and Social Psychology*, *77*(6), 1121-1134.
 6. Maniscalco, B., & Lau, H. (2012). A signal detection theoretic approach for estimating metacognitive sensitivity from confidence ratings. *Consciousness and Cognition*, *21*(1), 422-430.
 7. Shafer, G. (1976). *A Mathematical Theory of Evidence*. Princeton University Press.
 8. Fleming, S. M., & Daw, N. D. (2017). Self-evaluation of decision-making: A general Bayesian framework for metacognitive computation. *Psychological Review*, *124*(1), 91-114.
+9. Dayan, P. (2023). Metacognitive information theory. *bioRxiv*. https://doi.org/10.1162/opmi_a_00091

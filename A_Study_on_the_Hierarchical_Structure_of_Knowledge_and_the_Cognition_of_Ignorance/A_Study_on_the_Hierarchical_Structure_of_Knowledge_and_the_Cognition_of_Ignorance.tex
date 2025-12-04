@@ -87,6 +87,26 @@ distinguishes \textbf{Socratic wisdom} (``knowing that one does not
 know'') from the \textbf{Dunning-Kruger effect} (``not knowing that one
 does not know'').
 
+Kant (1781), in his \emph{Critique of Pure Reason}, posed the
+foundational question of epistemology: what are the limits of human
+cognition, and can reason examine itself? His answer---that reason must
+critique reason---established the recursive structure of self-reflection
+as a philosophical problem. Yet Kant's contribution was
+\textbf{descriptive}: he demonstrated that limits exist, but provided no
+apparatus for locating their precise coordinates or guiding their
+correction.
+
+This study provides what classical epistemology could not: a
+\textbf{mathematical framework} that transforms the Kantian question
+from philosophical meditation into \textbf{operational methodology}. The
+function \(K\) does not merely describe where cognition fails---it
+provides the coordinates for \textbf{targeted intervention}. By
+representing epistemic states on a continuous scale, we gain the
+capacity to \textbf{observe the phenomenon of intelligence itself, and
+to intervene in its structure}. This framework opens the possibility of
+not only understanding cognition but \textbf{actively shaping its
+trajectory toward new forms of knowing}.
+
 This model integrates insights from \textbf{metacognition research},
 \textbf{epistemology}, and \textbf{type theory} to address three aspects
 that have not been sufficiently unified in existing research:
@@ -279,7 +299,59 @@ every level of self-reflection.
 \subsubsection{\texorpdfstring{Formal Definition of
 \(K\)}{Formal Definition of K}}\label{formal-definition-of-k}}
 
-We distinguish between two levels of the epistemic function \(K\):
+We adopt an \textbf{observational family} interpretation of \(K\), which
+provides a clear and consistent framework for understanding recursive
+metacognition.
+
+\hypertarget{formal-framework-layered-observation-model}{%
+\paragraph{Formal Framework: Layered Observation
+Model}\label{formal-framework-layered-observation-model}}
+
+\textbf{Definition (Observation Family):}
+
+Let \(\{K^{(n)}\}_{n=0}^{\infty}\) be a family of observation functions,
+where each \(K^{(n)}\) maps from a layer-specific state space to the
+epistemic scale \([-1, 1]\):
+
+\[K^{(n)}: \mathcal{S}_n \to [-1, 1]\]
+
+\textbf{Definition (State Hierarchy):}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathcal{S}_0\): First-order epistemic states (correctness of
+  responses)
+\item
+  \(\mathcal{S}_1\): Metacognitive states (alignment between claims and
+  \(\mathcal{S}_0\))
+\item
+  \(\mathcal{S}_n\): n-th order states (alignment between claims and
+  \(\mathcal{S}_{n-1}\))
+\end{itemize}
+
+\textbf{Notational Convention:}
+
+The notation \(K(K(x))\) is a \textbf{shorthand} for
+\(K^{(1)}(\text{State}_1(x))\), not numerical composition.
+
+More precisely: - \(K_0(x) := K^{(0)}(\text{State}_0(x))\) -
+\(K_1(x) := K^{(1)}(\text{State}_1(x))\) -
+\(K_n(x) := K^{(n)}(\text{State}_n(x))\)
+
+\textbf{Shared Anchor Semantics:}
+
+All \(K^{(n)}\) share the same anchor constraints: -
+\(K^{(n)}(\text{"knowledge"}) = 1\) -
+\(K^{(n)}(\text{"ignorance"}) = 0\) -
+\(K^{(n)}(\text{"misconception"}) = -1\)
+
+This ensures cross-layer comparability while allowing distinct
+measurement procedures per layer.
+
+\hypertarget{entry-and-recursive-mappings}{%
+\paragraph{Entry and Recursive
+Mappings}\label{entry-and-recursive-mappings}}
 
 \textbf{1. Entry Mapping (Layer 0):}
 
@@ -295,14 +367,14 @@ stands with respect to \(x\).
 
 \textbf{2. Recursive Mapping (Layers \(n \ge 1\)):}
 
-At all higher layers, the operator \(K\) acts entirely on epistemic
-states:
+At all higher layers, the observation family \(\{K^{(n)}\}\) acts on
+layer-specific states:
 
-\[K: [-1, 1] \to [-1, 1]\] \[k_{n+1} = K(k_n)\]
+\[K^{(n)}: \mathcal{S}_n \to [-1, 1]\]
 
-The ``object'' of higher-order \(K\) is not a world-side proposition but
-the subject's \textbf{own epistemic state as represented on
-\([-1, 1]\)}.
+The ``object'' of higher-order \(K^{(n)}\) is not the numerical output
+of the previous layer but the \textbf{distinct state object}
+\(\text{State}_n\).
 
 \textbf{Output Interpretation (Prototypical Anchor Points):}
 
@@ -353,7 +425,42 @@ The Observer does not access internal ``perception'' or ``belief.'' The
 Observer only sees \textbf{observable behavior}: answers, claims,
 responses.
 
-\textbf{Operational Definition of State\(_n\):}
+\textbf{Formal Definition of State\(_n\):}
+
+\textbf{State\(_0\) (First-Order Epistemic State):}
+
+\[\text{State}_0(x) = f_0(\text{Response}(x), \text{Reference}(x))\]
+
+Where: - \(\text{Response}(x)\): Subject's answer to item \(x\) -
+\(\text{Reference}(x)\): Ground truth or expert consensus - \(f_0\):
+Comparison function yielding \{correct, incorrect, absent\}
+
+\textbf{State\(_1\) (Metacognitive State):}
+
+\[\text{State}_1(x) = f_1(\text{Claim}_1(x), \text{State}_0(x))\]
+
+Where: - \(\text{Claim}_1(x)\): Subject's metacognitive claim (``I
+know'' / ``I don't know'' / ``I'm wrong'') - \(f_1\): Alignment function
+yielding \{aligned, uncertain, misaligned\}
+
+\textbf{State\(_n\) (n-th Order State):}
+
+\[\text{State}_n(x) = f_n(\text{Claim}_n(x), \text{State}_{n-1}(x))\]
+
+\textbf{Graphical Model:}
+
+\begin{verbatim}
+Response(x) ──┐
+              ├─→ f_0 ──→ State_0 ──→ K^(0) ──→ K_0
+Reference(x) ─┘              │
+                             ↓
+Claim_1(x) ─────────────→ f_1 ──→ State_1 ──→ K^(1) ──→ K_1
+                                    │
+                                    ↓
+Claim_2(x) ─────────────────────→ f_2 ──→ State_2 ──→ K^(2) ──→ K_2
+\end{verbatim}
+
+\textbf{Operational Interpretation:}
 
 \begin{itemize}
 \tightlist
@@ -749,7 +856,7 @@ It simply describes an epistemic state where the subject
 depends on context and goals.
 
 \hypertarget{complete-taxonomy-kux2080-kux2081-kux2082-27-patterns}{%
-\subsubsection{Complete Taxonomy: K$_0$ $\times$ K$_1$ $\times$ K$_2$ (27
+\subsubsection{Complete Taxonomy: K₀ × K₁ × K₂ (27
 Patterns)}\label{complete-taxonomy-kux2080-kux2081-kux2082-27-patterns}}
 
 With three prototypical values \{-1, 0, 1\} at each of three layers,
@@ -757,16 +864,16 @@ there are 27 possible configurations. This taxonomy demonstrates the
 theoretical value of higher-order reflection (\(K_2\)).
 
 \hypertarget{kux2080-1-knowledge}{%
-\paragraph{K$_0$ = 1 (Knowledge)}\label{kux2080-1-knowledge}}
+\paragraph{K₀ = 1 (Knowledge)}\label{kux2080-1-knowledge}}
 
-\begin{longtable}[]{@{}cccp{5.5cm}@{}}
+\begin{longtable}[]{@{}cccl@{}}
 \toprule\noalign{}
 \(K_0\) & \(K_1\) & \(K_2\) & Interpretation \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-1 & 1 & 1 & $\checkmark$ Perfect self-awareness (Ideal) \\
+1 & 1 & 1 & ✓ Perfect self-awareness (Ideal) \\
 1 & 1 & 0 & Knowing Knowledge, uncertain about meta \\
 1 & 1 & -1 & Knowing Knowledge, misrecognizes meta \\
 1 & 0 & 1 & Uncertain about knowledge, recognizes uncertainty \\
@@ -778,16 +885,16 @@ theoretical value of higher-order reflection (\(K_2\)).
 \end{longtable}
 
 \hypertarget{kux2080-0-ignorance}{%
-\paragraph{K$_0$ = 0 (Ignorance)}\label{kux2080-0-ignorance}}
+\paragraph{K₀ = 0 (Ignorance)}\label{kux2080-0-ignorance}}
 
-\begin{longtable}[]{@{}cccp{5.5cm}@{}}
+\begin{longtable}[]{@{}cccl@{}}
 \toprule\noalign{}
 \(K_0\) & \(K_1\) & \(K_2\) & Interpretation \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0 & 1 & 1 & $\checkmark$ \textbf{Perfect Socratic Wisdom} \\
+0 & 1 & 1 & ✓ \textbf{Perfect Socratic Wisdom} \\
 0 & 1 & 0 & Socratic Wisdom, uncertain about meta \\
 0 & 1 & -1 & Socratic Wisdom, misrecognizes meta \\
 0 & 0 & 1 & Uncertain about ignorance, recognizes uncertainty \\
@@ -800,16 +907,16 @@ correction \\
 \end{longtable}
 
 \hypertarget{kux2080--1-misconception}{%
-\paragraph{K$_0$ = -1 (Misconception)}\label{kux2080--1-misconception}}
+\paragraph{K₀ = -1 (Misconception)}\label{kux2080--1-misconception}}
 
-\begin{longtable}[]{@{}cccp{5.5cm}@{}}
+\begin{longtable}[]{@{}cccl@{}}
 \toprule\noalign{}
 \(K_0\) & \(K_1\) & \(K_2\) & Interpretation \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
--1 & 1 & 1 & $\checkmark$ Self-aware misconception (rare, correctable) \\
+-1 & 1 & 1 & ✓ Self-aware misconception (rare, correctable) \\
 -1 & 1 & 0 & Knowing Misconception, uncertain about meta \\
 -1 & 1 & -1 & Knowing Misconception, misrecognizes meta \\
 -1 & 0 & 1 & Uncertain about misconception, recognizes uncertainty \\
@@ -878,10 +985,23 @@ framework accommodates cue-based confidence as a component of \(C\),
 while \(K\) measures the objective alignment between the subject's state
 and reality.
 
-\textbf{Dunning and Kruger (1999)} demonstrated that individuals with
+\textbf{Kruger and Dunning (1999)} demonstrated that individuals with
 low competence tend to overestimate their abilities. In our model, this
 corresponds to \(K_0 = 0\) (ignorance) but \(K_1 = -1\) (misrecognition
 of ignorance).
+
+\textbf{Fleming and Daw (2017)} proposed a general Bayesian framework
+for metacognitive computation, modeling metacognition as ``second-order
+inference'' about the reliability of first-order cognitive processes.
+Their distinction between first-order states and second-order inference
+corresponds to our State\(_0\)/State\(_1\) hierarchy. While their
+approach is Bayesian (modeling uncertainty about internal states) and
+ours is observational (measuring alignment between claims and
+performance), both frameworks capture the fundamental insight that
+metacognition operates on a different level from cognition itself. The
+K-C dissociation in our framework (epistemic state vs phenomenological
+confidence) parallels their analysis of how confidence can diverge from
+accuracy.
 
 \textbf{Meta-d' (Maniscalco \& Lau, 2012)} provides a signal
 detection-theoretic measure of metacognitive sensitivity. While meta-d'
@@ -906,6 +1026,8 @@ One might ask: ``Why not introduce separate operators for different
 levels?'' The answer lies in the \textbf{universality of the epistemic
 question}.
 
+\textbf{Philosophical Motivation:}
+
 The question ``Do I know?'' is the same question at every level: - ``Do
 I know the answer?'' → \(K_0\) - ``Do I know whether I know the
 answer?'' → \(K_1\) - ``Do I know whether I know whether I know?'' →
@@ -924,6 +1046,34 @@ State\(_1\), State\(_2\)). Introducing separate operators (\(R\), \(E\),
 etc.) would obscure this fundamental unity and sacrifice the elegance of
 a single recursive structure.
 
+\textbf{Practical Implementation:}
+
+While the \textbf{semantic anchors} are shared (-1/0/1 for
+misconception/ignorance/knowledge), the \textbf{measurement procedures}
+\(K^{(n)}\) may differ:
+
+\begin{longtable}[]{@{}cll@{}}
+\toprule\noalign{}
+Layer & Observable & Measurement Procedure \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(K^{(0)}\) & Response vs Reference & Accuracy scoring \\
+\(K^{(1)}\) & Claim vs State\(_0\) & Alignment scoring \\
+\(K^{(2)}\) & Meta-claim vs State\(_1\) & Meta-alignment scoring \\
+\end{longtable}
+
+\textbf{Parameter Tying (Optional):}
+
+For parsimony, one may assume: - Same noise model across layers - Same
+link function (e.g., logistic)
+
+Or allow layer-specific parameters if data supports it.
+
+\textbf{The key constraint is shared anchor semantics, not identical
+functional forms.}
+
 \textbf{The beauty of \(K\) is its universality.} Knowing, not knowing,
 and misunderstanding are universal human experiences. The same operator
 captures them all.
@@ -933,6 +1083,98 @@ captures them all.
 
 This section describes how the theoretical constructs (\(K(x)\),
 \(K(K(x))\)) can be operationalized and measured empirically.
+
+\hypertarget{why-continuous-scale}{%
+\subsubsection{Why Continuous Scale?}\label{why-continuous-scale}}
+
+The continuous scale \([-1, 1]\) provides several advantages over binary
+or categorical representations:
+
+\textbf{1. Intermediate States:}
+
+Captures partial knowledge, uncertain beliefs, and mixed states that
+binary representations cannot express.
+
+\begin{itemize}
+\tightlist
+\item
+  Example: \(K_0 = 0.3\) represents ``mostly ignorant but with some
+  relevant information''
+\item
+  Example: \(K_1 = -0.5\) represents ``moderate overconfidence, not
+  extreme''
+\end{itemize}
+
+\textbf{2. Change Tracking:}
+
+Enables measurement of \textbf{gradual transitions and intervention
+effects}.
+
+\begin{itemize}
+\tightlist
+\item
+  Example: After metacognitive training, \(K_1\) moves from \(-0.8\) to
+  \(-0.2\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This shows improvement within the ``overconfidence'' category
+  \item
+    Binary classification would show no change (both are
+    ``overconfident'')
+  \end{itemize}
+\end{itemize}
+
+\textbf{3. Aggregation:}
+
+Permits meaningful averaging across items, domains, or time points.
+
+\begin{itemize}
+\tightlist
+\item
+  Example: Average \(K_1\) across 50 items yields a stable estimate
+\item
+  Example: Compare \(K_1\) across domains (math vs.~history)
+\end{itemize}
+
+\textbf{4. Statistical Modeling:}
+
+Compatible with standard regression, Bayesian inference, and
+psychometric methods.
+
+\begin{itemize}
+\tightlist
+\item
+  Linear models: \(K_1 \sim K_0 + \text{training} + \epsilon\)
+\item
+  Hierarchical models: Subject-level and item-level random effects
+\end{itemize}
+
+\textbf{5. Geometric Extension (Future Work):}
+
+Enables connection to \textbf{information geometry} and manifold-based
+analysis:
+
+\begin{itemize}
+\tightlist
+\item
+  Cognitive states as points on a manifold
+\item
+  Interventions as trajectories
+\item
+  Distance metrics for comparing metacognitive profiles
+\item
+  Curvature analysis for stability of states
+\end{itemize}
+
+\textbf{Design Choice:}
+
+The trichotomy \(\{-1, 0, 1\}\) represents \textbf{prototypical anchors}
+on the continuous scale, not the only valid values. Researchers may: -
+Use discrete elicitation and embed into continuous scale - Use
+probabilistic elicitation for direct continuous measurement - Aggregate
+discrete responses to obtain continuous estimates
 
 \hypertarget{measurement-theoretic-interpretation}{%
 \subsubsection{Measurement-Theoretic
@@ -1044,16 +1286,84 @@ the subject's recognition of their own first-order state \(K(x)\). We
 cannot directly observe \(K(K(x))\); we must infer it from observable
 behavior.
 
-\hypertarget{introducing-confidence-c}{%
-\subsubsection{\texorpdfstring{Introducing Confidence:
-\(C\)}{Introducing Confidence: C}}\label{introducing-confidence-c}}
+\hypertarget{operational-definition-of-confidence-c}{%
+\subsubsection{\texorpdfstring{Operational Definition of Confidence
+(\(C\))}{Operational Definition of Confidence (C)}}\label{operational-definition-of-confidence-c}}
 
 To fully characterize the phenomenological experience of metacognition,
-we additionally measure \textbf{subjective confidence}
-\(C_k \in [0, 1]\).
+we additionally measure \textbf{subjective confidence} \(C\).
 
-\textbf{Important Distinction:} - \(K(x)\): Epistemic state (how
-accurately the subject recognizes \(x\)) - \(C\): Phenomenological
+\textbf{Definition:}
+
+Confidence \(C\) is a \textbf{phenomenological self-report} of
+subjective certainty, measured on a scale (e.g., 0-100\% or 1-7 Likert).
+
+\[C(x) \in [0, 1] \quad \text{(or any bounded interval)}\]
+
+\textbf{Key Distinction: K vs C}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Dimension & K (Epistemic State) & C (Confidence) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{What it measures} & Alignment with reference & Subjective
+feeling \\
+\textbf{Anchor} & Correct/Incorrect/Absent & Certain/Uncertain \\
+\textbf{Sign} & Signed (−1 to 1) & Unsigned (0 to 1) \\
+\textbf{Basis} & External validation & Internal experience \\
+\end{longtable}
+
+\textbf{Orthogonality:}
+
+\(K\) and \(C\) are \textbf{conceptually orthogonal}:
+
+\begin{longtable}[]{@{}lccl@{}}
+\toprule\noalign{}
+Pattern & \(K_0\) & \(C\) & Interpretation \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Confident correct & 1 & High & Ideal \\
+Confident wrong & −1 & High & Dangerous misconception \\
+Unconfident correct & 1 & Low & Imposter-like \\
+Unconfident wrong & −1 & Low & Appropriate uncertainty \\
+\end{longtable}
+
+\textbf{Diagnostic Role:}
+
+\(C\) helps distinguish subtypes within the same \(K\) pattern: - DK
+(\(K_0=0\), \(K_1=-1\)) with \textbf{high \(C\)} → Overconfident
+ignorance - DK (\(K_0=0\), \(K_1=-1\)) with \textbf{low \(C\)} →
+Uncertain but still wrong claim
+
+\textbf{K-C Dissociation Hypothesis:}
+
+Subjects can have: - High \(K_0\) with low \(C\) (Imposter syndrome) -
+Low \(K_0\) with high \(C\) (Dunning-Kruger effect)
+
+This dissociation is empirically testable and clinically meaningful.
+
+\textbf{Measurement Protocol for C:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Elicit response → compute \(K_0\)
+\item
+  Elicit confidence (0-100\%) → record \(C\)
+\item
+  Elicit metacognitive claim (``Do you know?'') → compute \(K_1\)
+\item
+  Analyze \(K \times C\) jointly for full characterization
+\end{enumerate}
+
+\textbf{Important Distinction (Summary):} - \(K(x)\): Epistemic state
+(how accurately the subject recognizes \(x\)) - \(C\): Phenomenological
 confidence (how certain the subject feels)
 
 These are \textbf{orthogonal dimensions}. A subject can have: -
@@ -1489,6 +1799,76 @@ Socratic wisdom detection - Define a continuous version:
 \(K(K(x)) = 2 \cdot P(\text{meta-claim matches actual state}) - 1\),
 estimated across trials via hierarchical Bayesian methods
 
+\hypertarget{information-theoretic-metacognition-meta-i}{%
+\subsubsection{Information-Theoretic Metacognition:
+meta-I}\label{information-theoretic-metacognition-meta-i}}
+
+Dayan (2023) introduced \emph{meta-I}, a \textbf{model-free}
+information-theoretic measure of metacognitive sensitivity:
+
+\[\text{meta-I} = H(\text{accuracy}) - H(\text{accuracy} | \text{confidence})\]
+
+This measures mutual information between confidence and accuracy,
+quantifying how much confidence reduces uncertainty about accuracy.
+
+\textbf{Comparison:}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Aspect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+meta-I
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Our \(K\) Framework
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Theoretical Basis} & Information Theory & Recursive
+Epistemology \\
+\textbf{Model Dependency} & Model-free & Model-free (observational) \\
+\textbf{Direction} & Unsigned (sensitivity only) & \textbf{Signed}
+(over/under-confidence) \\
+\textbf{Layers} & Single layer & \textbf{Recursive}
+(\(K_0, K_1, K_2, \ldots\)) \\
+\textbf{Output} & Bits (continuous) & \([-1, 1]\) (continuous) \\
+\textbf{Granularity} & Can measure response granularity & Per-item
+structural classification \\
+\end{longtable}
+
+\textbf{Key Distinction:}
+
+Both meta-I and \(K\) are \textbf{model-free} (unlike meta-d' which
+requires SDT assumptions), but they serve different purposes:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{meta-I} answers: ``How well does confidence track accuracy?''
+  (quantitative sensitivity)
+\item
+  \textbf{\(K\)} answers: ``What type of metacognitive pattern is
+  this?'' (qualitative classification)
+\end{itemize}
+
+\textbf{Complementary Use Case:}
+
+Two subjects with identical meta-I = 0.3 bits (low sensitivity): -
+Subject A: \(K_0=0\), \(K_1=-1\) → Dunning-Kruger → needs awareness
+intervention - Subject B: \(K_0=1\), \(K_1=-1\) → Imposter → needs
+confidence-building
+
+meta-I cannot distinguish these cases; \(K\) can.
+
+\textbf{Analogy:} - meta-d' / meta-I = \textbf{Thermometer} (measures
+metacognitive temperature) - \(K\) = \textbf{Weather map} (classifies
+metacognitive patterns, guides intervention)
+
 \hypertarget{calibration-metrics-brier-score-ece}{%
 \subsubsection{Calibration Metrics (Brier Score,
 ECE)}\label{calibration-metrics-brier-score-ece}}
@@ -1560,7 +1940,7 @@ between what one knows and what one thinks one knows}.
 \subsubsection{Dunning-Kruger Effect (Empirical
 Psychology)}\label{dunning-kruger-effect-empirical-psychology}}
 
-Dunning and Kruger (1999) empirically demonstrated that low-competence
+Kruger and Dunning (1999) empirically demonstrated that low-competence
 individuals overestimate their abilities.
 
 \textbf{Our Contribution:} We provide a \textbf{formal mathematical
@@ -1571,6 +1951,94 @@ accompanied by \(C = 1\) (high confidence)
 This formalization enables: 1. Precise measurement protocols 2.
 Distinction from related phenomena (e.g., imposter syndrome) 3.
 Extension to arbitrary depths of self-reflection
+
+\hypertarget{application-to-ai-metacognition}{%
+\subsubsection{Application to AI
+Metacognition}\label{application-to-ai-metacognition}}
+
+The \(K\) framework provides a structured vocabulary for evaluating
+metacognition in Large Language Models (LLMs), an increasingly important
+area as AI systems are deployed in high-stakes domains.
+
+\textbf{Mapping LLM Behaviors:}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1739}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2174}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1739}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+LLM Pattern
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K_0\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K_1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K_2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Correct + confident & 1 & 1 & 1 & Ideal calibration \\
+Hallucination + confident & −1 & −1 & ? & Confident wrong (dangerous) \\
+Correct + hedging & 1 & −1 & ? & Underconfident (imposter-like) \\
+Admits uncertainty & 0 & 1 & 1 & Appropriate uncertainty (Socratic) \\
+``I don't know'' when wrong & −1 & 1 & ? & Partial awareness of
+limits \\
+\end{longtable}
+
+\textbf{Testbed Proposal:}
+
+Using decoupled confidence elicitation (analogous to AFCE-style
+protocols):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Query LLM for answer} → compute \(K_0\) (against ground truth)
+\item
+  \textbf{Query LLM for confidence} → record \(C\) (0-100\%)
+\item
+  \textbf{Query LLM: ``Do you know this?''} → elicit \(\text{Claim}_1\)
+\item
+  \textbf{Compute \(K_1\)} from \(\text{Claim}_1\) vs \(K_0\)
+\end{enumerate}
+
+This protocol allows testing: - \textbf{K vs C dissociation} in LLMs (do
+they exhibit Dunning-Kruger or Imposter patterns?) -
+\textbf{Domain-specific calibration} (are LLMs more self-aware in some
+domains?) - \textbf{Intervention effects} (does prompting for
+self-reflection improve \(K_1\)?)
+
+\textbf{Why K is Useful for LLM Evaluation:}
+
+Current LLM calibration research focuses primarily on
+confidence-accuracy correlation (analogous to meta-d' or meta-I). The
+\(K\) framework adds:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Pattern classification}: Identifying \emph{which type} of
+  miscalibration
+\item
+  \textbf{Directional information}: Distinguishing overconfidence from
+  underconfidence
+\item
+  \textbf{Intervention guidance}: Suggesting targeted prompting
+  strategies
+\end{enumerate}
+
+\textbf{Future Work:} Operationalizing \(K_n\) for LLMs using abstention
+behavior, self-consistency checks, and metamorphic testing remains an
+open challenge (see Limitations).
 
 \hypertarget{novel-contributions}{%
 \subsubsection{Novel Contributions}\label{novel-contributions}}
@@ -1684,11 +2152,33 @@ the following limitations:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Notational Clarification:} The original \(K(K(x))\) notation
-  could be misread as function composition. We clarify that each \(K_n\)
-  is an independent observation of a distinct state (State\(_n\)), not
-  the application of \(K\) to the numerical output of the previous
-  layer.
+  \textbf{Formal Model:} We adopt an observational family interpretation
+  to resolve the recursion/observation tension. This is a modeling
+  choice, not the only possibility.
+\item
+  \textbf{Single Dimension (Scope Boundary):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The \([-1,1]\) scale assumes a \textbf{single axis of correctness}
+    with one ``opposite'' direction.
+  \item
+    \textbf{What this captures:} Directional errors (overconfidence vs
+    underconfidence, correct vs incorrect).
+  \item
+    \textbf{What this does NOT capture:} Multiple, qualitatively
+    different misconceptions (e.g., ``thinks A'' vs ``thinks B'' when
+    truth is C).
+  \item
+    \textbf{Design rationale:} This simplification enables tractable
+    measurement and clear intervention design. Multi-dimensional
+    misconceptions require a different formalism (e.g., vector-valued
+    \(K\) or belief distributions) and are outside the current scope.
+  \item
+    \textbf{Future extension:} Vector-valued \(K \in [-1,1]^d\) or
+    embedding in a latent space could address this limitation.
+  \end{itemize}
 \item
   \textbf{Minimal Axiomatic Theory:} We provide basic constraints on
   \(K\) (anchor preservation, monotonicity, boundedness) but do not
@@ -1704,6 +2194,19 @@ the following limitations:
   \(K_n\) values requires operational definitions. While we provide
   guidelines (e.g., alignment between claims and performance), the
   specific elicitation methods depend on the application domain.
+\item
+  \textbf{\(K_2\) Identifiability:} Higher-order estimates (\(K_2\),
+  \(K_3\)) require more items and may be less reliable.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Guideline:} For reliable \(K_2\) estimation, use
+    \(N \geq 50\) items with noise \(< 0.2\).
+  \item
+    \textbf{Confidence intervals:} Report 95\% CI via bootstrap; if CI
+    width \(> 0.3\), interpret with caution.
+  \end{itemize}
 \item
   \textbf{Simulation Validation Pending:} We have not yet provided
   simulated evidence that different metacognitive profiles (Socratic,
@@ -1814,7 +2317,7 @@ observes states. That's it.
   model of the feeling of knowing. \emph{Psychological Review},
   \emph{100}(4), 609-639.
 \item
-  Dunning, D., \& Kruger, J. (1999). Unskilled and unaware of it: How
+  Kruger, J., \& Dunning, D. (1999). Unskilled and unaware of it: How
   difficulties in recognizing one's own incompetence lead to inflated
   self-assessments. \emph{Journal of Personality and Social Psychology},
   \emph{77}(6), 1121-1134.
@@ -1829,6 +2332,9 @@ observes states. That's it.
   Fleming, S. M., \& Daw, N. D. (2017). Self-evaluation of
   decision-making: A general Bayesian framework for metacognitive
   computation. \emph{Psychological Review}, \emph{124}(1), 91-114.
+\item
+  Dayan, P. (2023). Metacognitive information theory. \emph{bioRxiv}.
+  https://doi.org/10.1162/opmi\_a\_00091
 \end{enumerate}
 
 \end{document}
