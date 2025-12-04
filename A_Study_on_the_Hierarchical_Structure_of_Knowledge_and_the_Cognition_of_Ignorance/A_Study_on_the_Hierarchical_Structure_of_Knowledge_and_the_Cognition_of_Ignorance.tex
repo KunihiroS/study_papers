@@ -450,14 +450,14 @@ yielding \{aligned, uncertain, misaligned\}
 \textbf{Graphical Model:}
 
 \begin{verbatim}
-Response(x) ──┐
-              ├─→ f_0 ──→ State_0 ──→ K^(0) ──→ K_0
-Reference(x) ─┘              │
-                             ↓
-Claim_1(x) ─────────────→ f_1 ──→ State_1 ──→ K^(1) ──→ K_1
-                                    │
-                                    ↓
-Claim_2(x) ─────────────────────→ f_2 ──→ State_2 ──→ K^(2) ──→ K_2
+Response(x) --+
+              +--> f_0 --> State_0 --> K^(0) --> K_0
+Reference(x) -+              |
+                             v
+Claim_1(x) --------------> f_1 --> State_1 --> K^(1) --> K_1
+                                    |
+                                    v
+Claim_2(x) ----------------------> f_2 --> State_2 --> K^(2) --> K_2
 \end{verbatim}
 
 \textbf{Operational Interpretation:}
@@ -855,16 +855,16 @@ It simply describes an epistemic state where the subject
 \textbf{misrecognizes their own ignorance}. Whether this is problematic
 depends on context and goals.
 
-\hypertarget{complete-taxonomy-kux2080-kux2081-kux2082-27-patterns}{%
-\subsubsection{Complete Taxonomy: K₀ × K₁ × K₂ (27
-Patterns)}\label{complete-taxonomy-kux2080-kux2081-kux2082-27-patterns}}
+\hypertarget{complete-taxonomy-k_0-x-k_1-x-k_2-27-patterns}{%
+\subsubsection{Complete Taxonomy: K\_0 x K\_1 x K\_2 (27
+Patterns)}\label{complete-taxonomy-k_0-x-k_1-x-k_2-27-patterns}}
 
 With three prototypical values \{-1, 0, 1\} at each of three layers,
 there are 27 possible configurations. This taxonomy demonstrates the
 theoretical value of higher-order reflection (\(K_2\)).
 
-\hypertarget{kux2080-1-knowledge}{%
-\paragraph{K₀ = 1 (Knowledge)}\label{kux2080-1-knowledge}}
+\hypertarget{k_0-1-knowledge}{%
+\paragraph{K\_0 = 1 (Knowledge)}\label{k_0-1-knowledge}}
 
 \begin{longtable}[]{@{}cccl@{}}
 \toprule\noalign{}
@@ -873,7 +873,7 @@ theoretical value of higher-order reflection (\(K_2\)).
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-1 & 1 & 1 & ✓ Perfect self-awareness (Ideal) \\
+1 & 1 & 1 & {[}OK{]} Perfect self-awareness (Ideal) \\
 1 & 1 & 0 & Knowing Knowledge, uncertain about meta \\
 1 & 1 & -1 & Knowing Knowledge, misrecognizes meta \\
 1 & 0 & 1 & Uncertain about knowledge, recognizes uncertainty \\
@@ -884,8 +884,8 @@ theoretical value of higher-order reflection (\(K_2\)).
 1 & -1 & -1 & \textbf{Severe Imposter Syndrome} \\
 \end{longtable}
 
-\hypertarget{kux2080-0-ignorance}{%
-\paragraph{K₀ = 0 (Ignorance)}\label{kux2080-0-ignorance}}
+\hypertarget{k_0-0-ignorance}{%
+\paragraph{K\_0 = 0 (Ignorance)}\label{k_0-0-ignorance}}
 
 \begin{longtable}[]{@{}cccl@{}}
 \toprule\noalign{}
@@ -894,7 +894,7 @@ theoretical value of higher-order reflection (\(K_2\)).
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0 & 1 & 1 & ✓ \textbf{Perfect Socratic Wisdom} \\
+0 & 1 & 1 & {[}OK{]} \textbf{Perfect Socratic Wisdom} \\
 0 & 1 & 0 & Socratic Wisdom, uncertain about meta \\
 0 & 1 & -1 & Socratic Wisdom, misrecognizes meta \\
 0 & 0 & 1 & Uncertain about ignorance, recognizes uncertainty \\
@@ -906,8 +906,8 @@ theoretical value of higher-order reflection (\(K_2\)).
 correction \\
 \end{longtable}
 
-\hypertarget{kux2080--1-misconception}{%
-\paragraph{K₀ = -1 (Misconception)}\label{kux2080--1-misconception}}
+\hypertarget{k_0--1-misconception}{%
+\paragraph{K\_0 = -1 (Misconception)}\label{k_0--1-misconception}}
 
 \begin{longtable}[]{@{}cccl@{}}
 \toprule\noalign{}
@@ -916,7 +916,7 @@ correction \\
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
--1 & 1 & 1 & ✓ Self-aware misconception (rare, correctable) \\
+-1 & 1 & 1 & {[}OK{]} Self-aware misconception (rare, correctable) \\
 -1 & 1 & 0 & Knowing Misconception, uncertain about meta \\
 -1 & 1 & -1 & Knowing Misconception, misrecognizes meta \\
 -1 & 0 & 1 & Uncertain about misconception, recognizes uncertainty \\
@@ -1312,7 +1312,7 @@ Dimension & K (Epistemic State) & C (Confidence) \\
 \textbf{What it measures} & Alignment with reference & Subjective
 feeling \\
 \textbf{Anchor} & Correct/Incorrect/Absent & Certain/Uncertain \\
-\textbf{Sign} & Signed (−1 to 1) & Unsigned (0 to 1) \\
+\textbf{Sign} & Signed (-1 to 1) & Unsigned (0 to 1) \\
 \textbf{Basis} & External validation & Internal experience \\
 \end{longtable}
 
@@ -1328,9 +1328,9 @@ Pattern & \(K_0\) & \(C\) & Interpretation \\
 \bottomrule\noalign{}
 \endlastfoot
 Confident correct & 1 & High & Ideal \\
-Confident wrong & −1 & High & Dangerous misconception \\
+Confident wrong & -1 & High & Dangerous misconception \\
 Unconfident correct & 1 & Low & Imposter-like \\
-Unconfident wrong & −1 & Low & Appropriate uncertainty \\
+Unconfident wrong & -1 & Low & Appropriate uncertainty \\
 \end{longtable}
 
 \textbf{Diagnostic Role:}
@@ -1985,10 +1985,10 @@ Interpretation
 \bottomrule\noalign{}
 \endlastfoot
 Correct + confident & 1 & 1 & 1 & Ideal calibration \\
-Hallucination + confident & −1 & −1 & ? & Confident wrong (dangerous) \\
-Correct + hedging & 1 & −1 & ? & Underconfident (imposter-like) \\
+Hallucination + confident & -1 & -1 & ? & Confident wrong (dangerous) \\
+Correct + hedging & 1 & -1 & ? & Underconfident (imposter-like) \\
 Admits uncertainty & 0 & 1 & 1 & Appropriate uncertainty (Socratic) \\
-``I don't know'' when wrong & −1 & 1 & ? & Partial awareness of
+``I don't know'' when wrong & -1 & 1 & ? & Partial awareness of
 limits \\
 \end{longtable}
 

@@ -203,14 +203,14 @@ $$\text{State}_n(x) = f_n(\text{Claim}_n(x), \text{State}_{n-1}(x))$$
 **Graphical Model:**
 
 ```
-Response(x) ──┐
-              ├─→ f_0 ──→ State_0 ──→ K^(0) ──→ K_0
-Reference(x) ─┘              │
-                             ↓
-Claim_1(x) ─────────────→ f_1 ──→ State_1 ──→ K^(1) ──→ K_1
-                                    │
-                                    ↓
-Claim_2(x) ─────────────────────→ f_2 ──→ State_2 ──→ K^(2) ──→ K_2
+Response(x) --+
+              +--> f_0 --> State_0 --> K^(0) --> K_0
+Reference(x) -+              |
+                             v
+Claim_1(x) --------------> f_1 --> State_1 --> K^(1) --> K_1
+                                    |
+                                    v
+Claim_2(x) ----------------------> f_2 --> State_2 --> K^(2) --> K_2
 ```
 
 **Operational Interpretation:**
@@ -414,15 +414,15 @@ The relationship between $K(x)$ (actual state) and $K(K(x))$ (metacognitive accu
 
 **Important Note:** The value $K(K(x)) = -1$ for "Unknowing Ignorance" does **not** mean it is "bad" in a normative sense. It simply describes an epistemic state where the subject **misrecognizes their own ignorance**. Whether this is problematic depends on context and goals.
 
-### Complete Taxonomy: K₀ × K₁ × K₂ (27 Patterns)
+### Complete Taxonomy: K_0 x K_1 x K_2 (27 Patterns)
 
 With three prototypical values {-1, 0, 1} at each of three layers, there are 27 possible configurations. This taxonomy demonstrates the theoretical value of higher-order reflection ($K_2$).
 
-#### K₀ = 1 (Knowledge)
+#### K_0 = 1 (Knowledge)
 
 | $K_0$ | $K_1$ | $K_2$ | Interpretation |
 |:---:|:---:|:---:|:---|
-| 1 | 1 | 1 | ✓ Perfect self-awareness (Ideal) |
+| 1 | 1 | 1 | [OK] Perfect self-awareness (Ideal) |
 | 1 | 1 | 0 | Knowing Knowledge, uncertain about meta |
 | 1 | 1 | -1 | Knowing Knowledge, misrecognizes meta |
 | 1 | 0 | 1 | Uncertain about knowledge, recognizes uncertainty |
@@ -432,11 +432,11 @@ With three prototypical values {-1, 0, 1} at each of three layers, there are 27 
 | 1 | -1 | 0 | Imposter Syndrome (ambiguous) |
 | 1 | -1 | -1 | **Severe Imposter Syndrome** |
 
-#### K₀ = 0 (Ignorance)
+#### K_0 = 0 (Ignorance)
 
 | $K_0$ | $K_1$ | $K_2$ | Interpretation |
 |:---:|:---:|:---:|:---|
-| 0 | 1 | 1 | ✓ **Perfect Socratic Wisdom** |
+| 0 | 1 | 1 | [OK] **Perfect Socratic Wisdom** |
 | 0 | 1 | 0 | Socratic Wisdom, uncertain about meta |
 | 0 | 1 | -1 | Socratic Wisdom, misrecognizes meta |
 | 0 | 0 | 1 | Uncertain about ignorance, recognizes uncertainty |
@@ -446,11 +446,11 @@ With three prototypical values {-1, 0, 1} at each of three layers, there are 27 
 | 0 | -1 | 0 | Dunning-Kruger (ambiguous) |
 | 0 | -1 | -1 | **Severe Dunning-Kruger** — resistant to correction |
 
-#### K₀ = -1 (Misconception)
+#### K_0 = -1 (Misconception)
 
 | $K_0$ | $K_1$ | $K_2$ | Interpretation |
 |:---:|:---:|:---:|:---|
-| -1 | 1 | 1 | ✓ Self-aware misconception (rare, correctable) |
+| -1 | 1 | 1 | [OK] Self-aware misconception (rare, correctable) |
 | -1 | 1 | 0 | Knowing Misconception, uncertain about meta |
 | -1 | 1 | -1 | Knowing Misconception, misrecognizes meta |
 | -1 | 0 | 1 | Uncertain about misconception, recognizes uncertainty |
@@ -665,7 +665,7 @@ $$C(x) \in [0, 1] \quad \text{(or any bounded interval)}$$
 |:---|:---|:---|
 | **What it measures** | Alignment with reference | Subjective feeling |
 | **Anchor** | Correct/Incorrect/Absent | Certain/Uncertain |
-| **Sign** | Signed (−1 to 1) | Unsigned (0 to 1) |
+| **Sign** | Signed (-1 to 1) | Unsigned (0 to 1) |
 | **Basis** | External validation | Internal experience |
 
 **Orthogonality:**
@@ -675,9 +675,9 @@ $K$ and $C$ are **conceptually orthogonal**:
 | Pattern | $K_0$ | $C$ | Interpretation |
 |:---|:---:|:---:|:---|
 | Confident correct | 1 | High | Ideal |
-| Confident wrong | −1 | High | Dangerous misconception |
+| Confident wrong | -1 | High | Dangerous misconception |
 | Unconfident correct | 1 | Low | Imposter-like |
-| Unconfident wrong | −1 | Low | Appropriate uncertainty |
+| Unconfident wrong | -1 | Low | Appropriate uncertainty |
 
 **Diagnostic Role:**
 
@@ -996,10 +996,10 @@ The $K$ framework provides a structured vocabulary for evaluating metacognition 
 | LLM Pattern | $K_0$ | $K_1$ | $K_2$ | Interpretation |
 |:---|:---:|:---:|:---:|:---|
 | Correct + confident | 1 | 1 | 1 | Ideal calibration |
-| Hallucination + confident | −1 | −1 | ? | Confident wrong (dangerous) |
-| Correct + hedging | 1 | −1 | ? | Underconfident (imposter-like) |
+| Hallucination + confident | -1 | -1 | ? | Confident wrong (dangerous) |
+| Correct + hedging | 1 | -1 | ? | Underconfident (imposter-like) |
 | Admits uncertainty | 0 | 1 | 1 | Appropriate uncertainty (Socratic) |
-| "I don't know" when wrong | −1 | 1 | ? | Partial awareness of limits |
+| "I don't know" when wrong | -1 | 1 | ? | Partial awareness of limits |
 
 **Testbed Proposal:**
 
