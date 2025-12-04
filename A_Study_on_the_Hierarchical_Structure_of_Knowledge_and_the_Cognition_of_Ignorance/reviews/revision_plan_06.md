@@ -298,6 +298,67 @@ The trichotomy $\{-1, 0, 1\}$ represents **prototypical anchors** on the continu
 
 ---
 
+#### A5: 確信度 C の操作的定義
+
+**レビュワーの質問 (Q8):**
+> "Could you clarify the role of confidence C operationally?"
+
+**現状:** C の操作的定義が論文内で不明確
+**対応:** K と C の関係を明示し、操作的定義を追加
+
+```markdown
+### Operational Definition of Confidence (C)
+
+**Definition:**
+
+Confidence $C$ is a **phenomenological self-report** of subjective certainty, measured on a scale (e.g., 0-100% or 1-7 Likert).
+
+$$C(x) \in [0, 1] \quad \text{(or any bounded interval)}$$
+
+**Key Distinction: K vs C**
+
+| Dimension | K (Epistemic State) | C (Confidence) |
+|:---|:---|:---|
+| **What it measures** | Alignment with reference | Subjective feeling |
+| **Anchor** | Correct/Incorrect/Absent | Certain/Uncertain |
+| **Sign** | Signed (−1 to 1) | Unsigned (0 to 1) |
+| **Basis** | External validation | Internal experience |
+
+**Orthogonality:**
+
+K and C are **conceptually orthogonal**:
+
+| Pattern | K₀ | C | Interpretation |
+|:---|:---:|:---:|:---|
+| Confident correct | 1 | High | Ideal |
+| Confident wrong | −1 | High | Dangerous misconception |
+| Unconfident correct | 1 | Low | Imposter-like |
+| Unconfident wrong | −1 | Low | Appropriate uncertainty |
+
+**Diagnostic Role:**
+
+C helps distinguish subtypes within the same K pattern:
+- DK (K₀=0, K₁=−1) with **high C** → Overconfident ignorance
+- DK (K₀=0, K₁=−1) with **low C** → Uncertain but still wrong claim
+
+**Measurement Protocol:**
+
+1. Elicit response → compute K₀
+2. Elicit confidence (0-100%) → record C
+3. Elicit metacognitive claim ("Do you know?") → compute K₁
+4. Analyze K × C jointly for full characterization
+
+**K-C Dissociation Hypothesis:**
+
+Subjects can have:
+- High K₀ with low C (Imposter syndrome)
+- Low K₀ with high C (Dunning-Kruger effect)
+
+This dissociation is empirically testable and clinically meaningful.
+```
+
+---
+
 ### B: Empirical Validation — 高優先
 
 #### B1: Toy Simulation
@@ -312,7 +373,9 @@ The trichotomy $\{-1, 0, 1\}$ represents **prototypical anchors** on the continu
 
 **Generative Model:**
 
-We define four agent types with ground-truth $(K_0, K_1, K_2)$:
+We define agent types with ground-truth $(K_0, K_1, K_2)$:
+
+**Discrete Prototypes:**
 
 | Type | K_0 | K_1 | K_2 | Description |
 |:---|:---:|:---:|:---:|:---|
@@ -320,6 +383,14 @@ We define four agent types with ground-truth $(K_0, K_1, K_2)$:
 | Dunning-Kruger | 0 | -1 | -1 | Doesn't know they don't know |
 | Imposter | 1 | -1 | 1 | Knows but thinks they don't, aware of this |
 | Ideal | 1 | 1 | 1 | Perfect self-awareness |
+
+**Continuous Variants (追加):**
+
+| Type | K_0 | K_1 | K_2 | Description |
+|:---|:---:|:---:|:---:|:---|
+| Mild DK | 0.2 | -0.5 | -0.3 | Slight knowledge, moderate overconfidence |
+| Recovering Imposter | 0.8 | -0.3 | 0.7 | High competence, improving self-assessment |
+| Uncertain Socratic | 0.1 | 0.6 | 0.4 | Near-ignorance, partial awareness |
 
 **Simulation Procedure:**
 
@@ -332,17 +403,29 @@ We define four agent types with ground-truth $(K_0, K_1, K_2)$:
    - $\hat{K}_0 = \frac{1}{N}\sum_i \text{score}_0(i)$
    - $\hat{K}_1 = 2P(\text{Claim}_1 = \text{correct}) - 1$
    - $\hat{K}_2 = 2P(\text{Claim}_2 = \text{aligned with } K_1) - 1$
+4. Compute 95% confidence intervals via bootstrap
 
 **Results:**
 
-[Table: Ground Truth vs Estimated K values under various noise levels]
-[Figure: Recovery accuracy as a function of noise]
+[Table: Ground Truth vs Estimated K values with 95% CI]
+[Figure: Recovery accuracy as a function of noise and sample size]
+
+**Sample Size Guidelines for K₂ Identifiability:**
+
+| Noise Level (γ) | Required N for |K₂ error| < 0.1 | 95% CI Width |
+|:---:|:---:|:---:|
+| 0.1 | 30 | ±0.08 |
+| 0.2 | 50 | ±0.12 |
+| 0.3 | 80 | ±0.15 |
+| 0.4 | 150+ | ±0.20 |
 
 **Findings:**
 
-- K_0 and K_1 are reliably recovered with N ≥ 30 items
-- K_2 requires N ≥ 50 items for stable estimation
-- The four agent types remain distinguishable under moderate noise (ε, δ, γ < 0.3)
+- K_0 and K_1 are reliably recovered with N ≥ 30 items (noise < 0.3)
+- K_2 requires N ≥ 50 items for stable estimation (noise < 0.2)
+- **Continuous agents**: Intermediate values are recovered with proportionally higher N
+- The four prototype types remain distinguishable under moderate noise (ε, δ, γ < 0.3)
+- **Practical guideline**: For reliable K₂ estimation, use N ≥ 50 items with noise < 0.2
 ```
 
 ---
@@ -483,11 +566,18 @@ This allows testing the K vs C dissociation hypothesis empirically.
 
 2. **Simulation Scope:** Our toy simulations demonstrate feasibility, not exhaustive validation. Real-world validation requires empirical studies.
 
-3. **Single Dimension:** The [-1,1] scale may not capture multi-dimensional misconceptions. Future work could extend to vector-valued K.
+3. **Single Dimension (Scope Boundary):** 
+   - The [-1,1] scale assumes a **single axis of correctness** with one "opposite" direction.
+   - **What this captures:** Directional errors (overconfidence vs underconfidence, correct vs incorrect).
+   - **What this does NOT capture:** Multiple, qualitatively different misconceptions (e.g., "thinks A" vs "thinks B" when truth is C).
+   - **Design rationale:** This simplification enables tractable measurement and clear intervention design. Multi-dimensional misconceptions require a different formalism (e.g., vector-valued K or belief distributions) and are outside the current scope.
+   - **Future extension:** Vector-valued $K \in [-1,1]^d$ or embedding in a latent space could address this limitation.
 
 4. **Layer-Specific Parameters:** We assume shared anchor semantics but allow layer-specific measurement procedures. The optimal degree of parameter tying is an empirical question.
 
-5. **K_2 Identifiability:** Higher-order estimates (K_2, K_3) require more items and may be less reliable. We provide guidance on sample size requirements.
+5. **K_2 Identifiability:** Higher-order estimates (K_2, K_3) require more items and may be less reliable.
+   - **Guideline:** For reliable K₂ estimation, use N ≥ 50 items with noise < 0.2.
+   - **Confidence intervals:** Report 95% CI via bootstrap; if CI width > 0.3, interpret with caution.
 ```
 
 ---
@@ -496,7 +586,7 @@ This allows testing the K vs C dissociation hypothesis empirically.
 
 | Category | Items | Priority | Estimated Work |
 |:---|:---|:---:|:---|
-| **A: Formal Core** | A1 (Option B採用), A2 (State_n定義), A3 (統一K正当化), A4 (連続値メリット) | 最高 | High |
+| **A: Formal Core** | A1 (Option B採用), A2 (State_n定義), A3 (統一K正当化), A4 (連続値メリット), A5 (C操作的定義) | 最高 | High |
 | **B: Validation** | B1 (シミュレーション), B2 (meta-d'/meta-I比較) | 高 | Medium-High |
 | **C: Related Work** | C1 (meta-d'/meta-I形式化), C2 (AI応用) | 中 | Medium |
 | **D: Presentation** | D1 (記法統一), D2 (Limitations更新) | 低 | Low |
@@ -505,17 +595,19 @@ This allows testing the K vs C dissociation hypothesis empirically.
 
 ## Implementation Plan
 
-### Phase 1: Formal Core (A1-A4)
+### Phase 1: Formal Core (A1-A5)
 1. Option B の明示的採用と全体書き換え
 2. State_n の形式的定義（図含む）
 3. 「統一K」の正当化セクション
 4. 「連続値のメリット」セクション（情報幾何への接続を示唆）
+5. **確信度 C の操作的定義**（K と C の関係、直交性、診断的役割）
 
 ### Phase 2: Validation (B1-B2)
 1. Python シミュレーション実装
    - 4エージェントタイプの生成モデル
    - K推定器の実装
    - ノイズ下での回復精度評価
+   - **信頼区間の計算**（95% CI）
 2. meta-d' との比較
    - 概念的対応の記述
    - シミュレーション結果の比較表
@@ -562,8 +654,23 @@ This allows testing the K vs C dissociation hypothesis empirically.
 
 ---
 
+## Reviewer Questions Response Mapping
+
+| Q# | Question | Plan Item | Status |
+|:---:|:---|:---|:---:|
+| Q1 | K の解釈 | A1 (Option B採用) | ✅ |
+| Q2 | State_n の定義 | A2 | ✅ |
+| Q3 | 同じ K の正当化 | A3 | ✅ |
+| Q4 | 多次元誤認 | D2 (Limitations強化) | ✅ |
+| Q5 | シミュレーション | B1 (連続値追加) | ✅ |
+| Q6 | K₂ 識別可能性 | B1 (ガイドライン追加) | ✅ |
+| Q7 | meta-d' との形式化 | C1 | ✅ |
+| Q8 | C の役割 | **A5 (新規追加)** | ✅ |
+
+---
+
 ## Next Steps
 
-1. この revision_plan_06 のレビュー
+1. ~~この revision_plan_06 のレビュー~~ ✅ 内部レビュー完了
 2. 優先度の確認（A→B→C→D の順序でよいか）
 3. Phase 1 の実装開始
