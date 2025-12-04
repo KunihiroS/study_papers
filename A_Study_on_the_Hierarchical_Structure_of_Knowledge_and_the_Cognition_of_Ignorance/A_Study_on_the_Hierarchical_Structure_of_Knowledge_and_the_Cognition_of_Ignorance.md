@@ -133,6 +133,51 @@ All $K^{(n)}$ share the same anchor constraints:
 
 This ensures cross-layer comparability while allowing distinct measurement procedures per layer.
 
+#### Unified Formalization via Embedding Maps
+
+To resolve the apparent type ambiguity between $K^{(n)}: \mathcal{S}_n \to [-1, 1]$ and the recursive $K: [-1, 1] \to [-1, 1]$, we introduce **embedding maps** that convert categorical states to the continuous scale.
+
+**Definition (Embedding Maps):**
+
+Each layer has an embedding map $g_n$ that converts categorical states to the continuous scale:
+
+$$g_n: \mathcal{S}_n \to [-1, 1]$$
+
+Where:
+- $g_0: \{\text{correct}, \text{incorrect}, \text{absent}\} \to \{1, -1, 0\}$
+- $g_1: \{\text{aligned}, \text{misaligned}, \text{uncertain}\} \to \{1, -1, 0\}$
+- $g_n: \{\text{aligned}, \text{misaligned}, \text{uncertain}\} \to \{1, -1, 0\}$ for $n \geq 1$
+
+**State$_0$ Canonical Mapping:**
+
+| $f_0$ Output | $g_0$ Value | Interpretation |
+|:---|:---:|:---|
+| correct | 1 | Response matches reference |
+| incorrect | -1 | Response contradicts reference |
+| absent | 0 | No response / "I don't know" |
+
+**Clarification:** "Ignorance" in the sense of $K_0 = 0$ means **absence of determinate stance**, not "being wrong." A wrong answer is a **misconception** ($K_0 = -1$), not ignorance.
+
+**Definition (Unified Observation Scorer):**
+
+After embedding, a single scorer $\hat{K}$ operates on the embedded space:
+
+$$\hat{K}: [-1, 1] \to [-1, 1]$$
+
+With the identity mapping for prototypical anchors: $\hat{K}(1) = 1$, $\hat{K}(0) = 0$, $\hat{K}(-1) = -1$.
+
+**Composition:**
+
+$$K_n(x) = \hat{K}(g_n(\text{State}_n(x)))$$
+
+**Notational Convention (Unified):**
+
+- $K_n$: The full pipeline (embedding + scoring) for layer $n$
+- $K^{(n)}$: Shorthand for the same, emphasizing layer-specificity
+- $K(K(x))$: Informal shorthand for $K_1(x)$, **not** numerical composition
+
+This resolves the type ambiguity: $K$ is **not** applied to its own numerical output, but to the embedded representation of a distinct state object.
+
 #### Entry and Recursive Mappings
 
 **1. Entry Mapping (Layer 0):**
@@ -224,8 +269,9 @@ Claim_2(x) ----------------------> f_2 --> State_2 --> K^(2) --> K_2
 - **State$_2$ (meta-metacognitive state)**: The alignment between the respondent's meta-metacognitive claim and their actual State$_1$.
 
 **Example:**
-- Respondent answers incorrectly → State$_0$ = "ignorance" → $K_0 = 0$
-- Respondent claims "I know" → State$_1$ = "misalignment" → $K_1 = -1$
+- Respondent answers incorrectly → State$_0$ = "incorrect" → $K_0 = -1$ (misconception)
+- Respondent says "I don't know" → State$_0$ = "absent" → $K_0 = 0$ (ignorance)
+- Respondent claims "I know" (when $K_0 = -1$) → State$_1$ = "misalignment" → $K_1 = -1$
 - Respondent claims "My self-assessment is accurate" → State$_2$ = "misalignment" → $K_2 = -1$
 
 **Critical Clarification:**
@@ -335,11 +381,25 @@ Each $K_n$ observes a **different object** (State$_n$). The axioms apply to each
 
 State$_0 \neq$ State$_1$. They are different objects. The axiom $K(0) = 0$ applies to State$_0$, not to State$_1$.
 
-**Monotonicity:**
+**Monotonicity (Revised):**
 
-Monotonicity applies **within each layer**: if State $>$ State', then $K$(State) $\geq$ $K$(State').
+**Definition (Order on Embedded States):**
 
-It does NOT constrain relationships **across layers** (e.g., $K_0$ vs $K_1$).
+For embedded values $k, k' \in [-1, 1]$, the natural order $k > k'$ applies.
+
+**Monotonicity Axiom:**
+
+For any scoring function $\hat{K}$:
+
+$$\text{If } g_n(\text{State}_n) > g_n(\text{State}'_n), \text{ then } K_n \geq K'_n$$
+
+This is trivially satisfied when $\hat{K}$ is the identity on anchors and monotonic elsewhere.
+
+**Practical Interpretation:**
+
+Monotonicity ensures that "more aligned" states receive higher $K$ values. This does not constrain the shape of $\hat{K}$ beyond anchor preservation.
+
+Monotonicity applies **within each layer** only. It does NOT constrain relationships **across layers** (e.g., $K_0$ vs $K_1$).
 
 **Boundedness:**
 
@@ -468,6 +528,50 @@ The third layer ($K_2$) enables modeling of **metacognitive interventions** and 
 - $K_2 = -1$ with $K_1 = -1$: Subject does not recognize their failure → **resistant to intervention**
 
 Higher-order reflection ($K_2$, $K_3$, ...) provides diagnostic power for identifying when and how metacognitive correction is possible.
+
+### Continuous-to-Categorical Mapping
+
+The 27-pattern taxonomy uses prototypical anchors $\{-1, 0, 1\}$. For continuous $K$ values, we define thresholds:
+
+| Continuous Range | Categorical Label |
+|:---:|:---:|
+| $K \in [-1, -0.33)$ | $-1$ (Misconception/Misaligned) |
+| $K \in [-0.33, 0.33]$ | $0$ (Ignorance/Uncertain) |
+| $K \in (0.33, 1]$ | $1$ (Knowledge/Aligned) |
+
+**Rationale for ±0.33 Default**:
+
+1. **Symmetric Tercile**: Divides $[-1, 1]$ into three equal-width regions
+2. **Neutral Zone**: The central region captures "uncertain/indeterminate" states
+3. **Statistical Interpretation**: Under uniform prior, each category has equal probability
+4. **Robustness**: Not sensitive to small estimation errors near boundaries
+
+**Alternative Thresholds**:
+
+| Approach | Thresholds | Use Case |
+|:---|:---|:---|
+| **Tercile (default)** | ±0.33 | Balanced classification |
+| **Quartile** | ±0.5 | Stricter knowledge/misconception criteria |
+| **ROC-optimized** | Data-driven | Maximize classification accuracy |
+| **Domain-specific** | Expert-defined | Match substantive theory |
+
+**Recommendation**:
+- Use ±0.33 as default for comparability across studies
+- Report sensitivity analysis with alternative thresholds
+- For intervention design, consider ROC-optimized thresholds
+
+**Reporting Recommendation**:
+- Report continuous $K$ values for statistical analysis
+- Use categorical labels for interpretation and intervention design
+- Always include confidence intervals from estimation
+
+**Example**:
+
+$$K_0 = 0.7, K_1 = -0.5, K_2 = 0.2$$
+
+Categorical: $K_0 = 1, K_1 = -1, K_2 = 0$ → "Knowing Misconception, uncertain about meta"
+
+This enables both fine-grained analysis and interpretable classification.
 
 ### Connection with Metacognition Research
 
@@ -616,6 +720,112 @@ All intermediate values in $(-1, 0)$ and $(0, 1)$ represent **graded mixtures** 
 3. **Aggregation → Continuous embedding**: Average prototype-valued $K(x_i) \in \{-1, 0, 1\}$ across multiple items or contexts to obtain a continuous summary in $[-1, 1]$.
 
 Conceptually, the **continuum $[-1, 1]$ is primary**; the trichotomy $\{-1, 0, 1\}$ is a convenient way to name salient regions on this line, not a separate codomain. Experimental designs may choose discrete or continuous elicitation, but in all cases the resulting data are interpreted as points (or distributions) on the same underlying scale $[-1, 1]$.
+
+### Estimation Methods for K Values
+
+The $K$ framework specifies **what to measure** (epistemic state coordinates); for **how to estimate**, we adopt established psychometric and signal-detection methods as "plug-in" engines. This separation preserves our conceptual contribution while leveraging validated estimation machinery.
+
+#### $K_0$ Estimation (First-Order Epistemic State)
+
+**Method**: Item Response Theory (2-Parameter Logistic Model)
+
+$$P(\text{correct} | \theta_s, a_i, b_i) = \frac{1}{1 + e^{-a_i(\theta_s - b_i)}}$$
+
+**Mapping to $K_0$**:
+
+$$K_0 = 2 \cdot \Phi(\theta_s) - 1$$
+
+Where $\Phi$ is the standard normal CDF, ensuring $K_0 \in [-1, 1]$.
+
+**Misconception Detection**:
+- High confidence + incorrect → $K_0 = -1$
+- Operationalized via Confidence-Accuracy calibration error
+
+#### $K_1$ Estimation (Metacognitive Alignment)
+
+**Method A**: Phi Coefficient
+
+$$\phi = \frac{n_{11} n_{00} - n_{10} n_{01}}{\sqrt{(n_{11}+n_{10})(n_{01}+n_{00})(n_{11}+n_{01})(n_{10}+n_{00})}}$$
+
+**Handling 3-Value State$_0$**:
+
+State$_0$ has three outcomes {correct, incorrect, absent}. For Phi (2×2), we binarize:
+
+| Binarization Strategy | Positive ($K_0 > 0$) | Negative ($K_0 \leq 0$) |
+|:---|:---|:---|
+| **Strategy A (Strict)** | correct only | incorrect + absent |
+| **Strategy B (Lenient)** | correct + absent | incorrect only |
+| **Strategy C (Exclude)** | correct | incorrect (exclude absent) |
+
+**Recommended**: Strategy A (Strict) — aligns with the interpretation that "I know" should predict correctness, not just absence of misconception.
+
+**Cell Definitions (Strategy A)**:
+- $n_{11}$: correct + "I know"
+- $n_{00}$: (incorrect OR absent) + "I don't know"
+- $n_{10}$: correct + "I don't know"
+- $n_{01}$: (incorrect OR absent) + "I know"
+
+**Mapping**: $K_1 = \phi$ (already in $[-1, 1]$)
+
+**Interpretation**:
+- $\phi = 1$: Perfect metacognitive alignment
+- $\phi = 0$: No relationship (random)
+- $\phi = -1$: Perfect anti-alignment (systematic miscalibration)
+
+**Method B**: meta-d' Ratio (Signal Detection Theory)
+
+$$K_1 = f\left(\frac{\text{meta-d}'}{d'}\right)$$
+
+Where:
+- meta-d' = metacognitive sensitivity (Maniscalco & Lau, 2012)
+- $d'$ = first-order sensitivity
+- $f$: bounding function to ensure output in $[-1, 1]$
+
+**Bounding Function Options**:
+
+| Function | Formula | Properties |
+|:---|:---|:---|
+| **tanh** (default) | $\tanh(r)$ | Smooth, symmetric, saturates at ±1 |
+| **Scaled CDF** | $2\Phi(r) - 1$ | Probabilistic interpretation |
+| **Clipped linear** | $\max(-1, \min(1, r))$ | Simple, preserves scale near 0 |
+
+**Rationale for tanh (default)**:
+- Smooth monotonic transformation
+- Natural saturation at extreme values
+- Widely used in neural network literature
+- **Alternative-agnostic**: Results qualitatively similar across choices
+
+**Sensitivity Analysis Recommendation**: Report results with at least two bounding functions to confirm robustness.
+
+**Choice Guidance**:
+- Use Phi for simplicity and interpretability (no bounding needed)
+- Use meta-d'/d' for SDT-compatible analyses (with explicit bounding function)
+
+#### $K_2$ Estimation (Higher-Order Alignment)
+
+**Method**: Hierarchical Bayesian GLM (cf. HiBayES, Fleming & Daw, 2017)
+
+$$\text{Claim}_2 | \text{State}_1 \sim \text{Bernoulli}(\sigma(\alpha_s + \beta_i + \gamma_{s,i}))$$
+
+**Advantages**:
+- Stable estimation with $N \geq 20$ items
+- Provides 95% credible intervals
+- Decomposes subject and item effects
+
+**Mapping**:
+
+$$K_2 = 2 \cdot P(\text{Claim}_2 \text{ matches } \text{State}_1) - 1$$
+
+Estimated from posterior predictive distribution.
+
+#### Summary Table: Estimation Methods
+
+| Layer | Observable | Method | Output |
+|:---:|:---|:---|:---:|
+| $K_0$ | Response vs Reference | IRT (2PL) | $[-1, 1]$ |
+| $K_1$ | Claim$_1$ vs State$_0$ | Phi / meta-d'/d' | $[-1, 1]$ |
+| $K_2$ | Claim$_2$ vs State$_1$ | Hierarchical Bayes | $[-1, 1]$ |
+| $C$ | Self-reported confidence | Direct elicitation | $[0, 1]$ |
 
 ### Continuous Estimation of $K(K(x))$
 
@@ -885,9 +1095,58 @@ Our $K$ can be viewed as a **graded, psychologically realistic** extension that:
 
 Whether $K$ is idempotent ($K(K(x)) = K(x)$ for accurate metacognizers) or contractive (higher-order reflection converges) is an **empirical question** that our framework can accommodate but does not presuppose.
 
+### Positioning Among Related Frameworks
+
+Before comparing specific metrics, we clarify the **role of the $K$ framework** relative to existing approaches:
+
+| Framework | Role | Relationship to $K$ |
+|:---|:---|:---|
+| **meta-d'** (Maniscalco & Lau) | Aggregate sensitivity metric | $K$ provides per-item classification |
+| **meta-I** (Dayan, 2023) | Information-theoretic sensitivity | $K$ adds direction and recursion |
+| **HiBayES** (Fleming & Daw, 2017) | Hierarchical estimation engine | $K$ defines what to estimate |
+| **IRT** (psychometrics) | Latent trait estimation | $K_0$ uses IRT as estimation engine |
+| **Calibration metrics** (Brier, ECE) | Confidence-accuracy alignment | $K$ adds structural classification |
+
+**Key Distinction**:
+
+These frameworks address **how well** metacognition works (sensitivity, efficiency).
+The $K$ framework addresses **what type** of metacognitive state exists (classification, coordinates).
+
+**Analogy**:
+- meta-d' / meta-I = **Thermometer** (measures metacognitive temperature)
+- $K$ = **Weather map** (classifies patterns, guides intervention)
+
+**Integration Potential**:
+
+The $K$ framework serves as a **common coordinate system** that unifies:
+- Behavioral assessments (response-claim alignment)
+- Signal-detection metrics (meta-d', AUROC)
+- Hierarchical estimation (HiBayES)
+- Calibration analysis (Brier, ECE)
+
+This is not "reinventing the wheel" but **designing the axle** that connects existing wheels.
+
 ### Metacognitive Sensitivity: meta-d'
 
 Maniscalco and Lau (2012) developed the *meta-d'* framework for measuring metacognitive sensitivity—the ability to discriminate between correct and incorrect responses via confidence ratings.
+
+**Formal Correspondence with Type-2 SDT:**
+
+In Type-2 SDT, subjects discriminate their own correct from incorrect responses.
+
+| SDT Quantity | $K$ Framework Equivalent |
+|:---|:---|
+| Type-1 d' (sensitivity) | Derived from $K_0$ distribution |
+| Type-2 Hit Rate | $P(\text{"I know"} | K_0 = 1)$ |
+| Type-2 FA Rate | $P(\text{"I know"} | K_0 \leq 0)$ |
+| meta-d' | Related to $K_1$ via: $K_1 \approx \tanh(\text{meta-d}'/d')$ |
+
+**What $K$ Adds Beyond meta-d'**:
+
+1. **Signed direction**: meta-d' is unsigned; $K_1$ distinguishes overconfidence ($-1$) from underconfidence
+2. **Per-item granularity**: meta-d' is aggregate; $K_1$ can be computed per item
+3. **Explicit ignorance**: "I don't know" is modeled as $K_0 = 0$, not low confidence
+4. **Recursive hierarchy**: $K_2, K_3, \ldots$ extend beyond Type-2
 
 **Comparison:**
 
@@ -1088,6 +1347,43 @@ This framework is a **conceptual scaffold** for organizing metacognitive phenome
 8. **Analogical Type Theory:** The type-theoretic justification is analogical rather than formally constructed. A full domain-theoretic or typed lambda-calculus treatment is beyond the current scope.
 
 9. **LLM Operationalization Incomplete:** Applying $K_n$ to LLMs requires addressing question-side shortcuts and model-side signals. Specific methods (conformal coverage, debate protocols) are suggested but not developed here.
+
+### Validation Roadmap
+
+This paper establishes the **conceptual framework**; validation is planned for follow-up work. We present a staged validation program:
+
+#### Phase 1: Reliability
+
+| Type | Method | Target |
+|:---|:---|:---|
+| **Test-Retest** | 2-week interval, same items | $r > 0.7$ |
+| **Internal Consistency** | Cronbach's α across items | $\alpha > 0.8$ |
+| **Split-Half** | Odd-even item split | $r > 0.75$ |
+
+#### Phase 2: Convergent Validity
+
+| $K$ Measure | Comparison Metric | Expected Correlation |
+|:---|:---|:---|
+| $K_1$ | meta-d'/d' | $r > 0.6$ (positive) |
+| $K_1$ | Type-2 AUROC | $r > 0.5$ (positive) |
+| $K_0$ | IRT ability $\theta$ | $r > 0.8$ (positive) |
+
+#### Phase 3: Discriminant Validity
+
+| $K$ Measure | Comparison | Expected |
+|:---|:---|:---|
+| $K_1$ | Raw confidence $C$ | $r < 0.3$ (low) |
+| $K_0$ | Response time | $r < 0.2$ (low) |
+
+#### Phase 4: Predictive Validity
+
+| Predictor | Outcome | Hypothesis |
+|:---|:---|:---|
+| $K_1 = 1$ (Socratic) | Help-seeking | Higher |
+| $K_2 = 1$ | Intervention responsiveness | Higher |
+| $K_1 = -1$ (DK) | Overconfident errors | Higher |
+
+**Acknowledgment**: We recognize that this validation program is **essential** for empirical adoption. The current paper's contribution is the **conceptual and formal foundation** upon which such validation can be built.
 
 ### Future Directions
 
