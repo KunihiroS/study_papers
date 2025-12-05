@@ -538,6 +538,25 @@ Given the deterministic nature of $f_n$ and $g_n$, inter-rater agreement should 
 - Ambiguous claim interpretation (refine claim vocabulary)
 - Reference disagreement (clarify ground truth designation)
 
+#### Split-Half Reliability
+
+**Concern:** Is $K_n$ estimation internally consistent across item subsets?
+
+**Protocol:**
+1. Randomly split items into two halves (A and B)
+2. Compute $K_n^{(A)}$ and $K_n^{(B)}$ separately
+3. Correlate the two estimates; apply Spearman-Brown correction
+
+**Expected Results:**
+
+| Layer | Expected Split-Half $r$ | Interpretation |
+|:------|:------------------------|:---------------|
+| $K_0$ | 0.7-0.9 | High internal consistency |
+| $K_1$ | 0.5-0.8 | Moderate; depends on item heterogeneity |
+| $K_2$ | 0.4-0.7 | Lower; meta-meta states are more variable |
+
+**Guideline:** Spearman-Brown corrected $r > 0.7$ indicates acceptable internal consistency.
+
 #### Measurement Invariance
 
 **Concern:** Do $K_n$ scores have the same meaning across different populations or item sets?
@@ -550,6 +569,30 @@ Given the deterministic nature of $f_n$ and $g_n$, inter-rater agreement should 
 **Interpretation:**
 - Equivalent $\beta$ across groups → Scores are comparable
 - Different $\beta$ → Group-specific calibration needed; interpret within-group only
+
+#### Cross-Study Comparability
+
+**Concern:** Can $K_n$ scores from different studies be meaningfully compared?
+
+**Requirements for Comparability:**
+
+| Requirement | Description | Verification |
+|:------------|:------------|:-------------|
+| **Same $f_n$ specification** | Identical claim vocabulary and alignment rules | Document and share protocol |
+| **Comparable reference standards** | Similar ground-truth designation criteria | Report reference source |
+| **Equivalent $\hat{K}$ parameterization** | Same link function and $\beta$ | Fix $\beta = 1$ or anchor to common scale |
+
+**Recommended Practice:**
+
+1. **Protocol registration**: Pre-specify $f_n$, $g_n$, and $\hat{K}$ before data collection
+2. **Anchor items**: Include common items across studies for calibration
+3. **Report uncertainty**: Provide confidence intervals for $K_n$ estimates
+
+**When Comparability Fails:**
+
+If studies use different references or $f_n$ specifications, direct $K_n$ comparison is invalid. Instead:
+- Report within-study patterns (e.g., proportion of Dunning-Kruger patterns)
+- Compare relative rankings, not absolute $K_n$ values
 ```
 
 ---
@@ -616,6 +659,59 @@ For comprehensive metacognitive assessment, report:
 This joint profile provides a complete picture: $K_n$ for item-level structure, aggregate metrics for overall performance.
 ```
 
+### 7.2 C-K Joint Model: Handling Confidence-Knowledge Interaction
+
+**対象箇所**: 「Introducing Confidence: C」セクションの拡張、または新規サブセクション
+
+**追加内容**:
+
+```markdown
+### The C-K Joint Model: Empirical Handling of Confidence-Knowledge Interaction
+
+**The Problem:**
+
+Confidence ($C$) and epistemic state ($K$) are conceptually orthogonal, but empirically correlated. How should we handle cases like:
+- **Dunning-Kruger**: $K_1 = -1$ (miscalibrated) with $C = \text{high}$
+- **Imposter Syndrome**: $K_1 = -1$ (miscalibrated) with $C = \text{low}$
+
+**Proposed Joint Model:**
+
+We model the joint distribution of $(K_n, C)$ as a bivariate structure:
+
+$$P(K_n, C) = P(K_n) \cdot P(C \mid K_n)$$
+
+where:
+- $P(K_n)$: Marginal distribution of epistemic alignment (from MAT protocol)
+- $P(C \mid K_n)$: Conditional distribution of confidence given alignment
+
+**Operationalization:**
+
+| $K_1$ | Expected $C$ Pattern | Interpretation |
+|:------|:--------------------|:---------------|
+| $+1$ (calibrated) | $C$ correlates with $K_0$ | Confidence tracks knowledge |
+| $0$ (uncertain) | $C$ near midpoint | Appropriate uncertainty |
+| $-1$ (miscalibrated) | $C$ anti-correlates with $K_0$ | Confidence misleads |
+
+**Dunning-Kruger Analysis:**
+
+For $K_1 = -1$ with high $C$:
+1. **Observed**: Subject claims "I know" ($C$ high) when $K_0 = 0$ (ignorant)
+2. **Classification**: Dunning-Kruger pattern (#17 in taxonomy)
+3. **Joint score**: Report $(K_0, K_1, K_2, C)$ as a 4-tuple
+4. **Intervention implication**: Target $C$ calibration, not $K_0$ directly
+
+**Empirical Protocol:**
+
+1. Collect $(K_0, K_1, K_2, C)$ for each item
+2. Compute conditional statistics: $E[C \mid K_1 = k]$ for $k \in \{-1, 0, +1\}$
+3. Test independence: $H_0$: $C \perp K_1$ vs $H_1$: $C \not\perp K_1$
+4. Report calibration slope: $\beta = \frac{d E[C]}{d K_1}$ (expected positive for well-calibrated subjects)
+
+**Scope Boundary:**
+
+Full causal modeling of the $C \to K$ or $K \to C$ relationship requires longitudinal or experimental designs beyond this framework's scope.
+```
+
 ---
 
 ## Phase 8: AI/LLM Metacognition との接続（Optional）
@@ -639,13 +735,18 @@ The K framework extends naturally to artificial systems:
 
 #### Connection to Recent Research
 
+*Note: Right-column descriptions are interpretations of these works within the K framework, not claims made by the original authors.*
+
 | Research Area | K Framework Contribution |
 |:--------------|:------------------------|
-| **Human-AI metacognition** (Fernandes et al., 2024; arXiv:2409.16708) | $K_1$ explains why Dunning-Kruger effect disappears with AI assistance; AI "levels" metacognitive accuracy |
-| **LLM uncertainty communication** (Steyvers et al., 2025; arXiv:2510.05126) | Fine-tuning improves LLM calibration/discrimination; $K_1$ captures directional (over/under-confidence) patterns that ECE misses |
+| **Human-AI metacognition** (Fernandes et al., 2024; arXiv:2409.16708) | $K_1$ patterns provide a natural way to describe why the Dunning-Kruger effect disappears with AI assistance; AI "levels" metacognitive accuracy |
+| **LLM uncertainty communication** (Steyvers et al., 2025; arXiv:2510.05126) | Fine-tuning improves LLM calibration/discrimination; $K_1$ highlights directional (over/under-confidence) patterns that scalar metrics like ECE cannot fully characterize |
 | **Latent knowledge probing** (Burns et al., 2022; arXiv:2212.03827, ICLR 2023) | Probing internal activations reveals what LLMs "know" vs "say"; potential alternative to verbalized $g_0$ |
 | **LLM metacognitive capacity** (Li et al., 2025; arXiv:2505.13763) | Neurofeedback paradigm quantifies LLM self-monitoring; suggests "metacognitive space" is low-dimensional |
-| **Human-AI teaming** | Match human $K_n$ patterns with AI $K_n$ for optimal collaboration |
+| **VLM uncertainty estimation** (Lin et al., 2025; arXiv:2511.22019) | Post-hoc probabilistic embeddings for error detection; one concrete operational choice for $g_n/\hat{K}$ in vision-language settings |
+| **Probabilistic VLM embeddings** (Venkataramanan et al., 2025; arXiv:2505.05163, UAI 2025) | GPLVM-based uncertainty calibration; aligns with Option B's probabilistic $K_n$ estimation |
+| **Two-level metacognitive architecture** (Li et al., 2025; arXiv:2511.23262) | Meta-level/object-level separation mirrors $K_0$/$K_1$ layer structure; can serve as a testbed for probing whether meta-reasoning improves $K_1$-type behaviour without necessarily improving $K_0$ |
+| **Human-AI teaming** | Match human $K_n$ patterns with AI $K_n$ for improved collaboration |
 
 **Scope Boundary:** Detailed LLM operationalization and experiments are marked for future work.
 ```
@@ -694,8 +795,10 @@ The K framework extends naturally to artificial systems:
 | 3.1 | Objectivity as Repeatability | **新規追加** | What This Model Does | **必須** | T2, Q4 |
 | 4.1 | 27パターン完全表 | **新規追加** | Complete Taxonomy | **必須** | T3, Q5 |
 | 5.1 | S_n/f_n 精密仕様 | **新規追加** | Layered Observation | **必須** | S1, S2, Q2 |
-| 6.1 | Reliability Guidelines | **新規追加** | Validation Criteria | **必須** | V1, V2 |
+| 6.1 | Reliability Guidelines (test-retest, inter-rater, split-half) | **新規追加** | Validation Criteria | **必須** | V1, V2 |
+| 6.2 | Cross-Study Comparability | **新規追加** | Validation Criteria | **必須** | Line 36 |
 | 7.1 | Metric Correspondence | **新規追加** | Related Work | **必須** | R1, Q6 |
+| 7.2 | C-K Joint Model | **新規追加** | Introducing Confidence | **必須** | Q7 |
 | 8 | AI/LLM 接続 | **新規追加** | Future Directions | Optional | R2, R3 |
 | 9 | プレゼンテーション改善 | 修正 | 全体 | Medium | P1 |
 
@@ -711,7 +814,7 @@ The K framework extends naturally to artificial systems:
 | Q4 | 客観性と相対主義の調和 | Phase 3.1 | Objectivity as Repeatability |
 | Q5 | 27パターン表 | Phase 4.1 | Complete 27-pattern table |
 | Q6 | K₁ と meta-d', AUC, ECE の関係 | Phase 7.1 | Correspondence table |
-| Q7 | C と K の共同モデル | **既存** | 既に Measurement Protocol で対応済み |
+| Q7 | C と K の共同モデル | Phase 7.2 | C-K Joint Model 新規追加 |
 | Q8 | コード付きサンプルデータ | **Future Work** | 明示的に scope 外 |
 
 ---
@@ -729,9 +832,11 @@ Phase 2 (中間値セマンティクス)
     ↓
 Phase 3 (客観性定義)
     ↓
-Phase 6 (信頼性ガイダンス)
+Phase 6 (信頼性ガイダンス + Cross-Study Comparability)
     ↓
-Phase 7 (メトリクス対応)
+Phase 7.1 (メトリクス対応)
+    ↓
+Phase 7.2 (C-K Joint Model)
     ↓
 Phase 9 (プレゼンテーション)
     ↓
@@ -750,8 +855,10 @@ Phase 8 (AI/LLM - Optional)
 | 「中間値にセマンティクスがない」 | Latent variable model で原理的解釈を提供 |
 | 「27パターン表がない」 | 完全な表と導出論理を提示 |
 | 「S_n, f_n が高レベル」 | 完全な仕様表を提供 |
-| 「信頼性・妥当性のガイダンスがない」 | 具体的プロトコルを提示 |
+| 「信頼性・妥当性のガイダンスがない」 | 具体的プロトコル (test-retest, inter-rater, split-half) を提示 |
+| 「cross-study comparability を支えない」 | Cross-Study Comparability ガイドラインを提供 |
 | 「既存メトリクスとの接続が不明」 | 対応表と翻訳式を提供 |
+| 「C と K の joint model がない」 | C-K Joint Model を定式化 |
 
 ### 残存する批判（意図的に対応しない）
 
