@@ -1610,7 +1610,7 @@ This paper establishes the **conceptual framework**; validation is planned for f
 | Type | Method | Target |
 |:---|:---|:---|
 | **Test-Retest** | 2-week interval, same items | $r > 0.7$ |
-| **Internal Consistency** | Cronbach's α across items | $\alpha > 0.8$ |
+| **Internal Consistency** | Cronbach's $\alpha$ across items | $\alpha > 0.8$ |
 | **Split-Half** | Odd-even item split | $r > 0.75$ |
 
 #### Phase 2: Convergent Validity
