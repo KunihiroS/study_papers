@@ -11,9 +11,11 @@
 
 ---
 
-## レビュワー批判の検証結果
+## レビュワー批判の検証結果（著者チーム内参照用）
 
-### ✅ 論文に既に含まれている（レビュワーの見落とし）
+> **注**: このセクションは論文への改訂項目ではなく、Phase 4 の優先度判断根拠として記載。
+
+### ✅ 論文に既に含まれている
 
 レビュワーは「The paper under-cites established metacognitive measurement frameworks: type-2 signal detection theory, meta-d′ (Maniscalco & Lau)...」と批判したが、**これは誤りである**。
 
@@ -127,7 +129,22 @@ The type-theoretic argument shows that recursive self-reference is *conceptually
 - The "recursion" is in the *conceptual structure*, not in *numerical composition*
 
 The symbolic $K(K(x))$ and formal $K_1(x)$ are thus **two views of the same phenomenon**: one emphasizing philosophical depth, the other enabling mathematical precision.
+
+**Note on Self-Reference (Revised from Fixed-Point Section):**
+
+The recursive structure $K(K(x))$ has conceptual parallels in formal systems:
+- **Lambda Calculus**: Self-application via $\lambda x. x x$
+- **Recursive Types**: $\mu \alpha. \alpha \to \alpha$
+
+We invoke these as **analogies** for conceptual coherence, not as formal constructions. A full categorical treatment (e.g., via Lawvere's fixed-point theorem) would require:
+- Defining a category with $[-1, 1]$ as an object
+- Constructing appropriate morphisms
+- Proving the existence of fixed points
+
+Such formalization is beyond the current scope. The symbolic $K(K(x))$ is justified as *conceptually coherent* by these analogies, while formal operations use the layer-indexed $K_n$.
 ```
+
+**また、現在の Fixed-Point Combinator への言及（Line 338付近）を削除または上記に置き換える**
 
 ### 1.3 既存の「Notational Convention」との統合
 
@@ -188,16 +205,14 @@ Where $\epsilon_n$ is the layer-specific error rate.
 - Use **probabilistic** extension for empirical work with measurement noise
 - Always report which interpretation is assumed
 
-**Identifiability Conditions:**
+**Identifiability Conditions (Summary):**
 
-For $K_n$ to be identifiable from observed data:
+> **詳細は Phase 2.3 に記載。ここでは必要条件のみ列挙。**
 
 1. **Reference availability**: Ground truth or expert consensus must exist for State$_0$
-2. **Claim elicitation**: Subjects must provide metacognitive claims (Claim$_1$, Claim$_2$, ...)
+2. **Claim elicitation**: Subjects must provide metacognitive claims
 3. **Independence**: Claims at different layers are elicited independently
-4. **Sufficient items**: $N \geq 20$ items for stable $K_1$; $N \geq 50$ for $K_2$
-
-Under these conditions, $K_n$ is identifiable up to the assumed error model.
+4. **Sufficient items**: Layer-specific sample size requirements (see Phase 2.3)
 ```
 
 ### 2.2 閾値 ±0.33 の正当化強化
@@ -536,18 +551,6 @@ Such formalization is beyond the current scope. The symbolic $K(K(x))$ is justif
 | 6 | C と K_1 の関係? | 既存 K-C節 | 既存内容で十分（MetaFaith言及は optional） |
 | 7 | Teachable moment → intervention? | Phase 3.1 | Observation vs Intervention 節で明確化 |
 
-### 5.2 レビュワーへの反論ポイント
-
-**Related Work 批判への反論**:
-
-> レビュワー: "The paper under-cites established metacognitive measurement frameworks: type-2 signal detection theory, meta-d′ (Maniscalco & Lau), ROC-based sensitivity, and calibration/overconfidence literatures."
-
-**反論**: 
-- Section 9「Positioning Among Related Frameworks」に meta-d'、meta-I、Type-2 SDT、Calibration metrics の詳細な比較が既に含まれている
-- Maniscalco & Lau (2012) との形式的対応関係を表形式で提示済み
-- Dayan (2023) の meta-I との比較を専用サブセクションで展開済み
-- レビュワーがこれらを見落としたか、旧版をレビューした可能性
-
 ---
 
 ## 実装順序
@@ -606,7 +609,5 @@ Such formalization is beyond the current scope. The symbolic $K(K(x))$ is justif
 5. **D1/D2 解決**: 観測/介入の関係と多次元misconceptionが明確化される
 
 **レビュアーの「数理モデルがない」という批判に対し**、これらの追加により「形式的操作は $K_n$ で行い、エラーモデルと識別可能性条件を明示している」と反論できる。
-
-**レビュワーの「Related Work 不足」批判に対し**、論文に既に meta-d', meta-I, Type-2 SDT, Calibration metrics の詳細な比較が含まれていることを指摘できる。最新AI研究（Li & Steyvers等）への言及は optional であり、学術的必須要件ではない。
 
 **シミュレーション実装前に**、この数理的基盤を固めることで、後戻りのリスクを最小化する。
