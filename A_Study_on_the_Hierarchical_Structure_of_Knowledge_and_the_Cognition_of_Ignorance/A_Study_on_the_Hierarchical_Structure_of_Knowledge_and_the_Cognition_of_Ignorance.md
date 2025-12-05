@@ -133,6 +133,47 @@ All $K^{(n)}$ share the same anchor constraints:
 
 This ensures cross-layer comparability while allowing distinct measurement procedures per layer.
 
+#### Dual Notation System: Symbolic vs Formal
+
+This paper employs two complementary notational systems that serve distinct purposes:
+
+**1. Symbolic Notation: $K(K(K(x)))$**
+
+| Aspect | Description |
+|:---|:---|
+| **Purpose** | Philosophical intuition and rhetorical clarity |
+| **Meaning** | The recursive structure of "not knowing that one does not know" |
+| **Origin** | The paper's foundational insight: ignorance of ignorance of ignorance |
+| **Usage** | Introduction, motivation, conceptual discussion, examples |
+| **Status** | Evocative shorthand, NOT operational definition |
+
+**2. Formal Notation: $K_n(x)$**
+
+| Aspect | Description |
+|:---|:---|
+| **Purpose** | Mathematical rigor and operational precision |
+| **Definition** | $K_n(x) := K^{(n)}(\text{State}_n(x)) = \hat{K}(g_n(\text{State}_n(x)))$ |
+| **Usage** | Definitions, axioms, measurement protocols, empirical analysis |
+| **Status** | Operational definition for all formal purposes |
+
+**Critical Distinction:**
+
+The symbolic notation $K(K(x))$ is **NOT** numerical composition (i.e., $K$ applied to its own output value). It is a **rhetorical device** representing the philosophical insight that the same epistemic question ("Do I know?") applies recursively at every level of reflection.
+
+$$K(K(x)) \not\equiv K(K_0(x)) \quad \text{(NOT numerical composition)}$$
+$$K(K(x)) \equiv K_1(x) \quad \text{(notational equivalence only)}$$
+
+**For all formal purposes—definitions, proofs, measurement, analysis—use $K_n(x)$ exclusively.**
+
+**Why Both?**
+
+- **$K(K(K(x)))$** captures the *philosophical essence*: the infinite regress of self-reflection
+- **$K_n(x)$** enables *mathematical precision*: layer-specific observation with distinct objects
+
+This dual system parallels established practice:
+- Physics: $E = mc^2$ (iconic) vs tensor formulation (operational)
+- Calculus: $\frac{dy}{dx}$ (Leibniz, intuitive) vs $\lim_{h \to 0}$ (rigorous)
+
 #### Unified Formalization via Embedding Maps
 
 To resolve the apparent type ambiguity between $K^{(n)}: \mathcal{S}_n \to [-1, 1]$ and the recursive $K: [-1, 1] \to [-1, 1]$, we introduce **embedding maps** that convert categorical states to the continuous scale.
@@ -177,6 +218,48 @@ $$K_n(x) = \hat{K}(g_n(\text{State}_n(x)))$$
 - $K(K(x))$: Informal shorthand for $K_1(x)$, **not** numerical composition
 
 This resolves the type ambiguity: $K$ is **not** applied to its own numerical output, but to the embedded representation of a distinct state object.
+
+#### Error Model for State Functions
+
+**Deterministic vs Probabilistic Interpretation:**
+
+The functions $f_n$ and $g_n$ can be interpreted in two ways:
+
+**Option A: Deterministic (Default)**
+
+The comparison functions $f_n$ are deterministic mappings:
+
+$$f_0: \text{Response}(x) \times \text{Reference}(x) \to \{\text{correct}, \text{incorrect}, \text{absent}\}$$
+
+This assumes:
+- Reference is unambiguous
+- Response classification is clear-cut
+- No measurement error in observation
+
+**Use case**: Controlled experiments with factual questions and expert consensus.
+
+**Option B: Probabilistic (Extended)**
+
+For noisy or uncertain contexts, $f_n$ can be extended to probabilistic mappings:
+
+$$f_0: \text{Response}(x) \times \text{Reference}(x) \to \Delta(\{\text{correct}, \text{incorrect}, \text{absent}\})$$
+
+Where $\Delta(\cdot)$ denotes probability distributions over the outcome space.
+
+**Noise Model (if Option B):**
+
+$$P(\text{State}_n = s | \text{True State} = s^*) = \begin{cases}
+1 - \epsilon_n & \text{if } s = s^* \\
+\epsilon_n / 2 & \text{otherwise}
+\end{cases}$$
+
+Where $\epsilon_n$ is the layer-specific error rate.
+
+**Recommendation:**
+
+- Use **deterministic** interpretation for conceptual clarity (this paper)
+- Use **probabilistic** extension for empirical work with measurement noise
+- Always report which interpretation is assumed
 
 #### Entry and Recursive Mappings
 
@@ -311,9 +394,47 @@ Measuring State$_0$ = 20°C does not constrain State$_1$. The thermometer might 
 
 $K_1$ measures a **property of the measuring instrument**, not the original object. Similarly, $K_1$ measures the accuracy of **the respondent's self-monitoring**, not the first-order state itself.
 
-### Type-Theoretic Foundation
+#### Observation vs Intervention: Clarifying the Framework's Scope
 
-To address concerns about mathematical rigor, we provide a type-theoretic justification for the recursive structure.
+**The Observational Stance:**
+
+This framework is **observational** in the following sense:
+- $K_n$ values are determined by observable behavior (responses, claims)
+- No internal mental states are posited
+- The observer does not require privileged access to the subject's mind
+
+**The Interventional Possibility:**
+
+The phrase "targeted intervention" in the Introduction refers to a **downstream application**, not a claim within the framework itself:
+
+1. **Observation**: Measure $K_0$, $K_1$, $K_2$ via the MAT protocol
+2. **Classification**: Identify metacognitive pattern (e.g., Dunning-Kruger: $K_0=0$, $K_1=-1$)
+3. **Intervention design** (external to framework): Choose intervention based on classification
+4. **Re-observation**: Measure $K_n$ again to assess intervention effect
+
+**What the Framework Provides:**
+
+- **Coordinates** for locating epistemic states
+- **Taxonomy** for classifying metacognitive patterns
+- **Outcome measures** for evaluating interventions
+
+**What the Framework Does NOT Provide:**
+
+- **Causal model** of how interventions change $K_n$
+- **Mechanism** by which metacognition operates
+- **Prescriptions** for which interventions to use
+
+**Analogy:**
+
+A thermometer (observation) does not itself heat or cool a room (intervention). But knowing the temperature enables targeted decisions about heating/cooling. Similarly, $K_n$ observes metacognitive states, enabling (but not specifying) targeted interventions.
+
+### Type-Theoretic Foundation: Justifying the Symbolic Notation
+
+The symbolic notation $K(K(K(x)))$ invites a natural question: Is self-application mathematically coherent? This section provides a **philosophical justification** for the recursive intuition, while clarifying that **formal operations use $K_n(x)$ notation exclusively**.
+
+**Scope Clarification:**
+
+This section justifies *why the recursive intuition is coherent*, not *how formal measurement works*. For measurement, see the Layered Observation Model above.
 
 **Core Principle:** All epistemic states live on a **single continuous scale** $[-1, 1]$. The recursive structure is well-defined because $K$ maps this space to itself.
 
@@ -338,12 +459,28 @@ k2 = K(k1)           -- Layer 2: metacognition of k1
 ...
 ```
 
-**This is not a type error.** This is a **recursive type** with a well-defined structure, analogous to:
-- **Lambda Calculus**: Self-application via $\lambda x. (\lambda y. y) x$
-- **Fixed-Point Combinators**: $Y = \lambda f. (\lambda x. f(x x))(\lambda x. f(x x))$
+**Note on Self-Reference:**
+
+The recursive structure $K(K(x))$ has conceptual parallels in formal systems:
+- **Lambda Calculus**: Self-application via $\lambda x. x x$
 - **Recursive Types**: $\mu \alpha. \alpha \to \alpha$
 
-The recursive structure $K(K(x))$ is mathematically well-founded and has precedent in formal systems.
+We invoke these as **analogies** for conceptual coherence, not as formal constructions. A full categorical treatment (e.g., via Lawvere's fixed-point theorem) would require:
+- Defining a category with $[-1, 1]$ as an object
+- Constructing appropriate morphisms
+- Proving the existence of fixed points
+
+Such formalization is beyond the current scope. The symbolic $K(K(x))$ is justified as *conceptually coherent* by these analogies, while formal operations use the layer-indexed $K_n$.
+
+**Relationship to Formal Notation:**
+
+The type-theoretic argument shows that recursive self-reference is *conceptually coherent*—the idea of "knowing about knowing about knowing" does not lead to paradox. However, for **operational purposes**, we do not apply $K$ to its numerical output. Instead:
+
+- Each layer has a distinct **state object** ($\text{State}_n$)
+- Each observation is an independent measurement ($K_n$)
+- The "recursion" is in the *conceptual structure*, not in *numerical composition*
+
+The symbolic $K(K(x))$ and formal $K_1(x)$ are thus **two views of the same phenomenon**: one emphasizing philosophical depth, the other enabling mathematical precision.
 
 ### Axiomatic Constraints on $K$
 
@@ -545,6 +682,49 @@ The 27-pattern taxonomy uses prototypical anchors $\{-1, 0, 1\}$. For continuous
 2. **Neutral Zone**: The central region captures "uncertain/indeterminate" states
 3. **Statistical Interpretation**: Under uniform prior, each category has equal probability
 4. **Robustness**: Not sensitive to small estimation errors near boundaries
+
+#### Formal Justification for Thresholds
+
+**Decision-Theoretic Grounding:**
+
+The default thresholds $\pm 0.33$ can be justified via decision theory:
+
+**Setup:**
+- Agent must classify $K$ into {misconception, ignorance, knowledge}
+- Utility function: $U(\text{action}, \text{true state})$
+- Prior: Uniform over $[-1, 1]$
+
+**Symmetric Loss:**
+
+Under symmetric 0-1 loss (equal cost for all misclassifications):
+
+$$\text{Optimal thresholds} = \arg\min_{\tau_1, \tau_2} E[\mathbb{1}(\text{misclassification})]$$
+
+With uniform prior, this yields $\tau_1 = -1/3 \approx -0.33$, $\tau_2 = 1/3 \approx 0.33$.
+
+**Asymmetric Loss (Alternative):**
+
+If false positives (claiming knowledge when ignorant) are more costly:
+
+$$L(\text{classify as } 1 | \text{true } 0) = c > 1$$
+
+Optimal thresholds shift: $\tau_2 > 0.33$ (stricter knowledge criterion).
+
+**Proper Scoring Rule Connection:**
+
+Under Brier score:
+
+$$\text{Brier}(p, y) = (p - y)^2$$
+
+The thresholds $\pm 0.33$ correspond to the decision boundaries where expected Brier score is minimized under uniform prior.
+
+**Empirical Calibration (Future Work):**
+
+For domain-specific applications:
+1. Collect pilot data with known ground truth
+2. Compute ROC curve for each threshold
+3. Select threshold maximizing Youden's J or F1 score
+4. Report sensitivity analysis across threshold choices
 
 **Alternative Thresholds**:
 
@@ -826,6 +1006,46 @@ Estimated from posterior predictive distribution.
 | $K_1$ | Claim$_1$ vs State$_0$ | Phi / meta-d'/d' | $[-1, 1]$ |
 | $K_2$ | Claim$_2$ vs State$_1$ | Hierarchical Bayes | $[-1, 1]$ |
 | $C$ | Self-reported confidence | Direct elicitation | $[0, 1]$ |
+
+#### Identifiability Analysis
+
+**Definition**: A parameter $\theta$ is **identifiable** if there exists a measurable function $\hat{\theta}$ such that, as $N \to \infty$, $\hat{\theta} \xrightarrow{p} \theta$ (i.e., the estimator converges in probability to the true value).
+
+**Identifiability Conditions by Layer**:
+
+**$K_0$ Identifiability**:
+- **Requires**: Multiple items per subject to separate subject ability from item difficulty
+- **Condition**: Variance in item difficulties $\text{Var}(b_i) > 0$
+- **Minimum**: $N \geq 10$ items for stable 2PL estimation
+
+**$K_1$ Identifiability**:
+- **Requires**: Multiple trials per subject with varying $K_0$ outcomes
+- **Condition**: Both correct and incorrect responses must occur
+- **Minimum**: $N \geq 15$ trials with both positive and negative $K_0$ outcomes
+
+**$K_2$ Identifiability**:
+- **Requires**: Observed $K_1$ variation across trials
+- **Condition**: Non-degenerate $K_1$ distribution (not all perfect or all random)
+- **Minimum**: $N \geq 20$ trials for hierarchical Bayesian estimation
+
+**Non-Identifiability Cases**:
+
+| Scenario | Observable Pattern | Diagnosis |
+|:---|:---|:---|
+| Ceiling $K_0$ | All items correct | Cannot estimate $K_1$ (no error signal) |
+| Floor $K_0$ | All items incorrect | Cannot distinguish misconception from guessing |
+| Perfect $K_1$ | All metacognitive claims correct | $K_2$ undefined (no calibration error) |
+| Random $K_1$ | $\phi = 0$ | Insufficient metacognitive signal for $K_2$ |
+
+**Practical Guideline**:
+
+| Layer | Minimum N | Recommended N | Estimation Method | Identifiability Check |
+|:---:|:---:|:---:|:---|:---|
+| $K_0$ | 10 | 30+ | IRT 2PL | SE($\theta_s$) < 0.5 |
+| $K_1$ | 15 | 25+ | Phi / meta-d' | $n_{ij} \geq 5$ per cell |
+| $K_2$ | 20 | 40+ | Hierarchical Bayes | Rhat < 1.1, ESS > 100 |
+
+**Note**: These are minimum requirements. For individual-level claims about specific subjects, larger sample sizes or domain-specific validations are recommended.
 
 ### Continuous Estimation of $K(K(x))$
 
@@ -1329,8 +1549,41 @@ This framework is a **conceptual scaffold** for organizing metacognitive phenome
    - The $[-1,1]$ scale assumes a **single axis of correctness** with one "opposite" direction.
    - **What this captures:** Directional errors (overconfidence vs underconfidence, correct vs incorrect).
    - **What this does NOT capture:** Multiple, qualitatively different misconceptions (e.g., "thinks A" vs "thinks B" when truth is C).
-   - **Design rationale:** This simplification enables tractable measurement and clear intervention design. Multi-dimensional misconceptions require a different formalism (e.g., vector-valued $K$ or belief distributions) and are outside the current scope.
-   - **Future extension:** Vector-valued $K \in [-1,1]^d$ or embedding in a latent space could address this limitation.
+   
+   **Formal Clarification:**
+   
+   The current model assumes a binary opposition: $\text{Reference} \leftrightarrow \text{Anti-Reference}$
+   
+   $$K_0 = \begin{cases}
+   1 & \text{if Response} = \text{Reference} \\
+   0 & \text{if Response} = \text{Absent} \\
+   -1 & \text{if Response} \neq \text{Reference}
+   \end{cases}$$
+   
+   This collapses all incorrect responses to $-1$, regardless of *which* error was made.
+   
+   **When This is Appropriate:**
+   - Binary propositions (true/false)
+   - Single-answer factual questions
+   - Ordinal scales with clear direction
+   
+   **When This is Limiting:**
+   - Conceptual errors with multiple wrong paths
+   - Skill assessments with qualitatively different failure modes
+   - Open-ended responses
+   
+   **Future Extension (Out of Scope):**
+   
+   For multi-dimensional misconceptions, consider:
+   
+   $$K_0: \mathcal{X} \to [-1, 1]^d$$
+   
+   Where $d$ = number of independent error dimensions. This requires:
+   - Multi-dimensional reference space
+   - Vector-valued embedding $g_0$
+   - Revised axioms for vector order
+   
+   We leave this extension for future work, noting that the current scalar formulation covers a wide range of practical applications.
 
 3. **Minimal Axiomatic Theory:** We provide basic constraints on $K$ (anchor preservation, monotonicity, boundedness) but do not specify a unique functional form. The specific dynamics of $K$ (e.g., whether it is contractive, has fixed points beyond $\{-1, 0, 1\}$) are empirical questions.
 
