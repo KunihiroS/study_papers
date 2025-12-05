@@ -5,11 +5,11 @@ kunihiros@gmail.com
 
 ## Introduction
 
-Human knowledge possesses a multi-layered structure, and the ability to recognize one's own ignorance (metacognition) is crucial for learning and decision-making. This study proposes a recursive model of knowledge and ignorance based on a single core function: **$K$**, which represents epistemic recognition. By applying this function recursively—$K(x)$, $K(K(x))$, $K(K(K(x)))$, and so on—we formalize the hierarchical structure of self-awareness that distinguishes **Socratic wisdom** ("knowing that one does not know") from the **Dunning-Kruger effect** ("not knowing that one does not know").
+Human knowledge possesses a multi-layered structure, and the ability to recognize one's own ignorance (metacognition) is crucial for learning and decision-making. This study proposes a recursive model of knowledge and ignorance based on a single core function: **$K$**, which represents epistemic recognition. By applying this function recursively---$K(x)$, $K(K(x))$, $K(K(K(x)))$, and so on---we formalize the hierarchical structure of self-awareness that distinguishes **Socratic wisdom** ("knowing that one does not know") from the **Dunning-Kruger effect** ("not knowing that one does not know").
 
-Kant (1781), in his *Critique of Pure Reason*, posed the foundational question of epistemology: what are the limits of human cognition, and can reason examine itself? His answer—that reason must critique reason—established the recursive structure of self-reflection as a philosophical problem. Yet Kant's contribution was **descriptive**: he demonstrated that limits exist, but provided no apparatus for locating their precise coordinates or guiding their correction.
+Kant (1781), in his *Critique of Pure Reason*, posed the foundational question of epistemology: what are the limits of human cognition, and can reason examine itself? His answer---that reason must critique reason---established the recursive structure of self-reflection as a philosophical problem. Yet Kant's contribution was **descriptive**: he demonstrated that limits exist, but provided no apparatus for locating their precise coordinates or guiding their correction.
 
-This study provides what classical epistemology could not: a **mathematical framework** that transforms the Kantian question from philosophical meditation into **operational methodology**. The function $K$ does not merely describe where cognition fails—it provides the coordinates for **targeted intervention**. By representing epistemic states on a continuous scale, we gain the capacity to **observe the phenomenon of intelligence itself, and to intervene in its structure**. This framework opens the possibility of not only understanding cognition but **actively shaping its trajectory toward new forms of knowing**.
+This study provides what classical epistemology could not: a **mathematical framework** that transforms the Kantian question from philosophical meditation into **operational methodology**. The function $K$ does not merely describe where cognition fails---it provides the coordinates for **targeted intervention**. By representing epistemic states on a continuous scale, we gain the capacity to **observe the phenomenon of intelligence itself, and to intervene in its structure**. This framework opens the possibility of not only understanding cognition but **actively shaping its trajectory toward new forms of knowing**.
 
 This model integrates insights from **metacognition research**, **epistemology**, and **type theory** to address three aspects that have not been sufficiently unified in existing research:
 
@@ -21,7 +21,7 @@ By presenting a mathematically rigorous yet philosophically grounded framework, 
 
 ### Contribution: A Conceptual Foundation
 
-This paper establishes the **conceptual foundation** for a unified theory of recursive metacognition. The trichotomy of epistemic states—**knowing**, **not knowing**, and **misunderstanding**—is a universal human experience that transcends cultures, domains, and disciplines. Before elaborating measurement-theoretic models or conducting empirical validation, we must first **settle the conceptual vocabulary**.
+This paper establishes the **conceptual foundation** for a unified theory of recursive metacognition. The trichotomy of epistemic states---**knowing**, **not knowing**, and **misunderstanding**---is a universal human experience that transcends cultures, domains, and disciplines. Before elaborating measurement-theoretic models or conducting empirical validation, we must first **settle the conceptual vocabulary**.
 
 **What this paper provides:**
 1. A **single, unified operator $K$** that applies recursively at all levels of self-reflection
@@ -43,7 +43,7 @@ This section clarifies the philosophical motivation behind this paper and provid
 
 ### Theoretical Rationale
 
-This study is grounded in the logical structure of recursive ignorance, exemplified by the proposition **"I don't know what I don't know."** If "knowing one's ignorance" (Socratic wisdom) is a recognized concept, then logically, "not knowing one's ignorance" must also exist. And if that exists, then so must "not knowing that one doesn't know one's ignorance"—and so on, recursively.
+This study is grounded in the logical structure of recursive ignorance, exemplified by the proposition **"I don't know what I don't know."** If "knowing one's ignorance" (Socratic wisdom) is a recognized concept, then logically, "not knowing one's ignorance" must also exist. And if that exists, then so must "not knowing that one doesn't know one's ignorance"---and so on, recursively.
 
 The goal of this paper is to **mathematically formalize this recursive structure of knowledge and ignorance**, not to judge or rank cognitive states.
 
@@ -57,7 +57,7 @@ The values $-1$, $0$, and $1$ in this model function as **epistemic state descri
 | $0$ | The subject lacks knowledge (ignorance). |
 | $-1$ | The subject holds incorrect knowledge (misconception). |
 
-A subject in state $-1$ (misconception) is not normatively inferior to a subject in state $0$ (ignorance); they occupy **distinct epistemic loci**. Whether one state is "preferable" to another depends on context, goals, and values—domains outside the scope of this model.
+A subject in state $-1$ (misconception) is not normatively inferior to a subject in state $0$ (ignorance); they occupy **distinct epistemic loci**. Whether one state is "preferable" to another depends on context, goals, and values---domains outside the scope of this model.
 
 ### Separation of Knowledge and Confidence
 
@@ -110,7 +110,7 @@ $$\text{Objectivity} := \text{Repeatability} \mid \text{Reference}$$
 | Aspect | Meaning |
 |:-------|:--------|
 | **Reference** | The designated ground truth (e.g., expert consensus, textbook answer) |
-| **Procedure** | The MAT protocol (response → claim → comparison) |
+| **Procedure** | The MAT protocol (response -> claim -> comparison) |
 | **Repeatability** | Different observers applying the same procedure to the same data obtain the same $K_n$ |
 
 **The Relativism:**
@@ -123,7 +123,7 @@ The **choice of reference** is not determined by the framework. Different commun
 **What the Framework Provides:**
 
 Once a reference is designated, the framework provides:
-1. **Deterministic scoring**: Response + Claim + Reference → $K_n$ (via $f_n$ and $g_n$)
+1. **Deterministic scoring**: Response + Claim + Reference -> $K_n$ (via $f_n$ and $g_n$)
 2. **Cross-context comparability**: Same $K_n$ semantics across different domains
 3. **Transparency**: All assumptions (reference, $f_n$, thresholds) are explicit
 
@@ -141,7 +141,7 @@ When the reference itself is uncertain or contested:
 
 ## The Recursive Structure: $K(K(K(x)))$
 
-The cognitive structure of knowledge is modeled using a **recursive epistemic function** $K$. This model formalizes the intuition that the same question—"Do I know?"—can be applied at every level of self-reflection.
+The cognitive structure of knowledge is modeled using a **recursive epistemic function** $K$. This model formalizes the intuition that the same question---"Do I know?"---can be applied at every level of self-reflection.
 
 ### Formal Definition of $K$
 
@@ -209,7 +209,7 @@ The symbolic notation $K(K(x))$ is **NOT** numerical composition (i.e., $K$ appl
 $$K(K(x)) \not\equiv K(K_0(x)) \quad \text{(NOT numerical composition)}$$
 $$K(K(x)) \equiv K_1(x) \quad \text{(notational equivalence only)}$$
 
-**For all formal purposes—definitions, proofs, measurement, analysis—use $K_n(x)$ exclusively.**
+**For all formal purposes---definitions, proofs, measurement, analysis---use $K_n(x)$ exclusively.**
 
 **Why Both?**
 
@@ -353,7 +353,7 @@ All intermediate values represent **graded mixtures** of these prototypes (parti
 
 ### Observation and Objects: The Purely Observational Framework
 
-This framework adopts a **purely observational stance**: epistemic states are operationalized as observable responses, and metacognitive states as observable alignments between claims and performance. We do not posit internal "beliefs" or "perceptions" — only **states** that are measurable by an external observer.
+This framework adopts a **purely observational stance**: epistemic states are operationalized as observable responses, and metacognitive states as observable alignments between claims and performance. We do not posit internal "beliefs" or "perceptions" --- only **states** that are measurable by an external observer.
 
 **The Observer:**
 
@@ -405,7 +405,7 @@ Claim_2(x) ----------------------> f_2 --> State_2 --> K^(2) --> K_2
 
 The following tables provide complete, reproducible definitions for each layer.
 
-**State₀: First-Order Epistemic State**
+**State$_0$: First-Order Epistemic State**
 
 **Definition:**
 $$\text{State}_0 \in \{\text{correct}, \text{incorrect}, \text{absent}\}$$
@@ -423,7 +423,7 @@ $$K_0(x) = g_0(f_0(r, t))$$
 
 ---
 
-**State₁: Second-Order Metacognitive State**
+**State$_1$: Second-Order Metacognitive State**
 
 **Definition:**
 $$\text{State}_1 \in \{\text{aligned}, \text{uncertain}, \text{misaligned}\}$$
@@ -454,7 +454,7 @@ $$\text{State}_1 \in \{\text{aligned}, \text{uncertain}, \text{misaligned}\}$$
 
 ---
 
-**State₂: Third-Order Meta-Metacognitive State**
+**State$_2$: Third-Order Meta-Metacognitive State**
 
 **Definition:**
 $$\text{State}_2 \in \{\text{meta-aligned}, \text{meta-uncertain}, \text{meta-misaligned}\}$$
@@ -485,14 +485,14 @@ $$\text{State}_2 \in \{\text{meta-aligned}, \text{meta-uncertain}, \text{meta-mi
 **Summary: The Complete Pipeline**
 
 ```
-Response(x) → f₀(Response, Reference) → State₀ → g₀ → K₀
-                                          ↓
-Claim₁ + K₀ → f₁(K₀, Claim₁) → State₁ → g₁ → K₁
-                                          ↓
-Claim₂ + K₁ → f₂(K₁, Claim₂) → State₂ → g₂ → K₂
+Response(x) -> f$_0$(Response, Reference) -> State$_0$ -> g$_0$ -> K$_0$
+                                          v
+Claim$_1$ + K$_0$ -> f$_1$(K$_0$, Claim$_1$) -> State$_1$ -> g$_1$ -> K$_1$
+                                          v
+Claim$_2$ + K$_1$ -> f$_2$(K$_1$, Claim$_2$) -> State$_2$ -> g$_2$ -> K$_2$
 ```
 
-**Reproducibility:** Given the same (Response, Claim₁, Claim₂, Reference), any observer following this specification will compute identical $(K_0, K_1, K_2)$.
+**Reproducibility:** Given the same (Response, Claim$_1$, Claim$_2$, Reference), any observer following this specification will compute identical $(K_0, K_1, K_2)$.
 
 ---
 
@@ -507,10 +507,10 @@ Claim₂ + K₁ → f₂(K₁, Claim₂) → State₂ → g₂ → K₂
 - **State$_2$ (meta-metacognitive state)**: The alignment between the respondent's meta-metacognitive claim and their actual State$_1$.
 
 **Example:**
-- Respondent answers incorrectly → State$_0$ = "incorrect" → $K_0 = -1$ (misconception)
-- Respondent says "I don't know" → State$_0$ = "absent" → $K_0 = 0$ (ignorance)
-- Respondent claims "I know" (when $K_0 = -1$) → State$_1$ = "misalignment" → $K_1 = -1$
-- Respondent claims "My self-assessment is accurate" → State$_2$ = "misalignment" → $K_2 = -1$
+- Respondent answers incorrectly -> State$_0$ = "incorrect" -> $K_0 = -1$ (misconception)
+- Respondent says "I don't know" -> State$_0$ = "absent" -> $K_0 = 0$ (ignorance)
+- Respondent claims "I know" (when $K_0 = -1$) -> State$_1$ = "misalignment" -> $K_1 = -1$
+- Respondent claims "My self-assessment is accurate" -> State$_2$ = "misalignment" -> $K_2 = -1$
 
 **Critical Clarification:**
 
@@ -530,8 +530,8 @@ $K_1$ is "observing a different object (State$_1$) and reporting the measurement
 The axiom $K(0) = 0$ means: "If the observed state is 'ignorance' (0), the measurement result is 'ignorance' (0)."
 
 In the Dunning-Kruger case:
-- $K_0(x) = 0$: Observer measures State$_0$ → "ignorance"
-- $K_1(x) = -1$: Observer measures State$_1$ → "misalignment"
+- $K_0(x) = 0$: Observer measures State$_0$ -> "ignorance"
+- $K_1(x) = -1$: Observer measures State$_1$ -> "misalignment"
 
 **State$_1$ is not "0".** State$_1$ is the metacognitive state (alignment/misalignment), which the observer measures as "misrecognition" (-1).
 
@@ -540,12 +540,12 @@ The axiom $K(0) = 0$ does not apply because the input to $K_1$ is **not** the nu
 **Analogy (Thermometer Calibration):**
 
 Consider a thermometer and its calibration:
-- **State$_0$ (temperature)**: The actual temperature of water = 20°C
+- **State$_0$ (temperature)**: The actual temperature of water = 20$^\circ$C
 - **State$_1$ (thermometer accuracy)**: Whether the thermometer correctly reads State$_0$
 
-Measuring State$_0$ = 20°C does not constrain State$_1$. The thermometer might be:
-- Accurate (State$_1$ = correct) → $K_1 = 1$
-- Miscalibrated (State$_1$ = incorrect) → $K_1 = -1$
+Measuring State$_0$ = 20$^\circ$C does not constrain State$_1$. The thermometer might be:
+- Accurate (State$_1$ = correct) -> $K_1 = 1$
+- Miscalibrated (State$_1$ = incorrect) -> $K_1 = -1$
 
 $K_1$ measures a **property of the measuring instrument**, not the original object. Similarly, $K_1$ measures the accuracy of **the respondent's self-monitoring**, not the first-order state itself.
 
@@ -678,7 +678,7 @@ $K: [-1, 1] \to [-1, 1]$
 
 Each observation is bounded on this interval.
 
-**Note:** We deliberately refrain from specifying stronger constraints (e.g., odd symmetry, Lipschitz constant, contraction mapping) at this stage. The framework is intended to be **descriptive** rather than **predictive**—it provides a vocabulary for classifying observed metacognitive states, not a generative model of metacognitive dynamics. Specifying a particular functional form for $K$ is a task for domain-specific empirical research.
+**Note:** We deliberately refrain from specifying stronger constraints (e.g., odd symmetry, Lipschitz constant, contraction mapping) at this stage. The framework is intended to be **descriptive** rather than **predictive**---it provides a vocabulary for classifying observed metacognitive states, not a generative model of metacognitive dynamics. Specifying a particular functional form for $K$ is a task for domain-specific empirical research.
 
 ### Recursive Application
 
@@ -710,7 +710,7 @@ Each $K_n$ observes a **distinct object** (State$_n$), not the numerical output 
 
 #### Example 1: Knowing Knowledge
 
-- $K(x) = 1$: The subject knows that "water boils at 100°C."
+- $K(x) = 1$: The subject knows that "water boils at 100$^\circ$C."
 - $K(K(x)) = 1$: The subject accurately recognizes that they know this fact.
 - **Classification**: Knowing Knowledge (accurate self-awareness)
 
@@ -728,7 +728,7 @@ Each $K_n$ observes a **distinct object** (State$_n$), not the numerical output 
 
 #### Example 4: Imposter Syndrome
 
-- $K(x) = 1$: The subject knows that "water boils at 100°C."
+- $K(x) = 1$: The subject knows that "water boils at 100$^\circ$C."
 - $K(K(x)) = -1$ or $0$: The subject does not recognize their knowledge ("I don't think I know this").
 - **Classification**: Unknowing Knowledge (imposter syndrome)
 
@@ -745,7 +745,7 @@ The relationship between $K(x)$ (actual state) and $K(K(x))$ (metacognitive accu
 
 **Important Note:** The value $K(K(x)) = -1$ for "Unknowing Ignorance" does **not** mean it is "bad" in a normative sense. It simply describes an epistemic state where the subject **misrecognizes their own ignorance**. Whether this is problematic depends on context and goals.
 
-### Complete Taxonomy: K_0 × K_1 × K_2 (27 Patterns)
+### Complete Taxonomy: $K_0 \times K_1 \times K_2$ (27 Patterns)
 
 **Derivation:**
 
@@ -822,8 +822,8 @@ This ordering is **descriptive**, not normative; specific contexts may value dif
 
 The third layer ($K_2$) enables modeling of **metacognitive interventions** and their effectiveness:
 
-- $K_2 = +1$ with $K_1 = -1$: Subject recognizes their metacognitive failure → **teachable moment**
-- $K_2 = -1$ with $K_1 = -1$: Subject does not recognize their failure → **resistant to intervention**
+- $K_2 = +1$ with $K_1 = -1$: Subject recognizes their metacognitive failure -> **teachable moment**
+- $K_2 = -1$ with $K_1 = -1$: Subject does not recognize their failure -> **resistant to intervention**
 
 Higher-order reflection ($K_2$, $K_3$, ...) provides diagnostic power for identifying when and how metacognitive correction is possible.
 
@@ -837,7 +837,7 @@ The 27-pattern taxonomy uses prototypical anchors $\{-1, 0, 1\}$. For continuous
 | $K \in [-0.33, 0.33]$ | $0$ (Ignorance/Uncertain) |
 | $K \in (0.33, 1]$ | $1$ (Knowledge/Aligned) |
 
-**Rationale for ±0.33 Default**:
+**Rationale for $\pm 0.33$ Default**:
 
 1. **Symmetric Tercile**: Divides $[-1, 1]$ into three equal-width regions
 2. **Neutral Zone**: The central region captures "uncertain/indeterminate" states
@@ -891,13 +891,13 @@ For domain-specific applications:
 
 | Approach | Thresholds | Use Case |
 |:---|:---|:---|
-| **Tercile (default)** | ±0.33 | Balanced classification |
-| **Quartile** | ±0.5 | Stricter knowledge/misconception criteria |
+| **Tercile (default)** | $\pm 0.33$ | Balanced classification |
+| **Quartile** | $\pm 0.5$ | Stricter knowledge/misconception criteria |
 | **ROC-optimized** | Data-driven | Maximize classification accuracy |
 | **Domain-specific** | Expert-defined | Match substantive theory |
 
 **Recommendation**:
-- Use ±0.33 as default for comparability across studies
+- Use $\pm 0.33$ as default for comparability across studies
 - Report sensitivity analysis with alternative thresholds
 - For intervention design, consider ROC-optimized thresholds
 
@@ -910,7 +910,7 @@ For domain-specific applications:
 
 $$K_0 = 0.7, K_1 = -0.5, K_2 = 0.2$$
 
-Categorical: $K_0 = 1, K_1 = -1, K_2 = 0$ → "Knowing Misconception, uncertain about meta"
+Categorical: $K_0 = 1, K_1 = -1, K_2 = 0$ -> "Knowing Misconception, uncertain about meta"
 
 This enables both fine-grained analysis and interpretable classification.
 
@@ -949,9 +949,9 @@ One might ask: "Why not introduce separate operators for different levels?" The 
 **Philosophical Motivation:**
 
 The question "Do I know?" is the same question at every level:
-- "Do I know the answer?" → $K_0$
-- "Do I know whether I know the answer?" → $K_1$
-- "Do I know whether I know whether I know?" → $K_2$
+- "Do I know the answer?" -> $K_0$
+- "Do I know whether I know the answer?" -> $K_1$
+- "Do I know whether I know whether I know?" -> $K_2$
 
 **The question is universal. Only the object changes.**
 
@@ -1054,11 +1054,11 @@ All intermediate values in $(-1, 0)$ and $(0, 1)$ represent **graded mixtures** 
 
 **Operationalization Options (always mapping back to $[-1, 1]$):**
 
-1. **Discrete elicitation → Discrete embedding**: Use trichotomous responses (True/False/I don't know), then embed into $[-1, 1]$ via $K(x) \in \{-1, 0, 1\}$ as prototype points.
+1. **Discrete elicitation -> Discrete embedding**: Use trichotomous responses (True/False/I don't know), then embed into $[-1, 1]$ via $K(x) \in \{-1, 0, 1\}$ as prototype points.
 
-2. **Probabilistic elicitation → Continuous embedding**: Elicit a subjective probability $p(x)$ and map it into $[-1, 1]$ using a proper scoring rule or a simple linear transform (e.g., centered Brier-type scores).
+2. **Probabilistic elicitation -> Continuous embedding**: Elicit a subjective probability $p(x)$ and map it into $[-1, 1]$ using a proper scoring rule or a simple linear transform (e.g., centered Brier-type scores).
 
-3. **Aggregation → Continuous embedding**: Average prototype-valued $K(x_i) \in \{-1, 0, 1\}$ across multiple items or contexts to obtain a continuous summary in $[-1, 1]$.
+3. **Aggregation -> Continuous embedding**: Average prototype-valued $K(x_i) \in \{-1, 0, 1\}$ across multiple items or contexts to obtain a continuous summary in $[-1, 1]$.
 
 Conceptually, the **continuum $[-1, 1]$ is primary**; the trichotomy $\{-1, 0, 1\}$ is a convenient way to name salient regions on this line, not a separate codomain. Experimental designs may choose discrete or continuous elicitation, but in all cases the resulting data are interpreted as points (or distributions) on the same underlying scale $[-1, 1]$.
 
@@ -1079,7 +1079,7 @@ $$K_0 = 2 \cdot \Phi(\theta_s) - 1$$
 Where $\Phi$ is the standard normal CDF, ensuring $K_0 \in [-1, 1]$.
 
 **Misconception Detection**:
-- High confidence + incorrect → $K_0 = -1$
+- High confidence + incorrect -> $K_0 = -1$
 - Operationalized via Confidence-Accuracy calibration error
 
 #### $K_1$ Estimation (Metacognitive Alignment)
@@ -1090,7 +1090,7 @@ $$\phi = \frac{n_{11} n_{00} - n_{10} n_{01}}{\sqrt{(n_{11}+n_{10})(n_{01}+n_{00
 
 **Handling 3-Value State$_0$**:
 
-State$_0$ has three outcomes {correct, incorrect, absent}. For Phi (2×2), we binarize:
+State$_0$ has three outcomes {correct, incorrect, absent}. For Phi ($2 \times 2$), we binarize:
 
 | Binarization Strategy | Positive ($K_0 > 0$) | Negative ($K_0 \leq 0$) |
 |:---|:---|:---|
@@ -1098,7 +1098,7 @@ State$_0$ has three outcomes {correct, incorrect, absent}. For Phi (2×2), we bi
 | **Strategy B (Lenient)** | correct + absent | incorrect only |
 | **Strategy C (Exclude)** | correct | incorrect (exclude absent) |
 
-**Recommended**: Strategy A (Strict) — aligns with the interpretation that "I know" should predict correctness, not just absence of misconception.
+**Recommended**: Strategy A (Strict) --- aligns with the interpretation that "I know" should predict correctness, not just absence of misconception.
 
 **Cell Definitions (Strategy A)**:
 - $n_{11}$: correct + "I know"
@@ -1126,7 +1126,7 @@ Where:
 
 | Function | Formula | Properties |
 |:---|:---|:---|
-| **tanh** (default) | $\tanh(r)$ | Smooth, symmetric, saturates at ±1 |
+| **tanh** (default) | $\tanh(r)$ | Smooth, symmetric, saturates at $\pm 1$ |
 | **Scaled CDF** | $2\Phi(r) - 1$ | Probabilistic interpretation |
 | **Clipped linear** | $\max(-1, \min(1, r))$ | Simple, preserves scale near 0 |
 
@@ -1293,8 +1293,8 @@ Given the deterministic nature of $f_n$ and $g_n$, inter-rater agreement should 
 3. Test whether link function parameters ($\beta$) are equivalent
 
 **Interpretation:**
-- Equivalent $\beta$ across groups → Scores are comparable
-- Different $\beta$ → Group-specific calibration needed; interpret within-group only
+- Equivalent $\beta$ across groups -> Scores are comparable
+- Different $\beta$ -> Group-specific calibration needed; interpret within-group only
 
 #### Cross-Study Comparability
 
@@ -1427,8 +1427,8 @@ $K$ and $C$ are **conceptually orthogonal**:
 **Diagnostic Role:**
 
 $C$ helps distinguish subtypes within the same $K$ pattern:
-- DK ($K_0=0$, $K_1=-1$) with **high $C$** → Overconfident ignorance
-- DK ($K_0=0$, $K_1=-1$) with **low $C$** → Uncertain but still wrong claim
+- DK ($K_0=0$, $K_1=-1$) with **high $C$** -> Overconfident ignorance
+- DK ($K_0=0$, $K_1=-1$) with **low $C$** -> Uncertain but still wrong claim
 
 **K-C Dissociation Hypothesis:**
 
@@ -1440,9 +1440,9 @@ This dissociation is empirically testable and clinically meaningful.
 
 **Measurement Protocol for C:**
 
-1. Elicit response → compute $K_0$
-2. Elicit confidence (0-100%) → record $C$
-3. Elicit metacognitive claim ("Do you know?") → compute $K_1$
+1. Elicit response -> compute $K_0$
+2. Elicit confidence (0-100%) -> record $C$
+3. Elicit metacognitive claim ("Do you know?") -> compute $K_1$
 4. Analyze $K \times C$ jointly for full characterization
 
 **Important Distinction (Summary):**
@@ -1450,8 +1450,8 @@ This dissociation is empirically testable and clinically meaningful.
 - $C$: Phenomenological confidence (how certain the subject feels)
 
 These are **orthogonal dimensions**. A subject can have:
-- $K(x) = 0$ (ignorance) with $C = 1$ (high confidence) — Dunning-Kruger
-- $K(x) = 1$ (knowledge) with $C = 0.5$ (moderate confidence) — Underconfidence
+- $K(x) = 0$ (ignorance) with $C = 1$ (high confidence) --- Dunning-Kruger
+- $K(x) = 1$ (knowledge) with $C = 0.5$ (moderate confidence) --- Underconfidence
 
 ### The C-K Joint Model: Empirical Handling of Confidence-Knowledge Interaction
 
@@ -1505,7 +1505,7 @@ While $C$ and $K_1$ are empirically correlated, they measure different things:
 - $K_1$ = **Structural alignment** (does claim match state?)
 - $C$ = **Phenomenological intensity** (how certain does subject feel?)
 
-A subject with $K_1 = +1$ (accurate self-assessment) may have $C = 0.3$ (low confidence) — they correctly identified their state but did not feel certain about it. The $(K, C)$ joint model captures this distinction.
+A subject with $K_1 = +1$ (accurate self-assessment) may have $C = 0.3$ (low confidence) --- they correctly identified their state but did not feel certain about it. The $(K, C)$ joint model captures this distinction.
 
 ### Measurement Protocol
 
@@ -1659,7 +1659,7 @@ Traditional epistemic logics (e.g., S5, KD45) model knowledge via modal operator
 | **Metacognitive failure** | Violates introspection axioms | $K(K(x)) \neq \text{sign}(K(x))$ |
 | **Dunning-Kruger** | Not expressible | $K(x) = 0, K(K(x)) = -1$ |
 
-**Key Departure:** Epistemic logics typically assume idealized agents with perfect introspection. Our framework explicitly models **failures of introspection**—cases where $K(K(x)) \neq \text{sign}(K(x))$. This captures the Dunning-Kruger effect and imposter syndrome, which are empirically observed but cannot be expressed in standard epistemic logics without violating the introspection axioms.
+**Key Departure:** Epistemic logics typically assume idealized agents with perfect introspection. Our framework explicitly models **failures of introspection**---cases where $K(K(x)) \neq \text{sign}(K(x))$. This captures the Dunning-Kruger effect and imposter syndrome, which are empirically observed but cannot be expressed in standard epistemic logics without violating the introspection axioms.
 
 Our approach can be seen as a **graded, psychologically realistic** extension of epistemic logic that relaxes the introspection axioms to accommodate metacognitive failures.
 
@@ -1718,7 +1718,7 @@ $$K_1 \approx \tanh\left(\frac{\text{meta-}d'}{2}\right)$$
 | Aspect | $K_1$ | ECE |
 |:-------|:---|:----|
 | **Direction** | +1 = perfect alignment | 0 = perfect calibration |
-| **Meaning of negative** | Systematic misalignment | N/A (always ≥ 0) |
+| **Meaning of negative** | Systematic misalignment | N/A (always $\geq$ 0) |
 | **Confidence dimension** | Implicit in State$_1$ | Explicit (confidence bins) |
 
 **Note:** $K_1$ captures *direction* of miscalibration (over- vs under-confidence), while ECE captures *magnitude* only. They are complementary, not redundant.
@@ -1771,7 +1771,7 @@ This is not "reinventing the wheel" but **designing the axle** that connects exi
 
 ### Metacognitive Sensitivity: meta-d'
 
-Maniscalco and Lau (2012) developed the *meta-d'* framework for measuring metacognitive sensitivity—the ability to discriminate between correct and incorrect responses via confidence ratings.
+Maniscalco and Lau (2012) developed the *meta-d'* framework for measuring metacognitive sensitivity---the ability to discriminate between correct and incorrect responses via confidence ratings.
 
 **Formal Correspondence with Type-2 SDT:**
 
@@ -1838,8 +1838,8 @@ Both meta-I and $K$ are **model-free** (unlike meta-d' which requires SDT assump
 **Complementary Use Case:**
 
 Two subjects with identical meta-I = 0.3 bits (low sensitivity):
-- Subject A: $K_0=0$, $K_1=-1$ → Dunning-Kruger → needs awareness intervention
-- Subject B: $K_0=1$, $K_1=-1$ → Imposter → needs confidence-building
+- Subject A: $K_0=0$, $K_1=-1$ -> Dunning-Kruger -> needs awareness intervention
+- Subject B: $K_0=1$, $K_1=-1$ -> Imposter -> needs confidence-building
 
 meta-I cannot distinguish these cases; $K$ can.
 
@@ -1907,9 +1907,9 @@ The $K$ framework provides a structured vocabulary for evaluating metacognition 
 
 Using decoupled confidence elicitation (analogous to AFCE-style protocols):
 
-1. **Query LLM for answer** → compute $K_0$ (against ground truth)
-2. **Query LLM for confidence** → record $C$ (0-100%)
-3. **Query LLM: "Do you know this?"** → elicit $\text{Claim}_1$
+1. **Query LLM for answer** -> compute $K_0$ (against ground truth)
+2. **Query LLM for confidence** -> record $C$ (0-100%)
+3. **Query LLM: "Do you know this?"** -> elicit $\text{Claim}_1$
 4. **Compute $K_1$** from $\text{Claim}_1$ vs $K_0$
 
 This protocol allows testing:
@@ -1966,7 +1966,7 @@ This study is novel in:
 
 ## Conclusion and Future Challenges
 
-This study constructed a recursive epistemic model based on the hierarchical structure of knowledge. Using a single core function $K$ applied recursively—$K(x)$, $K(K(x))$, $K(K(K(x)))$—we provide a mathematically rigorous yet philosophically grounded framework that captures:
+This study constructed a recursive epistemic model based on the hierarchical structure of knowledge. Using a single core function $K$ applied recursively---$K(x)$, $K(K(x))$, $K(K(K(x)))$---we provide a mathematically rigorous yet philosophically grounded framework that captures:
 
 1. The **recursive nature of self-awareness**: The same epistemic question applies at every level of reflection.
 2. The **hierarchical structure of metacognition**: Distinguishing "knowing ignorance" (Socratic wisdom) from "unknowing ignorance" (Dunning-Kruger effect).
@@ -2112,7 +2112,7 @@ Our $K$ is purely **observational**:
 2. $K_1$ = observation of State$_1$ (metacognitive state)
 3. $K_2$ = observation of State$_2$ (meta-metacognitive state)
 
-**Each layer observes a different object.** There is no "subject's report" vs "evaluator's assessment" — there is only **observation of states**.
+**Each layer observes a different object.** There is no "subject's report" vs "evaluator's assessment" --- there is only **observation of states**.
 
 **Why R/E Adds Unnecessary Complexity:**
 
