@@ -1444,7 +1444,7 @@ $$K_1^{(i)} | K_1^* \sim \mathcal{N}(K_1^*, \sigma^2)$$
 Then:
 $$K_2 = 1 - \frac{\text{Var}(K_1^{(i)} | K_1^*)}{\text{Var}(K_1^{(i)})} = \frac{\text{Var}(K_1^*)}{\text{Var}(K_1^{(i)})}$$
 
-This is the **reliability coefficient** (analogous to Cronbach's α).
+This is the **reliability coefficient** (analogous to Cronbach's $\alpha$).
 
 **Implementation**: Hierarchical Bayesian GLM (cf. HiBayES, Fleming & Daw, 2017)
 

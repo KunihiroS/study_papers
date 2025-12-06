@@ -1008,6 +1008,61 @@ Claim\(_1\)
 *Note: ``I don't know'' when holding a misconception is partial
 awareness; coded as ``aligned'' for monotonicity.
 
+\textbf{Rationale: Epistemic Improvement Criterion}
+
+The coding of \(K_0 = -1\) (misconception) + ``I don't know'' → aligned
+(\(K_1 = +1\)) may appear counterintuitive. We justify this via the
+\textbf{Epistemic Improvement Criterion}: a claim is ``aligned'' if it
+represents the best available response given the subject's actual state.
+
+\textbf{Argument}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A subject with \(K_0 = -1\) who claims ``I know'' is \textbf{doubly
+  wrong}: wrong about the content AND wrong about their epistemic state.
+\item
+  A subject with \(K_0 = -1\) who claims ``I don't know'' is
+  \textbf{partially correct}: wrong about the content but aware of their
+  uncertainty.
+\item
+  This awareness (\(K_1 = +1\)) is \textbf{epistemically valuable}: it
+  opens the door to correction and learning.
+\end{enumerate}
+
+\textbf{Best Response for Each \(K_0\)}:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+\(K_0\) & Best Claim\(_1\) & Reasoning \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(+1\) & ``I know'' & Accurate confidence \\
+\(0\) & ``I don't know'' & Accurate ignorance \\
+\(-1\) & ``I don't know'' & Protective epistemic humility \\
+\end{longtable}
+
+\textbf{Monotonicity Preservation}:
+
+The current coding preserves the ordering:
+
+\[\text{"I know" when wrong} \prec \text{"I don't know" when wrong} \prec \text{"I don't know" when ignorant} \prec \text{"I know" when right}\]
+
+This ordering is monotonic in epistemic quality and consistent with the
+Socratic wisdom tradition.
+
+\textbf{Alternative: Graded Alignment (Future Extension)}
+
+A graded scheme could assign: - \(K_0 = -1\), Claim = ``I don't know'' →
+\(K_1 = 0.5\) (partial alignment) - \(K_0 = -1\), Claim = ``I know'' →
+\(K_1 = -1\) (full misalignment)
+
+This is a valid design choice but complicates anchor semantics. We leave
+graded alignment for future extension.
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \textbf{State\(_2\): Third-Order Meta-Metacognitive State}
@@ -2554,6 +2609,49 @@ State)}{K\_0 Estimation (First-Order Epistemic State)}}\label{k_0-estimation-fir
 
 Where \(\Phi\) is the standard normal CDF, ensuring \(K_0 \in [-1, 1]\).
 
+\hypertarget{formal-derivation-k_0-approx-tanhtheta}{%
+\subparagraph{\texorpdfstring{Formal Derivation:
+\(K_0 \approx \tanh(\theta)\)}{Formal Derivation: K\_0 \textbackslash approx \textbackslash tanh(\textbackslash theta)}}\label{formal-derivation-k_0-approx-tanhtheta}}
+
+The Executive Summary states \(K_0 \approx \tanh(\theta)\). We now
+provide the formal derivation from the 2PL IRT model.
+
+\textbf{Step 1: Convert probability to \([-1, 1]\) scale}
+
+Given the 2PL response probability:
+\[P = \frac{1}{1 + e^{-a(\theta - b)}}\]
+
+We transform to a signed scale:
+\[K_0^* = 2P - 1 = \frac{2}{1 + e^{-a(\theta - b)}} - 1 = \frac{1 - e^{-a(\theta - b)}}{1 + e^{-a(\theta - b)}}\]
+
+\textbf{Step 2: Recognize hyperbolic tangent identity}
+
+The hyperbolic tangent satisfies:
+\[\tanh(x) = \frac{e^{2x} - 1}{e^{2x} + 1} = \frac{1 - e^{-2x}}{1 + e^{-2x}}\]
+
+\textbf{Step 3: Match exponents}
+
+Comparing forms, we identify:
+\[K_0^* = \tanh\left(\frac{a(\theta - b)}{2}\right)\]
+
+\textbf{Full Form}: \[K_0 = \tanh\left(\frac{a(\theta - b)}{2}\right)\]
+
+\textbf{Simplified Form (under standardization assumptions)}:
+
+When \(a = 2\) (unit discrimination) and \(b = 0\) (centered
+difficulty): \[K_0 \approx \tanh(\theta)\]
+
+\textbf{Dependency Note}: This mapping is item-parameter dependent: -
+High \(a\) (discriminating items) → sharper transition near
+\(\theta = b\) - High \(b\) (difficult items) → shift toward lower
+\(K_0\) for fixed \(\theta\)
+
+For aggregate \(K_0\) across items with varying \((a_i, b_i)\):
+\[\bar{K}_0 = \frac{1}{N} \sum_{i=1}^{N} \tanh\left(\frac{a_i(\theta - b_i)}{2}\right)\]
+
+Or estimate \(\theta\) via standard IRT procedures and apply the mapping
+post-hoc.
+
 \textbf{Misconception Detection}: - High confidence + incorrect
 -\textgreater{} \(K_0 = -1\) - Operationalized via Confidence-Accuracy
 calibration error
@@ -2656,19 +2754,100 @@ explicit bounding function)
 \paragraph{\texorpdfstring{\(K_2\) Estimation (Higher-Order
 Alignment)}{K\_2 Estimation (Higher-Order Alignment)}}\label{k_2-estimation-higher-order-alignment}}
 
-\textbf{Method}: Hierarchical Bayesian GLM (cf.~HiBayES, Fleming \& Daw,
-2017)
+\(K_2\) measures meta-metacognitive alignment: does the subject
+accurately assess their own metacognitive accuracy (\(K_1\))? We present
+three candidate methods with a recommended default.
+
+\hypertarget{method-a-test-retest-stability}{%
+\subparagraph{Method A: Test-Retest
+Stability}\label{method-a-test-retest-stability}}
+
+\[K_2^{(\text{stability})} = \text{Cor}(K_1^{(t_1)}, K_1^{(t_2)})\]
+
+Where \(K_1\) is measured at two time points. High stability
+(\(K_2 \to +1\)) indicates consistent metacognitive self-assessment.
+
+\textbf{Interpretation}: This operationalizes \(K_2\) as
+\textbf{reliability of \(K_1\)} rather than accuracy.
+
+\textbf{Requirements}: Repeated measurement at \(t_1\), \(t_2\)
+(recommended: 2-4 weeks apart)
+
+\hypertarget{method-b-higher-order-claim-alignment-primary}{%
+\subparagraph{Method B: Higher-Order Claim Alignment
+(PRIMARY)}\label{method-b-higher-order-claim-alignment-primary}}
+
+\[K_2^{(\text{claim})} = \mathbb{1}[\text{Claim}_2 \text{ matches actual } K_1] \cdot 2 - 1\]
+
+Where Claim\(_2\) is the subject's belief about their own metacognitive
+accuracy.
+
+\textbf{Implementation}: 1. Compute \(K_1\) from (Response, Claim\(_1\),
+Reference) 2. Elicit Claim\(_2\): ``Is your self-assessment accurate?''
+3. Compare Claim\(_2\) to actual \(K_1\)
+
+\textbf{Aggregate Form} (across items):
+\[K_2 = 2 \cdot P(\text{Claim}_2 \text{ matches } \text{State}_1) - 1\]
+
+\hypertarget{method-c-hierarchical-bayesian-reliability}{%
+\subparagraph{Method C: Hierarchical Bayesian
+Reliability}\label{method-c-hierarchical-bayesian-reliability}}
+
+Model \(K_1^{(i)}\) as noisy observations of a latent true \(K_1^*\):
+
+\[K_1^{(i)} | K_1^* \sim \mathcal{N}(K_1^*, \sigma^2)\]
+
+Then:
+\[K_2 = 1 - \frac{\text{Var}(K_1^{(i)} | K_1^*)}{\text{Var}(K_1^{(i)})} = \frac{\text{Var}(K_1^*)}{\text{Var}(K_1^{(i)})}\]
+
+This is the \textbf{reliability coefficient} (analogous to Cronbach's
+\(\alpha\)).
+
+\textbf{Implementation}: Hierarchical Bayesian GLM (cf.~HiBayES, Fleming
+\& Daw, 2017)
 
 \[\text{Claim}_2 | \text{State}_1 \sim \text{Bernoulli}(\sigma(\alpha_s + \beta_i + \gamma_{s,i}))\]
 
-\textbf{Advantages}: - Stable estimation with \(N \geq 20\) items -
-Provides 95\% credible intervals - Decomposes subject and item effects
+\hypertarget{recommended-default-and-validation-strategy}{%
+\subparagraph{Recommended Default and Validation
+Strategy}\label{recommended-default-and-validation-strategy}}
 
-\textbf{Mapping}:
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2353}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2941}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2941}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1765}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Method
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Measures
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Requires
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Role
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{B (Claim)} & Accuracy of meta-metacognition & Explicit
+Claim\(_2\) & \textbf{Primary} \\
+A (Stability) & Reliability of \(K_1\) & Repeated measurement &
+\textbf{Validation} \\
+C (Bayesian) & Signal-to-noise ratio & Multiple items (\(N \geq 20\)) &
+\textbf{Robustness check} \\
+\end{longtable}
 
-\[K_2 = 2 \cdot P(\text{Claim}_2 \text{ matches } \text{State}_1) - 1\]
+\textbf{Rationale for Method B as Primary}: - Direct operationalization
+of the theoretical construct (meta-metacognitive accuracy) -
+Single-session administration (no need for retest) - Consistent with the
+MAT protocol structure (claim-based measurement)
 
-Estimated from posterior predictive distribution.
+\textbf{Validation Protocol}: 1. Compute \(K_2\) via Method B (primary
+estimate) 2. If retest data available, validate with Method A (expected
+correlation \(r > 0.5\)) 3. For large \(N\), verify with Method C
+(expected convergence)
 
 \hypertarget{summary-table-estimation-methods}{%
 \paragraph{Summary Table: Estimation
@@ -3091,6 +3270,98 @@ meaning 2. \textbf{Estimation targets}: \(\theta_n\) can be estimated
 via maximum likelihood 3. \textbf{Uncertainty quantification}: Standard
 errors on \(\hat{\theta}_n\) yield confidence intervals for \(K_n\)
 
+\hypertarget{continuous-k_n-values-via-proper-scoring-rules}{%
+\subsubsection{\texorpdfstring{Continuous \(K_n\) Values via Proper
+Scoring
+Rules}{Continuous K\_n Values via Proper Scoring Rules}}\label{continuous-k_n-values-via-proper-scoring-rules}}
+
+For discrete elicitation mapped to continuous \(K_n\), we define
+principled estimators based on strictly proper scoring rules. This
+ensures that intermediate values (e.g., \(K_0 = 0.6\)) are not arbitrary
+but derive from established accuracy metrics.
+
+\hypertarget{k_0-continuous-estimation}{%
+\paragraph{\texorpdfstring{\(K_0\) Continuous
+Estimation}{K\_0 Continuous Estimation}}\label{k_0-continuous-estimation}}
+
+\textbf{Option A: Brier-Based Embedding}
+
+Given a response \(r\) and reference \(t\), with confidence
+\(c \in [0, 1]\):
+
+\[K_0 = \begin{cases}
+2c - 1 & \text{if } r = t \text{ (correct)} \\
+0 & \text{if } r = \text{abstain} \\
+-(2c - 1) & \text{if } r \neq t \text{ (incorrect)}
+\end{cases}\]
+
+This maps high-confidence correct to \(K_0 \to +1\), high-confidence
+incorrect to \(K_0 \to -1\), and low-confidence or abstention to
+\(K_0 \to 0\).
+
+\textbf{Option B: Proper Score Centering}
+
+Using Brier score \(B = (c - \mathbb{1}[\text{correct}])^2\):
+
+\[K_0 = 1 - 2B\]
+
+This yields \(K_0 = +1\) for perfect calibration on correct,
+\(K_0 = -1\) for perfect miscalibration.
+
+\textbf{Derivation}: The Brier score \(B \in [0, 1]\) is a strictly
+proper scoring rule. The transformation \(K_0 = 1 - 2B\) linearly
+rescales to \([-1, 1]\), preserving properness.
+
+\hypertarget{k_1-continuous-estimation}{%
+\paragraph{\texorpdfstring{\(K_1\) Continuous
+Estimation}{K\_1 Continuous Estimation}}\label{k_1-continuous-estimation}}
+
+\textbf{Meta-d' Based}:
+
+\[K_1 = \tanh\left(\frac{\text{meta-d}'}{2}\right)\]
+
+Where meta-d' is the signal-detection sensitivity for Type-2 decisions
+(discriminating correct from incorrect responses).
+
+\textbf{Alignment Score Based}:
+
+For item \(i\) with actual \(K_0^{(i)}\) and claimed state
+\(\tilde{K}_0^{(i)}\):
+
+\[K_1 = \frac{1}{N} \sum_{i=1}^{N} \mathbb{1}[K_0^{(i)} \cdot \tilde{K}_0^{(i)} > 0] \cdot 2 - 1\]
+
+This yields \(K_1 = +1\) for perfect alignment, \(K_1 = -1\) for
+systematic misalignment.
+
+\hypertarget{properties-of-continuous-estimators}{%
+\paragraph{Properties of Continuous
+Estimators}\label{properties-of-continuous-estimators}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2381}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3571}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4048}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Property
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(K_0\) (Brier)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(K_1\) (meta-d')
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Anchor Preservation} & \(K_0 \in \{-1, 0, +1\}\) at extremes &
+\(K_1 \in \{-1, 0, +1\}\) at extremes \\
+\textbf{Monotonicity} & Increases with accuracy × confidence & Increases
+with metacognitive sensitivity \\
+\textbf{Properness} & Derived from strictly proper Brier & meta-d' is
+bias-free under SDT assumptions \\
+\textbf{Continuity} & Continuous in \(c\) & Continuous in meta-d' \\
+\end{longtable}
+
 \hypertarget{the-challenge-of-measuring-second-order-states}{%
 \subsubsection{The Challenge of Measuring Second-Order
 States}\label{the-challenge-of-measuring-second-order-states}}
@@ -3176,6 +3447,108 @@ This dissociation is empirically testable and clinically meaningful.
 \item
   Analyze \(K \times C\) jointly for full characterization
 \end{enumerate}
+
+\hypertarget{claim-elicitation-protocol}{%
+\subsubsection{Claim Elicitation
+Protocol}\label{claim-elicitation-protocol}}
+
+This section specifies the empirical protocol for eliciting Claim\(_1\)
+and Claim\(_2\), addressing the question: ``How do we obtain the claims
+needed to compute \(K_1\) and \(K_2\)?''
+
+\hypertarget{standard-protocol-categorical}{%
+\paragraph{Standard Protocol
+(Categorical)}\label{standard-protocol-categorical}}
+
+\textbf{Claim\(_1\) Elicitation:}
+
+After each response, present:
+
+\begin{quote}
+``How confident are you in your answer?'' - {[} {]} I'm confident I'm
+correct (``I know'') - {[} {]} I'm not sure (``Not sure'') - {[} {]} I
+think I might be wrong (``I don't know'')
+\end{quote}
+
+\textbf{Claim\(_2\) Elicitation:}
+
+After completing all items (or after \(K_1\) is computed), present:
+
+\begin{quote}
+``How accurate do you think your self-assessments were overall?'' - {[}
+{]} My self-assessments were accurate (``Meta-aligned'') - {[} {]} I'm
+not sure about my self-assessments (``Meta-uncertain'') - {[} {]} My
+self-assessments were probably inaccurate (``Meta-misaligned'')
+\end{quote}
+
+\hypertarget{continuous-protocol-slider}{%
+\paragraph{Continuous Protocol
+(Slider)}\label{continuous-protocol-slider}}
+
+\textbf{Claim\(_1\) Elicitation:}
+
+\begin{quote}
+``How confident are you in your answer?'' (slider: 0-100)
+\end{quote}
+
+\textbf{Threshold Mapping:}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Slider Value (\(c\)) & Claim\(_1\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(c \geq 70\) & ``I know'' \\
+\(30 < c < 70\) & ``Not sure'' \\
+\(c \leq 30\) & ``I don't know'' \\
+\end{longtable}
+
+\textbf{Threshold Calibration:}
+
+Thresholds should be validated via: 1. \textbf{Pilot calibration}:
+Adjust thresholds to achieve approximately equal category frequencies 2.
+\textbf{Cross-participant comparison}: Use percentile-based thresholds
+(e.g., top 30\%, middle 40\%, bottom 30\%) 3. \textbf{Domain-specific
+adjustment}: Higher thresholds for domains with inflated confidence
+norms
+
+\hypertarget{inter-rater-reliability-requirements}{%
+\paragraph{Inter-Rater Reliability
+Requirements}\label{inter-rater-reliability-requirements}}
+
+For categorical claims: - Expected Cohen's \(\kappa > 0.8\) for
+Claim\(_1\) coding - Any ambiguous responses should be coded by 2+
+independent raters
+
+For continuous claims: - Report ICC (Intraclass Correlation) for slider
+reliability - Expected ICC \(> 0.7\) for adequate reliability
+
+\textbf{Protocol Selection Guidance:}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2727}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4773}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Study Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Recommended Protocol
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Rationale
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Large-scale survey & Categorical & Faster administration, clearer
+coding \\
+Individual assessment & Continuous & Finer gradation, calibration
+analysis \\
+Clinical application & Categorical + Continuous & Both for robustness \\
+\end{longtable}
 
 \textbf{Important Distinction (Summary):} - \(K(x)\): Epistemic state
 (how accurately the subject recognizes \(x\)) - \(C\): Phenomenological
@@ -3913,28 +4286,82 @@ between correct and incorrect responses via confidence ratings.
 
 \textbf{Formal Correspondence with Type-2 SDT:}
 
-In Type-2 SDT, subjects discriminate their own correct from incorrect
-responses.
+In Type-2 SDT, meta-d' is the d' that would produce the observed Type-2
+ROC if the observer had optimal metacognitive access to their Type-1
+evidence.
+
+\textbf{Definition (meta-d'):}
+
+\[\text{meta-d}' = \Phi^{-1}(\text{HR}_2) - \Phi^{-1}(\text{FAR}_2)\]
+
+Where: - \(\text{HR}_2\) = Type-2 Hit Rate =
+\(P(\text{high confidence} | \text{correct})\) - \(\text{FAR}_2\) =
+Type-2 False Alarm Rate =
+\(P(\text{high confidence} | \text{incorrect})\) - \(\Phi^{-1}\) =
+inverse standard normal CDF
+
+\textbf{Mapping \(K_1\) to meta-d':}
+
+\[K_1 = \tanh\left(\frac{\text{meta-d}'}{2}\right)\]
+
+\textbf{Derivation:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  meta-d' \(\in (-\infty, +\infty)\), with 0 = chance, positive =
+  above-chance sensitivity
+\item
+  \(\tanh\) maps \((-\infty, +\infty) \to (-1, +1)\) monotonically
+\item
+  The factor of 2 ensures that meta-d' \(= 2\) (good sensitivity) maps
+  to \(K_1 \approx 0.76\)
+\end{enumerate}
+
+\textbf{M-Ratio Alternative:}
+
+\[K_1 = \text{M-ratio} - 1 = \frac{\text{meta-d}'}{d'} - 1\]
+
+Where M-ratio = 1 indicates ideal metacognitive efficiency (perfect
+metacognitive access).
+
+\textbf{Complete Correspondence Table:}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3256}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3488}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3256}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 SDT Quantity
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\(K\) Framework Equivalent
+\(K\) Framework
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Relationship
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Type-1 d' (sensitivity) & Derived from \(K_0\) distribution \\
-Type-2 Hit Rate & \(P(\text{"I know"} | K_0 = 1)\) \\
-Type-2 FA Rate & \(P(\text{"I know"} | K_0 \leq 0)\) \\
-meta-d' & Related to \(K_1\) via:
-\(K_1 \approx \tanh(\text{meta-d}'/d')\) \\
+d' (Type-1) & Related to \(K_0\) &
+\(d' \approx 2 \cdot \text{arctanh}(K_0)\) \\
+Type-2 HR & \(P(\text{"I know"} | K_0 = +1)\) & Direct
+operationalization \\
+Type-2 FAR & \(P(\text{"I know"} | K_0 \leq 0)\) & Direct
+operationalization \\
+meta-d' & Related to \(K_1\) &
+\(K_1 \approx \tanh(\text{meta-d}'/2)\) \\
+M-ratio & Metacognitive efficiency & \(K_1 \approx \text{M-ratio} - 1\)
+(if \(d' = 2\)) \\
+Type-2 AUROC & Discrimination accuracy &
+\(K_1 \approx 2 \cdot \text{AUROC} - 1\) \\
 \end{longtable}
+
+\textbf{Important Note:} These are approximate correspondences valid
+under specific assumptions (symmetric criteria, Gaussian noise). Exact
+relationships depend on model parameters and should be validated
+empirically.
 
 \textbf{What \(K\) Adds Beyond meta-d'}:
 
@@ -4316,6 +4743,77 @@ necessarily improving \(K_0\) \\
 for improved collaboration \\
 \end{longtable}
 
+\hypertarget{correspondence-with-monitorgenerateverify-architectures}{%
+\paragraph{Correspondence with Monitor--Generate--Verify
+Architectures}\label{correspondence-with-monitorgenerateverify-architectures}}
+
+Recent LLM metacognition research formalizes recursive self-monitoring
+via Monitor--Generate--Verify (MGV) loops. The \(K\) framework provides
+a natural coordinate system for these architectures.
+
+\textbf{Mapping MGV Components to \(K\) Layers:}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+MGV Component & \(K\) Layer & Correspondence \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Generate} & \(K_0\) & First-order response quality \\
+\textbf{Monitor} & \(K_1\) & Self-assessment of response quality \\
+\textbf{Verify} & \(K_2\) & Meta-assessment of monitoring accuracy \\
+\end{longtable}
+
+\textbf{Iteration Dynamics:}
+
+In MGV, the loop proceeds: 1. Generate response → observe \(K_0\)
+(against reference) 2. Monitor quality → compute \(K_1\)
+(self-assessment alignment) 3. Verify monitoring → compute \(K_2\)
+(meta-monitoring accuracy) 4. If \(K_2 < \tau\), regenerate (loop back
+to step 1)
+
+\textbf{\(K\) Framework as Stopping Criterion:}
+
+\[\text{Accept output iff } K_1 \geq \tau_1 \text{ AND } K_2 \geq \tau_2\]
+
+This formalizes the intuition that LLMs should only output when: - They
+are confident (\(K_1 \geq \tau_1\)), AND - That confidence is justified
+(\(K_2 \geq \tau_2\))
+
+\textbf{Complementarity:}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2821}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2564}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4615}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Framework
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Provides
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Does NOT Provide
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+MGV & Process (how to iterate) & Coordinates (where in metacognitive
+space) \\
+\(K\) Framework & Coordinates (where the system is) & Process (how to
+move) \\
+\end{longtable}
+
+\textbf{Integration Potential:}
+
+MGV architectures can use \(K_n\) as the objective function for
+optimization: - Maximize \(E[K_1 | \text{generation strategy}]\) -
+Minimize variance of \(K_2\) across domains
+
+This integration enables principled design of self-improving LLM
+systems.
+
 \textbf{Scope Boundary:} Detailed LLM operationalization and experiments
 are marked for future work.
 
@@ -4556,6 +5054,58 @@ the following limitations:
   semantics and unambiguous \(K_1\)/\(K_2\) computation. Graded
   extensions require principled definitions of ``partial alignment''
   that preserve interpretability.
+
+  \textbf{Extension Path: Polytomous and Partial Credit Scoring}
+
+  For polytomous outcomes (e.g., rubric scores 0, 1, 2, 3), we specify a
+  concrete extension via the Graded Response Model (GRM):
+
+  \[P(Y \geq k | \theta) = \frac{1}{1 + e^{-a(\theta - b_k)}}\]
+
+  \textbf{Mapping to Graded \(K_0\)}:
+
+  \[K_0^{(\text{graded})} = \frac{2Y - Y_{\max}}{Y_{\max}}\]
+
+  Where \(Y\) is the observed score and \(Y_{\max}\) is the maximum
+  possible score.
+
+  \textbf{Impact on Higher Layers}:
+
+  Graded \(K_0\) propagates to \(K_1\) with graded alignment:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``I'm 80\% confident'' matches \(K_0 = 0.6\) → partial alignment
+  \item
+    ``I'm 80\% confident'' matches \(K_0 = -0.2\) → partial misalignment
+  \end{itemize}
+
+  \textbf{When to Use Each Approach}:
+
+  \begin{longtable}[]{@{}
+    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3226}}
+    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6774}}@{}}
+  \toprule\noalign{}
+  \begin{minipage}[b]{\linewidth}\raggedright
+  Scenario
+  \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+  Recommended Approach
+  \end{minipage} \\
+  \midrule\noalign{}
+  \endhead
+  \bottomrule\noalign{}
+  \endlastfoot
+  Factual Q\&A (binary correct/incorrect) & Trichotomous
+  \(K_0 \in \{-1, 0, +1\}\) \\
+  Essay grading (rubric-based) & Graded \(K_0\) via GRM mapping \\
+  Programming (test case pass rate) & Proportion-based \(K_0 = 2p - 1\)
+  where \(p\) = pass rate \\
+  Multiple-choice with partial credit & GRM-based \(K_0\) \\
+  \end{longtable}
+
+  \textbf{Implementation Status}: Conceptually compatible with the
+  framework; formal development deferred to future work.
 \item
   \textbf{Informativeness Constraint}
 
