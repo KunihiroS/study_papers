@@ -79,7 +79,7 @@
 
 | Question | 対応 |
 |:---------|:-----|
-| Q1: マッピング導出の条件 | Phase 1.2 補足 |
+| Q1: マッピング導出の条件 | **Plan 11 で対応済み**。本 Plan では条件・限界の補足のみ（Phase 1.2 内） |
 | Q2: 層独立性と識別可能性 | Phase 2.1, 2.2 |
 | Q3: K1 と confidence の境界 | Phase 4.2 |
 | Q4: K̂ の必要性 | Phase 3.1 |
@@ -197,6 +197,8 @@ Let $R_n$ be the accessibility relation at layer $n$. Then:
 $$K_n = \frac{|\{w' : w R_n w' \land \text{State}_n(w') = \text{State}_n(w_0)\}| - |\{w' : w R_n w' \land \text{State}_n(w') \neq \text{State}_n(w_0)\}|}{|\{w' : w R_n w'\}|}$$
 
 This yields $K_n = +1$ when all accessible worlds match actuality, $K_n = -1$ when none do.
+
+**Note**: This proportion-based formulation is a **proposed operationalization** extending standard Kripke semantics (which is binary: know/don't know) to a graded scale. This extension is novel to our framework and should be understood as an empirical approximation rather than a direct entailment from modal logic.
 
 #### Limitations of the Correspondence
 
@@ -349,6 +351,8 @@ As $n$ increases, the marginal information provided by $K_n$ decreases:
 $$\text{Var}(K_n | K_0, K_1, \ldots, K_{n-1}) \to 0 \text{ as } n \to \infty$$
 
 **Rationale**: Higher-order metacognition becomes increasingly abstract and harder to distinguish from lower layers.
+
+**Note**: This is presented as a **hypothesis** based on theoretical considerations. Empirical validation is deferred to future simulation studies. No direct verification data currently exists for this claim.
 
 #### Elicitation Challenges for Claim$_n$ (n > 2)
 
@@ -522,25 +526,13 @@ $$K_n = g_n(f_n(\text{Response}_n, \text{Claim}_n, \text{State}_{n-1}))$$
 
 The complete pipeline integrates categorical and continuous interpretations:
 
-```
-Input: (Response, Claim₁, Claim₂, ..., Reference)
-                    ↓
-        ┌──────────────────────┐
-        │  Option A: Discrete  │
-        │  f_n → {-1, 0, +1}   │
-        │  g_n = identity      │
-        │  K̂ = identity        │
-        └──────────────────────┘
-                    OR
-        ┌──────────────────────┐
-        │ Option B: Continuous │
-        │  f_n → [-1, +1]      │
-        │  g_n = link function │
-        │  K̂ = normalizer      │
-        └──────────────────────┘
-                    ↓
-Output: K₀, K₁, K₂, ... ∈ [-1, +1]
-```
+| Stage | Option A (Discrete) | Option B (Continuous) |
+|:------|:--------------------|:----------------------|
+| **Input** | (Response, Claim$_1$, Claim$_2$, ..., Reference) | Same |
+| **$f_n$ output** | $\{-1, 0, +1\}$ | $[-1, +1]$ |
+| **$g_n$** | identity | link function (e.g., tanh) |
+| **$\hat{K}$** | identity | normalizer (optional) |
+| **Output** | $K_0, K_1, K_2, \ldots \in \{-1, 0, +1\}$ | $K_0, K_1, K_2, \ldots \in [-1, +1]$ |
 
 #### Option A: Discrete Pipeline
 
@@ -730,7 +722,7 @@ Phase 4.2 (K1 vs Confidence Boundary)
 
 | Question | Response Location |
 |:---------|:------------------|
-| Q1: マッピング導出の条件 | Phase 1.2 (Limitations of Correspondence) |
+| Q1: マッピング導出の条件 | **Plan 11 で対応済み**。本 Plan では条件・限界の補足のみ（Phase 1.2 内） |
 | Q2: 層独立性と識別可能性 | Phase 2.1, 2.2 |
 | Q3: K1 と confidence の境界 | Phase 4.2 |
 | Q4: K̂ の必要性 | Phase 3.1 |
