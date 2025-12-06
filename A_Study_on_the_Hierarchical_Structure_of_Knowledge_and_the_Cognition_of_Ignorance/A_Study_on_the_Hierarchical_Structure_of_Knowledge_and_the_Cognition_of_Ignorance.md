@@ -37,6 +37,58 @@ This paper establishes the **conceptual foundation** for a unified theory of rec
 These omissions are not gaps but **scope boundaries**. Measurement-theoretic elaboration and empirical validation require this conceptual foundation to be settled first. We invite the research community to build upon this foundation.
 
 
+## Executive Summary: Framework at a Glance
+
+This section provides a concise overview of the framework's core components for readers seeking quick orientation.
+
+### Core Apparatus
+
+| Component | Definition | Purpose |
+|:----------|:-----------|:--------|
+| **$K_n$** | Observation function at layer $n$ | Maps State$_n$ to $[-1, 1]$ |
+| **State$_n$** | Epistemic state object at layer $n$ | Target of observation |
+| **$f_n$** | State function | Computes State$_n$ from inputs |
+| **$g_n$** | Embedding map | Maps categorical State$_n$ to $K_n \in [-1, 1]$ |
+
+### Anchor Semantics (All Layers)
+
+| Value | Layer 0 Meaning | Layer $n \geq 1$ Meaning |
+|:------|:----------------|:-------------------------|
+| $K_n = +1$ | Knowledge (correct response) | Alignment (accurate self-assessment) |
+| $K_n = 0$ | Ignorance (no response / "I don't know") | Indeterminacy (uncertain self-assessment) |
+| $K_n = -1$ | Misconception (incorrect response) | Misalignment (inaccurate self-assessment) |
+
+### 27-Pattern Taxonomy (Preview)
+
+The framework generates $3 \times 3 \times 3 = 27$ metacognitive patterns from combinations of $(K_0, K_1, K_2) \in \{-1, 0, +1\}^3$. The complete enumeration appears in Section "Complete Taxonomy of 27 Metacognitive Patterns." Key patterns include:
+
+| Pattern | $(K_0, K_1, K_2)$ | Name | Description |
+|:--------|:------------------|:-----|:------------|
+| #14 | $(0, +1, +1)$ | **Socratic Wisdom** | Knows that they don't know |
+| #5 | $(-1, -1, -1)$ | **Dunning-Kruger (Deep)** | Wrong, overconfident, unaware |
+| #22 | $(+1, -1, +1)$ | **Imposter Syndrome (Aware)** | Correct but self-doubting, aware of this tendency |
+
+### Correspondence with Established Metrics
+
+| Layer | Our Metric | Established Metric | Relationship |
+|:------|:-----------|:-------------------|:-------------|
+| $K_0$ | First-order accuracy | IRT ability $\theta$ | $K_0 \approx \tanh(\theta)$ |
+| $K_1$ | Metacognitive alignment | meta-d'/d' | $K_1 \approx \tanh(\text{meta-d}'/2)$ |
+| $K_1$ | Calibration | ECE | $K_1 \approx 1 - 2 \cdot \text{ECE}$ |
+| $K_2$ | Meta-metacognitive stability | Test-retest $K_1$ | Novel contribution |
+
+*See Related Work section for detailed correspondence analysis.*
+
+### Latent Variable Model (Preview)
+
+For continuous $K_n$ estimation, we employ a latent variable model:
+
+$$K_n^* \sim \mathcal{N}(\mu_n, \sigma_n^2)$$
+$$K_n = \begin{cases} +1 & \text{if } K_n^* > \tau^+ \\ 0 & \text{if } \tau^- \leq K_n^* \leq \tau^+ \\ -1 & \text{if } K_n^* < \tau^- \end{cases}$$
+
+*See Measurement Theory section for full specification.*
+
+
 ## Philosophical Foundation and Interpretive Notes
 
 This section clarifies the philosophical motivation behind this paper and provides essential interpretive guidance to prevent misunderstanding of the proposed model.
@@ -467,18 +519,27 @@ $$\text{State}_2 \in \{\text{meta-aligned}, \text{meta-uncertain}, \text{meta-mi
 | "I'm not sure about my self-assessment" | Subject uncertain about $K_1$ |
 | "My self-assessment may be wrong" | Subject doubts their $K_1$ |
 
-**State Function $f_2$:**
+**State Function $f_2$ (Complete 9-Pattern Enumeration):**
 
-| $K_1$ (actual) | Claim$_2$ | $\text{State}_2 = f_2(K_1, \text{Claim}_2)$ |
-|:---------------|:----------|:--------------------------------------------|
-| $+1$ (calibrated) | "accurate" | meta-aligned |
-| $+1$ (calibrated) | "not sure" | meta-uncertain |
-| $+1$ (calibrated) | "may be wrong" | meta-misaligned |
-| $0$ (uncertain) | "not sure" | meta-aligned |
-| $0$ (uncertain) | "accurate" or "may be wrong" | meta-misaligned |
-| $-1$ (miscalibrated) | "may be wrong" | meta-aligned |
-| $-1$ (miscalibrated) | "not sure" | meta-uncertain |
-| $-1$ (miscalibrated) | "accurate" | meta-misaligned |
+| $K_1$ (actual) | Claim$_2$ | State$_2$ | $K_2$ |
+|:---------------|:----------|:----------|:------|
+| $+1$ (aligned) | "My self-assessment is accurate" | meta-aligned | $+1$ |
+| $+1$ (aligned) | "I'm not sure about my self-assessment" | meta-uncertain | $0$ |
+| $+1$ (aligned) | "My self-assessment may be wrong" | meta-misaligned | $-1$ |
+| $0$ (uncertain) | "My self-assessment is accurate" | meta-misaligned | $-1$ |
+| $0$ (uncertain) | "I'm not sure about my self-assessment" | meta-aligned | $+1$ |
+| $0$ (uncertain) | "My self-assessment may be wrong" | meta-misaligned | $-1$ |
+| $-1$ (misaligned) | "My self-assessment is accurate" | meta-misaligned | $-1$ |
+| $-1$ (misaligned) | "I'm not sure about my self-assessment" | meta-uncertain | $0$ |
+| $-1$ (misaligned) | "My self-assessment may be wrong" | meta-aligned | $+1$ |
+
+**Interpretation of State$_2$ Values:**
+
+| State$_2$ | $K_2$ | Meaning |
+|:----------|:------|:--------|
+| **meta-aligned** | $+1$ | Subject's belief about their self-assessment accuracy matches reality |
+| **meta-uncertain** | $0$ | Subject expresses uncertainty about their self-assessment |
+| **meta-misaligned** | $-1$ | Subject's belief about their self-assessment accuracy contradicts reality |
 
 ---
 
@@ -493,6 +554,21 @@ Claim$_2$ + K$_1$ -> f$_2$(K$_1$, Claim$_2$) -> State$_2$ -> g$_2$ -> K$_2$
 ```
 
 **Reproducibility:** Given the same (Response, Claim$_1$, Claim$_2$, Reference), any observer following this specification will compute identical $(K_0, K_1, K_2)$.
+
+---
+
+> **DEFINITION (Higher-Order Alignment States):**
+>
+> For layer $n \geq 1$, the alignment state is determined by comparing actual $K_{n-1}$ with Claim$_n$:
+>
+> | Term | Condition | $K_n$ |
+> |:-----|:----------|:------|
+> | **Aligned** | Claim$_n$ correctly describes $K_{n-1}$ | $+1$ |
+> | **Uncertain** | Claim$_n$ = "I'm not sure" AND $K_{n-1} = 0$ | $0$ |
+> | **Misaligned** | Claim$_n$ contradicts $K_{n-1}$ | $-1$ |
+>
+> **Formal Rule**: 
+> $$K_n = \begin{cases} +1 & \text{if Claim}_n \text{ matches } K_{n-1} \\ 0 & \text{if Claim}_n = \text{"uncertain"} \text{ and } K_{n-1} = 0 \\ -1 & \text{if Claim}_n \text{ contradicts } K_{n-1} \end{cases}$$
 
 ---
 
@@ -579,9 +655,7 @@ The phrase "targeted intervention" in the Introduction refers to a **downstream 
 - **Mechanism** by which metacognition operates
 - **Prescriptions** for which interventions to use
 
-**Analogy:**
-
-A thermometer (observation) does not itself heat or cool a room (intervention). But knowing the temperature enables targeted decisions about heating/cooling. Similarly, $K_n$ observes metacognitive states, enabling (but not specifying) targeted interventions.
+*See Thermometer Calibration Analogy above for an illustration of the observation/intervention distinction.*
 
 ### Symbolic Notation: A Conceptual Communication Tool
 
@@ -797,6 +871,81 @@ The taxonomy is complete by construction: every possible $(K_0, K_1, K_2) \in \{
 | **Classic Imposter** | $(+1, -1, 0)$ | Intervention target: confidence building |
 | **Entrenched Error** | $(-1, -1, -1)$ | Most resistant to change; requires staged approach |
 | **Perfect Calibration** | $(+1, +1, +1)$ | Ideal end state |
+
+### Worked Examples: Representative Patterns
+
+The following examples demonstrate how the $(K_0, K_1, K_2)$ triplet is computed in concrete scenarios.
+
+#### Example 1: Socratic Wisdom (Pattern #11: $K_0 = 0, K_1 = +1, K_2 = 0$)
+
+**Scenario**: History exam, question about the date of the Treaty of Westphalia.
+
+| Step | Observable | Computation | Value |
+|:-----|:-----------|:------------|:------|
+| Response | "I don't know" | — | — |
+| Reference | 1648 | — | — |
+| State$_0$ | Response = Absent | $f_0(\text{absent}, 1648)$ = absent | — |
+| $K_0$ | $g_0(\text{absent})$ | $= 0$ | **$K_0 = 0$** |
+| Claim$_1$ | "I correctly identified that I don't know" | — | — |
+| State$_1$ | Claim$_1$ matches $K_0 = 0$ | $f_1(0, \text{"I don't know"})$ = aligned | — |
+| $K_1$ | $g_1(\text{aligned})$ | $= +1$ | **$K_1 = +1$** |
+| Claim$_2$ | "I'm not sure about my self-assessment" | — | — |
+| State$_2$ | Claim$_2$ = uncertain when $K_1 = +1$ | $f_2(+1, \text{"not sure"})$ = uncertain | — |
+| $K_2$ | $g_2(\text{uncertain})$ | $= 0$ | **$K_2 = 0$** |
+
+**Interpretation**: Subject demonstrates Socratic wisdom—accurate recognition of their own ignorance—but is modest about this metacognitive achievement.
+
+---
+
+#### Example 2: Deep Dunning-Kruger (Pattern #18: $K_0 = 0, K_1 = -1, K_2 = -1$)
+
+**Scenario**: Math test, question "What is $\sqrt{16}$?"
+
+| Step | Observable | Computation | Value |
+|:-----|:-----------|:------------|:------|
+| Response | "5" | — | — |
+| Reference | 4 | — | — |
+| State$_0$ | Response ≠ Reference | $f_0(5, 4)$ = incorrect | — |
+| $K_0$ | $g_0(\text{incorrect})$ | $= -1$ | **$K_0 = -1$** |
+| Claim$_1$ | "I'm confident I'm correct" | — | — |
+| State$_1$ | Claim$_1$ contradicts $K_0 = -1$ | $f_1(-1, \text{"I know"})$ = misaligned | — |
+| $K_1$ | $g_1(\text{misaligned})$ | $= -1$ | **$K_1 = -1$** |
+| Claim$_2$ | "My self-assessment is reliable" | — | — |
+| State$_2$ | Claim$_2$ contradicts $K_1 = -1$ | $f_2(-1, \text{"accurate"})$ = meta-misaligned | — |
+| $K_2$ | $g_2(\text{meta-misaligned})$ | $= -1$ | **$K_2 = -1$** |
+
+**Interpretation**: Triple misalignment—wrong answer, overconfident, and unaware of overconfidence. This is the "entrenched" metacognitive failure pattern.
+
+---
+
+#### Example 3: Imposter Syndrome Aware (Pattern #7: $K_0 = +1, K_1 = -1, K_2 = +1$)
+
+**Scenario**: Programming task, correct solution submitted.
+
+| Step | Observable | Computation | Value |
+|:-----|:-----------|:------------|:------|
+| Response | Correct code | — | — |
+| Reference | Expected output | — | — |
+| State$_0$ | Response = Reference | $f_0(\text{correct}, \text{correct})$ = correct | — |
+| $K_0$ | $g_0(\text{correct})$ | $= +1$ | **$K_0 = +1$** |
+| Claim$_1$ | "I probably got it wrong" | — | — |
+| State$_1$ | Claim$_1$ contradicts $K_0 = +1$ | $f_1(+1, \text{"I don't know"})$ = misaligned | — |
+| $K_1$ | $g_1(\text{misaligned})$ | $= -1$ | **$K_1 = -1$** |
+| Claim$_2$ | "I know I tend to underestimate myself" | — | — |
+| State$_2$ | Claim$_2$ correctly identifies $K_1 = -1$ | $f_2(-1, \text{"may be wrong"})$ = meta-aligned | — |
+| $K_2$ | $g_2(\text{meta-aligned})$ | $= +1$ | **$K_2 = +1$** |
+
+**Interpretation**: Classic imposter syndrome with metacognitive awareness—the subject knows they underestimate themselves. This self-awareness ($K_2 = +1$) is a **teachable moment** for intervention.
+
+---
+
+**Summary of Examples:**
+
+| Example | $(K_0, K_1, K_2)$ | Pattern | Key Insight |
+|:--------|:------------------|:--------|:------------|
+| Socratic Wisdom | $(0, +1, 0)$ | #11 | Accurate ignorance recognition |
+| Deep Dunning-Kruger | $(-1, -1, -1)$ | #27 | Triple misalignment, intervention-resistant |
+| Imposter Aware | $(+1, -1, +1)$ | #7 | Self-aware underconfidence, teachable |
 
 **Extension to Continuous Values:**
 
@@ -1061,6 +1210,47 @@ All intermediate values in $(-1, 0)$ and $(0, 1)$ represent **graded mixtures** 
 3. **Aggregation -> Continuous embedding**: Average prototype-valued $K(x_i) \in \{-1, 0, 1\}$ across multiple items or contexts to obtain a continuous summary in $[-1, 1]$.
 
 Conceptually, the **continuum $[-1, 1]$ is primary**; the trichotomy $\{-1, 0, 1\}$ is a convenient way to name salient regions on this line, not a separate codomain. Experimental designs may choose discrete or continuous elicitation, but in all cases the resulting data are interpreted as points (or distributions) on the same underlying scale $[-1, 1]$.
+
+### Aggregation Rules Across Items
+
+For a subject responding to $N$ items, we obtain item-level scores $(K_0^{(i)}, K_1^{(i)}, K_2^{(i)})$ for $i = 1, \ldots, N$.
+
+#### Point Estimates
+
+| Aggregate | Formula | Interpretation |
+|:----------|:--------|:---------------|
+| **Mean $K_n$** | $\bar{K}_n = \frac{1}{N} \sum_{i=1}^N K_n^{(i)}$ | Overall epistemic/metacognitive level |
+| **Weighted Mean** | $\bar{K}_n^w = \frac{\sum_i w_i K_n^{(i)}}{\sum_i w_i}$ | Item-difficulty adjusted |
+| **Distribution** | $P(K_n = k)$ for $k \in \{-1, 0, +1\}$ | Pattern frequencies |
+
+#### Uncertainty Quantification
+
+**Bootstrap Confidence Intervals:**
+1. Resample $N$ items with replacement, $B = 1000$ times
+2. Compute $\bar{K}_n^{(b)}$ for each bootstrap sample
+3. Report 95% CI as $[\bar{K}_n^{(0.025)}, \bar{K}_n^{(0.975)}]$
+
+**Reliability Threshold:** If CI width $> 0.3$, interpret aggregate $K_n$ with caution.
+
+#### Statistical Properties
+
+| Property | Condition | Guarantee |
+|:---------|:----------|:----------|
+| **Consistency** | $N \to \infty$ | $\bar{K}_n \to \mathbb{E}[K_n]$ |
+| **Anchor Preservation** | All $K_n^{(i)} = +1$ | $\bar{K}_n = +1$ |
+| **Boundedness** | Always | $\bar{K}_n \in [-1, +1]$ |
+
+#### Cross-Item Coherence Check
+
+To verify that aggregation is meaningful:
+
+1. **Within-Subject Variance**: $\text{Var}(K_n^{(i)})$ across items should be interpretable
+   - High variance: Domain-specific metacognition
+   - Low variance: Trait-like metacognitive style
+
+2. **Correlation Structure**: $\text{Cor}(K_0^{(i)}, K_1^{(i)})$ indicates coupling between knowledge and metacognition
+   - Strong positive: Calibrated subject
+   - Near zero: Decoupled states (possible Dunning-Kruger)
 
 ### Estimation Methods for K Values
 
@@ -1643,25 +1833,39 @@ The MAT is designed to **complement, not replace**, existing metacognitive measu
 
 ## Related Work
 
-### Relationship to Epistemic Logic
+### Relationship to Formal Epistemic Logic
 
-Traditional epistemic logics (e.g., S5, KD45) model knowledge via modal operators with introspection axioms:
+Classical epistemic logic (modal logic S5) assumes **idealized agents** with perfect introspection. The following table shows how our framework relates to the standard S5 axioms:
 
-- **Positive Introspection**: $Kp \to KKp$ ("If I know $p$, I know that I know $p$")
-- **Negative Introspection**: $\neg Kp \to K\neg Kp$ ("If I don't know $p$, I know that I don't know $p$")
+| Axiom | Name | S5 Statement | Our Framework Status |
+|:------|:-----|:-------------|:---------------------|
+| **T** | Truth | $K\phi \to \phi$ | Satisfied: $K_0 = +1$ implies correctness |
+| **4** | Positive Introspection | $K\phi \to KK\phi$ | **Violated**: $K_0 = +1$ does NOT imply $K_1 = +1$ |
+| **5** | Negative Introspection | $\neg K\phi \to K\neg K\phi$ | **Violated**: $K_0 = 0$ does NOT imply $K_1 = +1$ |
 
-**Comparison to Our Framework:**
+**Key Departure**: 
 
-| Aspect | Epistemic Logic | Our $K(K(x))$ |
-|:---|:---|:---|
-| **Representation** | Binary (knows/doesn't know) | Continuous $[-1, 1]$ |
-| **Misconception** | Not modeled | $K(x) = -1$ |
-| **Metacognitive failure** | Violates introspection axioms | $K(K(x)) \neq \text{sign}(K(x))$ |
-| **Dunning-Kruger** | Not expressible | $K(x) = 0, K(K(x)) = -1$ |
+Epistemic logics model **what agents should know** under idealized conditions. Our framework models **what agents actually exhibit** under empirical observation, including systematic failures of introspection.
 
-**Key Departure:** Epistemic logics typically assume idealized agents with perfect introspection. Our framework explicitly models **failures of introspection**---cases where $K(K(x)) \neq \text{sign}(K(x))$. This captures the Dunning-Kruger effect and imposter syndrome, which are empirically observed but cannot be expressed in standard epistemic logics without violating the introspection axioms.
+| Aspect | Epistemic Logic (S5) | Our Framework |
+|:-------|:---------------------|:--------------|
+| **Agents** | Idealized, logically consistent | Empirical, cognitively fallible |
+| **Introspection** | Perfect (axioms 4, 5 hold) | Imperfect (Dunning-Kruger, Imposter) |
+| **Semantics** | Modal (possible worlds) | Observational (state-based measurement) |
+| **Purpose** | Normative reasoning about ideal agents | Descriptive measurement of real agents |
+| **Misconception** | Not modeled ($K\phi$ only for true $\phi$) | Explicitly modeled ($K = -1$) |
 
-Our approach can be seen as a **graded, psychologically realistic** extension of epistemic logic that relaxes the introspection axioms to accommodate metacognitive failures.
+**Complementary Use**: Epistemic logic provides normative benchmarks (what perfect metacognition would look like); our framework measures deviations from those benchmarks in real agents. The "axiom violations" we observe are precisely the phenomena of interest.
+
+**Connection to Dynamic Epistemic Logic (DEL):**
+
+DEL models knowledge change through public announcements and private observations. Our framework can be seen as **static snapshots** within a DEL-like dynamics:
+
+- $K_n$ at time $t$ = epistemic state after observation sequence
+- Intervention = action that changes the model
+- Re-observation = new $K_n$ measurement
+
+Full integration with DEL (multi-agent, announcement operators) is beyond current scope but represents a natural extension.
 
 ### Relationship to Graded Epistemic Logics
 
@@ -1843,10 +2047,6 @@ Two subjects with identical meta-I = 0.3 bits (low sensitivity):
 
 meta-I cannot distinguish these cases; $K$ can.
 
-**Analogy:**
-- meta-d' / meta-I = **Thermometer** (measures metacognitive temperature)
-- $K$ = **Weather map** (classifies metacognitive patterns, guides intervention)
-
 ### Calibration Metrics (Brier Score, ECE)
 
 Calibration metrics measure whether confidence aligns with accuracy across many trials.
@@ -1859,7 +2059,7 @@ Calibration metrics measure whether confidence aligns with accuracy across many 
 | **Purpose** | Probabilistic accuracy | Epistemic state recognition |
 | **Socratic Wisdom** | Not explicitly modeled | Explicitly formalized |
 
-**Complementary Relationship:** Calibration metrics and $K(K(x))$ measure different aspects of metacognition. A subject can have good calibration (confidence matches accuracy on average) but poor $K(K(x))$ on specific items (e.g., confidently wrong about specific facts).
+Calibration metrics and $K$ are complementary: calibration measures aggregate confidence-accuracy alignment, while $K$ provides per-item structural classification.
 
 ### Belief Functions and Uncertainty (Dempster-Shafer Theory)
 
@@ -1873,7 +2073,7 @@ Dempster-Shafer theory handles **epistemic uncertainty** and **conflicting evide
 | **Application** | Evidence combination | Self-awareness structure |
 | **Ignorance** | Represented as belief mass | $K(x) = 0$ (epistemic state) |
 
-**Complementary Relationship:** Dempster-Shafer theory could be used to model uncertainty about the reference point when expert consensus is incomplete. Our model specifically targets the **gap between what one knows and what one thinks one knows**.
+Dempster-Shafer addresses uncertainty quantification; $K$ addresses metacognitive discrepancy (the gap between what one knows and what one thinks one knows).
 
 ### Dunning-Kruger Effect (Empirical Psychology)
 
@@ -2033,21 +2233,61 @@ This framework is a **conceptual scaffold** for organizing metacognitive phenome
    
    We leave this extension for future work, noting that the current scalar formulation covers a wide range of practical applications.
 
-3. **Minimal Axiomatic Theory:** We provide basic constraints on $K$ (anchor preservation, monotonicity, boundedness) but do not specify a unique functional form. The specific dynamics of $K$ (e.g., whether it is contractive, has fixed points beyond $\{-1, 0, 1\}$) are empirical questions.
+3. **Scope Boundary: Binary vs. Graded Truth**
 
-4. **No Generative Model:** We do not provide a noise model or generative account of how states are produced. This is a task for computational cognitive modeling.
+   **Current Scope**: This framework assumes **binary correctness** at $K_0$:
+   - Correct ($K_0 = +1$)
+   - Absent ($K_0 = 0$)
+   - Incorrect ($K_0 = -1$)
 
-5. **Observation Protocol:** The mapping from observable behavior to $K_n$ values requires operational definitions. While we provide guidelines (e.g., alignment between claims and performance), the specific elicitation methods depend on the application domain.
+   **Out of Scope (Future Work)**:
 
-6. **$K_2$ Identifiability:** Higher-order estimates ($K_2$, $K_3$) require more items and may be less reliable.
+   | Extension | Challenge | Potential Approach |
+   |:----------|:----------|:-------------------|
+   | **Partial Credit** | $K_0 \in (0, 1)$ requires graded reference | Probabilistic $f_0$ with continuous output |
+   | **Multi-label** | Multiple correct answers | Set-valued $K_0$ or soft-max embedding |
+   | **Graded Truth** | Degrees of correctness | Fuzzy reference with $K_0 = \text{similarity}(\text{Response}, \text{Reference})$ |
+
+   **Why Binary for Now**: Binary correctness enables clean anchor semantics and unambiguous $K_1$/$K_2$ computation. Graded extensions require principled definitions of "partial alignment" that preserve interpretability.
+
+4. **Informativeness Constraint**
+
+   **Problem**: A subject could trivially achieve $K_n = 0$ for all $n$ by always claiming "I'm not sure." This would satisfy the framework's consistency requirements without providing useful information.
+
+   **Solution**: We distinguish between **legitimate uncertainty** and **uninformative hedging** via:
+
+   - **Response Distribution Analysis**:
+     - If $P(\text{Claim}_n = \text{"not sure"}) > 0.8$ across items, flag as potentially uninformative
+     - Legitimate uncertainty should correlate with item difficulty
+
+   - **Coherence Check**:
+     - Subjects with genuine uncertainty should show $K_0$ variance (some correct, some incorrect)
+     - Subjects gaming the system show uniform "not sure" regardless of $K_0$ distribution
+
+   - **Incentive Design** (Experimental):
+     - Proper scoring rules that penalize uninformative claims
+     - Reward calibration: higher payoff for confident-and-correct vs. uncertain-and-correct
+
+   **Informativeness Index**:
+   $$\text{Informativeness}(K_n) = 1 - H(K_n)/H_{\max}$$
+   
+   Where $H(K_n)$ is the entropy of the subject's $K_n$ distribution. Low informativeness (high entropy, uniform distribution) combined with no correlation to $K_{n-1}$ triggers a warning.
+
+5. **Minimal Axiomatic Theory:** We provide basic constraints on $K$ (anchor preservation, monotonicity, boundedness) but do not specify a unique functional form. The specific dynamics of $K$ (e.g., whether it is contractive, has fixed points beyond $\{-1, 0, 1\}$) are empirical questions.
+
+6. **No Generative Model:** We do not provide a noise model or generative account of how states are produced. This is a task for computational cognitive modeling.
+
+7. **Observation Protocol:** The mapping from observable behavior to $K_n$ values requires operational definitions. While we provide guidelines (e.g., alignment between claims and performance), the specific elicitation methods depend on the application domain.
+
+8. **$K_2$ Identifiability:** Higher-order estimates ($K_2$, $K_3$) require more items and may be less reliable.
    - **Guideline:** For reliable $K_2$ estimation, use $N \geq 50$ items with noise $< 0.2$.
    - **Confidence intervals:** Report 95% CI via bootstrap; if CI width $> 0.3$, interpret with caution.
 
-7. **Simulation Validation Pending:** We have not yet provided simulated evidence that different metacognitive profiles (Socratic, Dunning-Kruger, Imposter) are identifiable under realistic noise. This is planned for future work.
+9. **Simulation Validation Pending:** We have not yet provided simulated evidence that different metacognitive profiles (Socratic, Dunning-Kruger, Imposter) are identifiable under realistic noise. This is planned for future work.
 
-8. **Analogical Type Theory:** The type-theoretic justification is analogical rather than formally constructed. A full domain-theoretic or typed lambda-calculus treatment is beyond the current scope.
+10. **Analogical Type Theory:** The type-theoretic justification is analogical rather than formally constructed. A full domain-theoretic or typed lambda-calculus treatment is beyond the current scope.
 
-9. **LLM Operationalization Incomplete:** Applying $K_n$ to LLMs requires addressing question-side shortcuts and model-side signals. Specific methods (conformal coverage, debate protocols) are suggested but not developed here.
+11. **LLM Operationalization Incomplete:** Applying $K_n$ to LLMs requires addressing question-side shortcuts and model-side signals. Specific methods (conformal coverage, debate protocols) are suggested but not developed here.
 
 ### Validation Roadmap
 
