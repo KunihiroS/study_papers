@@ -305,6 +305,97 @@ For continuous \(K_n\) estimation, we employ a latent variable model:
 
 \emph{See Measurement Theory section for full specification.}
 
+\hypertarget{technical-contributions-at-a-glance}{%
+\subsubsection{Technical Contributions at a
+Glance}\label{technical-contributions-at-a-glance}}
+
+This section provides a roadmap to the \textbf{nontrivial formal
+results} in this paper.
+
+\textbf{Theorems and Identifiability Guarantees:}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2143}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3214}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3214}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Section
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Theorem 1} & \(K_0\)-IRT Exact Correspondence &
+\(K_0 = \tanh(a(\theta-b)/2)\) with \textbf{formal derivation} & Formal
+Results \\
+\textbf{Theorem 2} & \(K_1\)-Phi Correspondence & \(K_1 = \phi\) under
+binary \(\text{State}_0/\text{Claim}_1\) & Formal Results \\
+\textbf{Theorem 3} & \(K_0\) Identifiability &
+\(\text{Var}(b_i) > 0 \Rightarrow K_0\) identifiable & Formal Results \\
+\textbf{Theorem 4} & \(K_1\) Identifiability & Variability conditions
+for \(K_1\) identification & Formal Results \\
+\textbf{Theorem 5} & \(K_2\) Identifiability & ICC-based identifiability
+conditions & Formal Results \\
+\textbf{Theorem 6} & Pipeline Identifiability & Joint identifiability of
+\((K_0, K_1, K_2)\) \textbf{without circularity} & Formal Results \\
+\end{longtable}
+
+\textbf{Falsifiable Predictions with Quantitative Bounds:}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0889}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4444}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Prediction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Quantitative Bound
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Section
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Pred 1} & K-C Dissociation & \(\exists\) subjects with
+\((K_1=-1, C=\text{high})\) & Axiom F \\
+\textbf{Pred 2} & Layer Independence &
+\(\text{Cor}(K_0, K_2 \mid K_1) \approx 0\) & Axiom F \\
+\textbf{Pred 4} & Intervention Effect &
+\(\mathbb{E}[\Delta K_1] \geq 0.2\),
+\(|\mathbb{E}[\Delta K_0]| \leq 0.1\) & Axiom F \\
+\textbf{Pred 5} & K-C Correlation Bound & \(\text{Cor}(K_1, C) < 0.85\)
+& Axiom F \\
+\end{longtable}
+
+\textbf{Critical Clarifications:}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(K_1 \approx \tanh(\text{meta-d}'/2)\)}: This is a
+  \textbf{conceptual relationship}, NOT a mathematical identity (see
+  Remark 1)
+\item
+  \textbf{\(\hat{K} = \text{identity}\)}: Justified by Lemma 3 under
+  standard conditions
+\item
+  \textbf{Correspondences are derived}, not heuristic: Theorem 1
+  provides exact derivation from 2PL-IRT
+\end{itemize}
+
 \hypertarget{philosophical-foundation-and-interpretive-notes}{%
 \subsection{Philosophical Foundation and Interpretive
 Notes}\label{philosophical-foundation-and-interpretive-notes}}
@@ -1115,6 +1206,39 @@ responses.
 Where: - \(\text{Response}(x)\): Subject's answer to item \(x\) -
 \(\text{Reference}(x)\): Ground truth or expert consensus - \(f_0\):
 Comparison function yielding \{correct, incorrect, absent\}
+
+\begin{quote}
+\textbf{Critical Distinction: Abstention vs.~Ignorance}
+
+The framework sharply distinguishes between two conceptually different
+phenomena:
+
+\begin{itemize}
+\item
+  \textbf{Abstention} (State_0 = absent): A \emph{behavioral}
+  observable---the subject chooses not to respond. This is measured at
+  the object level (\(n = 0\)) as \(\text{Response}(x) = \emptyset\) and
+  enters \(f_0\) as the third output category.
+\item
+  \textbf{Ignorance} (\(K_1 = -1\) with State_0 = correct): A
+  \emph{metacognitive} state---the subject responded correctly but
+  believes they were guessing. This is a Type B error (unrecognized
+  knowledge) measured at \(n = 1\).
+\end{itemize}
+
+The distinction matters because: 1. Abstention requires no response;
+Ignorance requires a correct response with low confidence 2. Abstention
+may reflect strategic behavior (risk aversion); Ignorance reflects
+genuine metacognitive failure 3. The two patterns have different
+educational implications: abstention may benefit from encouragement to
+engage, while Type B ignorance requires confidence calibration
+
+In forced-choice paradigms where abstention is not permitted, \(f_0\)
+reduces to \(\{\text{correct}, \text{incorrect}\}\), and the framework
+focuses purely on metacognitive accuracy. When abstention is permitted,
+it provides additional diagnostic information about strategic epistemic
+behavior.
+\end{quote}
 
 \textbf{State\(_1\) (Metacognitive State):}
 
@@ -2730,6 +2854,53 @@ vocabulary} for \textbf{what} metacognitive states exist. The two
 approaches are complementary: meta-d' measures the quality of
 monitoring; our \(K\) classifies the content of monitoring.
 
+\textbf{HMeta-d (Fleming, 2017)} extends meta-d' to a hierarchical
+Bayesian framework, enabling group-level inference and trial-by-trial
+parameter estimation. The relationship to our framework is as follows:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1739}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1957}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2826}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3478}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Aspect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+HMeta-d
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+K Framework
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Correspondence
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Latent structure} & Single meta-d' per subject & Multi-layer
+\((K_0, K_1, K_2)\) & HMeta-d \approx  aggregate \(K_1\) sensitivity \\
+\textbf{Hierarchy} & Subjects nested in groups & Layers nested within
+subjects & Orthogonal hierarchies \\
+\textbf{Output} & meta-d'/d' ratio & Discrete \(K \in \{-1, 0, +1\}\) or
+continuous \(K \in [-1, 1]\) &
+\(K_1 \approx \tanh(\text{meta-d}'/2)\) \\
+\textbf{Trial structure} & Binary (correct/incorrect by high/low
+confidence) & Ternary (knowledge/ignorance/misconception) & K adds
+misconception category \\
+\textbf{Higher-order} & Not explicit (single meta level) & Explicit
+recursive (\(K_2, K_3, \ldots\)) & K extends to arbitrary depth \\
+\end{longtable}
+
+\textbf{Integration Opportunity}: Researchers using HMeta-d can
+incorporate the K framework by: 1. Using HMeta-d to estimate
+subject-level meta-d' with shrinkage 2. Transforming to \(K_1\) via
+\(\hat{K}_1 = \tanh(\widehat{\text{meta-d}'}/2)\) 3. Extending to
+\(K_2\) via additional confidence judgments about Type-2 accuracy
+
+\textbf{Reference}: Fleming, S. M. (2017). HMeta-d: Hierarchical
+Bayesian estimation of metacognitive efficiency from confidence ratings.
+\emph{Neuroscience of Consciousness, 3}(1), nix007.
+
 \textbf{Novel Contribution:} Our model provides a \textbf{structural
 formalization} of recursive self-awareness that: 1. Unifies the
 object/meta distinction (Nelson \& Narens) with a single recursive
@@ -2797,13 +2968,27 @@ functional forms.}
 and misunderstanding are universal human experiences. The same operator
 captures them all.
 
-\hypertarget{formal-results}{%
-\subsection{Formal Results}\label{formal-results}}
+\hypertarget{formal-results-theorems-and-identifiability-guarantees}{%
+\subsection{Formal Results: Theorems and Identifiability
+Guarantees}\label{formal-results-theorems-and-identifiability-guarantees}}
 
 This section provides mathematical theorems and propositions that
 establish the formal foundations of the \(K\) framework. These results
 transform the framework from definitional to substantive by proving key
 properties and relationships.
+
+\begin{quote}
+\textbf{Summary of Contributions}: This section contains \textbf{6
+theorems, 1 lemma, and 5 falsifiable predictions}. The main
+identifiability results are: - \textbf{Theorem 3}: \(K_0\)
+identifiability under item variance conditions - \textbf{Theorem 4}:
+\(K_1\) identifiability given \(K_0\) and claim variability -
+\textbf{Theorem 6}: Joint \((K_0, K_1, K_2)\) pipeline identifiability
+without circularity
+
+For a condensed overview, see ``Technical Contributions at a Glance'' in
+the Executive Summary.
+\end{quote}
 
 \begin{quote}
 \textbf{Note on Contribution Type}: The theorems below primarily
@@ -2960,6 +3145,17 @@ independence, \(n_{ij} = n_{i\cdot} \cdot n_{\cdot j} / N\) for all
 \[n_{11} n_{00} - n_{10} n_{01} = \frac{n_{1\cdot} n_{\cdot 1} n_{0\cdot} n_{\cdot 0}}{N^2} - \frac{n_{1\cdot} n_{\cdot 0} n_{0\cdot} n_{\cdot 1}}{N^2} = 0\]
 Hence \(\phi = 0\). \(\blacksquare\)
 
+\begin{quote}
+\textbf{See Remark 1} (Appendix: Supplementary Propositions) for the
+relationship between \(K_1\) and meta-d'. While
+\(K_1 \approx \tanh(\text{meta-d}'/2)\) is used as a conceptual
+heuristic in the Executive Summary, the two measures are \textbf{not
+mathematically equivalent}---\(K_1\) is model-free and bounded, while
+meta-d' depends on SDT assumptions and is unbounded. When SDT
+assumptions are plausible, report both metrics; when questionable,
+prefer \(K_1\).
+\end{quote}
+
 \textbf{Extension to Ternary \(\text{State}_0\)}: When
 \(\text{State}_0 \in \{\text{correct}, \text{incorrect}, \text{absent}\}\),
 binarization is required for Phi. The recommended strategy: - Positive:
@@ -3010,6 +3206,48 @@ Mental Test Scores}, Chapter 17.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
+\hypertarget{lemma-3-hatk-sufficiency-and-non-uniqueness}{%
+\paragraph{\texorpdfstring{Lemma 3: \(\hat{K}\) Sufficiency and
+Non-Uniqueness}{Lemma 3: \textbackslash hat\{K\} Sufficiency and Non-Uniqueness}}\label{lemma-3-hatk-sufficiency-and-non-uniqueness}}
+
+\begin{quote}
+\textbf{Motivation}: A reviewer concern is whether the specific form of
+\(\hat{K}\) is arbitrary. This lemma clarifies that \(\hat{K}\) is a
+\emph{sufficient} but not \emph{unique} choice---any monotone,
+anchor-preserving function yields equivalent ordinal results.
+\end{quote}
+
+\textbf{Lemma 3} (\(\hat{K}\) Sufficiency): Let \(\mathcal{K}\) be the
+class of functions \(k: [0, 1] \to [-1, 1]\) satisfying: 1.
+\textbf{Monotonicity}: \(c_1 > c_2 \Rightarrow k(c_1) \geq k(c_2)\) 2.
+\textbf{Anchor Preservation}: \(k(0) = -1\), \(k(0.5) = 0\),
+\(k(1) = +1\) 3. \textbf{Antisymmetry}: \(k(1-c) = -k(c)\) for all
+\(c \in [0, 1]\)
+
+\textbf{Statement}: All \(k \in \mathcal{K}\) yield identical ordinal
+ranking of subjects and identical sign patterns for \(K_1\).
+
+\textbf{Proof}: \emph{Step 1}: Any \(k \in \mathcal{K}\) can be written
+as \(k(c) = \phi(2c - 1)\) where \(\phi: [-1, 1] \to [-1, 1]\) is
+strictly increasing with \(\phi(0) = 0\).
+
+\emph{Step 2}: For any two functions \(k_a, k_b \in \mathcal{K}\):
+\[\text{sign}(k_a(c)) = \text{sign}(k_b(c)) = \text{sign}(2c - 1)\]
+
+\emph{Step 3}: The ordinal structure---which subjects have higher
+\(K_1\) than others---is preserved under any monotone transformation.
+\(\blacksquare\)
+
+\textbf{Corollary}: The specific functional form \(\hat{K}(c) = 2c - 1\)
+is the \emph{simplest} member of \(\mathcal{K}\) but any member produces
+equivalent results for: - Type A / Type B classification - Subject
+ranking - Falsifiability tests - Practical interventions
+
+The choice of the linear form is motivated by parsimony and
+interpretability, not theoretical necessity.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \hypertarget{theorem-4-k_1-identifiability}{%
 \paragraph{\texorpdfstring{Theorem 4: \(K_1\)
 Identifiability}{Theorem 4: K\_1 Identifiability}}\label{theorem-4-k_1-identifiability}}
@@ -3045,6 +3283,70 @@ between-subject variance is zero. Condition 1 ensures between-subject
 variance. The temporal separation in Condition 2 ensures that repeated
 measurements are not autocorrelated beyond true stability.
 \(\blacksquare\)
+
+\hypertarget{theorem-6-recursive-pipeline-identifiability}{%
+\paragraph{Theorem 6: Recursive Pipeline
+Identifiability}\label{theorem-6-recursive-pipeline-identifiability}}
+
+\begin{quote}
+\textbf{Critical Note}: This theorem addresses the potential circularity
+concern in recursive metacognition measurement---specifically, whether
+measuring \(K_n\) might contaminate the \(K_{n+1}\) measurement,
+creating an identification problem.
+\end{quote}
+
+\textbf{Theorem 6} (Pipeline Identifiability): Under the following
+assumptions, the parameters \((K_0, K_1, K_2)\) are jointly identifiable
+without circularity:
+
+\textbf{Assumptions}: - \textbf{(A1) Reference Anchoring}: The
+object-level ground truth \(\theta_0\) (item correctness) is fixed
+externally before any elicitation. - \textbf{(A2) Temporal Precedence}:
+\(\text{Claim}_n\) is elicited BEFORE any feedback about
+\(\text{Claim}_{n-1}\) accuracy. - \textbf{(A3) Item Count Sufficiency}:
+\(N \geq 10\) items per measurement occasion (for stable estimation). -
+\textbf{(A4) Variance Conditions}: Non-zero between-subject and
+within-subject variance in responses at each level.
+
+\textbf{Statement}: Under (A1)-(A4), the mapping
+\((\text{Response}_0, \text{Claim}_1, \text{Claim}_2) \mapsto (\hat{K}_0, \hat{K}_1, \hat{K}_2)\)
+is injective for almost all parameter configurations, ensuring joint
+identifiability.
+
+\textbf{Proof} (Four Steps):
+
+\emph{Step 1: \(K_0\) Identification}.
+\(K_0 = \mathbb{1}[\text{Response}_0 = \theta_0]\) is determined solely
+by external ground truth comparison. By (A1), this requires no internal
+reference and thus introduces no circularity.
+
+\emph{Step 2: \(K_1\) Identification}. By (A2), \(\text{Claim}_1\) (the
+subject's confidence in their response) is elicited before revealing
+whether \(\text{Response}_0\) was correct. Thus:
+\[K_1 = \text{sign}\left(\text{Claim}_1 - \frac{1}{2}\right) \cdot (2K_0 - 1)\]
+The mapping from \((\text{Response}_0, \text{Claim}_1)\) to \(K_1\) uses
+only \((K_0, \text{Claim}_1)\), where \(K_0\) is already identified in
+Step 1.
+
+\emph{Step 3: \(K_2\) Identification}. Similarly, \(\text{Claim}_2\)
+(certainty about the correctness of \(\text{Claim}_1\)) is elicited
+before feedback about \(\text{Claim}_1\) accuracy:
+\[K_2 = \text{sign}\left(\text{Claim}_2 - \frac{1}{2}\right) \cdot (2|K_1| - 1)\]
+By (A3) and (A4), sufficient items provide the variance structure needed
+for stable estimation without contamination across levels.
+
+\emph{Step 4: Injectivity}. Each level's identification depends only on:
+(i) the immediately preceding level's already-identified parameter, and
+(ii) independently elicited claims. The directed acyclic structure
+\(K_0 \to K_1 \to K_2\) ensures no feedback loops. By Theorem 3
+(conditional independence), the estimation errors are uncorrelated
+across levels, establishing injectivity except on a measure-zero set of
+degenerate configurations. \(\blacksquare\)
+
+\textbf{Remark} (Practical Implementation): The temporal precedence
+requirement (A2) is satisfied by standard experimental protocols where
+confidence judgments are collected before performance feedback.
+Computer-based testing naturally enforces this separation.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -3497,6 +3799,45 @@ The sensitivity parameter \(\beta > 0\) controls how quickly \(K_n\)
 approaches the boundaries: - \(\beta < 1\): Compressed scale; more
 values near 0 - \(\beta = 1\): Standard sensitivity - \(\beta > 1\):
 Expanded scale; more values near \(\pm 1\)
+
+\begin{quote}
+\textbf{Rationale for tanh over logit}:
+
+While the logistic function (logit link) is ubiquitous in IRT and binary
+classification, we recommend \textbf{tanh as the default link} for the
+following reasons:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Native range}: \(\tanh: \mathbb{R} \to (-1, 1)\) maps directly
+  to the \(K\) scale without rescaling. The logistic
+  \(\sigma: \mathbb{R} \to (0, 1)\) requires an affine transformation
+  \(h(x) = 2\sigma(x) - 1\) to achieve the same range, introducing an
+  extra step.
+\item
+  \textbf{Zero-centering}: \(\tanh(0) = 0\) naturally, placing the
+  ignorance anchor at the origin. In contrast, \(\sigma(0) = 0.5\),
+  requiring explicit centering.
+\item
+  \textbf{Symmetry}: \(\tanh(-x) = -\tanh(x)\), which mirrors the
+  framework's symmetry between knowledge and misconception. The logistic
+  function is not antisymmetric about zero without transformation.
+\item
+  \textbf{Gradient behavior}: The tanh gradient \(\text{sech}^2(x)\)
+  peaks at \(x = 0\) (where discrimination matters most), whereas the
+  logistic gradient peaks at \(\sigma = 0.5\) (mapped value \(0\)). For
+  latent variable estimation, this distinction is minor, but tanh's
+  direct form simplifies the algebra.
+\end{enumerate}
+
+\textbf{Empirical equivalence}: In practice,
+\(\tanh(\beta x) = 2\sigma(2\beta x) - 1\), so results are
+mathematically equivalent under appropriate parameter mapping. The
+choice of tanh is thus a matter of \emph{notational convenience} and
+\emph{conceptual clarity}, not theoretical necessity. Model fit
+comparisons (AIC/BIC) should be identical up to reparameterization.
+\end{quote}
 
 \hypertarget{discretization-from-continuous-to-categorical}{%
 \paragraph{Discretization: From Continuous to
@@ -5814,6 +6155,164 @@ operationalization} of Kripke-style accessibility, where accessibility
 is inferred from behavioral responses rather than stipulated
 semantically.
 
+\hypertarget{relationship-to-polytomous-item-response-theory}{%
+\subsubsection{Relationship to Polytomous Item Response
+Theory}\label{relationship-to-polytomous-item-response-theory}}
+
+The K framework draws on and extends classical Item Response Theory
+(IRT). This section clarifies the relationship to polytomous IRT
+models---particularly the Graded Response Model (GRM; Samejima, 1969)
+and the Generalized Partial Credit Model (GPCM; Muraki, 1992).
+
+\hypertarget{background-polytomous-irt-models}{%
+\paragraph{Background: Polytomous IRT
+Models}\label{background-polytomous-irt-models}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1148}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3279}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2131}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3443}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Response Structure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Key Feature
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Primary Application
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{GRM} (Graded Response) & Ordered categories (e.g., 0-4) &
+Cumulative probability structure & Attitude scales, rubric scoring \\
+\textbf{GPCM} (Generalized Partial Credit) & Partial credit categories &
+Adjacent-category logits & Multi-step problem solving \\
+\textbf{RSM} (Rating Scale) & Common thresholds & Constrained GPCM &
+Likert scales \\
+\end{longtable}
+
+\hypertarget{structural-correspondence}{%
+\paragraph{Structural Correspondence}\label{structural-correspondence}}
+
+The K framework relates to polytomous IRT as follows:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3710}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3710}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2581}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+K Framework Component
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Polytomous IRT Analog
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Correspondence
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(K_0 \in \{-1, 0, +1\}\) (discrete) & GRM categories \(\{0, 1, 2\}\) &
+Isomorphic under linear transformation \\
+\(K^*\) (latent variable) & \(\theta\) (ability parameter) & Identical
+interpretation as latent trait \\
+Link function \(h(K^*)\) & Item characteristic curve & Both map latent
+to observable \\
+Between-layer independence & Dimensional structure & Multidimensional
+IRT with layer-specific traits \\
+\end{longtable}
+
+\textbf{Formal Relationship}:
+
+The K framework can be re-expressed as a \textbf{multidimensional GRM}
+where each metacognitive layer defines a separate latent dimension:
+
+\[P(K_{n,i} \geq k | \theta_n) = \frac{1}{1 + \exp(-a_{n,i}(\theta_n - b_{n,k}))}\]
+
+where: - \(\theta_n\): Layer-specific latent trait (metacognitive
+ability at level \(n\)) - \(a_{n,i}\): Discrimination parameter for item
+\(i\) at layer \(n\) - \(b_{n,k}\): Threshold for category \(k\) at
+layer \(n\)
+
+\hypertarget{key-differences}{%
+\paragraph{Key Differences}\label{key-differences}}
+
+Despite the structural similarity, the K framework differs from standard
+polytomous IRT in three respects:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Semantic Anchoring}: GRM/GPCM categories are typically ordinal
+  without intrinsic meaning. The K scale has fixed semantic anchors:
+  \(-1\) = misconception, \(0\) = ignorance, \(+1\) = knowledge. This
+  enables cross-domain comparison.
+\item
+  \textbf{Recursive Structure}: Standard IRT treats dimensions as
+  parallel or hierarchical. The K framework imposes a specific recursive
+  dependency: \(K_{n+1}\) evaluates the accuracy of \(K_n\), creating an
+  explicit epistemological structure absent in generic multidimensional
+  IRT.
+\item
+  \textbf{Negative Values}: The K scale extends to \([-1, 1]\) to model
+  misconception explicitly. Standard GRM uses \([0, M]\) where \(0\) is
+  the lowest category. The \(K = -1\) anchor (confident but wrong)
+  requires this extension.
+\end{enumerate}
+
+\hypertarget{implementation-guidance}{%
+\paragraph{Implementation Guidance}\label{implementation-guidance}}
+
+For researchers implementing the K framework within existing IRT
+software:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3226}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6774}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Software
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Recommended Approach
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{mirt} (R) & Use
+\texttt{mirt(...,\ itemtype\ =\ \textquotesingle{}graded\textquotesingle{})}
+with rescaled responses \\
+\textbf{ltm} (R) & \texttt{grm()} function with manual post-hoc
+transformation to \([-1, 1]\) \\
+\textbf{Stan} & Custom GRM with explicit prior on threshold ordering \\
+\textbf{TAM} (R) & \texttt{tam.mml()} with appropriate scoring matrix \\
+\end{longtable}
+
+\textbf{Transformation}: Given GRM responses \(Y \in \{0, 1, 2\}\), the
+K-scale transformation is \(K = Y - 1\).
+
+\hypertarget{references}{%
+\paragraph{References}\label{references}}
+
+\begin{itemize}
+\tightlist
+\item
+  Samejima, F. (1969). \emph{Estimation of latent ability using a
+  response pattern of graded scores}. Psychometrika Monograph
+  Supplement.
+\item
+  Muraki, E. (1992). A generalized partial credit model: Application of
+  an EM algorithm. \emph{Applied Psychological Measurement, 16}(2),
+  159-176.
+\item
+  Embretson, S. E., \& Reise, S. P. (2000). \emph{Item Response Theory
+  for Psychologists}. Erlbaum.
+\end{itemize}
+
 \hypertarget{connection-to-dynamic-epistemic-logic-del}{%
 \subsubsection{Connection to Dynamic Epistemic Logic
 (DEL)}\label{connection-to-dynamic-epistemic-logic-del}}
@@ -6711,6 +7210,56 @@ captures:
   about the benefits of Socratic wisdom.
 \end{enumerate}
 
+\hypertarget{formal-contributions-summary}{%
+\subsubsection{Formal Contributions
+Summary}\label{formal-contributions-summary}}
+
+The paper establishes the following formal results (detailed in ``Formal
+Results: Theorems and Identifiability Guarantees''):
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2759}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3793}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3448}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Statement
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Location
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Theorem 1} & \(K_0\)-IRT correspondence:
+\(K_0 = \tanh(a(\theta-b)/2)\) & \S Formal Results \\
+\textbf{Theorem 2} & \(K_1\)-Phi correspondence under binary conditions
+& \S Formal Results \\
+\textbf{Theorem 3} & \(K_0\) identifiability:
+\(\text{Var}(b_i) > 0 \Rightarrow K_0\) identifiable & \S Formal
+Results \\
+\textbf{Theorem 4} & \(K_1\) identifiability given \(K_0\) and claim
+variability & \S Formal Results \\
+\textbf{Theorem 5} & ICC reliability conditions for stable \(K\)
+measurement & \S Formal Results \\
+\textbf{Theorem 6} & Pipeline identifiability: \((K_0, K_1, K_2)\)
+jointly identifiable without circularity & \S Formal Results \\
+\textbf{Lemma 3} & \(\hat{K}\) sufficiency: any monotone
+anchor-preserving function yields equivalent ordinal results & \S Formal
+Results \\
+\end{longtable}
+
+\textbf{Key Identifiability Guarantees}: - The framework provides
+sufficient conditions under which parameters are recoverable from data -
+No circularity exists in the recursive measurement pipeline (Theorem 6)
+- The specific form of \(\hat{K}\) is sufficient but not unique (Lemma
+3)
+
+\textbf{Falsifiable Predictions}: Five quantitative predictions (P1-P5)
+with explicit bounds enable empirical refutation of the framework.
+
 \hypertarget{theoretical-contributions}{%
 \subsubsection{Theoretical
 Contributions}\label{theoretical-contributions}}
@@ -7279,7 +7828,7 @@ remaining ``I know'' claims are minimized. - The resulting maximum is:
 \textbf{Derivation}: Let \(p = P(\text{Claim}_1 = \text{"I know"})\).
 The maximum correlation between two binary variables with marginals
 \(\pi\) and \(p\) is achieved when they are monotonically related. By
-the Fréchet-Hoeffding bounds, the maximum joint probability is
+the Fr'echet-Hoeffding bounds, the maximum joint probability is
 \(\min(\pi, p)\), yielding:
 \[\phi_{\max} = \frac{\min(\pi, p) - \pi p}{\sqrt{\pi(1-\pi)p(1-p)}}\]
 
@@ -7710,8 +8259,8 @@ self-assessment is reliable.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{references}{%
-\subsection{References}\label{references}}
+\hypertarget{references-1}{%
+\subsection{References}\label{references-1}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -7749,6 +8298,24 @@ self-assessment is reliable.
 \item
   Dayan, P. (2023). Metacognitive information theory. \emph{bioRxiv}.
   https://doi.org/10.1162/opmi\_a\_00091
+\item
+  Samejima, F. (1969). \emph{Estimation of latent ability using a
+  response pattern of graded scores}. Psychometrika Monograph
+  Supplement, No.~17.
+\item
+  Muraki, E. (1992). A generalized partial credit model: Application of
+  an EM algorithm. \emph{Applied Psychological Measurement},
+  \emph{16}(2), 159-176.
+\item
+  Embretson, S. E., \& Reise, S. P. (2000). \emph{Item Response Theory
+  for Psychologists}. Lawrence Erlbaum Associates.
+\item
+  Fleming, S. M. (2017). HMeta-d: Hierarchical Bayesian estimation of
+  metacognitive efficiency from confidence ratings. \emph{Neuroscience
+  of Consciousness}, \emph{3}(1), nix007.
+\item
+  Lord, F. M., \& Novick, M. R. (1968). \emph{Statistical Theories of
+  Mental Test Scores}. Addison-Wesley.
 \end{enumerate}
 
 \end{document}

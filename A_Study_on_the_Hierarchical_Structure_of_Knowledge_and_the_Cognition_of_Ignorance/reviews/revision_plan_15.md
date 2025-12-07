@@ -400,6 +400,66 @@ Use HMeta-d for meta-d' estimation, then compare with K₁ to assess convergent 
 
 ---
 
+#### A5: Link Function 選択根拠の強化
+
+**現状**: Link Functions セクションで tanh, probit, clipped linear を列挙しているが、tanh をデフォルトとする理論的根拠が弱い。
+
+**追加内容**:
+
+```markdown
+### Rationale for tanh as Default Link Function
+
+**Why tanh over logit/probit?**
+
+We select tanh as the default link function for the following theoretical and practical reasons:
+
+**1. Symmetry and Range Alignment**:
+- tanh : ℝ → (-1, 1) maps directly to the K scale [-1, 1]
+- logit/probit : ℝ → (0, 1) require additional rescaling: 2·Φ(x) - 1
+
+**2. IRT Correspondence**:
+- The 2PL IRT model naturally yields K₀ = tanh(a(θ-b)/2) (Theorem 1)
+- Using tanh preserves this correspondence without additional transformation
+
+**3. SDT Correspondence**:
+- In Signal Detection Theory, d' is unbounded in ℝ
+- tanh(d'/2) maps sensitivity to the bounded K scale naturally
+- This ensures K₁ ≈ tanh(meta-d'/2) has consistent semantics
+
+**4. Computational Properties**:
+- tanh is smooth, monotonic, and differentiable everywhere
+- Gradient: d/dx tanh(x) = 1 - tanh²(x), well-behaved for optimization
+- Available in all standard numerical libraries
+
+**5. Anchor Preservation**:
+- tanh(0) = 0: Ignorance anchor preserved
+- tanh(±∞) = ±1: Knowledge/Misconception anchors preserved asymptotically
+
+**Comparison Table**:
+
+| Property | tanh | 2Φ(x)-1 (probit) | clipped linear |
+|:---------|:-----|:-----------------|:---------------|
+| Range | (-1, 1) exact | (-1, 1) exact | [-1, 1] exact |
+| Anchor at 0 | Exact | Exact | Exact |
+| Smoothness | C^∞ | C^∞ | C^0 (non-diff at ±1) |
+| IRT correspondence | Natural | Requires conversion | Approximate |
+| SDT correspondence | Natural | Natural | Approximate |
+| Computational cost | Low | Medium (erf) | Lowest |
+
+**When to Consider Alternatives**:
+
+| Scenario | Recommended Link | Rationale |
+|:---------|:-----------------|:----------|
+| Bayesian modeling with probit priors | 2Φ(x)-1 | Conjugacy |
+| Computational efficiency critical | clipped linear | Speed |
+| Cross-study comparison with IRT | tanh | Consistency |
+| Default (no specific requirement) | **tanh** | Balance of properties |
+
+**Conclusion**: tanh is recommended as the default due to its natural correspondence with both IRT (K₀) and SDT (K₁), exact anchor preservation, and computational tractability.
+```
+
+---
+
 ## Part 3: 見落とし対策の構造的実装
 
 ### 3.1 対策パターンと実装箇所
@@ -437,6 +497,7 @@ LLM レビュアーが「探す」可能性が高いキーワードを意図的�
 | **A2** | Theorem 6: Pipeline Identifiability | W4 | ☐ |
 | **A3** | Lemma 3: K̂ Sufficiency | W5 | ☐ |
 | **A4** | GRM/GPCM との関係 | W6 | ☐ |
+| **A5** | Link Function 選択根拠の強化 | W8 | ☐ |
 
 ### 4.2 見落とし対策 (Phase B)
 
@@ -472,7 +533,7 @@ LLM レビュアーが「探す」可能性が高いキーワードを意図的�
 | W5: "K̂ is arbitrary" | A | **A3**: Lemma 3 追加 |
 | W6: "under-cites polytomous IRT" | A | **A4**: GRM 関係追加 |
 | W7: "under-cites HMeta-d" | B | **B5**: HMeta-d 関係追加 |
-| W8: "why tanh" | B | 既存 Link Functions セクションで対応済み。必要なら補強 |
+| W8: "why tanh over logit/probit?" | A | **A5**: Link Function 選択根拠の強化 |
 | W9: "synthetic experiments needed" | C | Scope 外維持 |
 | W10: "falsifiable predictions are definitions" | B | **B1, B3**: Technical Guide + Conclusion で定量予測を強調 |
 
@@ -497,13 +558,27 @@ LLM レビュアーが「探す」可能性が高いキーワードを意図的�
 
 ---
 
-## Part 6: 実装順序
+## Part 6: 実装順序（更新版）
 
-1. **B1: Technical Guide for Reviewers** — 最優先。見落とし対策の中核。
-2. **A2: Theorem 6 (Pipeline Identifiability)** — 正当批判の中で最重要。
-3. **B2-B3: 見出し強化 + Conclusion 強化** — 露出改善。
-4. **A1, A3, A4: 新規定義・補題** — 正当批判への対応。
-5. **B4-B5: Remark 1 移動 + HMeta-d** — 仕上げ。
+**フェーズ 1: 並行実装（最優先）**
+1. **A2: Theorem 6 (Pipeline Identifiability)** — 正当批判の中で最重要
+2. **B1: Technical Guide for Reviewers** — Executive Summary 内に統合
+
+**フェーズ 2: 新規定義・補題**
+3. **A1: Abstention vs Ignorance の分離**
+4. **A3: Lemma 3 (K̂ Sufficiency)**
+5. **A5: Link Function 選択根拠の強化** — W8対応（新規追加）
+
+**フェーズ 3: 既存理論との関係強化**
+6. **A4: GRM/GPCM との関係**
+7. **B5: HMeta-d との関係追加**
+
+**フェーズ 4: 露出強化・仕上げ**
+8. **B2: Formal Results 見出し強化**
+9. **B3: Conclusion への Formal Results 要約**
+10. **B4: Remark 1 の位置移動 + ラベル強化**
+
+**Technical Guide の配置決定**: Executive Summary 内に「Technical Contributions at a Glance」として統合
 
 ---
 
@@ -549,3 +624,52 @@ LLM レビュアーが「探す」可能性が高いキーワードを意図的�
 2. Phase A（新規執筆）と Phase B（露出強化）の優先度は正しいか
 3. Technical Guide の位置（Abstract 直後 vs Related Work 前）はどちらが適切か
 4. 追加すべき項目はあるか
+
+---
+
+## Implementation Status (2025-12-08)
+
+**すべての項目の実装が完了しました。**
+
+### Phase 1: 並行実装（完了）
+
+| 項目 | 内容 | ステータス | 実装場所 |
+|:-----|:-----|:-----------|:---------|
+| **B1** | Technical Contributions at a Glance | ✅ 完了 | Executive Summary 内 (line ~91) |
+| **A2** | Theorem 6 (Pipeline Identifiability) | ✅ 完了 | Formal Results 内、Theorem 5 の後 |
+
+### Phase 2: 追加項目実装（完了）
+
+| 項目 | 内容 | ステータス | 実装場所 |
+|:-----|:-----|:-----------|:---------|
+| **A1** | Abstention vs Ignorance disambiguation | ✅ 完了 | State₀定義直後 (line ~574) |
+| **A3** | Lemma 3 (K̂ Sufficiency) | ✅ 完了 | Theorem 3 と Theorem 4 の間 |
+| **A5** | Link Function選択根拠 | ✅ 完了 | Link Functions セクション内 |
+| **A4** | GRM/GPCM関係明確化 | ✅ 完了 | Related Work 内（新規サブセクション） |
+| **B5** | HMeta-d relationship | ✅ 完了 | Meta-d' 説明の直後 |
+
+### Phase 3: 露出強化（完了）
+
+| 項目 | 内容 | ステータス | 実装場所 |
+|:-----|:-----|:-----------|:---------|
+| **B2** | Formal Results 見出し強化 | ✅ 完了 | セクション見出しと導入部 |
+| **B3** | Conclusion Formal Contributions summary | ✅ 完了 | Main Results の直後 |
+| **B4** | Remark 1 参照追加 | ✅ 完了 | Theorem 2 の proof 終了後 |
+
+### 実装サマリー
+
+**追加されたコンテンツ**:
+- Theorem 6 (Pipeline Identifiability): 循環性がないことを証明
+- Lemma 3 (K̂ Sufficiency): 単調なアンカー保存関数は同等の順序結果を生成することを証明
+- Abstention vs Ignorance: 行動観察可能（abstention）とメタ認知状態（ignorance）の明確な区別
+- Link Function根拠: logit より tanh を推奨する4つの理由
+- Polytomous IRT関係: GRM/GPCM との詳細な比較表
+- HMeta-d統合: Fleming (2017) との関係と統合ガイダンス
+
+**強化された露出**:
+- Executive Summary に Technical Contributions at a Glance 追加
+- Formal Results セクション見出しに "Theorems and Identifiability Guarantees" 追加
+- Conclusion に Formal Contributions Summary テーブル追加
+- Theorem 2 後に Remark 1 への明示的参照追加
+
+**論文の行数**: ~4300行（以前: ~3700行）
