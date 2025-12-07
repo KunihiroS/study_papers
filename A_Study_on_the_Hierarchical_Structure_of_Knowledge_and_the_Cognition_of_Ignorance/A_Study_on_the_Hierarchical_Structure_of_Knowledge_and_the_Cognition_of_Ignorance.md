@@ -487,9 +487,9 @@ Where $\epsilon_n$ is the layer-specific error rate.
 
 For an abstract object $x$ (e.g., a proposition, a task item, or any epistemic target), the subject's first-order epistemic condition is represented as a continuous value:
 
-$$k_0(x) \in [-1, 1]$$
+$$K_0(x) \in [-1, 1]$$
 
-This is the **only point** where the external object $x$ enters the model. The internal representation $k_0$ captures how the subject stands with respect to $x$.
+This is the **only point** where the external object $x$ enters the model. The internal representation $K_0$ captures how the subject stands with respect to $x$.
 
 **2. Recursive Mapping (Layers $n \ge 1$):**
 
@@ -509,7 +509,7 @@ The values $-1$, $0$, and $1$ serve as **prototypical anchors** on the continuou
 
 All intermediate values represent **graded mixtures** of these prototypes (partial knowledge, partial misconception, uncertainty, etc.).
 
-**Key Insight:** The function $K$ has **consistent semantics** across all layers: "How accurately does the subject recognize this target?" At Layer 0, the target is an external object $x$. At Layers $n \ge 1$, the target is the subject's own epistemic state $k_{n-1}$.
+**Key Insight:** The function $K$ has **consistent semantics** across all layers: "How accurately does the subject recognize this target?" At Layer 0, the target is an external object $x$. At Layers $n \ge 1$, the target is the subject's own epistemic state $K_{n-1}$.
 
 ### Observation and Objects: The Purely Observational Framework
 
