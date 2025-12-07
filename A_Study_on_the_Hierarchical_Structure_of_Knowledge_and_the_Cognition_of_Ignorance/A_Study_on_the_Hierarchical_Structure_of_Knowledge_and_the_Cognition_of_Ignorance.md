@@ -570,9 +570,9 @@ Where:
 > 
 > The framework sharply distinguishes between two conceptually different phenomena:
 > 
-> - **Abstention** (State₀ = absent): A *behavioral* observable—the subject chooses not to respond. This is measured at the object level ($n = 0$) as $\text{Response}(x) = \emptyset$ and enters $f_0$ as the third output category.
+> - **Abstention** ($\text{State}_0$ = absent): A *behavioral* observable—the subject chooses not to respond. This is measured at the object level ($n = 0$) as $\text{Response}(x) = \emptyset$ and enters $f_0$ as the third output category.
 > 
-> - **Ignorance** ($K_1 = -1$ with State₀ = correct): A *metacognitive* state—the subject responded correctly but believes they were guessing. This is a Type B error (unrecognized knowledge) measured at $n = 1$.
+> - **Ignorance** ($K_1 = -1$ with $\text{State}_0$ = correct): A *metacognitive* state—the subject responded correctly but believes they were guessing. This is a Type B error (unrecognized knowledge) measured at $n = 1$.
 > 
 > The distinction matters because:
 > 1. Abstention requires no response; Ignorance requires a correct response with low confidence
@@ -1433,7 +1433,7 @@ Our $K_0$ and $K_1$ formalize the object/meta distinction with a **single unifie
 
 | Aspect | HMeta-d | K Framework | Correspondence |
 |:-------|:--------|:------------|:---------------|
-| **Latent structure** | Single meta-d' per subject | Multi-layer $(K_0, K_1, K_2)$ | HMeta-d ≈ aggregate $K_1$ sensitivity |
+| **Latent structure** | Single meta-d' per subject | Multi-layer $(K_0, K_1, K_2)$ | HMeta-d $\approx$ aggregate $K_1$ sensitivity |
 | **Hierarchy** | Subjects nested in groups | Layers nested within subjects | Orthogonal hierarchies |
 | **Output** | meta-d'/d' ratio | Discrete $K \in \{-1, 0, +1\}$ or continuous $K \in [-1, 1]$ | $K_1 \approx \tanh(\text{meta-d}'/2)$ |
 | **Trial structure** | Binary (correct/incorrect by high/low confidence) | Ternary (knowledge/ignorance/misconception) | K adds misconception category |
@@ -3643,9 +3643,9 @@ Current LLM calibration research focuses primarily on confidence-accuracy correl
 | **Two-level metacognitive architecture** (Li et al., 2025; arXiv:2511.23262) | Meta-level/object-level separation mirrors $K_0$/$K_1$ layer structure; can serve as a testbed for probing whether meta-reasoning improves $K_1$-type behaviour without necessarily improving $K_0$ |
 | **Human-AI teaming** | Match human $K_n$ patterns with AI $K_n$ for improved collaboration |
 
-#### Correspondence with Monitor–Generate–Verify Architectures
+#### Correspondence with Monitor-Generate-Verify Architectures
 
-Recent LLM metacognition research formalizes recursive self-monitoring via Monitor–Generate–Verify (MGV) loops. The $K$ framework provides a natural coordinate system for these architectures.
+Recent LLM metacognition research formalizes recursive self-monitoring via Monitor-Generate-Verify (MGV) loops. The $K$ framework provides a natural coordinate system for these architectures.
 
 **Mapping MGV Components to $K$ Layers:**
 
@@ -3722,13 +3722,13 @@ The paper establishes the following formal results (detailed in "Formal Results:
 
 | Result | Statement | Location |
 |:-------|:----------|:---------|
-| **Theorem 1** | $K_0$-IRT correspondence: $K_0 = \tanh(a(\theta-b)/2)$ | §Formal Results |
-| **Theorem 2** | $K_1$-Phi correspondence under binary conditions | §Formal Results |
-| **Theorem 3** | $K_0$ identifiability: $\text{Var}(b_i) > 0 \Rightarrow K_0$ identifiable | §Formal Results |
-| **Theorem 4** | $K_1$ identifiability given $K_0$ and claim variability | §Formal Results |
-| **Theorem 5** | ICC reliability conditions for stable $K$ measurement | §Formal Results |
-| **Theorem 6** | Pipeline identifiability: $(K_0, K_1, K_2)$ jointly identifiable without circularity | §Formal Results |
-| **Lemma 3** | $\hat{K}$ sufficiency: any monotone anchor-preserving function yields equivalent ordinal results | §Formal Results |
+| **Theorem 1** | $K_0$-IRT correspondence: $K_0 = \tanh(a(\theta-b)/2)$ | Formal Results |
+| **Theorem 2** | $K_1$-Phi correspondence under binary conditions | Formal Results |
+| **Theorem 3** | $K_0$ identifiability: $\text{Var}(b_i) > 0 \Rightarrow K_0$ identifiable | Formal Results |
+| **Theorem 4** | $K_1$ identifiability given $K_0$ and claim variability | Formal Results |
+| **Theorem 5** | ICC reliability conditions for stable $K$ measurement | Formal Results |
+| **Theorem 6** | Pipeline identifiability: $(K_0, K_1, K_2)$ jointly identifiable without circularity | Formal Results |
+| **Lemma 3** | $\hat{K}$ sufficiency: any monotone anchor-preserving function yields equivalent ordinal results | Formal Results |
 
 **Key Identifiability Guarantees**:
 - The framework provides sufficient conditions under which parameters are recoverable from data
@@ -4015,7 +4015,7 @@ The Phi coefficient achieves its maximum when the $2 \times 2$ table has determi
 $$|\phi|_{\max} = \sqrt{\frac{\min(\pi, 1-\pi)}{\max(\pi, 1-\pi)}}$$
 
 **Derivation**:
-Let $p = P(\text{Claim}_1 = \text{"I know"})$. The maximum correlation between two binary variables with marginals $\pi$ and $p$ is achieved when they are monotonically related. By the Fréchet-Hoeffding bounds, the maximum joint probability is $\min(\pi, p)$, yielding:
+Let $p = P(\text{Claim}_1 = \text{"I know"})$. The maximum correlation between two binary variables with marginals $\pi$ and $p$ is achieved when they are monotonically related. By the Frechet-Hoeffding bounds, the maximum joint probability is $\min(\pi, p)$, yielding:
 $$\phi_{\max} = \frac{\min(\pi, p) - \pi p}{\sqrt{\pi(1-\pi)p(1-p)}}$$
 
 Optimizing over $p$ and applying algebra gives the stated bound. As $\pi \to 0$ or $\pi \to 1$, the bound $\to 0$. $\blacksquare$

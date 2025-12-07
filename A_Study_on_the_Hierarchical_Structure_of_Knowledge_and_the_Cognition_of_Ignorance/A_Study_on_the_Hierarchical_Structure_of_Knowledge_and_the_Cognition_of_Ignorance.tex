@@ -1215,12 +1215,12 @@ phenomena:
 
 \begin{itemize}
 \item
-  \textbf{Abstention} (State_0 = absent): A \emph{behavioral}
+  \textbf{Abstention} (\(\text{State}_0\) = absent): A \emph{behavioral}
   observable---the subject chooses not to respond. This is measured at
   the object level (\(n = 0\)) as \(\text{Response}(x) = \emptyset\) and
   enters \(f_0\) as the third output category.
 \item
-  \textbf{Ignorance} (\(K_1 = -1\) with State_0 = correct): A
+  \textbf{Ignorance} (\(K_1 = -1\) with \(\text{State}_0\) = correct): A
   \emph{metacognitive} state---the subject responded correctly but
   believes they were guessing. This is a Type B error (unrecognized
   knowledge) measured at \(n = 1\).
@@ -2878,7 +2878,8 @@ Correspondence
 \bottomrule\noalign{}
 \endlastfoot
 \textbf{Latent structure} & Single meta-d' per subject & Multi-layer
-\((K_0, K_1, K_2)\) & HMeta-d \approx  aggregate \(K_1\) sensitivity \\
+\((K_0, K_1, K_2)\) & HMeta-d \(\approx\) aggregate \(K_1\)
+sensitivity \\
 \textbf{Hierarchy} & Subjects nested in groups & Layers nested within
 subjects & Orthogonal hierarchies \\
 \textbf{Output} & meta-d'/d' ratio & Discrete \(K \in \{-1, 0, +1\}\) or
@@ -7053,13 +7054,13 @@ necessarily improving \(K_0\) \\
 for improved collaboration \\
 \end{longtable}
 
-\hypertarget{correspondence-with-monitorgenerateverify-architectures}{%
-\paragraph{Correspondence with Monitor--Generate--Verify
-Architectures}\label{correspondence-with-monitorgenerateverify-architectures}}
+\hypertarget{correspondence-with-monitor-generate-verify-architectures}{%
+\paragraph{Correspondence with Monitor-Generate-Verify
+Architectures}\label{correspondence-with-monitor-generate-verify-architectures}}
 
 Recent LLM metacognition research formalizes recursive self-monitoring
-via Monitor--Generate--Verify (MGV) loops. The \(K\) framework provides
-a natural coordinate system for these architectures.
+via Monitor-Generate-Verify (MGV) loops. The \(K\) framework provides a
+natural coordinate system for these architectures.
 
 \textbf{Mapping MGV Components to \(K\) Layers:}
 
@@ -7234,20 +7235,19 @@ Location
 \bottomrule\noalign{}
 \endlastfoot
 \textbf{Theorem 1} & \(K_0\)-IRT correspondence:
-\(K_0 = \tanh(a(\theta-b)/2)\) & \S Formal Results \\
+\(K_0 = \tanh(a(\theta-b)/2)\) & Formal Results \\
 \textbf{Theorem 2} & \(K_1\)-Phi correspondence under binary conditions
-& \S Formal Results \\
+& Formal Results \\
 \textbf{Theorem 3} & \(K_0\) identifiability:
-\(\text{Var}(b_i) > 0 \Rightarrow K_0\) identifiable & \S Formal
-Results \\
+\(\text{Var}(b_i) > 0 \Rightarrow K_0\) identifiable & Formal Results \\
 \textbf{Theorem 4} & \(K_1\) identifiability given \(K_0\) and claim
-variability & \S Formal Results \\
+variability & Formal Results \\
 \textbf{Theorem 5} & ICC reliability conditions for stable \(K\)
-measurement & \S Formal Results \\
+measurement & Formal Results \\
 \textbf{Theorem 6} & Pipeline identifiability: \((K_0, K_1, K_2)\)
-jointly identifiable without circularity & \S Formal Results \\
+jointly identifiable without circularity & Formal Results \\
 \textbf{Lemma 3} & \(\hat{K}\) sufficiency: any monotone
-anchor-preserving function yields equivalent ordinal results & \S Formal
+anchor-preserving function yields equivalent ordinal results & Formal
 Results \\
 \end{longtable}
 
@@ -7828,7 +7828,7 @@ remaining ``I know'' claims are minimized. - The resulting maximum is:
 \textbf{Derivation}: Let \(p = P(\text{Claim}_1 = \text{"I know"})\).
 The maximum correlation between two binary variables with marginals
 \(\pi\) and \(p\) is achieved when they are monotonically related. By
-the Fr'echet-Hoeffding bounds, the maximum joint probability is
+the Frechet-Hoeffding bounds, the maximum joint probability is
 \(\min(\pi, p)\), yielding:
 \[\phi_{\max} = \frac{\min(\pi, p) - \pi p}{\sqrt{\pi(1-\pi)p(1-p)}}\]
 
