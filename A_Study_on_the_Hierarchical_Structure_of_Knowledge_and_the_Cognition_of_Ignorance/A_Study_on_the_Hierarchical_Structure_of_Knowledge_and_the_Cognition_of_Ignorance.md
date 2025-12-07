@@ -2628,7 +2628,7 @@ This section provides a **complete specification** of the protocol for eliciting
 
 **Instruction Template (Continuous)**:
 > "What is the probability that your answer is correct?"
-> [Slider: 0% ──────────────────── 100%]
+> [Slider: 0% --------------------- 100%]
 
 **Mapping (Continuous $\to$ Categorical)**:
 
