@@ -1,7 +1,9 @@
 # A Study on the Hierarchical Structure of Knowledge and the Cognition of Ignorance
 
 *Kunihiro Sugiyama*  
-kunihiros@gmail.com
+Independent Researcher  
+Generative AI Study Group: Organizer / Tech Lead  
+kunihiros@gmail.com / kunihiros@gasg.server-on.net
 
 ## Introduction
 
