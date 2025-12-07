@@ -156,8 +156,8 @@ When the full triple is observed, richer patterns emerge:
 
 | Pattern | $(K_0, K_1, C)$ | Interpretation |
 |:--------|:----------------|:---------------|
-| Dunning-Kruger | $(−1, −1, \text{High})$ | Wrong, claims knowing, confident |
-| Impostor Syndrome | $(+1, −1, \text{Low})$ | Right, claims not knowing, unconfident |
+| Dunning-Kruger | $(-1, -1, \text{High})$ | Wrong, claims knowing, confident |
+| Impostor Syndrome | $(+1, -1, \text{Low})$ | Right, claims not knowing, unconfident |
 | Calibrated Competence | $(+1, +1, \text{High})$ | Right, claims knowing, appropriately confident |
 | Calibrated Uncertainty | $(0, +1, \text{Low})$ | Uncertain, claims not knowing, appropriately unconfident |
 | Anxious Accuracy | $(+1, +1, \text{Low})$ | Right, claims knowing, but feels unconfident |

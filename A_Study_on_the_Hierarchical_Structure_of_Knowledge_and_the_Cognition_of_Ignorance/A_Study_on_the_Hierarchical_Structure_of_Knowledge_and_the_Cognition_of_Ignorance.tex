@@ -376,6 +376,134 @@ Dunning-Kruger effect, where \(K(x) = 0\) (the subject does not know)
 but \(K(K(x)) = -1\) (the subject misrecognizes their ignorance), often
 accompanied by high subjective confidence.
 
+\hypertarget{operational-boundary-k_1-vs-confidence}{%
+\paragraph{\texorpdfstring{Operational Boundary: \(K_1\) vs
+Confidence}{Operational Boundary: K\_1 vs Confidence}}\label{operational-boundary-k_1-vs-confidence}}
+
+A natural question arises: if both \(K_1\) and confidence \(C\) assess
+subjective epistemic states, how do they differ operationally? The
+distinction lies in \textbf{timing}, \textbf{information basis}, and
+\textbf{what is measured}.
+
+\textbf{Conceptual Distinction:}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3056}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1944}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Dimension
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Confidence (\(C\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(K_1\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Timing} & Before or during response & After feedback \\
+\textbf{Information Basis} & No external reference & Correctness
+revealed \\
+\textbf{What is Measured} & Subjective certainty & Meta-cognitive
+accuracy \\
+\textbf{Definition} & ``How sure am I?'' & ``Given my answer was
+{[}correct/incorrect{]}, was my claim appropriate?'' \\
+\end{longtable}
+
+\textbf{Operational Distinction:}
+
+\begin{itemize}
+\item
+  \textbf{Confidence \(C\)}: Collected at \(t_1\) (during response),
+  before feedback. The subject reports certainty without knowing
+  correctness. This is a phenomenological measure.
+\item
+  \textbf{\(K_1\) (Meta-Accuracy)}: Assessed at \(t_2\) (after
+  feedback), comparing the claim (``I know''/``I don't know'') to
+  revealed correctness. This is a behavioral measure of calibration.
+\end{itemize}
+
+\textbf{Why Both Are Needed---Divergence Scenarios:}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1786}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2857}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1607}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Scenario
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(K_0\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Claim
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(K_1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Confidence \(C\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pattern
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Calibrated Expert & \(+1\) & ``I know'' & \(+1\) & High & All aligned \\
+Overconfident Novice & \(-1\) & ``I know'' & \(-1\) & High &
+\(K_1 \ne C\) direction \\
+Underconfident Expert & \(+1\) & ``I don't know'' & \(-1\) & Low &
+\(K_1 \ne C\) direction \\
+Appropriate Uncertainty & \(0\) & ``I don't know'' & \(+1\) & Low &
+Calibrated ignorance \\
+\end{longtable}
+
+The overconfident novice and underconfident expert both show
+\(K_1 = -1\) (meta-miscalibration) but with opposite confidence
+levels---demonstrating that \(K_1\) and \(C\) carry independent
+information.
+
+\textbf{Joint Model \((K_0, K_1, C)\):}
+
+When the full triple is observed, richer patterns emerge:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2143}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4048}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3810}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Pattern
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\((K_0, K_1, C)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dunning-Kruger & \((-1, -1, \text{High})\) & Wrong, claims knowing,
+confident \\
+Impostor Syndrome & \((+1, -1, \text{Low})\) & Right, claims not
+knowing, unconfident \\
+Calibrated Competence & \((+1, +1, \text{High})\) & Right, claims
+knowing, appropriately confident \\
+Calibrated Uncertainty & \((0, +1, \text{Low})\) & Uncertain, claims not
+knowing, appropriately unconfident \\
+Anxious Accuracy & \((+1, +1, \text{Low})\) & Right, claims knowing, but
+feels unconfident \\
+\end{longtable}
+
+This joint model reveals that \textbf{Dunning-Kruger and Impostor
+Syndrome are symmetric patterns} in the \((K_1, C)\) space, while
+\(K_0\) distinguishes their actual competence. The independence of
+\(K_1\) and \(C\) is thus not merely conceptual but empirically testable
+through dissociation patterns.
+
 \hypertarget{scope-clarification-methodological-relativism}{%
 \subsection{Scope Clarification: Methodological
 Relativism}\label{scope-clarification-methodological-relativism}}
@@ -746,6 +874,92 @@ With the identity mapping for prototypical anchors: \(\hat{K}(1) = 1\),
 
 \[K_n(x) = \hat{K}(g_n(\text{State}_n(x)))\]
 
+\hypertarget{role-of-the-unified-scorer-hatk}{%
+\paragraph{\texorpdfstring{Role of the Unified Scorer
+\(\hat{K}\)}{Role of the Unified Scorer \textbackslash hat\{K\}}}\label{role-of-the-unified-scorer-hatk}}
+
+\textbf{Question: Is \(\hat{K}\) Necessary?}
+
+Given that: - \(g_n: \mathcal{S}_n \to [-1, 1]\) embeds state spaces
+into the common scale - Anchors are mapped to \(\{-1, 0, +1\}\) by
+\(g_n\)
+
+Is an additional \(\hat{K}: [-1, 1] \to [-1, 1]\) needed?
+
+\textbf{Answer: \(\hat{K}\) Serves Three Functions}
+
+\textbf{Function 1: Anchor Preservation Guarantee}
+
+\[\hat{K}(g_n(\text{anchor})) = g_n(\text{anchor}) \quad \text{for anchors } \in \{-1, 0, +1\}\]
+
+This ensures that regardless of how \(g_n\) handles intermediate values,
+the anchor semantics are preserved.
+
+\textbf{Function 2: Cross-Layer Normalization}
+
+If different layers use different \(g_n\) with varying intermediate
+behaviors:
+
+\[\hat{K} \circ g_n \text{ ensures comparability across layers}\]
+
+\textbf{Function 3: Monotonicity Enforcement}
+
+\(\hat{K}\) can enforce global monotonicity even if \(g_n\) has local
+non-monotonicities:
+
+\[x < y \Rightarrow \hat{K}(x) \leq \hat{K}(y)\]
+
+\hypertarget{specification-of-hatk}{%
+\paragraph{\texorpdfstring{Specification of
+\(\hat{K}\)}{Specification of \textbackslash hat\{K\}}}\label{specification-of-hatk}}
+
+\textbf{Default Choice: Identity}
+
+For most applications:
+
+\[\hat{K}(x) = x\]
+
+Under this choice, \(\hat{K}\) is formally present but operationally
+redundant.
+
+\textbf{Non-Trivial Choice: Anchor-Preserving Power Function}
+
+For applications requiring stronger intermediate compression:
+
+\[\hat{K}(x) = \text{sign}(x) \cdot |x|^\gamma, \quad \gamma \in (0, 1]\]
+
+This preserves anchors (\(\hat{K}(\pm 1) = \pm 1\), \(\hat{K}(0) = 0\))
+while compressing intermediate values.
+
+\textbf{Selection Criterion}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3611}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6389}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Application
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Recommended \(\hat{K}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Categorical \(K_n\) only & Identity \\
+Continuous \(K_n\) with calibration metrics & Identity \\
+Continuous \(K_n\) with arbitrary \(g_n\) & Anchor-preserving power
+function \\
+\end{longtable}
+
+\textbf{Formal Definition (Updated)}:
+
+\[K_n = \hat{K}(g_n(f_n(\text{Response}_n, \text{Claim}_n, \text{State}_{n-1})))\]
+
+With default \(\hat{K} = \text{identity}\):
+
+\[K_n = g_n(f_n(\text{Response}_n, \text{Claim}_n, \text{State}_{n-1}))\]
+
 \textbf{Notational Convention (Unified):}
 
 \begin{itemize}
@@ -1062,6 +1276,111 @@ A graded scheme could assign: - \(K_0 = -1\), Claim = ``I don't know'' →
 
 This is a valid design choice but complicates anchor semantics. We leave
 graded alignment for future extension.
+
+\hypertarget{decision-theoretic-analysis-of-coding-choices}{%
+\paragraph{Decision-Theoretic Analysis of Coding
+Choices}\label{decision-theoretic-analysis-of-coding-choices}}
+
+The coding of \(K_0 = -1\) (misconception) + ``I don't know'' → aligned
+(\(K_1 = +1\)) has been justified via the Epistemic Improvement
+Criterion above. Here we provide a complementary
+\textbf{decision-theoretic} analysis.
+
+\hypertarget{the-contested-case-revisited}{%
+\subparagraph{The Contested Case
+Revisited}\label{the-contested-case-revisited}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1489}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2340}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3404}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2766}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(K_0\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Claim\(_1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Current Coding
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Alternative
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(-1\) (misconception) & ``I don't know'' & aligned (\(K_1 = +1\)) &
+partial (\(K_1 = 0\))? \\
+\end{longtable}
+
+\hypertarget{decision-theoretic-framework}{%
+\subparagraph{Decision-Theoretic
+Framework}\label{decision-theoretic-framework}}
+
+Define a loss function \(L(K_0, \text{Claim}_1, \text{Action})\) where
+Action is taken based on the claim.
+
+\textbf{Scenario: Selective Prediction}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+\(K_0\) & Claim\(_1\) & Action & Outcome & Loss \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(-1\) & ``I know'' & Trust answer & Wrong answer used & High \\
+\(-1\) & ``I don't know'' & Abstain & Correct abstention & Low \\
+\(+1\) & ``I know'' & Trust answer & Correct answer used & Low \\
+\(+1\) & ``I don't know'' & Abstain & Missed opportunity & Medium \\
+\end{longtable}
+
+\textbf{Implication}: Under selective prediction loss, ``I don't know''
+when \(K_0 = -1\) is \emph{optimal}, supporting \(K_1 = +1\) coding.
+
+\hypertarget{when-current-coding-may-be-suboptimal}{%
+\subparagraph{When Current Coding May Be
+Suboptimal}\label{when-current-coding-may-be-suboptimal}}
+
+\textbf{Scenario: Forced Response}
+
+If abstention is not allowed: - ``I don't know'' when \(K_0 = -1\) does
+not prevent the wrong answer from being used - The coding \(K_1 = +1\)
+may overstate alignment
+
+\textbf{Scenario: Asymmetric Costs}
+
+If false positives are much worse than false negatives: - ``I don't
+know'' provides less protection than explicit correction - A more
+conservative coding (\(K_1 = 0\)) might be appropriate
+
+\hypertarget{coding-sensitivity-analysis}{%
+\subparagraph{Coding Sensitivity
+Analysis}\label{coding-sensitivity-analysis}}
+
+We present the current coding as the \textbf{default} under the
+following assumptions: 1. Abstention is possible 2. Costs are
+approximately symmetric 3. Epistemic improvement (openness to
+correction) is valued
+
+\textbf{Alternative Coding Table} (for specialized applications):
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+\(K_0\) & Claim\(_1\) & Default \(K_1\) & Conservative \(K_1\) &
+Rationale \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(-1\) & ``I know'' & \(-1\) & \(-1\) & Unanimous: worst case \\
+\(-1\) & ``I don't know'' & \(+1\) & \(0\) & Contested: depends on
+loss \\
+\(-1\) & ``Not sure'' & \(0\) & \(0\) & Appropriate uncertainty \\
+\end{longtable}
+
+\textbf{Recommendation}: Use default coding unless task-specific loss
+analysis indicates otherwise. Document coding choice and rationale.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1492,6 +1811,161 @@ follows axioms \\
 
 State\(_0 \neq\) State\(_1\). They are different objects. The axiom
 \(K(0) = 0\) applies to State\(_0\), not to State\(_1\).
+
+\hypertarget{layer-independence-formal-conditions}{%
+\paragraph{Layer Independence: Formal
+Conditions}\label{layer-independence-formal-conditions}}
+
+\hypertarget{conditional-independence-assumption}{%
+\subparagraph{Conditional Independence
+Assumption}\label{conditional-independence-assumption}}
+
+\textbf{Definition (Layer Separation)}:
+
+\[\text{State}_n \perp\!\!\!\perp \text{State}_{n-2} \mid \text{State}_{n-1}\]
+
+This states that \(\text{State}_n\) (the object of layer-\(n\)
+assessment) depends only on \(\text{State}_{n-1}\), not on earlier
+layers.
+
+\textbf{Implication for Scoring}:
+
+\[K_n = f_n(\text{Response}_n, \text{Claim}_n, \text{State}_{n-1})\]
+
+The scoring function \(f_n\) does not require access to
+\(\text{State}_{n-2}\) or earlier.
+
+\hypertarget{no-circular-dependency}{%
+\subparagraph{No Circular Dependency}\label{no-circular-dependency}}
+
+\textbf{Definition (Acyclicity)}:
+
+The dependency graph over \(\{K_0, K_1, K_2, \ldots\}\) is a directed
+acyclic graph (DAG):
+
+\[K_0 \to K_1 \to K_2 \to \cdots\]
+
+Where \(K_n\) depends on \(K_{n-1}\) (via \(\text{State}_{n-1}\)) but
+not vice versa.
+
+\textbf{Proof of Acyclicity}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(K_0\) is computed from (Response, Reference) alone---no dependency
+  on higher layers
+\item
+  \(K_1\) is computed from (Claim\(_1\), \(K_0\))---depends only on
+  \(K_0\)
+\item
+  \(K_n\) is computed from (Claim\(_n\), \(K_{n-1}\))---depends only on
+  \(K_{n-1}\)
+\end{enumerate}
+
+By induction, no backward dependencies exist. \(\square\)
+
+\hypertarget{graphical-model-representation}{%
+\subparagraph{Graphical Model
+Representation}\label{graphical-model-representation}}
+
+The dependency structure can be visualized as a cascade:
+
+\[\text{Reference} \to \text{State}_0 \to K_0 \to \text{State}_1 \to K_1 \to \text{State}_2 \to K_2 \to \cdots\]
+
+Each layer is a separate ``plate'' in the graphical model, with
+information flowing strictly forward (lower to higher layers).
+
+\hypertarget{identifiability-conditions}{%
+\subparagraph{Identifiability
+Conditions}\label{identifiability-conditions}}
+
+\textbf{Definition (\(K_n\) Identifiability)}:
+
+\(K_n\) is \textbf{identifiable} if, given sufficient observations of
+(Response, Claim\(_1\), \ldots, Claim\(_n\), Reference), the value of
+\(K_n\) can be uniquely determined.
+
+\textbf{Sufficient Conditions}:
+
+\textbf{Condition 1 (Reference Availability)}:
+
+The reference (ground truth) for \(\text{State}_0\) must be available or
+reliably estimable.
+
+\[\exists \text{ Reference}: P(\text{Reference} = \text{true state}) = 1\]
+
+Or, under probabilistic scoring:
+
+\[P(\text{Reference} | \text{evidence}) \text{ is well-defined}\]
+
+\textbf{Condition 2 (Claim Observability)}:
+
+Claims at each layer must be observable:
+
+\[\text{Claim}_n \in \mathcal{C}_n \text{ is directly elicited and recorded}\]
+
+\textbf{Condition 3 (Deterministic Mapping)}:
+
+Under Option A (deterministic scoring):
+
+\[f_n: \mathcal{C}_n \times \{-1, 0, +1\} \to \{-1, 0, +1\}\]
+
+is a fixed, known function. Given (Claim\(_n\), \(K_{n-1}\)), \(K_n\) is
+uniquely determined.
+
+\textbf{Condition 4 (Probabilistic Identifiability)}:
+
+Under Option B (probabilistic scoring), identifiability requires:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Sufficient variation}: Items vary in true \(K_0\) values
+\item
+  \textbf{Informative claims}: \(P(\text{Claim}_1 | K_0)\) differs
+  across \(K_0\) values
+\item
+  \textbf{No confounding}: Claim\(_n\) depends on \(K_{n-1}\) but not on
+  unobserved variables
+\end{enumerate}
+
+\textbf{Identifiability Violations}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2727}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3939}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Violation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Consequence
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Reference unavailable & Contested scientific claims & \(K_0\)
+undefined \\
+Claims unobserved & Internal confidence only & \(K_1\) inestimable \\
+Deterministic degeneracy & All subjects say ``I know'' & \(K_1\)
+variance = 0 \\
+Confounding & Claim influenced by social desirability & Biased
+\(K_1\) \\
+\end{longtable}
+
+\textbf{Practical Recommendation}:
+
+For robust estimation: 1. Use items with known references (e.g., factual
+questions with verified answers) 2. Elicit claims explicitly (not
+inferred from behavior) 3. Include items spanning
+\(K_0 \in \{-1, 0, +1\}\) to ensure variation 4. Control for demand
+characteristics via randomized claim formats
 
 \textbf{Monotonicity (Revised):}
 
@@ -2585,6 +3059,250 @@ To verify that aggregation is meaningful:
   \end{itemize}
 \end{enumerate}
 
+\hypertarget{higher-layers-n-2-practical-considerations}{%
+\subsubsection{Higher Layers (n \textgreater{} 2): Practical
+Considerations}\label{higher-layers-n-2-practical-considerations}}
+
+\hypertarget{diminishing-returns-hypothesis}{%
+\paragraph{Diminishing Returns
+Hypothesis}\label{diminishing-returns-hypothesis}}
+
+As \(n\) increases, the marginal information provided by \(K_n\)
+decreases:
+
+\[\text{Var}(K_n | K_0, K_1, \ldots, K_{n-1}) \to 0 \text{ as } n \to \infty\]
+
+\textbf{Rationale}: Higher-order metacognition becomes increasingly
+abstract and harder to distinguish from lower layers.
+
+\textbf{Note}: This is presented as a \textbf{hypothesis} based on
+theoretical considerations. Empirical validation is deferred to future
+simulation studies. No direct verification data currently exists for
+this claim.
+
+\hypertarget{elicitation-challenges-for-claim_n-n-2}{%
+\paragraph{\texorpdfstring{Elicitation Challenges for Claim\(_n\) (n
+\textgreater{}
+2)}{Elicitation Challenges for Claim\_n (n \textgreater{} 2)}}\label{elicitation-challenges-for-claim_n-n-2}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1842}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1842}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.6316}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Layer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Claim
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Elicitation Difficulty
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(n = 1\) & ``Do I know?'' & Low (familiar question) \\
+\(n = 2\) & ``Is my self-assessment accurate?'' & Medium (requires
+reflection) \\
+\(n = 3\) & ``Is my assessment of my self-assessment accurate?'' & High
+(conceptually recursive) \\
+\(n > 3\) & \ldots{} & Very high (risk of tautological responses) \\
+\end{longtable}
+
+\hypertarget{demand-characteristics}{%
+\paragraph{Demand Characteristics}\label{demand-characteristics}}
+
+Higher-order claims risk: 1. \textbf{Tautological responses}: ``If I
+thought my self-assessment was wrong, I would have changed it'' 2.
+\textbf{Ceiling effects}: Most subjects claim their assessments are
+accurate 3. \textbf{Cognitive overload}: Difficulty distinguishing
+layers
+
+\hypertarget{recommended-scope}{%
+\paragraph{Recommended Scope}\label{recommended-scope}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Application & Recommended Max Layer \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Standard assessment & \(K_0\), \(K_1\) \\
+Metacognitive research & \(K_0\), \(K_1\), \(K_2\) \\
+Specialized studies & Up to \(K_3\) with careful protocol design \\
+\end{longtable}
+
+\textbf{Practical Guidance}: For most applications, \(K_0\) and \(K_1\)
+provide sufficient diagnostic information. \(K_2\) adds value for
+distinguishing ``teachable'' from ``resistant'' misconceptions. Beyond
+\(K_2\), empirical justification should precede deployment.
+
+\hypertarget{person-level-aggregation-of-k_n}{%
+\subsubsection{\texorpdfstring{Person-Level Aggregation of
+\(K_n\)}{Person-Level Aggregation of K\_n}}\label{person-level-aggregation-of-k_n}}
+
+\hypertarget{item-level-to-person-level}{%
+\paragraph{Item-Level to
+Person-Level}\label{item-level-to-person-level}}
+
+Given \(m\) items with scores
+\(K_n^{(1)}, K_n^{(2)}, \ldots, K_n^{(m)}\), define person-level index:
+
+\[\bar{K}_n = \frac{1}{m} \sum_{i=1}^{m} K_n^{(i)}\]
+
+\hypertarget{psychometric-properties}{%
+\paragraph{Psychometric Properties}\label{psychometric-properties}}
+
+\textbf{Reliability}:
+
+Using Cronbach's alpha analog:
+
+\[\alpha_{K_n} = \frac{m}{m-1} \left(1 - \frac{\sum_i \text{Var}(K_n^{(i)})}{\text{Var}(\sum_i K_n^{(i)})}\right)\]
+
+Target: \(\alpha_{K_n} > 0.7\) for adequate reliability.
+
+\textbf{Alternative: Split-Half Reliability}:
+
+\[r_{K_n} = \text{Cor}(\bar{K}_n^{\text{odd}}, \bar{K}_n^{\text{even}})\]
+
+With Spearman-Brown correction for full-test reliability.
+
+\hypertarget{measurement-invariance}{%
+\paragraph{Measurement Invariance}\label{measurement-invariance}}
+
+For cross-group comparisons (e.g., experts vs novices), test:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Configural invariance}: Same factor structure across groups
+\item
+  \textbf{Metric invariance}: Same \(f_n\) loadings across groups
+\item
+  \textbf{Scalar invariance}: Same intercepts (anchor alignment) across
+  groups
+\end{enumerate}
+
+\textbf{Implementation}: Use multi-group confirmatory factor analysis
+(CFA) with \(K_n\) as latent variable.
+
+\hypertarget{irt-based-aggregation}{%
+\paragraph{IRT-Based Aggregation}\label{irt-based-aggregation}}
+
+For more sophisticated aggregation:
+
+\[\bar{K}_n = \tanh(\hat{\theta}_n)\]
+
+Where \(\hat{\theta}_n\) is the latent trait estimated via IRT model on
+\(K_n^{(i)}\) items.
+
+\textbf{Advantages}: - Accounts for item difficulty/discrimination -
+Provides standard errors for \(\bar{K}_n\) - Enables adaptive testing
+designs
+
+\hypertarget{unified-estimation-pipeline}{%
+\subsubsection{Unified Estimation
+Pipeline}\label{unified-estimation-pipeline}}
+
+\hypertarget{overview}{%
+\paragraph{Overview}\label{overview}}
+
+The complete pipeline integrates categorical and continuous
+interpretations:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1373}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4118}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4510}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Stage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Option A (Discrete)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Option B (Continuous)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Input} & (Response, Claim\(_1\), Claim\(_2\), \ldots, Reference)
+& Same \\
+\textbf{\(f_n\) output} & \(\{-1, 0, +1\}\) & \([-1, +1]\) \\
+\textbf{\(g_n\)} & identity & link function (e.g., tanh) \\
+\textbf{\(\hat{K}\)} & identity & normalizer (optional) \\
+\textbf{Output} & \(K_0, K_1, K_2, \ldots \in \{-1, 0, +1\}\) &
+\(K_0, K_1, K_2, \ldots \in [-1, +1]\) \\
+\end{longtable}
+
+\hypertarget{option-a-discrete-pipeline}{%
+\paragraph{Option A: Discrete
+Pipeline}\label{option-a-discrete-pipeline}}
+
+\textbf{Step 1}: Compute \(K_0^{\text{cat}} \in \{-1, 0, +1\}\) from
+(Response, Reference)
+
+\textbf{Step 2}: Compute \(K_1^{\text{cat}} \in \{-1, 0, +1\}\) from
+(Claim\(_1\), \(K_0^{\text{cat}}\)) via \(f_1\) table
+
+\textbf{Step 3}: Compute \(K_2^{\text{cat}} \in \{-1, 0, +1\}\) from
+(Claim\(_2\), \(K_1^{\text{cat}}\)) via \(f_2\) table
+
+\textbf{Output}: Categorical pattern
+\((K_0^{\text{cat}}, K_1^{\text{cat}}, K_2^{\text{cat}}) \in \{-1, 0, +1\}^3\)
+
+\hypertarget{option-b-continuous-pipeline}{%
+\paragraph{Option B: Continuous
+Pipeline}\label{option-b-continuous-pipeline}}
+
+\textbf{Step 1}: Estimate latent \(\theta_0\) via IRT; compute
+\(K_0 = \tanh(\theta_0)\)
+
+\textbf{Step 2}: Estimate meta-d' from (Response, Claim\(_1\)) via SDT;
+compute \(K_1 = \tanh(\text{meta-d}'/2)\)
+
+\textbf{Step 3}: Estimate \(K_2\) via test-retest or Claim\(_2\)
+alignment
+
+\textbf{Output}: Continuous scores \((K_0, K_1, K_2) \in [-1, +1]^3\)
+
+\hypertarget{hybrid-pipeline}{%
+\paragraph{Hybrid Pipeline}\label{hybrid-pipeline}}
+
+For practical use, combine:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Categorical for pattern classification}: Which of the 27
+  patterns?
+\item
+  \textbf{Continuous for severity/reliability}: How far from anchors?
+  How stable?
+\end{enumerate}
+
+\[K_n^{\text{hybrid}} = (K_n^{\text{cat}}, K_n^{\text{cont}}, \text{SE}(K_n^{\text{cont}}))\]
+
+Where SE is the standard error from the continuous estimation.
+
+\textbf{Use Case Recommendations}:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Application & Recommended Pipeline \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Quick screening & Option A (Discrete) \\
+Research analysis & Option B (Continuous) \\
+Clinical/educational & Hybrid \\
+LLM evaluation & Option A with Continuous extension \\
+\end{longtable}
+
 \hypertarget{estimation-methods-for-k-values}{%
 \subsubsection{Estimation Methods for K
 Values}\label{estimation-methods-for-k-values}}
@@ -3077,8 +3795,8 @@ Layer & Expected Split-Half \(r\) & Interpretation \\
 \textbf{Guideline:} Spearman-Brown corrected \(r > 0.7\) indicates
 acceptable internal consistency.
 
-\hypertarget{measurement-invariance}{%
-\paragraph{Measurement Invariance}\label{measurement-invariance}}
+\hypertarget{measurement-invariance-1}{%
+\paragraph{Measurement Invariance}\label{measurement-invariance-1}}
 
 \textbf{Concern:} Do \(K_n\) scores have the same meaning across
 different populations or item sets?
@@ -3932,13 +4650,171 @@ distinguishing Socratic wisdom from mere low confidence).
 \hypertarget{related-work}{%
 \subsection{Related Work}\label{related-work}}
 
-\hypertarget{relationship-to-formal-epistemic-logic}{%
-\subsubsection{Relationship to Formal Epistemic
-Logic}\label{relationship-to-formal-epistemic-logic}}
+\hypertarget{relationship-to-modal-epistemic-logic}{%
+\subsubsection{Relationship to Modal Epistemic
+Logic}\label{relationship-to-modal-epistemic-logic}}
 
-Classical epistemic logic (modal logic S5) assumes \textbf{idealized
-agents} with perfect introspection. The following table shows how our
-framework relates to the standard S5 axioms:
+\hypertarget{background-knowledge-operators-in-modal-logic}{%
+\paragraph{Background: Knowledge Operators in Modal
+Logic}\label{background-knowledge-operators-in-modal-logic}}
+
+In formal epistemology, the knowledge operator \(\mathbf{K}\) is studied
+within modal logic frameworks (Hintikka, 1962). Key systems include:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+System
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Axioms
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{K} & Distribution:
+\(\mathbf{K}(p \to q) \to (\mathbf{K}p \to \mathbf{K}q)\) & Basic
+epistemic closure \\
+\textbf{T} & Veridicality: \(\mathbf{K}p \to p\) & Knowledge implies
+truth \\
+\textbf{S4} & Positive introspection: \(\mathbf{K}p \to \mathbf{KK}p\) &
+If I know, I know that I know \\
+\textbf{S5} & Negative introspection:
+\(\neg\mathbf{K}p \to \mathbf{K}\neg\mathbf{K}p\) & If I don't know, I
+know that I don't know \\
+\end{longtable}
+
+\hypertarget{correspondence-with-k-framework}{%
+\paragraph{Correspondence with K
+Framework}\label{correspondence-with-k-framework}}
+
+Our \(K_n\) framework can be positioned relative to these axioms:
+
+\textbf{Axiom T (Veridicality)}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3824}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3824}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2353}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Modal Logic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+K Framework
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\mathbf{K}p \to p\) & \(K_0 = +1 \Rightarrow\) Reference = correct &
+\textbf{Definitionally satisfied} \\
+\end{longtable}
+
+By construction, \(K_0 = +1\) requires alignment with the reference, so
+veridicality is built into the scoring.
+
+\textbf{Axiom S4 (Positive Introspection)}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3824}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3824}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2353}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Modal Logic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+K Framework
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\mathbf{K}p \to \mathbf{KK}p\) & \(K_0 = +1 \Rightarrow K_1 = +1\)
+(idealized) & \textbf{Empirically violated} \\
+\end{longtable}
+
+S4 describes an \emph{ideal} agent. Real agents may have \(K_0 = +1\)
+but \(K_1 = -1\) (Impostor Syndrome pattern). The K framework
+\emph{measures} such violations rather than assuming them away.
+
+\textbf{Axiom S5 (Negative Introspection)}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3824}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3824}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2353}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Modal Logic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+K Framework
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\neg\mathbf{K}p \to \mathbf{K}\neg\mathbf{K}p\) &
+\(K_0 \leq 0 \Rightarrow K_1 = +1\) (idealized) & \textbf{Empirically
+violated} \\
+\end{longtable}
+
+S5 describes \emph{ideal} self-awareness. Real agents may have
+\(K_0 = -1\) but \(K_1 = -1\) (Dunning-Kruger pattern). Again, the K
+framework measures rather than assumes.
+
+\hypertarget{key-distinction-normative-vs-descriptive}{%
+\paragraph{Key Distinction: Normative vs
+Descriptive}\label{key-distinction-normative-vs-descriptive}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2174}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2826}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Approach
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Modal Epistemic Logic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+K Framework
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Stance} & Normative (ideal agent) & Descriptive (empirical
+measurement) \\
+\textbf{Axioms} & Prescribe what \emph{should} hold & Diagnose what
+\emph{does} hold \\
+\textbf{Violations} & Indicate irrationality & Indicate metacognitive
+failure modes \\
+\textbf{Purpose} & Reasoning about ideal knowledge & Measuring actual
+metacognition \\
+\end{longtable}
+
+\textbf{Complementarity}:
+
+Modal logic provides the \emph{normative benchmark} against which
+metacognitive accuracy can be evaluated. The K framework provides the
+\emph{measurement apparatus} to assess how far real agents deviate from
+this benchmark.
+
+\[\text{Metacognitive gap} = \text{Ideal (S4/S5)} - \text{Actual (K}_1\text{)}\]
+
+\hypertarget{summary-table-axiom-correspondence}{%
+\paragraph{Summary Table: Axiom
+Correspondence}\label{summary-table-axiom-correspondence}}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1429}}
@@ -3959,11 +4835,13 @@ Our Framework Status
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\textbf{T} & Truth & \(K\phi \to \phi\) & Satisfied: \(K_0 = +1\)
-implies correctness \\
-\textbf{4} & Positive Introspection & \(K\phi \to KK\phi\) &
-\textbf{Violated}: \(K_0 = +1\) does NOT imply \(K_1 = +1\) \\
-\textbf{5} & Negative Introspection & \(\neg K\phi \to K\neg K\phi\) &
+\textbf{T} & Truth & \(\mathbf{K}\phi \to \phi\) & Satisfied:
+\(K_0 = +1\) implies correctness \\
+\textbf{4} & Positive Introspection &
+\(\mathbf{K}\phi \to \mathbf{KK}\phi\) & \textbf{Violated}: \(K_0 = +1\)
+does NOT imply \(K_1 = +1\) \\
+\textbf{5} & Negative Introspection &
+\(\neg\mathbf{K}\phi \to \mathbf{K}\neg\mathbf{K}\phi\) &
 \textbf{Violated}: \(K_0 = 0\) does NOT imply \(K_1 = +1\) \\
 \end{longtable}
 
@@ -3998,14 +4876,105 @@ cognitively fallible \\
 (state-based measurement) \\
 \textbf{Purpose} & Normative reasoning about ideal agents & Descriptive
 measurement of real agents \\
-\textbf{Misconception} & Not modeled (\(K\phi\) only for true \(\phi\))
-& Explicitly modeled (\(K = -1\)) \\
+\textbf{Misconception} & Not modeled (\(\mathbf{K}\phi\) only for true
+\(\phi\)) & Explicitly modeled (\(K = -1\)) \\
 \end{longtable}
 
 \textbf{Complementary Use}: Epistemic logic provides normative
 benchmarks (what perfect metacognition would look like); our framework
 measures deviations from those benchmarks in real agents. The ``axiom
 violations'' we observe are precisely the phenomena of interest.
+
+\hypertarget{kripke-semantics-interpretation}{%
+\subsubsection{Kripke Semantics
+Interpretation}\label{kripke-semantics-interpretation}}
+
+\hypertarget{background}{%
+\paragraph{Background}\label{background}}
+
+In Kripke semantics, knowledge is modeled via accessibility relations
+over possible worlds:
+
+\[\mathbf{K}p \text{ holds at world } w \iff p \text{ holds at all worlds accessible from } w\]
+
+\hypertarget{correspondence-with-k-framework-1}{%
+\paragraph{Correspondence with K
+Framework}\label{correspondence-with-k-framework-1}}
+
+\textbf{State Spaces as World Sets}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2766}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3830}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3404}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+K Framework
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Kripke Semantics
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\text{State}_0\) & Actual world \(w_0\) & Ground truth state \\
+\(\text{State}_1\) & Epistemic accessibility from \(w_0\) & Worlds
+consistent with agent's beliefs about \(w_0\) \\
+\(\text{State}_2\) & Meta-accessibility & Worlds consistent with agent's
+beliefs about \(\text{State}_1\) \\
+\end{longtable}
+
+\textbf{K Values as Accessibility Measures}:
+
+\[K_n = \begin{cases}
++1 & \text{All accessible worlds agree (certain knowledge)} \\
+0 & \text{Accessible worlds are indeterminate (ignorance)} \\
+-1 & \text{All accessible worlds disagree with actual (misconception)}
+\end{cases}\]
+
+\textbf{Formalization}:
+
+Let \(R_n\) be the accessibility relation at layer \(n\). Then:
+
+\[K_n = \frac{|\{w' : w R_n w' \land \text{State}_n(w') = \text{State}_n(w_0)\}| - |\{w' : w R_n w' \land \text{State}_n(w') \neq \text{State}_n(w_0)\}|}{|\{w' : w R_n w'\}|}\]
+
+This yields \(K_n = +1\) when all accessible worlds match actuality,
+\(K_n = -1\) when none do.
+
+\textbf{Note}: This proportion-based formulation is a \textbf{proposed
+operationalization} extending standard Kripke semantics (which is
+binary: know/don't know) to a graded scale. This extension is novel to
+our framework and should be understood as an empirical approximation
+rather than a direct entailment from modal logic.
+
+\hypertarget{limitations-of-the-correspondence}{%
+\paragraph{Limitations of the
+Correspondence}\label{limitations-of-the-correspondence}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Finite vs Infinite}: Kripke models allow infinite world sets;
+  K framework assumes finite enumeration via responses/claims
+\item
+  \textbf{Quantitative vs Qualitative}: K provides graded values;
+  standard Kripke is binary (know/don't know)
+\item
+  \textbf{Observational vs Semantic}: K is defined operationally via
+  behavior; Kripke is defined model-theoretically
+\end{enumerate}
+
+\textbf{Conclusion}: The K framework can be viewed as an \emph{empirical
+operationalization} of Kripke-style accessibility, where accessibility
+is inferred from behavioral responses rather than stipulated
+semantically.
+
+\hypertarget{connection-to-dynamic-epistemic-logic-del}{%
+\subsubsection{Connection to Dynamic Epistemic Logic
+(DEL)}\label{connection-to-dynamic-epistemic-logic-del}}
 
 \textbf{Connection to Dynamic Epistemic Logic (DEL):}
 
