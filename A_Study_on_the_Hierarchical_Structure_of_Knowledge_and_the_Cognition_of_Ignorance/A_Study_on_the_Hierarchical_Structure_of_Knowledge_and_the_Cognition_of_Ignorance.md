@@ -1439,11 +1439,11 @@ This section provides mathematical theorems and propositions that establish the 
 
 ### Core Theorems
 
-#### Theorem 1: K₀-IRT Correspondence
+#### Theorem 1: $K_0$-IRT Correspondence
 
 **Statement**: Under the 2-Parameter Logistic (2PL) Item Response Theory model, $K_0$ is exactly determined by the latent ability parameter $\theta$.
 
-**Theorem 1** (K₀-IRT Correspondence):
+**Theorem 1** ($K_0$-IRT Correspondence):
 Let $(\theta, \{a_i, b_i\}_{i=1}^N)$ be a 2PL-IRT model with:
 $$P(\text{correct} | \theta, a_i, b_i) = \frac{1}{1 + e^{-a_i(\theta - b_i)}}$$
 
@@ -1473,38 +1473,38 @@ $$\bar{K}_0 = \frac{1}{N} \sum_{i=1}^{N} \tanh\left(\frac{a_i(\theta - b_i)}{2}\
 
 ---
 
-#### Theorem 2: K₁-Phi Correspondence
+#### Theorem 2: $K_1$-Phi Correspondence
 
-**Statement**: When State₀ and Claim₁ are both binary, $K_1$ equals the Phi coefficient.
+**Statement**: When $\text{State}_0$ and $\text{Claim}_1$ are both binary, $K_1$ equals the Phi coefficient.
 
-**Theorem 2** (K₁-Phi Correspondence):
-Let State₀ ∈ {correct, incorrect} and Claim₁ ∈ {"I know", "I don't know"} be binary random variables. Define $K_1 := \phi(\text{State}_0, \text{Claim}_1)$ where $\phi$ is the Phi coefficient:
+**Theorem 2** ($K_1$-Phi Correspondence):
+Let $\text{State}_0 \in \{\text{correct}, \text{incorrect}\}$ and $\text{Claim}_1 \in \{\text{"I know"}, \text{"I don't know"}\}$ be binary random variables. Define $K_1 := \phi(\text{State}_0, \text{Claim}_1)$ where $\phi$ is the Phi coefficient:
 $$\phi = \frac{n_{11} n_{00} - n_{10} n_{01}}{\sqrt{(n_{11}+n_{10})(n_{01}+n_{00})(n_{11}+n_{01})(n_{10}+n_{00})}}$$
 
 Then:
 1. $K_1 \in [-1, 1]$
-2. $K_1 = +1$ iff Claim₁ = State₀ for all items (perfect alignment)
-3. $K_1 = -1$ iff Claim₁ = ¬State₀ for all items (perfect anti-alignment)
-4. $K_1 = 0$ iff Claim₁ ⊥ State₀ (statistical independence)
+2. $K_1 = +1$ iff $\text{Claim}_1 = \text{State}_0$ for all items (perfect alignment)
+3. $K_1 = -1$ iff $\text{Claim}_1 = \neg\text{State}_0$ for all items (perfect anti-alignment)
+4. $K_1 = 0$ iff $\text{Claim}_1 \perp \text{State}_0$ (statistical independence)
 
 **Proof**:
 
 Let the 2×2 contingency table be:
 
-|  | Claim₁ = "I know" | Claim₁ = "I don't know" |
+|  | $\text{Claim}_1$ = "I know" | $\text{Claim}_1$ = "I don't know" |
 |:---|:---:|:---:|
-| State₀ = correct | $n_{11}$ | $n_{10}$ |
-| State₀ = incorrect | $n_{01}$ | $n_{00}$ |
+| $\text{State}_0$ = correct | $n_{11}$ | $n_{10}$ |
+| $\text{State}_0$ = incorrect | $n_{01}$ | $n_{00}$ |
 
 **Property 1** ($K_1 \in [-1, 1]$):
 The Phi coefficient is the Pearson correlation for two binary variables. By the Cauchy-Schwarz inequality, $|\phi| \leq 1$.
 
 **Property 2** ($K_1 = +1$ iff perfect alignment):
-When Claim₁ = State₀ for all items, $n_{10} = n_{01} = 0$. Then:
+When $\text{Claim}_1 = \text{State}_0$ for all items, $n_{10} = n_{01} = 0$. Then:
 $$\phi = \frac{n_{11} \cdot n_{00} - 0}{\sqrt{n_{11} \cdot n_{00} \cdot n_{11} \cdot n_{00}}} = \frac{n_{11} \cdot n_{00}}{n_{11} \cdot n_{00}} = 1$$
 
 **Property 3** ($K_1 = -1$ iff perfect anti-alignment):
-When Claim₁ = ¬State₀ for all items, $n_{11} = n_{00} = 0$. Then:
+When $\text{Claim}_1 = \neg\text{State}_0$ for all items, $n_{11} = n_{00} = 0$. Then:
 $$\phi = \frac{0 - n_{10} \cdot n_{01}}{\sqrt{n_{10} \cdot n_{01} \cdot n_{10} \cdot n_{01}}} = \frac{-n_{10} \cdot n_{01}}{n_{10} \cdot n_{01}} = -1$$
 
 **Property 4** ($K_1 = 0$ iff independence):
@@ -1512,8 +1512,8 @@ Under statistical independence, $n_{ij} = n_{i\cdot} \cdot n_{\cdot j} / N$ for 
 $$n_{11} n_{00} - n_{10} n_{01} = \frac{n_{1\cdot} n_{\cdot 1} n_{0\cdot} n_{\cdot 0}}{N^2} - \frac{n_{1\cdot} n_{\cdot 0} n_{0\cdot} n_{\cdot 1}}{N^2} = 0$$
 Hence $\phi = 0$. $\blacksquare$
 
-**Extension to Ternary State₀**:
-When State₀ ∈ {correct, incorrect, absent}, binarization is required for Phi. The recommended strategy:
+**Extension to Ternary $\text{State}_0$**:
+When $\text{State}_0 \in \{\text{correct}, \text{incorrect}, \text{absent}\}$, binarization is required for Phi. The recommended strategy:
 - Positive: correct only
 - Negative: incorrect + absent
 
@@ -1523,9 +1523,9 @@ This preserves the interpretation that "I know" should predict correctness, not 
 
 ### Identifiability Theorems
 
-#### Theorem 3: K₀ Identifiability
+#### Theorem 3: $K_0$ Identifiability
 
-**Theorem 3** (K₀ Identifiability):
+**Theorem 3** ($K_0$ Identifiability):
 $K_0$ is identifiable from response data iff item difficulties have positive variance.
 
 Formally: Given $N$ items with difficulties $\{b_i\}_{i=1}^N$, $K_0$ (equivalently, $\theta$) is identifiable iff $\text{Var}(\{b_i\}) > 0$.
@@ -1547,21 +1547,21 @@ With varying $b_i$, the likelihood function has a unique maximum. Intuitively, i
 
 ---
 
-#### Theorem 4: K₁ Identifiability
+#### Theorem 4: $K_1$ Identifiability
 
-**Theorem 4** (K₁ Identifiability):
-Given $K_0$ estimates and Claim₁ observations, $K_1$ is identifiable iff:
-1. $P(K_0 = +1) > 0$ and $P(K_0 \leq 0) > 0$ (variability in State₀)
-2. Claim₁ is non-degenerate: $P(\text{Claim}_1 = \text{"I know"}) \in (0, 1)$
+**Theorem 4** ($K_1$ Identifiability):
+Given $K_0$ estimates and $\text{Claim}_1$ observations, $K_1$ is identifiable iff:
+1. $P(K_0 = +1) > 0$ and $P(K_0 \leq 0) > 0$ (variability in $\text{State}_0$)
+2. $\text{Claim}_1$ is non-degenerate: $P(\text{Claim}_1 = \text{"I know"}) \in (0, 1)$
 
 **Proof**:
 The Phi coefficient $\phi$ is undefined when any marginal frequency is zero (denominator becomes zero). Condition 1 ensures both rows of the 2×2 table are populated. Condition 2 ensures both columns are populated. With all cells potentially non-zero, $\phi$ is a well-defined estimator of alignment. $\blacksquare$
 
 ---
 
-#### Theorem 5: K₂ Identifiability
+#### Theorem 5: $K_2$ Identifiability
 
-**Theorem 5** (K₂ Identifiability):
+**Theorem 5** ($K_2$ Identifiability):
 Let $K_2 := \text{ICC}(K_1^{(t_1)}, K_1^{(t_2)})$ be the test-retest intraclass correlation of $K_1$.
 
 $K_2$ is identifiable iff:
@@ -1622,7 +1622,7 @@ A positive DK-Index indicates systematic overconfidence among the unknowing.
 Under Brier scoring, truthful probability reporting is the optimal strategy, ensuring $K_1$ reflects genuine calibration.
 
 **Setup**:
-Elicit Claim₁ as a probability $p \in [0, 1]$: "What is the probability that your answer is correct?"
+Elicit $\text{Claim}_1$ as a probability $p \in [0, 1]$: "What is the probability that your answer is correct?"
 
 Score using the Brier rule:
 $$S(p, \text{outcome}) = 1 - (p - \mathbb{1}[\text{correct}])^2$$
@@ -1630,7 +1630,7 @@ $$S(p, \text{outcome}) = 1 - (p - \mathbb{1}[\text{correct}])^2$$
 **Statement**:
 The Brier score is a strictly proper scoring rule. The expected score is maximized when $p = P(\text{correct} | \text{information})$.
 
-**Implication for K₁**:
+**Implication for $K_1$**:
 When subjects are paid according to Brier score, strategic responding is discouraged. The observed $p$ reflects genuine beliefs, ensuring that:
 $$K_1 = 2 \cdot P(\text{Claim}_1 \text{ matches State}_0) - 1$$
 reflects true metacognitive alignment rather than gaming behavior.
@@ -3421,7 +3421,7 @@ All that exists are **states** and **observations**. $K$ observes states. That's
 
 ### Robustness Lemmas
 
-#### Lemma 1: Scale Invariance of K₀
+#### Lemma 1: Scale Invariance of $K_0$
 
 **Lemma 1** (Scale Invariance):
 $K_0 = \tanh(a(\theta - b)/2)$ is invariant under affine rescaling of $\theta$ iff $a$ and $b$ are co-transformed.
@@ -3436,7 +3436,7 @@ $$K_0(\theta') = \tanh\left(\frac{a'(\theta' - b')}{2}\right) = \tanh\left(\frac
 
 ---
 
-#### Lemma 2: K₁ under Class Imbalance
+#### Lemma 2: $K_1$ under Class Imbalance
 
 **Lemma 2** (Class Imbalance Bound):
 Let $\pi = P(K_0 = +1)$ be the base rate of correct knowledge.
@@ -3449,7 +3449,7 @@ $$|K_1| \leq \sqrt{\frac{\min(\pi, 1-\pi)}{\max(\pi, 1-\pi)}}$$
 **Proof**:
 
 The Phi coefficient achieves its maximum when the 2×2 table has deterministic structure. Given marginal constraint $\pi = P(K_0 = +1)$, the maximum occurs when:
-- If $\pi \leq 0.5$: All $K_0 = +1$ cases have Claim₁ = "I know", and the remaining "I know" claims are minimized.
+- If $\pi \leq 0.5$: All $K_0 = +1$ cases have $\text{Claim}_1$ = "I know", and the remaining "I know" claims are minimized.
 - The resulting maximum is:
 $$|\phi|_{\max} = \sqrt{\frac{\min(\pi, 1-\pi)}{\max(\pi, 1-\pi)}}$$
 
@@ -3465,9 +3465,9 @@ Optimizing over $p$ and applying algebra gives the stated bound. As $\pi \to 0$ 
 
 ### Supplementary Propositions
 
-#### Proposition 1: K₁-meta-d' Approximate Relationship
+#### Proposition 1: $K_1$-meta-d' Approximate Relationship
 
-**Proposition 1** (K₁-meta-d' Correspondence):
+**Proposition 1** ($K_1$-meta-d' Correspondence):
 Under Gaussian Signal Detection Theory assumptions:
 $$K_1 \approx \tanh\left(\frac{\text{meta-d}'}{2}\right)$$
 
@@ -3495,10 +3495,10 @@ Based on our survey of existing approaches, the $K$ framework is the only approa
 
 | Property | $K$ Framework | meta-d' | ECE/Brier | IRT |
 |:---------|:-------------:|:-------:|:---------:|:---:|
-| **(a)** Per-item metacognitive classification | ✅ | ❌ | ❌ | ✅ |
-| **(b)** Explicit modeling of ignorance ($K=0$) distinct from misconception ($K=-1$) | ✅ | ❌ | ❌ | ❌ |
-| **(c)** Recursive higher-order extension ($K_2, K_3, ...$) | ✅ | ❌ | ❌ | ❌ |
-| **(d)** Unified anchor semantics across layers | ✅ | N/A | N/A | N/A |
+| **(a)** Per-item metacognitive classification | Yes | No | No | Yes |
+| **(b)** Explicit modeling of ignorance ($K=0$) distinct from misconception ($K=-1$) | Yes | No | No | No |
+| **(c)** Recursive higher-order extension ($K_2, K_3, ...$) | Yes | No | No | No |
+| **(d)** Unified anchor semantics across layers | Yes | N/A | N/A | N/A |
 
 **Justification (per property)**:
 

@@ -2817,15 +2817,15 @@ component theories.
 \hypertarget{core-theorems}{%
 \subsubsection{Core Theorems}\label{core-theorems}}
 
-\hypertarget{theorem-1-kux2080-irt-correspondence}{%
-\paragraph{Theorem 1: K₀-IRT
-Correspondence}\label{theorem-1-kux2080-irt-correspondence}}
+\hypertarget{theorem-1-k_0-irt-correspondence}{%
+\paragraph{\texorpdfstring{Theorem 1: \(K_0\)-IRT
+Correspondence}{Theorem 1: K\_0-IRT Correspondence}}\label{theorem-1-k_0-irt-correspondence}}
 
 \textbf{Statement}: Under the 2-Parameter Logistic (2PL) Item Response
 Theory model, \(K_0\) is exactly determined by the latent ability
 parameter \(\theta\).
 
-\textbf{Theorem 1} (K₀-IRT Correspondence): Let
+\textbf{Theorem 1} (\(K_0\)-IRT Correspondence): Let
 \((\theta, \{a_i, b_i\}_{i=1}^N)\) be a 2PL-IRT model with:
 \[P(\text{correct} | \theta, a_i, b_i) = \frac{1}{1 + e^{-a_i(\theta - b_i)}}\]
 
@@ -2853,23 +2853,26 @@ assumptions \(a = 2\) and \(b = 0\): \[K_0 \approx \tanh(\theta)\]
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{theorem-2-kux2081-phi-correspondence}{%
-\paragraph{Theorem 2: K₁-Phi
-Correspondence}\label{theorem-2-kux2081-phi-correspondence}}
+\hypertarget{theorem-2-k_1-phi-correspondence}{%
+\paragraph{\texorpdfstring{Theorem 2: \(K_1\)-Phi
+Correspondence}{Theorem 2: K\_1-Phi Correspondence}}\label{theorem-2-k_1-phi-correspondence}}
 
-\textbf{Statement}: When State₀ and Claim₁ are both binary, \(K_1\)
-equals the Phi coefficient.
+\textbf{Statement}: When \(\text{State}_0\) and \(\text{Claim}_1\) are
+both binary, \(K_1\) equals the Phi coefficient.
 
-\textbf{Theorem 2} (K₁-Phi Correspondence): Let State₀ ∈ \{correct,
-incorrect\} and Claim₁ ∈ \{``I know'', ``I don't know''\} be binary
-random variables. Define \(K_1 := \phi(\text{State}_0, \text{Claim}_1)\)
-where \(\phi\) is the Phi coefficient:
+\textbf{Theorem 2} (\(K_1\)-Phi Correspondence): Let
+\(\text{State}_0 \in \{\text{correct}, \text{incorrect}\}\) and
+\(\text{Claim}_1 \in \{\text{"I know"}, \text{"I don't know"}\}\) be
+binary random variables. Define
+\(K_1 := \phi(\text{State}_0, \text{Claim}_1)\) where \(\phi\) is the
+Phi coefficient:
 \[\phi = \frac{n_{11} n_{00} - n_{10} n_{01}}{\sqrt{(n_{11}+n_{10})(n_{01}+n_{00})(n_{11}+n_{01})(n_{10}+n_{00})}}\]
 
-Then: 1. \(K_1 \in [-1, 1]\) 2. \(K_1 = +1\) iff Claim₁ = State₀ for all
-items (perfect alignment) 3. \(K_1 = -1\) iff Claim₁ = ¬State₀ for all
-items (perfect anti-alignment) 4. \(K_1 = 0\) iff Claim₁ ⊥ State₀
-(statistical independence)
+Then: 1. \(K_1 \in [-1, 1]\) 2. \(K_1 = +1\) iff
+\(\text{Claim}_1 = \text{State}_0\) for all items (perfect alignment) 3.
+\(K_1 = -1\) iff \(\text{Claim}_1 = \neg\text{State}_0\) for all items
+(perfect anti-alignment) 4. \(K_1 = 0\) iff
+\(\text{Claim}_1 \perp \text{State}_0\) (statistical independence)
 
 \textbf{Proof}:
 
@@ -2877,25 +2880,28 @@ Let the 2×2 contingency table be:
 
 \begin{longtable}[]{@{}lcc@{}}
 \toprule\noalign{}
-& Claim₁ = ``I know'' & Claim₁ = ``I don't know'' \\
+& \(\text{Claim}_1\) = ``I know'' & \(\text{Claim}_1\) = ``I don't
+know'' \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-State₀ = correct & \(n_{11}\) & \(n_{10}\) \\
-State₀ = incorrect & \(n_{01}\) & \(n_{00}\) \\
+\(\text{State}_0\) = correct & \(n_{11}\) & \(n_{10}\) \\
+\(\text{State}_0\) = incorrect & \(n_{01}\) & \(n_{00}\) \\
 \end{longtable}
 
 \textbf{Property 1} (\(K_1 \in [-1, 1]\)): The Phi coefficient is the
 Pearson correlation for two binary variables. By the Cauchy-Schwarz
 inequality, \(|\phi| \leq 1\).
 
-\textbf{Property 2} (\(K_1 = +1\) iff perfect alignment): When Claim₁ =
-State₀ for all items, \(n_{10} = n_{01} = 0\). Then:
+\textbf{Property 2} (\(K_1 = +1\) iff perfect alignment): When
+\(\text{Claim}_1 = \text{State}_0\) for all items,
+\(n_{10} = n_{01} = 0\). Then:
 \[\phi = \frac{n_{11} \cdot n_{00} - 0}{\sqrt{n_{11} \cdot n_{00} \cdot n_{11} \cdot n_{00}}} = \frac{n_{11} \cdot n_{00}}{n_{11} \cdot n_{00}} = 1\]
 
 \textbf{Property 3} (\(K_1 = -1\) iff perfect anti-alignment): When
-Claim₁ = ¬State₀ for all items, \(n_{11} = n_{00} = 0\). Then:
+\(\text{Claim}_1 = \neg\text{State}_0\) for all items,
+\(n_{11} = n_{00} = 0\). Then:
 \[\phi = \frac{0 - n_{10} \cdot n_{01}}{\sqrt{n_{10} \cdot n_{01} \cdot n_{10} \cdot n_{01}}} = \frac{-n_{10} \cdot n_{01}}{n_{10} \cdot n_{01}} = -1\]
 
 \textbf{Property 4} (\(K_1 = 0\) iff independence): Under statistical
@@ -2904,9 +2910,10 @@ independence, \(n_{ij} = n_{i\cdot} \cdot n_{\cdot j} / N\) for all
 \[n_{11} n_{00} - n_{10} n_{01} = \frac{n_{1\cdot} n_{\cdot 1} n_{0\cdot} n_{\cdot 0}}{N^2} - \frac{n_{1\cdot} n_{\cdot 0} n_{0\cdot} n_{\cdot 1}}{N^2} = 0\]
 Hence \(\phi = 0\). \(\blacksquare\)
 
-\textbf{Extension to Ternary State₀}: When State₀ ∈ \{correct,
-incorrect, absent\}, binarization is required for Phi. The recommended
-strategy: - Positive: correct only - Negative: incorrect + absent
+\textbf{Extension to Ternary \(\text{State}_0\)}: When
+\(\text{State}_0 \in \{\text{correct}, \text{incorrect}, \text{absent}\}\),
+binarization is required for Phi. The recommended strategy: - Positive:
+correct only - Negative: incorrect + absent
 
 This preserves the interpretation that ``I know'' should predict
 correctness, not merely absence of misconception.
@@ -2917,12 +2924,12 @@ correctness, not merely absence of misconception.
 \subsubsection{Identifiability
 Theorems}\label{identifiability-theorems}}
 
-\hypertarget{theorem-3-kux2080-identifiability}{%
-\paragraph{Theorem 3: K₀
-Identifiability}\label{theorem-3-kux2080-identifiability}}
+\hypertarget{theorem-3-k_0-identifiability}{%
+\paragraph{\texorpdfstring{Theorem 3: \(K_0\)
+Identifiability}{Theorem 3: K\_0 Identifiability}}\label{theorem-3-k_0-identifiability}}
 
-\textbf{Theorem 3} (K₀ Identifiability): \(K_0\) is identifiable from
-response data iff item difficulties have positive variance.
+\textbf{Theorem 3} (\(K_0\) Identifiability): \(K_0\) is identifiable
+from response data iff item difficulties have positive variance.
 
 Formally: Given \(N\) items with difficulties \(\{b_i\}_{i=1}^N\),
 \(K_0\) (equivalently, \(\theta\)) is identifiable iff
@@ -2953,14 +2960,15 @@ Mental Test Scores}, Chapter 17.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{theorem-4-kux2081-identifiability}{%
-\paragraph{Theorem 4: K₁
-Identifiability}\label{theorem-4-kux2081-identifiability}}
+\hypertarget{theorem-4-k_1-identifiability}{%
+\paragraph{\texorpdfstring{Theorem 4: \(K_1\)
+Identifiability}{Theorem 4: K\_1 Identifiability}}\label{theorem-4-k_1-identifiability}}
 
-\textbf{Theorem 4} (K₁ Identifiability): Given \(K_0\) estimates and
-Claim₁ observations, \(K_1\) is identifiable iff: 1. \(P(K_0 = +1) > 0\)
-and \(P(K_0 \leq 0) > 0\) (variability in State₀) 2. Claim₁ is
-non-degenerate: \(P(\text{Claim}_1 = \text{"I know"}) \in (0, 1)\)
+\textbf{Theorem 4} (\(K_1\) Identifiability): Given \(K_0\) estimates
+and \(\text{Claim}_1\) observations, \(K_1\) is identifiable iff: 1.
+\(P(K_0 = +1) > 0\) and \(P(K_0 \leq 0) > 0\) (variability in
+\(\text{State}_0\)) 2. \(\text{Claim}_1\) is non-degenerate:
+\(P(\text{Claim}_1 = \text{"I know"}) \in (0, 1)\)
 
 \textbf{Proof}: The Phi coefficient \(\phi\) is undefined when any
 marginal frequency is zero (denominator becomes zero). Condition 1
@@ -2970,11 +2978,11 @@ both columns are populated. With all cells potentially non-zero,
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{theorem-5-kux2082-identifiability}{%
-\paragraph{Theorem 5: K₂
-Identifiability}\label{theorem-5-kux2082-identifiability}}
+\hypertarget{theorem-5-k_2-identifiability}{%
+\paragraph{\texorpdfstring{Theorem 5: \(K_2\)
+Identifiability}{Theorem 5: K\_2 Identifiability}}\label{theorem-5-k_2-identifiability}}
 
-\textbf{Theorem 5} (K₂ Identifiability): Let
+\textbf{Theorem 5} (\(K_2\) Identifiability): Let
 \(K_2 := \text{ICC}(K_1^{(t_1)}, K_1^{(t_2)})\) be the test-retest
 intraclass correlation of \(K_1\).
 
@@ -3056,8 +3064,9 @@ Compatibility}\label{proposition-4-incentive-compatibility}}
 Brier scoring, truthful probability reporting is the optimal strategy,
 ensuring \(K_1\) reflects genuine calibration.
 
-\textbf{Setup}: Elicit Claim₁ as a probability \(p \in [0, 1]\): ``What
-is the probability that your answer is correct?''
+\textbf{Setup}: Elicit \(\text{Claim}_1\) as a probability
+\(p \in [0, 1]\): ``What is the probability that your answer is
+correct?''
 
 Score using the Brier rule:
 \[S(p, \text{outcome}) = 1 - (p - \mathbb{1}[\text{correct}])^2\]
@@ -3066,9 +3075,9 @@ Score using the Brier rule:
 The expected score is maximized when
 \(p = P(\text{correct} | \text{information})\).
 
-\textbf{Implication for K₁}: When subjects are paid according to Brier
-score, strategic responding is discouraged. The observed \(p\) reflects
-genuine beliefs, ensuring that:
+\textbf{Implication for \(K_1\)}: When subjects are paid according to
+Brier score, strategic responding is discouraged. The observed \(p\)
+reflects genuine beliefs, ensuring that:
 \[K_1 = 2 \cdot P(\text{Claim}_1 \text{ matches State}_0) - 1\] reflects
 true metacognitive alignment rather than gaming behavior.
 
@@ -6618,9 +6627,9 @@ Propositions}\label{appendix-technical-lemmas-and-supplementary-propositions}}
 \hypertarget{robustness-lemmas}{%
 \subsubsection{Robustness Lemmas}\label{robustness-lemmas}}
 
-\hypertarget{lemma-1-scale-invariance-of-kux2080}{%
-\paragraph{Lemma 1: Scale Invariance of
-K₀}\label{lemma-1-scale-invariance-of-kux2080}}
+\hypertarget{lemma-1-scale-invariance-of-k_0}{%
+\paragraph{\texorpdfstring{Lemma 1: Scale Invariance of
+\(K_0\)}{Lemma 1: Scale Invariance of K\_0}}\label{lemma-1-scale-invariance-of-k_0}}
 
 \textbf{Lemma 1} (Scale Invariance): \(K_0 = \tanh(a(\theta - b)/2)\) is
 invariant under affine rescaling of \(\theta\) iff \(a\) and \(b\) are
@@ -6639,9 +6648,9 @@ provided item parameters are appropriately re-estimated.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{lemma-2-kux2081-under-class-imbalance}{%
-\paragraph{Lemma 2: K₁ under Class
-Imbalance}\label{lemma-2-kux2081-under-class-imbalance}}
+\hypertarget{lemma-2-k_1-under-class-imbalance}{%
+\paragraph{\texorpdfstring{Lemma 2: \(K_1\) under Class
+Imbalance}{Lemma 2: K\_1 under Class Imbalance}}\label{lemma-2-k_1-under-class-imbalance}}
 
 \textbf{Lemma 2} (Class Imbalance Bound): Let \(\pi = P(K_0 = +1)\) be
 the base rate of correct knowledge.
@@ -6657,8 +6666,8 @@ regardless of true alignment.
 The Phi coefficient achieves its maximum when the 2×2 table has
 deterministic structure. Given marginal constraint
 \(\pi = P(K_0 = +1)\), the maximum occurs when: - If \(\pi \leq 0.5\):
-All \(K_0 = +1\) cases have Claim₁ = ``I know'', and the remaining ``I
-know'' claims are minimized. - The resulting maximum is:
+All \(K_0 = +1\) cases have \(\text{Claim}_1\) = ``I know'', and the
+remaining ``I know'' claims are minimized. - The resulting maximum is:
 \[|\phi|_{\max} = \sqrt{\frac{\min(\pi, 1-\pi)}{\max(\pi, 1-\pi)}}\]
 
 \textbf{Derivation}: Let \(p = P(\text{Claim}_1 = \text{"I know"})\).
@@ -6682,11 +6691,11 @@ interpretation.
 \subsubsection{Supplementary
 Propositions}\label{supplementary-propositions}}
 
-\hypertarget{proposition-1-kux2081-meta-d-approximate-relationship}{%
-\paragraph{Proposition 1: K₁-meta-d' Approximate
-Relationship}\label{proposition-1-kux2081-meta-d-approximate-relationship}}
+\hypertarget{proposition-1-k_1-meta-d-approximate-relationship}{%
+\paragraph{\texorpdfstring{Proposition 1: \(K_1\)-meta-d' Approximate
+Relationship}{Proposition 1: K\_1-meta-d' Approximate Relationship}}\label{proposition-1-k_1-meta-d-approximate-relationship}}
 
-\textbf{Proposition 1} (K₁-meta-d' Correspondence): Under Gaussian
+\textbf{Proposition 1} (\(K_1\)-meta-d' Correspondence): Under Gaussian
 Signal Detection Theory assumptions:
 \[K_1 \approx \tanh\left(\frac{\text{meta-d}'}{2}\right)\]
 
@@ -6741,13 +6750,13 @@ IRT
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\textbf{(a)} Per-item metacognitive classification & ✅ & ❌ & ❌ &
-✅ \\
+\textbf{(a)} Per-item metacognitive classification & Yes & No & No &
+Yes \\
 \textbf{(b)} Explicit modeling of ignorance (\(K=0\)) distinct from
-misconception (\(K=-1\)) & ✅ & ❌ & ❌ & ❌ \\
-\textbf{(c)} Recursive higher-order extension (\(K_2, K_3, ...\)) & ✅ &
-❌ & ❌ & ❌ \\
-\textbf{(d)} Unified anchor semantics across layers & ✅ & N/A & N/A &
+misconception (\(K=-1\)) & Yes & No & No & No \\
+\textbf{(c)} Recursive higher-order extension (\(K_2, K_3, ...\)) & Yes
+& No & No & No \\
+\textbf{(d)} Unified anchor semantics across layers & Yes & N/A & N/A &
 N/A \\
 \end{longtable}
 
