@@ -36,8 +36,38 @@ This paper establishes the **conceptual foundation** for a unified theory of rec
 
 These omissions are not gaps but **scope boundaries**. Measurement-theoretic elaboration and empirical validation require this conceptual foundation to be settled first. We invite the research community to build upon this foundation.
 
+### Paper Scope and Positioning
+
+**What This Paper Is:**
+
+This paper is a **conceptual framework paper**. Its primary contributions are:
+
+1. A **unifying observational schema** (the $K_n$ family) that provides a common coordinate system for first-order accuracy, metacognitive alignment, and higher-order stability
+2. A **taxonomic vocabulary** (the 27-pattern classification) for discussing metacognitive phenomena
+3. A **principled separation** of epistemic state ($K$) from phenomenological confidence ($C$)
+4. **Illustrative derivations** showing how the framework relates to established metrics (IRT, meta-d', ECE)
+
+**What This Paper Is NOT:**
+
+This paper does **not** provide:
+
+- Fully rigorous proofs of identifiability or consistency
+- Complete probabilistic specifications of $f_n$ and $\text{State}_n$
+- Estimation algorithms with likelihood functions and convergence guarantees
+- Empirical validation or simulation studies
+
+These are valuable extensions that we explicitly designate as **Future Work**.
+
+**Rationale for This Scope:**
+
+The metacognition literature currently lacks a unified conceptual vocabulary that spans psychometrics (IRT), signal detection theory (meta-d'), and machine learning calibration (ECE). Before developing formal estimation theory or running experiments, the field needs **settled conceptual foundations**. This paper provides those foundations.
+
+Formal measurement theory, estimation algorithms, and empirical validation are planned for **separate technical papers** building upon this conceptual scaffold.
+
 
 ## Executive Summary: Framework at a Glance
+
+> **Note**: This is a **conceptual framework paper**. The results below are illustrative derivations and informal propositions, not rigorous theorems with complete proofs. See "Paper Scope and Positioning" for details.
 
 This section provides a concise overview of the framework's core components for readers seeking quick orientation.
 
@@ -90,18 +120,20 @@ $$K_n = \begin{cases} +1 & \text{if } K_n^* > \tau^+ \\ 0 & \text{if } \tau^- \l
 
 ### Technical Contributions at a Glance
 
-This section provides a roadmap to the **nontrivial formal results** in this paper.
+This section provides a roadmap to the **key results** in this paper.
 
-**Theorems and Identifiability Guarantees:**
+> **Note**: As a conceptual framework paper, the results below are **illustrative derivations** and **informal propositions**, not rigorous theorems with complete proofs. Formal identifiability analysis connecting to general latent variable theory is deferred to future technical work.
+
+**Results and Propositions:**
 
 | ID | Name | Content | Section |
 |:---|:-----|:--------|:--------|
-| **Theorem 1** | $K_0$-IRT Exact Correspondence | $K_0 = \tanh(a(\theta-b)/2)$ with **formal derivation** | Formal Results |
-| **Theorem 2** | $K_1$-Phi Correspondence | $K_1 = \phi$ under binary $\text{State}_0/\text{Claim}_1$ | Formal Results |
-| **Theorem 3** | $K_0$ Identifiability | $\text{Var}(b_i) > 0 \Rightarrow K_0$ identifiable | Formal Results |
-| **Theorem 4** | $K_1$ Identifiability | Variability conditions for $K_1$ identification | Formal Results |
-| **Theorem 5** | $K_2$ Identifiability | ICC-based identifiability conditions | Formal Results |
-| **Theorem 6** | Pipeline Identifiability | Joint identifiability of $(K_0, K_1, K_2)$ **without circularity** | Formal Results |
+| **Result 1** | $K_0$-IRT Correspondence | $K_0 = \tanh(a(\theta-b)/2)$ (illustrative derivation) | Formal Results |
+| **Result 2** | $K_1$-Phi Correspondence | $K_1 = \phi$ under binary $\text{State}_0/\text{Claim}_1$ | Formal Results |
+| **Proposition 3** | $K_0$ Identifiability (Informal) | $\text{Var}(b_i) > 0 \Rightarrow K_0$ identifiable | Formal Results |
+| **Proposition 4** | $K_1$ Identifiability (Informal) | Variability conditions for $K_1$ identification | Formal Results |
+| **Proposition 5** | $K_2$ Identifiability (Informal) | ICC-based identifiability conditions | Formal Results |
+| **Proposition 6** | Pipeline Identifiability (Informal) | Joint identifiability of $(K_0, K_1, K_2)$ | Formal Results |
 
 **Falsifiable Predictions with Quantitative Bounds:**
 
@@ -116,7 +148,7 @@ This section provides a roadmap to the **nontrivial formal results** in this pap
 
 - **$K_1 \approx \tanh(\text{meta-d}'/2)$**: This is a **conceptual relationship**, NOT a mathematical identity (see Remark 1)
 - **$\hat{K} = \text{identity}$**: Justified by Lemma 3 under standard conditions
-- **Correspondences are derived**, not heuristic: Theorem 1 provides exact derivation from 2PL-IRT
+- **Correspondences are illustrative derivations** under simplifying assumptions, not rigorous proofs: Result 1 provides derivation from 2PL-IRT under idealized conditions
 
 
 ## Philosophical Foundation and Interpretive Notes
@@ -570,9 +602,9 @@ Where:
 > 
 > The framework sharply distinguishes between two conceptually different phenomena:
 > 
-> - **Abstention** ($\text{State}_0$ = absent): A *behavioral* observable—the subject chooses not to respond. This is measured at the object level ($n = 0$) as $\text{Response}(x) = \emptyset$ and enters $f_0$ as the third output category.
+> - **Abstention** ($\text{State}_0$ = absent): A *behavioral* observable---the subject chooses not to respond. This is measured at the object level ($n = 0$) as $\text{Response}(x) = \emptyset$ and enters $f_0$ as the third output category.
 > 
-> - **Ignorance** ($K_1 = -1$ with $\text{State}_0$ = correct): A *metacognitive* state—the subject responded correctly but believes they were guessing. This is a Type B error (unrecognized knowledge) measured at $n = 1$.
+> - **Ignorance** ($K_1 = -1$ with $\text{State}_0$ = correct): A *metacognitive* state---the subject responded correctly but believes they were guessing. This is a Type B error (unrecognized knowledge) measured at $n = 1$.
 > 
 > The distinction matters because:
 > 1. Abstention requires no response; Ignorance requires a correct response with low confidence
@@ -1226,15 +1258,15 @@ The following examples demonstrate how the $(K_0, K_1, K_2)$ triplet is computed
 
 | Step | Observable | Computation | Value |
 |:-----|:-----------|:------------|:------|
-| Response | "I don't know" | — | — |
-| Reference | 1648 | — | — |
-| State$_0$ | Response = Absent | $f_0(\text{absent}, 1648)$ = absent | — |
+| Response | "I don't know" | --- | --- |
+| Reference | 1648 | --- | --- |
+| State$_0$ | Response = Absent | $f_0(\text{absent}, 1648)$ = absent | --- |
 | $K_0$ | $g_0(\text{absent})$ | $= 0$ | **$K_0 = 0$** |
-| Claim$_1$ | "I correctly identified that I don't know" | — | — |
-| State$_1$ | Claim$_1$ matches $K_0 = 0$ | $f_1(0, \text{"I don't know"})$ = aligned | — |
+| Claim$_1$ | "I correctly identified that I don't know" | --- | --- |
+| State$_1$ | Claim$_1$ matches $K_0 = 0$ | $f_1(0, \text{"I don't know"})$ = aligned | --- |
 | $K_1$ | $g_1(\text{aligned})$ | $= +1$ | **$K_1 = +1$** |
-| Claim$_2$ | "I'm not sure about my self-assessment" | — | — |
-| State$_2$ | Claim$_2$ = uncertain when $K_1 = +1$ | $f_2(+1, \text{"not sure"})$ = uncertain | — |
+| Claim$_2$ | "I'm not sure about my self-assessment" | --- | --- |
+| State$_2$ | Claim$_2$ = uncertain when $K_1 = +1$ | $f_2(+1, \text{"not sure"})$ = uncertain | --- |
 | $K_2$ | $g_2(\text{uncertain})$ | $= 0$ | **$K_2 = 0$** |
 
 **Interpretation**: Subject demonstrates Socratic wisdom---accurate recognition of their own ignorance---but is modest about this metacognitive achievement.
@@ -1247,15 +1279,15 @@ The following examples demonstrate how the $(K_0, K_1, K_2)$ triplet is computed
 
 | Step | Observable | Computation | Value |
 |:-----|:-----------|:------------|:------|
-| Response | "5" | — | — |
-| Reference | 4 | — | — |
-| State$_0$ | Response $\neq$ Reference | $f_0(5, 4)$ = incorrect | — |
+| Response | "5" | --- | --- |
+| Reference | 4 | --- | --- |
+| State$_0$ | Response $\neq$ Reference | $f_0(5, 4)$ = incorrect | --- |
 | $K_0$ | $g_0(\text{incorrect})$ | $= -1$ | **$K_0 = -1$** |
-| Claim$_1$ | "I'm confident I'm correct" | — | — |
-| State$_1$ | Claim$_1$ contradicts $K_0 = -1$ | $f_1(-1, \text{"I know"})$ = misaligned | — |
+| Claim$_1$ | "I'm confident I'm correct" | --- | --- |
+| State$_1$ | Claim$_1$ contradicts $K_0 = -1$ | $f_1(-1, \text{"I know"})$ = misaligned | --- |
 | $K_1$ | $g_1(\text{misaligned})$ | $= -1$ | **$K_1 = -1$** |
-| Claim$_2$ | "My self-assessment is reliable" | — | — |
-| State$_2$ | Claim$_2$ contradicts $K_1 = -1$ | $f_2(-1, \text{"accurate"})$ = meta-misaligned | — |
+| Claim$_2$ | "My self-assessment is reliable" | --- | --- |
+| State$_2$ | Claim$_2$ contradicts $K_1 = -1$ | $f_2(-1, \text{"accurate"})$ = meta-misaligned | --- |
 | $K_2$ | $g_2(\text{meta-misaligned})$ | $= -1$ | **$K_2 = -1$** |
 
 **Interpretation**: Triple misalignment---wrong answer, overconfident, and unaware of overconfidence. This is the "entrenched" metacognitive failure pattern.
@@ -1268,15 +1300,15 @@ The following examples demonstrate how the $(K_0, K_1, K_2)$ triplet is computed
 
 | Step | Observable | Computation | Value |
 |:-----|:-----------|:------------|:------|
-| Response | Correct code | — | — |
-| Reference | Expected output | — | — |
-| State$_0$ | Response = Reference | $f_0(\text{correct}, \text{correct})$ = correct | — |
+| Response | Correct code | --- | --- |
+| Reference | Expected output | --- | --- |
+| State$_0$ | Response = Reference | $f_0(\text{correct}, \text{correct})$ = correct | --- |
 | $K_0$ | $g_0(\text{correct})$ | $= +1$ | **$K_0 = +1$** |
-| Claim$_1$ | "I probably got it wrong" | — | — |
-| State$_1$ | Claim$_1$ contradicts $K_0 = +1$ | $f_1(+1, \text{"I don't know"})$ = misaligned | — |
+| Claim$_1$ | "I probably got it wrong" | --- | --- |
+| State$_1$ | Claim$_1$ contradicts $K_0 = +1$ | $f_1(+1, \text{"I don't know"})$ = misaligned | --- |
 | $K_1$ | $g_1(\text{misaligned})$ | $= -1$ | **$K_1 = -1$** |
-| Claim$_2$ | "I know I tend to underestimate myself" | — | — |
-| State$_2$ | Claim$_2$ correctly identifies $K_1 = -1$ | $f_2(-1, \text{"may be wrong"})$ = meta-aligned | — |
+| Claim$_2$ | "I know I tend to underestimate myself" | --- | --- |
+| State$_2$ | Claim$_2$ correctly identifies $K_1 = -1$ | $f_2(-1, \text{"may be wrong"})$ = meta-aligned | --- |
 | $K_2$ | $g_2(\text{meta-aligned})$ | $= +1$ | **$K_2 = +1$** |
 
 **Interpretation**: Classic imposter syndrome with metacognitive awareness---the subject knows they underestimate themselves. This self-awareness ($K_2 = +1$) is a **teachable moment** for intervention.
@@ -1493,36 +1525,40 @@ Or allow layer-specific parameters if data supports it.
 
 
 
-## Formal Results: Theorems and Identifiability Guarantees
+## Formal Results: Illustrative Derivations and Informal Propositions
 
-This section provides mathematical theorems and propositions that establish the formal foundations of the $K$ framework. These results transform the framework from definitional to substantive by proving key properties and relationships.
+This section provides illustrative derivations and informal propositions that establish the conceptual foundations of the $K$ framework. These results show how the framework relates to established metrics and outline conditions under which key properties hold.
 
-> **Summary of Contributions**: This section contains **6 theorems, 1 lemma, and 5 falsifiable predictions**. The main identifiability results are:
-> - **Theorem 3**: $K_0$ identifiability under item variance conditions
-> - **Theorem 4**: $K_1$ identifiability given $K_0$ and claim variability
-> - **Theorem 6**: Joint $(K_0, K_1, K_2)$ pipeline identifiability without circularity
+> **Scope Note**: As stated in "Paper Scope and Positioning," this is a **conceptual framework paper**. The results below are *illustrative derivations* under idealized assumptions, not rigorous theorems with complete proofs. Formal identifiability analysis connecting to general latent variable theory (e.g., Allman et al., 2009; Kruskal, 1977) is deferred to future technical work.
+
+> **Summary of Contributions**: This section contains **2 results, 4 informal propositions, 1 lemma, and 5 falsifiable predictions**. The main identifiability arguments are:
+> - **Proposition 3**: $K_0$ identifiability under item variance conditions
+> - **Proposition 4**: $K_1$ identifiability given $K_0$ and claim variability
+> - **Proposition 6**: Joint $(K_0, K_1, K_2)$ pipeline identifiability
 > 
 > For a condensed overview, see "Technical Contributions at a Glance" in the Executive Summary.
 
-> **Note on Contribution Type**: The theorems below primarily integrate existing mathematical results (IRT, Signal Detection Theory, ICC) into the $K$ framework. The novelty lies not in the underlying mathematics but in the unified integration that enables systematic metacognition analysis. Theorems 1-5 establish that the $K$ framework inherits desirable properties (identifiability, proper scoring) from its component theories.
+> **Note on Contribution Type**: The results below primarily show how the $K$ framework connects to existing mathematical results (IRT, Signal Detection Theory, ICC). The novelty lies not in the underlying mathematics but in the unified conceptual integration that enables systematic metacognition analysis.
 
-### Core Theorems
+### Core Results
 
-#### Theorem 1: $K_0$-IRT Correspondence
+#### Result 1: $K_0$-IRT Correspondence
 
-**Theorem 1** ($K_0$-IRT Exact Correspondence):
+> **Note**: This is an *illustrative derivation* under idealized assumptions, not a general theorem.
 
-**Assumptions**:
+**Result 1** ($K_0$-IRT Correspondence):
+
+**Assumptions** (Simplifying):
 - **(A1)** Item response follows the 2-Parameter Logistic (2PL) IRT model:
   $$P(\text{correct} | \theta, a_i, b_i) = \frac{1}{1 + e^{-a_i(\theta - b_i)}}$$
 - **(A2)** $K_0$ is defined as the signed expected accuracy:
   $$K_0^{(i)} := 2P(\text{correct} | \theta, a_i, b_i) - 1$$
 
-**Statement**:
+**Observation**:
 Under (A1)-(A2), for each item $i$:
 $$K_0^{(i)} = \tanh\left(\frac{a_i(\theta - b_i)}{2}\right)$$
 
-**Proof**:
+**Derivation**:
 Starting from the 2PL probability:
 $$P = \frac{1}{1 + e^{-a(\theta - b)}}$$
 
@@ -1534,6 +1570,11 @@ $$\tanh(x) = \frac{e^{2x} - 1}{e^{2x} + 1} = \frac{1 - e^{-2x}}{1 + e^{-2x}}$$
 
 Matching exponents with $2x = a(\theta - b)$:
 $$K_0 = \tanh\left(\frac{a(\theta - b)}{2}\right) \quad \blacksquare$$
+
+**Scope of Validity**:
+This correspondence is exact under the stated assumptions but does not constitute a general identifiability result. Extension to realistic settings (polytomous items, multidimensional traits, measurement error) requires additional formal development.
+
+**Status**: Illustrative; formal identifiability analysis deferred to future work.
 
 **Corollary 1.1** (Standardized Form):
 Under additional assumption **(A3)**: $a = 2$ and $b = 0$:
@@ -1566,11 +1607,11 @@ For typical parameter ranges in educational and psychological testing:
 
 ---
 
-#### Theorem 2: $K_1$-Phi Correspondence
+#### Result 2: $K_1$-Phi Correspondence
 
-**Statement**: When $\text{State}_0$ and $\text{Claim}_1$ are both binary, $K_1$ equals the Phi coefficient.
+**Observation**: When $\text{State}_0$ and $\text{Claim}_1$ are both binary, $K_1$ equals the Phi coefficient.
 
-**Theorem 2** ($K_1$-Phi Correspondence):
+**Result 2** ($K_1$-Phi Correspondence):
 Let $\text{State}_0 \in \{\text{correct}, \text{incorrect}\}$ and $\text{Claim}_1 \in \{\text{"I know"}, \text{"I don't know"}\}$ be binary random variables. Define $K_1 := \phi(\text{State}_0, \text{Claim}_1)$ where $\phi$ is the Phi coefficient:
 $$\phi = \frac{n_{11} n_{00} - n_{10} n_{01}}{\sqrt{(n_{11}+n_{10})(n_{01}+n_{00})(n_{11}+n_{01})(n_{10}+n_{00})}}$$
 
@@ -1580,7 +1621,7 @@ Then:
 3. $K_1 = -1$ iff $\text{Claim}_1 = \neg\text{State}_0$ for all items (perfect anti-alignment)
 4. $K_1 = 0$ iff $\text{Claim}_1 \perp \text{State}_0$ (statistical independence)
 
-**Proof**:
+**Derivation**:
 
 Let the $2 \times 2$ contingency table be:
 
@@ -1605,7 +1646,7 @@ Under statistical independence, $n_{ij} = n_{i\cdot} \cdot n_{\cdot j} / N$ for 
 $$n_{11} n_{00} - n_{10} n_{01} = \frac{n_{1\cdot} n_{\cdot 1} n_{0\cdot} n_{\cdot 0}}{N^2} - \frac{n_{1\cdot} n_{\cdot 0} n_{0\cdot} n_{\cdot 1}}{N^2} = 0$$
 Hence $\phi = 0$. $\blacksquare$
 
-> **See Remark 1** (Appendix: Supplementary Propositions) for the relationship between $K_1$ and meta-d'. While $K_1 \approx \tanh(\text{meta-d}'/2)$ is used as a conceptual heuristic in the Executive Summary, the two measures are **not mathematically equivalent**—$K_1$ is model-free and bounded, while meta-d' depends on SDT assumptions and is unbounded. When SDT assumptions are plausible, report both metrics; when questionable, prefer $K_1$.
+> **See Remark 1** (Appendix: Supplementary Propositions) for the relationship between $K_1$ and meta-d'. While $K_1 \approx \tanh(\text{meta-d}'/2)$ is used as a conceptual heuristic in the Executive Summary, the two measures are **not mathematically equivalent**---$K_1$ is model-free and bounded, while meta-d' depends on SDT assumptions and is unbounded. When SDT assumptions are plausible, report both metrics; when questionable, prefer $K_1$.
 
 **Extension to Ternary $\text{State}_0$**:
 When $\text{State}_0 \in \{\text{correct}, \text{incorrect}, \text{absent}\}$, binarization is required for Phi. The recommended strategy:
@@ -1616,16 +1657,18 @@ This preserves the interpretation that "I know" should predict correctness, not 
 
 ---
 
-### Identifiability Theorems
+### Identifiability Arguments (Informal)
 
-#### Theorem 3: $K_0$ Identifiability
+> The following propositions outline *informal arguments* for why the $K$ framework components should be identifiable under suitable conditions. These are **not rigorous proofs**; formal identifiability analysis connecting to general latent variable theory (e.g., Allman et al., 2009; Kruskal, 1977) is deferred to future technical work.
 
-**Theorem 3** ($K_0$ Identifiability):
+#### Proposition 3: $K_0$ Identifiability (Informal)
+
+**Proposition 3** ($K_0$ Identifiability):
 $K_0$ is identifiable from response data iff item difficulties have positive variance.
 
 Formally: Given $N$ items with difficulties $\{b_i\}_{i=1}^N$, $K_0$ (equivalently, $\theta$) is identifiable iff $\text{Var}(\{b_i\}) > 0$.
 
-**Proof**:
+**Informal Argument**:
 
 Consider the 2PL model:
 $$P(X_i = 1 | \theta) = \frac{1}{1 + e^{-a_i(\theta - b_i)}}$$
@@ -1640,11 +1683,13 @@ With varying $b_i$, the likelihood function has a unique maximum. Intuitively, i
 
 **Reference**: Lord & Novick (1968), *Statistical Theories of Mental Test Scores*, Chapter 17.
 
+**Status**: Informal argument; formal proof requires connection to general identifiability theory.
+
 ---
 
 #### Lemma 3: $\hat{K}$ Sufficiency and Non-Uniqueness
 
-> **Motivation**: A reviewer concern is whether the specific form of $\hat{K}$ is arbitrary. This lemma clarifies that $\hat{K}$ is a *sufficient* but not *unique* choice—any monotone, anchor-preserving function yields equivalent ordinal results.
+> **Motivation**: A reviewer concern is whether the specific form of $\hat{K}$ is arbitrary. This lemma clarifies that $\hat{K}$ is a *sufficient* but not *unique* choice---any monotone, anchor-preserving function yields equivalent ordinal results.
 
 **Lemma 3** ($\hat{K}$ Sufficiency):
 Let $\mathcal{K}$ be the class of functions $k: [0, 1] \to [-1, 1]$ satisfying:
@@ -1660,7 +1705,7 @@ Let $\mathcal{K}$ be the class of functions $k: [0, 1] \to [-1, 1]$ satisfying:
 *Step 2*: For any two functions $k_a, k_b \in \mathcal{K}$:
 $$\text{sign}(k_a(c)) = \text{sign}(k_b(c)) = \text{sign}(2c - 1)$$
 
-*Step 3*: The ordinal structure—which subjects have higher $K_1$ than others—is preserved under any monotone transformation. $\blacksquare$
+*Step 3*: The ordinal structure---which subjects have higher $K_1$ than others---is preserved under any monotone transformation. $\blacksquare$
 
 **Corollary**: The specific functional form $\hat{K}(c) = 2c - 1$ is the *simplest* member of $\mathcal{K}$ but any member produces equivalent results for:
 - Type A / Type B classification
@@ -1672,34 +1717,38 @@ The choice of the linear form is motivated by parsimony and interpretability, no
 
 ---
 
-#### Theorem 4: $K_1$ Identifiability
+#### Proposition 4: $K_1$ Identifiability (Informal)
 
-**Theorem 4** ($K_1$ Identifiability):
+**Proposition 4** ($K_1$ Identifiability):
 Given $K_0$ estimates and $\text{Claim}_1$ observations, $K_1$ is identifiable iff:
 1. $P(K_0 = +1) > 0$ and $P(K_0 \leq 0) > 0$ (variability in $\text{State}_0$)
 2. $\text{Claim}_1$ is non-degenerate: $P(\text{Claim}_1 = \text{"I know"}) \in (0, 1)$
 
-**Proof**:
+**Informal Argument**:
 The Phi coefficient $\phi$ is undefined when any marginal frequency is zero (denominator becomes zero). Condition 1 ensures both rows of the $2 \times 2$ table are populated. Condition 2 ensures both columns are populated. With all cells potentially non-zero, $\phi$ is a well-defined estimator of alignment. $\blacksquare$
+
+**Status**: Informal argument; formal proof deferred.
 
 ---
 
-#### Theorem 5: $K_2$ Identifiability
+#### Proposition 5: $K_2$ Identifiability (Informal)
 
-**Theorem 5** ($K_2$ Identifiability):
+**Proposition 5** ($K_2$ Identifiability):
 Let $K_2 := \text{ICC}(K_1^{(t_1)}, K_1^{(t_2)})$ be the test-retest intraclass correlation of $K_1$.
 
 $K_2$ is identifiable iff:
 1. $\text{Var}(K_1) > 0$ (cross-subject variability)
 2. Measurement occasions $t_1, t_2$ are sufficiently separated (recommended: 2-4 weeks)
 
-**Proof**: The ICC is undefined when within-subject or between-subject variance is zero. Condition 1 ensures between-subject variance. The temporal separation in Condition 2 ensures that repeated measurements are not autocorrelated beyond true stability. $\blacksquare$
+**Informal Argument**: The ICC is undefined when within-subject or between-subject variance is zero. Condition 1 ensures between-subject variance. The temporal separation in Condition 2 ensures that repeated measurements are not autocorrelated beyond true stability. $\blacksquare$
 
-#### Theorem 6: Recursive Pipeline Identifiability
+**Status**: Informal argument; formal proof deferred.
 
-> **Critical Note**: This theorem addresses the potential circularity concern in recursive metacognition measurement—specifically, whether measuring $K_n$ might contaminate the $K_{n+1}$ measurement, creating an identification problem.
+#### Proposition 6: Recursive Pipeline Identifiability (Informal)
 
-**Theorem 6** (Pipeline Identifiability):
+> **Note**: This proposition addresses the potential circularity concern in recursive metacognition measurement---specifically, whether measuring $K_n$ might contaminate the $K_{n+1}$ measurement, creating an identification problem.
+
+**Proposition 6** (Pipeline Identifiability):
 Under the following assumptions, the parameters $(K_0, K_1, K_2)$ are jointly identifiable without circularity:
 
 **Assumptions**:
@@ -1710,7 +1759,7 @@ Under the following assumptions, the parameters $(K_0, K_1, K_2)$ are jointly id
 
 **Statement**: Under (A1)-(A4), the mapping $(\text{Response}_0, \text{Claim}_1, \text{Claim}_2) \mapsto (\hat{K}_0, \hat{K}_1, \hat{K}_2)$ is injective for almost all parameter configurations, ensuring joint identifiability.
 
-**Proof** (Four Steps):
+**Informal Argument** (Four Steps):
 
 *Step 1: $K_0$ Identification*.
 $K_0 = \mathbb{1}[\text{Response}_0 = \theta_0]$ is determined solely by external ground truth comparison. By (A1), this requires no internal reference and thus introduces no circularity.
@@ -1726,7 +1775,9 @@ $$K_2 = \text{sign}\left(\text{Claim}_2 - \frac{1}{2}\right) \cdot (2|K_1| - 1)$
 By (A3) and (A4), sufficient items provide the variance structure needed for stable estimation without contamination across levels.
 
 *Step 4: Injectivity*.
-Each level's identification depends only on: (i) the immediately preceding level's already-identified parameter, and (ii) independently elicited claims. The directed acyclic structure $K_0 \to K_1 \to K_2$ ensures no feedback loops. By Theorem 3 (conditional independence), the estimation errors are uncorrelated across levels, establishing injectivity except on a measure-zero set of degenerate configurations. $\blacksquare$
+Each level's identification depends only on: (i) the immediately preceding level's already-identified parameter, and (ii) independently elicited claims. The directed acyclic structure $K_0 \to K_1 \to K_2$ ensures no feedback loops. By Proposition 3 (conditional independence), the estimation errors are uncorrelated across levels, establishing injectivity except on a measure-zero set of degenerate configurations. $\blacksquare$
+
+**Status**: Informal argument; connection to general identifiability theory (Allman et al., 2009) deferred to future work.
 
 **Remark** (Practical Implementation):
 The temporal precedence requirement (A2) is satisfied by standard experimental protocols where confidence judgments are collected before performance feedback. Computer-based testing naturally enforces this separation.
@@ -3256,7 +3307,7 @@ This yields $K_n = +1$ when all accessible worlds match actuality, $K_n = -1$ wh
 
 ### Relationship to Polytomous Item Response Theory
 
-The K framework draws on and extends classical Item Response Theory (IRT). This section clarifies the relationship to polytomous IRT models—particularly the Graded Response Model (GRM; Samejima, 1969) and the Generalized Partial Credit Model (GPCM; Muraki, 1992).
+The K framework draws on and extends classical Item Response Theory (IRT). This section clarifies the relationship to polytomous IRT models---particularly the Graded Response Model (GRM; Samejima, 1969) and the Generalized Partial Credit Model (GPCM; Muraki, 1992).
 
 #### Background: Polytomous IRT Models
 
@@ -3718,21 +3769,21 @@ This study constructed a recursive epistemic model based on the hierarchical str
 
 ### Formal Contributions Summary
 
-The paper establishes the following formal results (detailed in "Formal Results: Theorems and Identifiability Guarantees"):
+The paper establishes the following results (detailed in "Formal Results: Illustrative Derivations and Informal Propositions"):
 
 | Result | Statement | Location |
 |:-------|:----------|:---------|
-| **Theorem 1** | $K_0$-IRT correspondence: $K_0 = \tanh(a(\theta-b)/2)$ | Formal Results |
-| **Theorem 2** | $K_1$-Phi correspondence under binary conditions | Formal Results |
-| **Theorem 3** | $K_0$ identifiability: $\text{Var}(b_i) > 0 \Rightarrow K_0$ identifiable | Formal Results |
-| **Theorem 4** | $K_1$ identifiability given $K_0$ and claim variability | Formal Results |
-| **Theorem 5** | ICC reliability conditions for stable $K$ measurement | Formal Results |
-| **Theorem 6** | Pipeline identifiability: $(K_0, K_1, K_2)$ jointly identifiable without circularity | Formal Results |
+| **Result 1** | $K_0$-IRT correspondence: $K_0 = \tanh(a(\theta-b)/2)$ (illustrative derivation) | Formal Results |
+| **Result 2** | $K_1$-Phi correspondence under binary conditions | Formal Results |
+| **Proposition 3** | $K_0$ identifiability: $\text{Var}(b_i) > 0 \Rightarrow K_0$ identifiable (informal) | Formal Results |
+| **Proposition 4** | $K_1$ identifiability given $K_0$ and claim variability (informal) | Formal Results |
+| **Proposition 5** | ICC reliability conditions for stable $K$ measurement (informal) | Formal Results |
+| **Proposition 6** | Pipeline identifiability: $(K_0, K_1, K_2)$ jointly identifiable (informal) | Formal Results |
 | **Lemma 3** | $\hat{K}$ sufficiency: any monotone anchor-preserving function yields equivalent ordinal results | Formal Results |
 
-**Key Identifiability Guarantees**:
-- The framework provides sufficient conditions under which parameters are recoverable from data
-- No circularity exists in the recursive measurement pipeline (Theorem 6)
+**Key Identifiability Arguments (Informal)**:
+- The framework outlines conditions under which parameters should be recoverable from data
+- The recursive measurement pipeline avoids circularity by design (Proposition 6)
 - The specific form of $\hat{K}$ is sufficient but not unique (Lemma 3)
 
 **Falsifiable Predictions**: Five quantitative predictions (P1-P5) with explicit bounds enable empirical refutation of the framework.
@@ -3935,6 +3986,36 @@ This paper establishes the **conceptual framework**; validation is planned for f
 
 **Acknowledgment**: We recognize that this validation program is **essential** for empirical adoption. The current paper's contribution is the **conceptual and formal foundation** upon which such validation can be built.
 
+### Future Work: Technical Extensions
+
+This conceptual framework invites several technical extensions that are beyond the current paper's scope:
+
+**1. Formal Measurement Theory**
+- Probabilistic specification of $f_n$ and $\text{State}_n$ as random variables
+- Likelihood-based estimation with noise models
+- Identifiability conditions connected to general latent variable theory (Allman et al., 2009; Anandkumar et al., 2014)
+
+**2. Estimation Algorithms**
+- EM or MCMC algorithms for continuous $K_n$ estimation
+- Handling of abstentions and missing data (MNAR modeling)
+- Computational complexity and convergence analysis
+
+**3. Empirical Validation**
+- Synthetic experiments with known ground-truth $K_n$ profiles
+- Recovery of $K_0$, $K_1$ under noise; testing correspondence to IRT/meta-d'/ECE
+- Stress tests for K-C dissociation and layer independence predictions
+
+**4. Extended Metrics**
+- Integration with improved calibration metrics (ACE, SCE, class-wise calibration)
+- Connections to Hierarchical meta-d' (Fleming, 2017) estimation
+
+**5. Applications**
+- LLM metacognition operationalization
+- Educational diagnostics
+- Clinical assessment protocols
+
+We view these as **separate technical contributions** that build upon the conceptual scaffold established here.
+
 ### Future Directions
 
 1. **Empirical Validation**: Conduct MAT experiments to validate the model's predictions about Socratic wisdom and Dunning-Kruger effect, and compare with meta-d' and calibration metrics.
@@ -4028,7 +4109,7 @@ Optimizing over $p$ and applying algebra gives the stated bound. As $\pi \to 0$ 
 
 #### Remark 1: $K_1$ and meta-d'---Complementary Perspectives
 
-> **Note**: This remark clarifies the *conceptual relationship* between $K_1$ and meta-d'. We do **not** claim mathematical equivalence; rather, these measures capture related but distinct aspects of metacognition.
+> **Critical Note**: The relationship between $K_1$ and meta-d' is **conceptual**, not mathematical. We do **NOT** claim $K_1 \approx \tanh(\text{meta-d}'/2)$ as an identity or conversion formula. These measures capture related but distinct aspects of metacognition.
 
 **Remark 1** ($K_1$ and meta-d': Complementary Perspectives):
 

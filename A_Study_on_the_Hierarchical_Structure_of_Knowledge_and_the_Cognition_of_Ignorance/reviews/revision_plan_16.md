@@ -251,40 +251,40 @@ We view these as **separate technical contributions** that build upon the concep
 
 | ID | 項目 | 状態 |
 |:---|:-----|:-----|
-| **A1** | Introduction に「Paper Scope and Positioning」追加 | ☐ |
-| **A2** | Executive Summary に「This is a conceptual framework paper」明記 | ☐ |
+| **A1** | Introduction に「Paper Scope and Positioning」追加 | ✅ 完了 |
+| **A2** | Executive Summary に「This is a conceptual framework paper」明記 | ✅ 完了 |
 
 ### 4.2 ラベル格下げ
 
 | ID | 項目 | 状態 |
 |:---|:-----|:-----|
-| **B1** | Theorem 1 → Result 1 (Illustrative Derivation) | ☐ |
-| **B2** | Theorem 3-6 → Proposition 3-6 (Informal) | ☐ |
-| **B3** | 「guarantee」「exact」「derived」の語句置換 | ☐ |
-| **B4** | Technical Guide の「Theorems」→「Results/Propositions」更新 | ☐ |
+| **B1** | Theorem 1 → Result 1 (Illustrative Derivation) | ✅ 完了 |
+| **B2** | Theorem 3-6 → Proposition 3-6 (Informal) | ✅ 完了 |
+| **B3** | 「guarantee」「exact」「derived」の語句置換 | ✅ 完了 |
+| **B4** | Technical Guide の「Theorems」→「Results/Propositions」更新 | ✅ 完了 |
 
 ### 4.3 トーン統一
 
 | ID | 項目 | 状態 |
 |:---|:-----|:-----|
-| **C1** | Result 1 に「illustrative derivation」注記追加 | ☐ |
-| **C2** | Remark 1 の「NOT mathematical identity」強調 | ☐ |
-| **C3** | Identifiability セクションに「Informal」明記 | ☐ |
-| **C4** | Conclusion の Formal Contributions 表を調整 | ☐ |
+| **C1** | Result 1 に「illustrative derivation」注記追加 | ✅ 完了 |
+| **C2** | Remark 1 の「NOT mathematical identity」強調 | ✅ 完了 |
+| **C3** | Identifiability セクションに「Informal」明記 | ✅ 完了 |
+| **C4** | Conclusion の Formal Contributions 表を調整 | ✅ 完了 |
 
 ### 4.4 Future Work 整理
 
 | ID | 項目 | 状態 |
 |:---|:-----|:-----|
-| **D1** | 「Future Work: Technical Extensions」セクション追加/拡充 | ☐ |
-| **D2** | 各 Proposition に「formal analysis deferred」明記 | ☐ |
+| **D1** | 「Future Work: Technical Extensions」セクション追加/拡充 | ✅ 完了 |
+| **D2** | 各 Proposition に「formal analysis deferred」明記 | ✅ 完了 |
 
 ### 4.5 整形・修正
 
 | ID | 項目 | 状態 |
 |:---|:-----|:-----|
-| **E1** | LaTeX テーブルアーティファクト修正 | ☐ |
-| **E2** | Axiom F のセクション位置整理 | ☐ |
+| **E1** | LaTeX テーブルアーティファクト修正 | ☐ (非該当: Plan 15 で対応済) |
+| **E2** | Axiom F のセクション位置整理 | ☐ (現状維持で問題なし) |
 
 ---
 
