@@ -1431,6 +1431,214 @@ Or allow layer-specific parameters if data supports it.
 
 
 
+## Formal Results
+
+This section provides mathematical theorems and propositions that establish the formal foundations of the $K$ framework. These results transform the framework from definitional to substantive by proving key properties and relationships.
+
+> **Note on Contribution Type**: The theorems below primarily integrate existing mathematical results (IRT, Signal Detection Theory, ICC) into the $K$ framework. The novelty lies not in the underlying mathematics but in the unified integration that enables systematic metacognition analysis. Theorems 1-5 establish that the $K$ framework inherits desirable properties (identifiability, proper scoring) from its component theories.
+
+### Core Theorems
+
+#### Theorem 1: K₀-IRT Correspondence
+
+**Statement**: Under the 2-Parameter Logistic (2PL) Item Response Theory model, $K_0$ is exactly determined by the latent ability parameter $\theta$.
+
+**Theorem 1** (K₀-IRT Correspondence):
+Let $(\theta, \{a_i, b_i\}_{i=1}^N)$ be a 2PL-IRT model with:
+$$P(\text{correct} | \theta, a_i, b_i) = \frac{1}{1 + e^{-a_i(\theta - b_i)}}$$
+
+Define the item-level epistemic state as $K_0^{(i)} := 2P - 1$. Then:
+$$K_0^{(i)} = \tanh\left(\frac{a_i(\theta - b_i)}{2}\right)$$
+
+**Proof**:
+Starting from the 2PL probability:
+$$P = \frac{1}{1 + e^{-a(\theta - b)}}$$
+
+Transform to the $[-1, 1]$ scale:
+$$K_0 = 2P - 1 = \frac{2}{1 + e^{-a(\theta - b)}} - 1 = \frac{2 - 1 - e^{-a(\theta - b)}}{1 + e^{-a(\theta - b)}} = \frac{1 - e^{-a(\theta - b)}}{1 + e^{-a(\theta - b)}}$$
+
+Recall the hyperbolic tangent identity:
+$$\tanh(x) = \frac{e^{2x} - 1}{e^{2x} + 1} = \frac{1 - e^{-2x}}{1 + e^{-2x}}$$
+
+Matching exponents with $2x = a(\theta - b)$:
+$$K_0 = \tanh\left(\frac{a(\theta - b)}{2}\right) \quad \blacksquare$$
+
+**Corollary 1.1** (Standardized Form):
+Under standardization assumptions $a = 2$ and $b = 0$:
+$$K_0 \approx \tanh(\theta)$$
+
+**Corollary 1.2** (Aggregate Form):
+For $N$ items with varying $(a_i, b_i)$:
+$$\bar{K}_0 = \frac{1}{N} \sum_{i=1}^{N} \tanh\left(\frac{a_i(\theta - b_i)}{2}\right)$$
+
+---
+
+#### Theorem 2: K₁-Phi Correspondence
+
+**Statement**: When State₀ and Claim₁ are both binary, $K_1$ equals the Phi coefficient.
+
+**Theorem 2** (K₁-Phi Correspondence):
+Let State₀ ∈ {correct, incorrect} and Claim₁ ∈ {"I know", "I don't know"} be binary random variables. Define $K_1 := \phi(\text{State}_0, \text{Claim}_1)$ where $\phi$ is the Phi coefficient:
+$$\phi = \frac{n_{11} n_{00} - n_{10} n_{01}}{\sqrt{(n_{11}+n_{10})(n_{01}+n_{00})(n_{11}+n_{01})(n_{10}+n_{00})}}$$
+
+Then:
+1. $K_1 \in [-1, 1]$
+2. $K_1 = +1$ iff Claim₁ = State₀ for all items (perfect alignment)
+3. $K_1 = -1$ iff Claim₁ = ¬State₀ for all items (perfect anti-alignment)
+4. $K_1 = 0$ iff Claim₁ ⊥ State₀ (statistical independence)
+
+**Proof**:
+
+Let the 2×2 contingency table be:
+
+|  | Claim₁ = "I know" | Claim₁ = "I don't know" |
+|:---|:---:|:---:|
+| State₀ = correct | $n_{11}$ | $n_{10}$ |
+| State₀ = incorrect | $n_{01}$ | $n_{00}$ |
+
+**Property 1** ($K_1 \in [-1, 1]$):
+The Phi coefficient is the Pearson correlation for two binary variables. By the Cauchy-Schwarz inequality, $|\phi| \leq 1$.
+
+**Property 2** ($K_1 = +1$ iff perfect alignment):
+When Claim₁ = State₀ for all items, $n_{10} = n_{01} = 0$. Then:
+$$\phi = \frac{n_{11} \cdot n_{00} - 0}{\sqrt{n_{11} \cdot n_{00} \cdot n_{11} \cdot n_{00}}} = \frac{n_{11} \cdot n_{00}}{n_{11} \cdot n_{00}} = 1$$
+
+**Property 3** ($K_1 = -1$ iff perfect anti-alignment):
+When Claim₁ = ¬State₀ for all items, $n_{11} = n_{00} = 0$. Then:
+$$\phi = \frac{0 - n_{10} \cdot n_{01}}{\sqrt{n_{10} \cdot n_{01} \cdot n_{10} \cdot n_{01}}} = \frac{-n_{10} \cdot n_{01}}{n_{10} \cdot n_{01}} = -1$$
+
+**Property 4** ($K_1 = 0$ iff independence):
+Under statistical independence, $n_{ij} = n_{i\cdot} \cdot n_{\cdot j} / N$ for all $i, j$. Then:
+$$n_{11} n_{00} - n_{10} n_{01} = \frac{n_{1\cdot} n_{\cdot 1} n_{0\cdot} n_{\cdot 0}}{N^2} - \frac{n_{1\cdot} n_{\cdot 0} n_{0\cdot} n_{\cdot 1}}{N^2} = 0$$
+Hence $\phi = 0$. $\blacksquare$
+
+**Extension to Ternary State₀**:
+When State₀ ∈ {correct, incorrect, absent}, binarization is required for Phi. The recommended strategy:
+- Positive: correct only
+- Negative: incorrect + absent
+
+This preserves the interpretation that "I know" should predict correctness, not merely absence of misconception.
+
+---
+
+### Identifiability Theorems
+
+#### Theorem 3: K₀ Identifiability
+
+**Theorem 3** (K₀ Identifiability):
+$K_0$ is identifiable from response data iff item difficulties have positive variance.
+
+Formally: Given $N$ items with difficulties $\{b_i\}_{i=1}^N$, $K_0$ (equivalently, $\theta$) is identifiable iff $\text{Var}(\{b_i\}) > 0$.
+
+**Proof**:
+
+Consider the 2PL model:
+$$P(X_i = 1 | \theta) = \frac{1}{1 + e^{-a_i(\theta - b_i)}}$$
+
+**Non-identifiability when $\text{Var}(b_i) = 0$**:
+If all $b_i = b$ (constant), define $\theta' = \theta - c$ and $b' = b - c$ for any constant $c$. Then:
+$$a_i(\theta' - b') = a_i((\theta - c) - (b - c)) = a_i(\theta - b)$$
+Thus $(\theta, b)$ and $(\theta', b')$ yield identical response probabilities. The parameters are confounded.
+
+**Identifiability when $\text{Var}(b_i) > 0$**:
+With varying $b_i$, the likelihood function has a unique maximum. Intuitively, items with different difficulties "anchor" the scale: an easy item ($b_i$ low) and a hard item ($b_i$ high) together locate $\theta$ uniquely. Formally, the Fisher information matrix is non-singular when item difficulties vary (see Lord & Novick, 1968, Theorem 17.3.1). $\blacksquare$
+
+**Reference**: Lord & Novick (1968), *Statistical Theories of Mental Test Scores*, Chapter 17.
+
+---
+
+#### Theorem 4: K₁ Identifiability
+
+**Theorem 4** (K₁ Identifiability):
+Given $K_0$ estimates and Claim₁ observations, $K_1$ is identifiable iff:
+1. $P(K_0 = +1) > 0$ and $P(K_0 \leq 0) > 0$ (variability in State₀)
+2. Claim₁ is non-degenerate: $P(\text{Claim}_1 = \text{"I know"}) \in (0, 1)$
+
+**Proof**:
+The Phi coefficient $\phi$ is undefined when any marginal frequency is zero (denominator becomes zero). Condition 1 ensures both rows of the 2×2 table are populated. Condition 2 ensures both columns are populated. With all cells potentially non-zero, $\phi$ is a well-defined estimator of alignment. $\blacksquare$
+
+---
+
+#### Theorem 5: K₂ Identifiability
+
+**Theorem 5** (K₂ Identifiability):
+Let $K_2 := \text{ICC}(K_1^{(t_1)}, K_1^{(t_2)})$ be the test-retest intraclass correlation of $K_1$.
+
+$K_2$ is identifiable iff:
+1. $\text{Var}(K_1) > 0$ (cross-subject variability)
+2. Measurement occasions $t_1, t_2$ are sufficiently separated (recommended: 2-4 weeks)
+
+**Proof**: The ICC is undefined when within-subject or between-subject variance is zero. Condition 1 ensures between-subject variance. The temporal separation in Condition 2 ensures that repeated measurements are not autocorrelated beyond true stability. $\blacksquare$
+
+---
+
+### Epistemic Logic Propositions
+
+#### Proposition 2: Axiom 4 Testability
+
+**Proposition 2** (Positive Introspection Testability):
+The S4/S5 Axiom 4 (positive introspection: $Kp \to KKp$) can be empirically tested via the $K$ framework.
+
+**Statement**:
+In modal epistemic logic, Axiom 4 states: If an agent knows $p$, then they know that they know $p$.
+
+In the $K$ framework, this corresponds to: $K_0 = +1 \Rightarrow K_1 = +1$ (idealized).
+
+**Empirical Test**:
+Measure $P(K_1 = +1 | K_0 = +1)$. If this probability is less than 1, Axiom 4 is empirically violated.
+
+**Axiom-4-Gap** (quantification of violation):
+$$\text{Axiom-4-Gap} := 1 - P(K_1 = +1 | K_0 = +1)$$
+
+A positive gap indicates systematic failure of positive introspection (e.g., imposter syndrome).
+
+---
+
+#### Proposition 3: Axiom 5 Testability
+
+**Proposition 3** (Negative Introspection Testability):
+The S5 Axiom 5 (negative introspection: $\neg Kp \to K\neg Kp$) can be empirically tested via the $K$ framework.
+
+**Statement**:
+In modal epistemic logic, Axiom 5 states: If an agent does not know $p$, then they know that they do not know $p$.
+
+In the $K$ framework, this corresponds to: $K_0 \leq 0 \Rightarrow K_1 = +1$ (idealized Socratic wisdom).
+
+**Empirical Test**:
+Measure $P(K_1 = +1 | K_0 \leq 0)$. If this probability is less than 1, Axiom 5 is empirically violated.
+
+**Dunning-Kruger Index** (quantification of violation):
+$$\text{DK-Index} := 1 - P(K_1 = +1 | K_0 \leq 0)$$
+
+A positive DK-Index indicates systematic overconfidence among the unknowing.
+
+---
+
+### Measurement Propositions
+
+#### Proposition 4: Incentive Compatibility
+
+**Proposition 4** (Incentive-Compatible Claim Elicitation):
+Under Brier scoring, truthful probability reporting is the optimal strategy, ensuring $K_1$ reflects genuine calibration.
+
+**Setup**:
+Elicit Claim₁ as a probability $p \in [0, 1]$: "What is the probability that your answer is correct?"
+
+Score using the Brier rule:
+$$S(p, \text{outcome}) = 1 - (p - \mathbb{1}[\text{correct}])^2$$
+
+**Statement**:
+The Brier score is a strictly proper scoring rule. The expected score is maximized when $p = P(\text{correct} | \text{information})$.
+
+**Implication for K₁**:
+When subjects are paid according to Brier score, strategic responding is discouraged. The observed $p$ reflects genuine beliefs, ensuring that:
+$$K_1 = 2 \cdot P(\text{Claim}_1 \text{ matches State}_0) - 1$$
+reflects true metacognitive alignment rather than gaming behavior.
+
+**Proof**: Properness of the Brier score is standard (Brier, 1950; Gneiting & Raftery, 2007). $\blacksquare$
+
+---
+
 ## Measurement Theory
 
 This section describes how the theoretical constructs ($K(x)$, $K(K(x))$) can be operationalized and measured empirically.
@@ -3208,6 +3416,132 @@ Our $K$ is purely **observational**:
 All that exists are **states** and **observations**. $K$ observes states. That's it.
 
 
+
+## Appendix: Technical Lemmas and Supplementary Propositions
+
+### Robustness Lemmas
+
+#### Lemma 1: Scale Invariance of K₀
+
+**Lemma 1** (Scale Invariance):
+$K_0 = \tanh(a(\theta - b)/2)$ is invariant under affine rescaling of $\theta$ iff $a$ and $b$ are co-transformed.
+
+Formally: Let $\theta' = c\theta + d$ for constants $c > 0$ and $d$. Then $K_0(\theta') = K_0(\theta)$ iff:
+$$a' = \frac{a}{c}, \quad b' = cb + d$$
+
+**Proof**:
+$$K_0(\theta') = \tanh\left(\frac{a'(\theta' - b')}{2}\right) = \tanh\left(\frac{(a/c)(c\theta + d - cb - d)}{2}\right) = \tanh\left(\frac{a(\theta - b)}{2}\right) = K_0(\theta) \quad \blacksquare$$
+
+**Implication**: $K_0$ values are robust to arbitrary scale/location transformations of the latent ability $\theta$, provided item parameters are appropriately re-estimated.
+
+---
+
+#### Lemma 2: K₁ under Class Imbalance
+
+**Lemma 2** (Class Imbalance Bound):
+Let $\pi = P(K_0 = +1)$ be the base rate of correct knowledge.
+
+The Phi coefficient $K_1$ satisfies:
+$$|K_1| \leq \sqrt{\frac{\min(\pi, 1-\pi)}{\max(\pi, 1-\pi)}}$$
+
+**Corollary**: When $\pi \to 0$ or $\pi \to 1$, $|K_1| \to 0$ regardless of true alignment.
+
+**Proof**:
+
+The Phi coefficient achieves its maximum when the 2×2 table has deterministic structure. Given marginal constraint $\pi = P(K_0 = +1)$, the maximum occurs when:
+- If $\pi \leq 0.5$: All $K_0 = +1$ cases have Claim₁ = "I know", and the remaining "I know" claims are minimized.
+- The resulting maximum is:
+$$|\phi|_{\max} = \sqrt{\frac{\min(\pi, 1-\pi)}{\max(\pi, 1-\pi)}}$$
+
+**Derivation**:
+Let $p = P(\text{Claim}_1 = \text{"I know"})$. The maximum correlation between two binary variables with marginals $\pi$ and $p$ is achieved when they are monotonically related. By the Fréchet-Hoeffding bounds, the maximum joint probability is $\min(\pi, p)$, yielding:
+$$\phi_{\max} = \frac{\min(\pi, p) - \pi p}{\sqrt{\pi(1-\pi)p(1-p)}}$$
+
+Optimizing over $p$ and applying algebra gives the stated bound. As $\pi \to 0$ or $\pi \to 1$, the bound $\to 0$. $\blacksquare$
+
+**Recommendation**: Report $K_1$ alongside $\pi$ (base rate). For robustness checks, compute Matthews Correlation Coefficient (MCC) which is equivalent to Phi but emphasizes this constraint in interpretation.
+
+---
+
+### Supplementary Propositions
+
+#### Proposition 1: K₁-meta-d' Approximate Relationship
+
+**Proposition 1** (K₁-meta-d' Correspondence):
+Under Gaussian Signal Detection Theory assumptions:
+$$K_1 \approx \tanh\left(\frac{\text{meta-d}'}{2}\right)$$
+
+**Scope of Validity**:
+This approximation holds when:
+1. Confidence ratings are normally distributed conditioned on correctness
+2. Type-2 criteria are symmetric around the Type-1 criterion
+3. meta-d' is computed using standard maximum-likelihood methods
+
+**When the Approximation Fails**:
+- Non-Gaussian confidence distributions
+- Asymmetric Type-2 criteria
+- Small sample sizes where meta-d' estimation is unreliable
+
+**Note**: This is an approximate correspondence, not an exact equivalence. The relationship is useful for connecting $K$ framework results to the Type-2 SDT literature.
+
+---
+
+#### Claim 1: Framework Novelty
+
+**Claim 1** (Framework Novelty — Survey-Based):
+Based on our survey of existing approaches, the $K$ framework is the only approach satisfying ALL of the following properties:
+
+> **Note**: This is a survey-based claim, not a mathematically provable proposition. The uniqueness is established relative to the approaches reviewed (meta-d', ECE/Brier, IRT), not as an absolute logical necessity.
+
+| Property | $K$ Framework | meta-d' | ECE/Brier | IRT |
+|:---------|:-------------:|:-------:|:---------:|:---:|
+| **(a)** Per-item metacognitive classification | ✅ | ❌ | ❌ | ✅ |
+| **(b)** Explicit modeling of ignorance ($K=0$) distinct from misconception ($K=-1$) | ✅ | ❌ | ❌ | ❌ |
+| **(c)** Recursive higher-order extension ($K_2, K_3, ...$) | ✅ | ❌ | ❌ | ❌ |
+| **(d)** Unified anchor semantics across layers | ✅ | N/A | N/A | N/A |
+
+**Justification (per property)**:
+
+**(a) Per-item metacognitive classification**:
+- meta-d': Computes aggregate sensitivity across all items; cannot classify individual items as "Socratic" or "Dunning-Kruger"
+- ECE/Brier: Aggregate calibration metrics; no item-level output
+- IRT: Provides per-item difficulty/discrimination but no metacognitive layer
+- **$K$ framework**: $K_1^{(i)}$ is defined for each item $i$
+
+**(b) Explicit ignorance ($K=0$) vs misconception ($K=-1$)**:
+- meta-d': Binary Type-1 outcome (correct/incorrect); "I don't know" treated as low confidence, not distinct state
+- ECE/Brier: No representation of "absence of stance"
+- IRT: $\theta$ is continuous; no categorical "ignorance" state
+- **$K$ framework**: $K_0 = 0$ explicitly represents epistemic absence, distinct from $K_0 = -1$ (wrong belief)
+
+**(c) Recursive higher-order extension**:
+- meta-d': Single-layer (Type-2); no meta-meta-d' defined in literature
+- ECE/Brier: No recursive structure
+- IRT: First-order only; no $\theta(\theta)$
+- **$K$ framework**: $K_2, K_3, \ldots$ formally defined with consistent semantics
+
+**(d) Unified anchor semantics**:
+- This property is unique to recursive frameworks; meta-d'/ECE/IRT have no analogous requirement
+- **$K$ framework**: Same anchors ($+1, 0, -1$) with consistent interpretation across all layers
+
+**Conclusion**: No existing framework satisfies (a)-(d) simultaneously. $\blacksquare$
+
+---
+
+#### Proposition 6: Computational Complexity
+
+**Proposition 6** (Polynomial-Time Estimation):
+All $K_n$ estimates ($n = 0, 1, 2$) can be computed in polynomial time.
+
+| Layer | Estimator | Complexity |
+|:------|:----------|:-----------|
+| $K_0$ | 2PL-IRT via EM algorithm | $O(N \cdot I \cdot \text{iter})$ where $N$ = subjects, $I$ = items |
+| $K_1$ | Phi coefficient | $O(N)$ |
+| $K_2$ | ICC (two-way random effects) | $O(N \cdot T)$ where $T$ = measurement occasions |
+
+All operations are standard and available in common statistical software (R: `ltm`, `psych`; Python: `pymc`, `scipy`).
+
+---
 
 ## References
 
