@@ -139,7 +139,7 @@ A natural question arises: if both $K_1$ and confidence $C$ assess subjective ep
 
 - **$K_1$ (Meta-Accuracy)**: Assessed at $t_2$ (after feedback), comparing the claim ("I know"/"I don't know") to revealed correctness. This is a behavioral measure of calibration.
 
-**Why Both Are Needed—Divergence Scenarios:**
+**Why Both Are Needed---Divergence Scenarios:**
 
 | Scenario | $K_0$ | Claim | $K_1$ | Confidence $C$ | Pattern |
 |:---------|:------|:------|:------|:---------------|:--------|
@@ -148,7 +148,7 @@ A natural question arises: if both $K_1$ and confidence $C$ assess subjective ep
 | Underconfident Expert | $+1$ | "I don't know" | $-1$ | Low | $K_1 \ne C$ direction |
 | Appropriate Uncertainty | $0$ | "I don't know" | $+1$ | Low | Calibrated ignorance |
 
-The overconfident novice and underconfident expert both show $K_1 = -1$ (meta-miscalibration) but with opposite confidence levels—demonstrating that $K_1$ and $C$ carry independent information.
+The overconfident novice and underconfident expert both show $K_1 = -1$ (meta-miscalibration) but with opposite confidence levels---demonstrating that $K_1$ and $C$ carry independent information.
 
 **Joint Model $(K_0, K_1, C)$:**
 
@@ -614,7 +614,7 @@ $$\text{State}_1 \in \{\text{aligned}, \text{uncertain}, \text{misaligned}\}$$
 
 **Rationale: Epistemic Improvement Criterion**
 
-The coding of $K_0 = -1$ (misconception) + "I don't know" → aligned ($K_1 = +1$) may appear counterintuitive. We justify this via the **Epistemic Improvement Criterion**: a claim is "aligned" if it represents the best available response given the subject's actual state.
+The coding of $K_0 = -1$ (misconception) + "I don't know" $\to$ aligned ($K_1 = +1$) may appear counterintuitive. We justify this via the **Epistemic Improvement Criterion**: a claim is "aligned" if it represents the best available response given the subject's actual state.
 
 **Argument**:
 
@@ -643,14 +643,14 @@ This ordering is monotonic in epistemic quality and consistent with the Socratic
 **Alternative: Graded Alignment (Future Extension)**
 
 A graded scheme could assign:
-- $K_0 = -1$, Claim = "I don't know" → $K_1 = 0.5$ (partial alignment)
-- $K_0 = -1$, Claim = "I know" → $K_1 = -1$ (full misalignment)
+- $K_0 = -1$, Claim = "I don't know" $\to$ $K_1 = 0.5$ (partial alignment)
+- $K_0 = -1$, Claim = "I know" $\to$ $K_1 = -1$ (full misalignment)
 
 This is a valid design choice but complicates anchor semantics. We leave graded alignment for future extension.
 
 #### Decision-Theoretic Analysis of Coding Choices
 
-The coding of $K_0 = -1$ (misconception) + "I don't know" → aligned ($K_1 = +1$) has been justified via the Epistemic Improvement Criterion above. Here we provide a complementary **decision-theoretic** analysis.
+The coding of $K_0 = -1$ (misconception) + "I don't know" $\to$ aligned ($K_1 = +1$) has been justified via the Epistemic Improvement Criterion above. Here we provide a complementary **decision-theoretic** analysis.
 
 ##### The Contested Case Revisited
 
@@ -954,9 +954,9 @@ Where $K_n$ depends on $K_{n-1}$ (via $\text{State}_{n-1}$) but not vice versa.
 
 **Proof of Acyclicity**:
 
-1. $K_0$ is computed from (Response, Reference) alone—no dependency on higher layers
-2. $K_1$ is computed from (Claim$_1$, $K_0$)—depends only on $K_0$
-3. $K_n$ is computed from (Claim$_n$, $K_{n-1}$)—depends only on $K_{n-1}$
+1. $K_0$ is computed from (Response, Reference) alone---no dependency on higher layers
+2. $K_1$ is computed from (Claim$_1$, $K_0$)---depends only on $K_0$
+3. $K_n$ is computed from (Claim$_n$, $K_{n-1}$)---depends only on $K_{n-1}$
 
 By induction, no backward dependencies exist. $\square$
 
@@ -1192,7 +1192,7 @@ The following examples demonstrate how the $(K_0, K_1, K_2)$ triplet is computed
 | State$_2$ | Claim$_2$ = uncertain when $K_1 = +1$ | $f_2(+1, \text{"not sure"})$ = uncertain | — |
 | $K_2$ | $g_2(\text{uncertain})$ | $= 0$ | **$K_2 = 0$** |
 
-**Interpretation**: Subject demonstrates Socratic wisdom—accurate recognition of their own ignorance—but is modest about this metacognitive achievement.
+**Interpretation**: Subject demonstrates Socratic wisdom---accurate recognition of their own ignorance---but is modest about this metacognitive achievement.
 
 ---
 
@@ -1213,7 +1213,7 @@ The following examples demonstrate how the $(K_0, K_1, K_2)$ triplet is computed
 | State$_2$ | Claim$_2$ contradicts $K_1 = -1$ | $f_2(-1, \text{"accurate"})$ = meta-misaligned | — |
 | $K_2$ | $g_2(\text{meta-misaligned})$ | $= -1$ | **$K_2 = -1$** |
 
-**Interpretation**: Triple misalignment—wrong answer, overconfident, and unaware of overconfidence. This is the "entrenched" metacognitive failure pattern.
+**Interpretation**: Triple misalignment---wrong answer, overconfident, and unaware of overconfidence. This is the "entrenched" metacognitive failure pattern.
 
 ---
 
@@ -1234,7 +1234,7 @@ The following examples demonstrate how the $(K_0, K_1, K_2)$ triplet is computed
 | State$_2$ | Claim$_2$ correctly identifies $K_1 = -1$ | $f_2(-1, \text{"may be wrong"})$ = meta-aligned | — |
 | $K_2$ | $g_2(\text{meta-aligned})$ | $= +1$ | **$K_2 = +1$** |
 
-**Interpretation**: Classic imposter syndrome with metacognitive awareness—the subject knows they underestimate themselves. This self-awareness ($K_2 = +1$) is a **teachable moment** for intervention.
+**Interpretation**: Classic imposter syndrome with metacognitive awareness---the subject knows they underestimate themselves. This self-awareness ($K_2 = +1$) is a **teachable moment** for intervention.
 
 ---
 
@@ -1441,13 +1441,16 @@ This section provides mathematical theorems and propositions that establish the 
 
 #### Theorem 1: $K_0$-IRT Correspondence
 
-**Statement**: Under the 2-Parameter Logistic (2PL) Item Response Theory model, $K_0$ is exactly determined by the latent ability parameter $\theta$.
+**Theorem 1** ($K_0$-IRT Exact Correspondence):
 
-**Theorem 1** ($K_0$-IRT Correspondence):
-Let $(\theta, \{a_i, b_i\}_{i=1}^N)$ be a 2PL-IRT model with:
-$$P(\text{correct} | \theta, a_i, b_i) = \frac{1}{1 + e^{-a_i(\theta - b_i)}}$$
+**Assumptions**:
+- **(A1)** Item response follows the 2-Parameter Logistic (2PL) IRT model:
+  $$P(\text{correct} | \theta, a_i, b_i) = \frac{1}{1 + e^{-a_i(\theta - b_i)}}$$
+- **(A2)** $K_0$ is defined as the signed expected accuracy:
+  $$K_0^{(i)} := 2P(\text{correct} | \theta, a_i, b_i) - 1$$
 
-Define the item-level epistemic state as $K_0^{(i)} := 2P - 1$. Then:
+**Statement**:
+Under (A1)-(A2), for each item $i$:
 $$K_0^{(i)} = \tanh\left(\frac{a_i(\theta - b_i)}{2}\right)$$
 
 **Proof**:
@@ -1464,12 +1467,33 @@ Matching exponents with $2x = a(\theta - b)$:
 $$K_0 = \tanh\left(\frac{a(\theta - b)}{2}\right) \quad \blacksquare$$
 
 **Corollary 1.1** (Standardized Form):
-Under standardization assumptions $a = 2$ and $b = 0$:
-$$K_0 \approx \tanh(\theta)$$
+Under additional assumption **(A3)**: $a = 2$ and $b = 0$:
+$$K_0 = \tanh(\theta)$$
 
 **Corollary 1.2** (Aggregate Form):
 For $N$ items with varying $(a_i, b_i)$:
 $$\bar{K}_0 = \frac{1}{N} \sum_{i=1}^{N} \tanh\left(\frac{a_i(\theta - b_i)}{2}\right)$$
+
+**Boundary Condition** (Deviation from Standardization):
+When (A3) is violated (i.e., $a \neq 2$ or $b \neq 0$), the deviation from $\tanh(\theta)$ is:
+$$|K_0 - \tanh(\theta)| = |\tanh(a(\theta-b)/2) - \tanh(\theta)|$$
+
+For typical parameter ranges in educational and psychological testing:
+
+| $a$ | $b$ | $\theta$ | $K_0 = \tanh(a(\theta-b)/2)$ | $\tanh(\theta)$ | Deviation |
+|:---:|:---:|:--------:|:----------------------------:|:---------------:|:---------:|
+| 1.0 | 0.0 | 1.0 | 0.46 | 0.76 | 0.30 |
+| 1.5 | 0.0 | 1.0 | 0.64 | 0.76 | 0.12 |
+| 2.0 | 0.0 | 1.0 | 0.76 | 0.76 | 0.00 |
+| 2.0 | 1.0 | 1.0 | 0.00 | 0.76 | 0.76 |
+| 2.0 | -1.0 | 1.0 | 0.96 | 0.76 | 0.20 |
+
+**Interpretation**: The standardized form $K_0 \approx \tanh(\theta)$ is a good approximation only when item discrimination $a \approx 2$ and item difficulty $b \approx 0$. For items with extreme difficulty or low discrimination, the item-specific form $\tanh(a(\theta-b)/2)$ should be used.
+
+**Scope of Validity**:
+- Holds exactly for binary correct/incorrect responses
+- Does not hold for partial credit models (see Limitations)
+- Assumes no guessing or slipping (see Q6 in Limitations)
 
 ---
 
@@ -1489,7 +1513,7 @@ Then:
 
 **Proof**:
 
-Let the 2×2 contingency table be:
+Let the $2 \times 2$ contingency table be:
 
 |  | $\text{Claim}_1$ = "I know" | $\text{Claim}_1$ = "I don't know" |
 |:---|:---:|:---:|
@@ -1555,7 +1579,7 @@ Given $K_0$ estimates and $\text{Claim}_1$ observations, $K_1$ is identifiable i
 2. $\text{Claim}_1$ is non-degenerate: $P(\text{Claim}_1 = \text{"I know"}) \in (0, 1)$
 
 **Proof**:
-The Phi coefficient $\phi$ is undefined when any marginal frequency is zero (denominator becomes zero). Condition 1 ensures both rows of the 2×2 table are populated. Condition 2 ensures both columns are populated. With all cells potentially non-zero, $\phi$ is a well-defined estimator of alignment. $\blacksquare$
+The Phi coefficient $\phi$ is undefined when any marginal frequency is zero (denominator becomes zero). Condition 1 ensures both rows of the $2 \times 2$ table are populated. Condition 2 ensures both columns are populated. With all cells potentially non-zero, $\phi$ is a well-defined estimator of alignment. $\blacksquare$
 
 ---
 
@@ -1569,6 +1593,79 @@ $K_2$ is identifiable iff:
 2. Measurement occasions $t_1, t_2$ are sufficiently separated (recommended: 2-4 weeks)
 
 **Proof**: The ICC is undefined when within-subject or between-subject variance is zero. Condition 1 ensures between-subject variance. The temporal separation in Condition 2 ensures that repeated measurements are not autocorrelated beyond true stability. $\blacksquare$
+
+---
+
+### Falsifiability and Separation Axioms
+
+#### Axiom F: Falsifiability
+
+**Axiom F** (Falsifiability):
+The $K$ framework is empirically falsifiable. We state five predictions whose violation would refute or severely constrain the framework:
+
+**Falsifiable Prediction 1** (K-C Dissociation):
+$$\exists \text{ subjects with } (K_1 = -1, C = \text{high}) \quad \text{[Dunning-Kruger pattern]}$$
+$$\exists \text{ subjects with } (K_1 = -1, C = \text{low}) \quad \text{[Imposter pattern]}$$
+
+If ALL subjects show $K_1 = \text{sign}(2C - 1)$, the framework adds nothing beyond confidence.
+
+**Falsifiable Prediction 2** (Layer Independence):
+$$\text{Cor}(K_0, K_2 \mid K_1) \approx 0$$
+
+If $K_2$ is strongly predicted by $K_0$ after controlling for $K_1$, layer separation is violated.
+
+**Falsifiable Prediction 3** (Intervention Sensitivity):
+Metacognitive training should increase $K_1$ while $K_0$ may remain constant.
+
+If $K_1$ cannot be moved independently of $K_0$, the distinction is spurious.
+
+**Falsifiable Prediction 4** (Quantitative Bounds):
+"Metacognitive training improves $K_1$ by at least $\delta = 0.2$ on average, while $K_0$ remains within $\varepsilon = 0.1$ of pre-training level."
+
+Formally:
+$$\mathbb{E}[K_{1,\text{post}} - K_{1,\text{pre}}] \geq 0.2$$
+$$|\mathbb{E}[K_{0,\text{post}} - K_{0,\text{pre}}]| \leq 0.1$$
+
+If training affects both $K_0$ and $K_1$ equally (i.e., $\Delta K_1 \approx \Delta K_0$), then layer separation is empirically spurious for that intervention.
+
+**Falsifiable Prediction 5** (K-C Correlation Bound):
+"In any population, $\text{Cor}(K_1, C) < 0.85$."
+
+If $\text{Cor}(K_1, C) > 0.85$ consistently across multiple datasets, $K_1$ and $C$ are empirically redundant and the distinction adds no value.
+
+| Prediction | Falsification Condition | Consequence |
+|------------|------------------------|-------------|
+| Pred 1 | All subjects show $K_1 = \text{sign}(2C-1)$ | $K$ reduces to confidence |
+| Pred 2 | $\text{Cor}(K_0, K_2 \mid K_1) > 0.5$ | Layer hierarchy is spurious |
+| Pred 3 | $\Delta K_1 = \Delta K_0$ under intervention | Levels not separable |
+| Pred 4 | $\Delta K_1 < 0.2$ or $|\Delta K_0| > 0.1$ | Bound violation |
+| Pred 5 | $\text{Cor}(K_1, C) > 0.85$ | $K_1 \approx C$, redundant |
+
+---
+
+#### Axiom S: K-C Separation
+
+**Axiom S** (K-C Separation):
+$K$ (epistemic alignment) and $C$ (phenomenological confidence) are theoretically and operationally distinct:
+
+**Theoretical Distinction**:
+- $K$: Alignment between claim and actual state (requires feedback to compute)
+- $C$: Subjective certainty (measured before feedback is revealed)
+
+**Operational Distinction**:
+- $C$ is measured at $t_1$ (during response, before feedback)
+- $K_1$ is computed at $t_2$ (after feedback reveals correctness)
+
+**Empirical Separability Criterion**:
+
+| Correlation Range | Interpretation | Implication |
+|-------------------|----------------|-------------|
+| $\text{Cor}(K_1, C) < 0.5$ | Strongly separable | $K_1$ captures distinct construct |
+| $0.5 \leq \text{Cor}(K_1, C) < 0.7$ | Moderately separable | Both constructs useful |
+| $0.7 \leq \text{Cor}(K_1, C) < 0.85$ | Weakly separable | Caution: possible redundancy |
+| $\text{Cor}(K_1, C) \geq 0.85$ | Not separable | $K_1$ adds no value over $C$ |
+
+**Note**: The 0.85 threshold corresponds to $R^2 > 0.72$, meaning more than 72% of variance is shared.
 
 ---
 
@@ -1717,6 +1814,102 @@ All intermediate values in $(-1, 0)$ and $(0, 1)$ represent **graded mixtures** 
 3. **Aggregation -> Continuous embedding**: Average prototype-valued $K(x_i) \in \{-1, 0, 1\}$ across multiple items or contexts to obtain a continuous summary in $[-1, 1]$.
 
 Conceptually, the **continuum $[-1, 1]$ is primary**; the trichotomy $\{-1, 0, 1\}$ is a convenient way to name salient regions on this line, not a separate codomain. Experimental designs may choose discrete or continuous elicitation, but in all cases the resulting data are interpreted as points (or distributions) on the same underlying scale $[-1, 1]$.
+
+### Continuous $K_n$ Generation Model
+
+This section provides a complete specification of how continuous $K_n$ values are generated from latent variables, and how they relate to discrete anchor categories.
+
+#### Latent Variable Model
+
+**Definition** (Latent Alignment Strength):
+For each layer $n$, we posit a latent variable $K_n^*$ representing the underlying alignment strength:
+
+$$K_n^* \sim \mathcal{N}(\mu_n, \sigma_n^2)$$
+
+where:
+- $\mu_n$: population mean alignment at layer $n$
+- $\sigma_n^2$: between-subject variance in alignment
+
+#### Link Functions
+
+A **link function** $h: \mathbb{R} \to [-1, 1]$ maps the unbounded latent variable to the bounded $K_n$ scale.
+
+**Definition** (Link Function):
+$$K_n = h(K_n^*)$$
+
+where $h$ satisfies:
+- $h(+\infty) = +1$ (anchor preservation at positive extreme)
+- $h(0) = 0$ (anchor preservation at zero)
+- $h(-\infty) = -1$ (anchor preservation at negative extreme)
+- $h$ is strictly monotonically increasing
+
+**Available Link Functions**:
+
+| Link | Formula | Properties | Recommended Use |
+|:-----|:--------|:-----------|:----------------|
+| **tanh** (default) | $h(x) = \tanh(\beta x)$ | Smooth, symmetric, S-shaped | General purpose; $\beta$ controls sensitivity |
+| **Scaled probit** | $h(x) = 2\Phi(x) - 1$ | Probabilistic interpretation | When latent variable represents log-odds |
+| **Clipped linear** | $h(x) = \max(-1, \min(1, x))$ | Simple, piecewise linear | Quick approximation; not differentiable at boundaries |
+
+**Default Parameterization**:
+$$K_n = \tanh(\beta \cdot K_n^*), \quad \beta = 1$$
+
+The sensitivity parameter $\beta > 0$ controls how quickly $K_n$ approaches the boundaries:
+- $\beta < 1$: Compressed scale; more values near 0
+- $\beta = 1$: Standard sensitivity
+- $\beta > 1$: Expanded scale; more values near $\pm 1$
+
+#### Discretization: From Continuous to Categorical
+
+**Definition** (Threshold-Based Discretization):
+Given thresholds $\tau^-$ and $\tau^+$ with $-1 < \tau^- < \tau^+ < 1$:
+
+$$\text{Discrete}(K_n) = \begin{cases} 
++1 & \text{if } K_n > \tau^+ \\
+0 & \text{if } \tau^- \leq K_n \leq \tau^+ \\
+-1 & \text{if } K_n < \tau^-
+\end{cases}$$
+
+**Two Threshold Options**:
+
+| Option | Definition | Rationale | Recommended For |
+|:-------|:-----------|:----------|:----------------|
+| **A: Equal-interval** (fixed) | $\tau^+ = +\frac{1}{3}$, $\tau^- = -\frac{1}{3}$ | Divides $[-1,1]$ into three equal-length intervals | Cross-study comparability; theoretical analysis |
+| **B: Equal-frequency** (data-adaptive) | $\tau^+ = Q_{67}(K_n)$, $\tau^- = Q_{33}(K_n)$ | Tercile-based; each category contains ~33% of observations | Within-study analysis; population-specific interpretation |
+
+**Terminology Note**: "Tercile" refers to percentile-based cutoffs (Option B), not fixed values. Option A should be called "equal-interval" discretization.
+
+**Selection Guideline**:
+
+| Criterion | Option A (Equal-interval) | Option B (Equal-frequency) |
+|:----------|:--------------------------|:---------------------------|
+| Cross-study comparability | Yes | No |
+| Adaptation to population | No | Yes |
+| Fixed interpretation | Yes | No |
+| Sensitivity to distribution | Low | High |
+
+**Decision-Theoretic Justification for Option A** ($\tau = \pm 1/3$):
+Under symmetric 0-1-2 loss (equal cost for adjacent vs. non-adjacent misclassification) and uniform prior on $[-1, 1]$, the optimal decision boundaries are $\pm 1/3$.
+
+#### Point Estimation and Uncertainty
+
+**Point Estimate**:
+For a subject with $N$ items, the point estimate of $K_n$ is:
+$$\hat{K}_n = \bar{K}_n = \frac{1}{N} \sum_{i=1}^{N} K_n^{(i)}$$
+
+**Confidence Interval** (Bootstrap):
+1. Resample $N$ items with replacement, $B = 1000$ times
+2. Compute $\hat{K}_n^{(b)}$ for each bootstrap sample $b$
+3. Report 95% CI: $[\hat{K}_n^{(2.5\%)}, \hat{K}_n^{(97.5\%)}]$
+
+**Bayesian Posterior** (alternative):
+With prior $K_n^* \sim \mathcal{N}(0, \sigma_0^2)$ and likelihood based on observed responses:
+$$p(K_n^* | \text{data}) \propto p(\text{data} | K_n^*) \cdot p(K_n^*)$$
+
+Report posterior mean and 95% credible interval.
+
+**Reliability Check**:
+If CI width $> 0.4$, interpret the point estimate with caution; consider increasing sample size or reducing measurement noise.
 
 ### Aggregation Rules Across Items
 
@@ -1945,8 +2138,8 @@ When $a = 2$ (unit discrimination) and $b = 0$ (centered difficulty):
 $$K_0 \approx \tanh(\theta)$$
 
 **Dependency Note**: This mapping is item-parameter dependent:
-- High $a$ (discriminating items) → sharper transition near $\theta = b$
-- High $b$ (difficult items) → shift toward lower $K_0$ for fixed $\theta$
+- High $a$ (discriminating items) $\to$ sharper transition near $\theta = b$
+- High $b$ (difficult items) $\to$ shift toward lower $K_0$ for fixed $\theta$
 
 For aggregate $K_0$ across items with varying $(a_i, b_i)$:
 $$\bar{K}_0 = \frac{1}{N} \sum_{i=1}^{N} \tanh\left(\frac{a_i(\theta - b_i)}{2}\right)$$
@@ -2358,7 +2551,7 @@ This yields $K_1 = +1$ for perfect alignment, $K_1 = -1$ for systematic misalign
 | Property | $K_0$ (Brier) | $K_1$ (meta-d') |
 |:---------|:--------------|:----------------|
 | **Anchor Preservation** | $K_0 \in \{-1, 0, +1\}$ at extremes | $K_1 \in \{-1, 0, +1\}$ at extremes |
-| **Monotonicity** | Increases with accuracy × confidence | Increases with metacognitive sensitivity |
+| **Monotonicity** | Increases with accuracy $\times$ confidence | Increases with metacognitive sensitivity |
 | **Properness** | Derived from strictly proper Brier | meta-d' is bias-free under SDT assumptions |
 | **Continuity** | Continuous in $c$ | Continuous in meta-d' |
 
@@ -2419,29 +2612,139 @@ This dissociation is empirically testable and clinically meaningful.
 
 ### Claim Elicitation Protocol
 
-This section specifies the empirical protocol for eliciting Claim$_1$ and Claim$_2$, addressing the question: "How do we obtain the claims needed to compute $K_1$ and $K_2$?"
+This section provides a **complete specification** of the protocol for eliciting $\text{Claim}_1$ and $\text{Claim}_2$, and the decision rules $f_1$ and $f_2$ for computing $\text{State}_1$ and $\text{State}_2$.
 
-#### Standard Protocol (Categorical)
+#### Protocol 1: $\text{Claim}_1$ Elicitation (Complete Specification)
 
-**Claim$_1$ Elicitation:**
+**Timing**:
+- **After** the subject's response to item $x$
+- **Before** feedback on correctness is provided
 
-After each response, present:
-
-> "How confident are you in your answer?"
+**Instruction Template (Categorical)**:
+> "How confident are you that your answer is correct?
 > - [ ] I'm confident I'm correct ("I know")
-> - [ ] I'm not sure ("Not sure")
-> - [ ] I think I might be wrong ("I don't know")
+> - [ ] I'm not sure ("Uncertain")
+> - [ ] I think I might be wrong ("I don't know")"
 
-**Claim$_2$ Elicitation:**
+**Instruction Template (Continuous)**:
+> "What is the probability that your answer is correct?"
+> [Slider: 0% ──────────────────── 100%]
 
-After completing all items (or after $K_1$ is computed), present:
+**Mapping (Continuous $\to$ Categorical)**:
 
-> "How accurate do you think your self-assessments were overall?"
+| Reported Probability $p$ | $\text{Claim}_1$ |
+|:-------------------------|:-----------------|
+| $p \geq 0.70$ | "I know" |
+| $0.30 < p < 0.70$ | "Uncertain" |
+| $p \leq 0.30$ | "I don't know" |
+
+**Threshold Calibration Options**:
+
+| Method | Procedure | Use Case |
+|:-------|:----------|:---------|
+| **Fixed thresholds** | $p = 0.70$ and $p = 0.30$ | Cross-study comparability |
+| **Pilot calibration** | Adjust to achieve ~equal category frequencies | Within-study optimization |
+| **Percentile-based** | Top 30%, middle 40%, bottom 30% | Population-adaptive |
+| **Domain-specific** | Higher thresholds for high-confidence domains | Context sensitivity |
+
+**Inter-Rater Reliability Requirement**:
+- Categorical: Cohen's $\kappa > 0.80$
+- Continuous: ICC $> 0.70$
+
+---
+
+#### Protocol 2: $\text{Claim}_2$ Elicitation (Complete Specification)
+
+**Timing**:
+- **After** all items are completed
+- **After** $K_1$ is computed (or after metacognitive feedback is provided)
+
+**Instruction Template (Aggregate)**:
+> "Thinking about your self-assessments across all questions:
+> How accurate do you think your self-assessments were?
 > - [ ] My self-assessments were accurate ("Meta-aligned")
 > - [ ] I'm not sure about my self-assessments ("Meta-uncertain")
-> - [ ] My self-assessments were probably inaccurate ("Meta-misaligned")
+> - [ ] My self-assessments were probably inaccurate ("Meta-misaligned")"
 
-#### Continuous Protocol (Slider)
+**Alternative: Item-Level $\text{Claim}_2$**:
+After revealing $K_1$ for each item:
+> "Was your confidence judgment appropriate for this item?
+> - [ ] Yes, appropriate
+> - [ ] Not sure
+> - [ ] No, inappropriate"
+
+---
+
+#### Protocol 3: $f_1$ Decision Rules (Complete Specification)
+
+**Input**: $(K_0, \text{Claim}_1)$
+**Output**: $\text{State}_1 \in \{\text{aligned}, \text{uncertain}, \text{misaligned}\}$
+
+**Complete Decision Table**:
+
+| $K_0$ | $\text{Claim}_1$ = "I know" | $\text{Claim}_1$ = "Uncertain" | $\text{Claim}_1$ = "I don't know" |
+|:------|:----------------------------|:-------------------------------|:----------------------------------|
+| $+1$ (correct) | aligned | uncertain | misaligned |
+| $0$ (ignorance) | misaligned | aligned | aligned |
+| $-1$ (misconception) | misaligned | uncertain | aligned* |
+
+**\*Edge Case Rationale**: $K_0 = -1$ and $\text{Claim}_1$ = "I don't know" $\to$ **aligned**
+
+This coding follows the **Epistemic Improvement Criterion**: a subject who has a misconception but recognizes they "don't know" is exhibiting Socratic awareness, which is metacognitively appropriate.
+
+**Alternative Interpretation (Stricter)**:
+
+| $K_0$ | $\text{Claim}_1$ = "I don't know" | Alternative Output |
+|:------|:----------------------------------|:-------------------|
+| $-1$ | "I don't know" | **uncertain** (not aligned) |
+
+**Rationale for Alternative**:
+- "I don't know" does not explicitly acknowledge misconception
+- True alignment at $K_0 = -1$ would require: "I think I'm wrong"
+
+**Framework Choice Guidelines**:
+
+| Choice | Prioritizes | Recommended For |
+|:-------|:------------|:----------------|
+| **(a) Default (aligned)** | Recognition of non-knowledge (Socratic wisdom) | General metacognition research |
+| **(b) Alternative (uncertain)** | Recognition of specific error direction | Error diagnosis, clinical settings |
+
+**Recommendation**: Always report which interpretation is used. For replication, specify: "We use interpretation (a)/(b) for the $K_0 = -1$, $\text{Claim}_1$ = 'I don't know' case."
+
+**$g_1$ Embedding**:
+
+| $\text{State}_1$ | $K_1$ |
+|:-----------------|:------|
+| aligned | $+1$ |
+| uncertain | $0$ |
+| misaligned | $-1$ |
+
+---
+
+#### Protocol 4: $f_2$ Decision Rules
+
+**Input**: $(K_1, \text{Claim}_2)$
+**Output**: $\text{State}_2 \in \{\text{meta-aligned}, \text{meta-uncertain}, \text{meta-misaligned}\}$
+
+The structure mirrors $f_1$:
+
+| $K_1$ (aggregate) | $\text{Claim}_2$ = "Accurate" | $\text{Claim}_2$ = "Uncertain" | $\text{Claim}_2$ = "Inaccurate" |
+|:------------------|:------------------------------|:-------------------------------|:--------------------------------|
+| $+1$ (aligned) | meta-aligned | meta-uncertain | meta-misaligned |
+| $0$ (uncertain) | meta-misaligned | meta-aligned | meta-aligned |
+| $-1$ (misaligned) | meta-misaligned | meta-uncertain | meta-aligned |
+
+**$g_2$ Embedding**:
+
+| $\text{State}_2$ | $K_2$ |
+|:-----------------|:------|
+| meta-aligned | $+1$ |
+| meta-uncertain | $0$ |
+| meta-misaligned | $-1$ |
+
+---
+
+#### Continuous Claim Variants
 
 **Claim$_1$ Elicitation:**
 
@@ -3141,9 +3444,9 @@ Recent LLM metacognition research formalizes recursive self-monitoring via Monit
 **Iteration Dynamics:**
 
 In MGV, the loop proceeds:
-1. Generate response → observe $K_0$ (against reference)
-2. Monitor quality → compute $K_1$ (self-assessment alignment)
-3. Verify monitoring → compute $K_2$ (meta-monitoring accuracy)
+1. Generate response $\to$ observe $K_0$ (against reference)
+2. Monitor quality $\to$ compute $K_1$ (self-assessment alignment)
+3. Verify monitoring $\to$ compute $K_2$ (meta-monitoring accuracy)
 4. If $K_2 < \tau$, regenerate (loop back to step 1)
 
 **$K$ Framework as Stopping Criterion:**
@@ -3284,8 +3587,8 @@ This framework is a **conceptual scaffold** for organizing metacognitive phenome
    **Impact on Higher Layers**:
 
    Graded $K_0$ propagates to $K_1$ with graded alignment:
-   - "I'm 80% confident" matches $K_0 = 0.6$ → partial alignment
-   - "I'm 80% confident" matches $K_0 = -0.2$ → partial misalignment
+   - "I'm 80% confident" matches $K_0 = 0.6$ $\to$ partial alignment
+   - "I'm 80% confident" matches $K_0 = -0.2$ $\to$ partial misalignment
 
    **When to Use Each Approach**:
 
@@ -3335,7 +3638,30 @@ This framework is a **conceptual scaffold** for organizing metacognitive phenome
 
 10. **Analogical Type Theory:** The type-theoretic justification is analogical rather than formally constructed. A full domain-theoretic or typed lambda-calculus treatment is beyond the current scope.
 
-11. **LLM Operationalization Incomplete:** Applying $K_n$ to LLMs requires addressing question-side shortcuts and model-side signals. Specific methods (conformal coverage, debate protocols) are suggested but not developed here.
+11. **LLM Operationalization Incomplete:** Applying $K_n$ to LLMs requires addressing question-side shortcuts and model-side signals. Specific methods (conformal coverage, debate protocols) are suggested but not developed here. **This is explicitly designated as Future Work.** The current paper provides the conceptual framework; LLM-specific operationalizations (token-level probability extraction, multi-sample self-consistency, debate protocols) require separate empirical validation.
+
+12. **Normative vs Descriptive Interpretation:**
+
+    **The Tension**: Recent work (e.g., positive evidence bias literature) suggests that some "metacognitive biases" may be rational responses to high-dimensional hypothesis spaces, not failures.
+
+    **Our Position**: The $K$ framework is **DESCRIPTIVE**, not normative.
+
+    $K_1 = -1$ means: "The subject's claim does not match their actual state relative to the experimenter-defined reference."
+
+    This is a **COORDINATE**, not a **JUDGMENT**.
+
+    **When $K_1 = -1$ Might Be "Rational"**:
+    
+    | Scenario | Why $K_1 = -1$ May Be Rational |
+    |:---------|:-------------------------------|
+    | Contested reference | Experimenter's "ground truth" is incomplete or biased |
+    | Different objective | Subject optimizes for social harmony, not accuracy |
+    | Information asymmetry | Subject has valid information experimenter lacks |
+    | Bayesian conservatism | Prior knowledge rationally weighted against weak evidence |
+
+    **Recommendation**: Report $K_1$ alongside task context. Do not interpret $K_1 = -1$ as "failure" without considering whether the reference standard is appropriate.
+
+    **Methodological Relativism (Reiterated)**: The framework does NOT adjudicate what is "correct." $K_1 = -1$ is descriptive of a state, not prescriptive of a norm.
 
 ### Validation Roadmap
 
@@ -3448,7 +3774,7 @@ $$|K_1| \leq \sqrt{\frac{\min(\pi, 1-\pi)}{\max(\pi, 1-\pi)}}$$
 
 **Proof**:
 
-The Phi coefficient achieves its maximum when the 2×2 table has deterministic structure. Given marginal constraint $\pi = P(K_0 = +1)$, the maximum occurs when:
+The Phi coefficient achieves its maximum when the $2 \times 2$ table has deterministic structure. Given marginal constraint $\pi = P(K_0 = +1)$, the maximum occurs when:
 - If $\pi \leq 0.5$: All $K_0 = +1$ cases have $\text{Claim}_1$ = "I know", and the remaining "I know" claims are minimized.
 - The resulting maximum is:
 $$|\phi|_{\max} = \sqrt{\frac{\min(\pi, 1-\pi)}{\max(\pi, 1-\pi)}}$$
@@ -3465,30 +3791,94 @@ Optimizing over $p$ and applying algebra gives the stated bound. As $\pi \to 0$ 
 
 ### Supplementary Propositions
 
-#### Proposition 1: $K_1$-meta-d' Approximate Relationship
+#### Remark 1: $K_1$ and meta-d'---Complementary Perspectives
 
-**Proposition 1** ($K_1$-meta-d' Correspondence):
-Under Gaussian Signal Detection Theory assumptions:
-$$K_1 \approx \tanh\left(\frac{\text{meta-d}'}{2}\right)$$
+> **Note**: This remark clarifies the *conceptual relationship* between $K_1$ and meta-d'. We do **not** claim mathematical equivalence; rather, these measures capture related but distinct aspects of metacognition.
+
+**Remark 1** ($K_1$ and meta-d': Complementary Perspectives):
+
+$K_1$ and meta-d' (Maniscalco & Lau, 2012) measure related but distinct aspects of metacognition:
+
+**meta-d'** (Signal Detection Theory):
+- **Sensitivity-based**: How well does confidence discriminate correct from incorrect responses?
+- Rooted in Signal Detection Theory (SDT)
+- Requires Gaussian assumptions on evidence distributions
+- Unit: d' scale (unbounded, typically in range $[0, 4]$)
+- Definition: $\text{meta-d}' = \Phi^{-1}(\text{HR}_2) - \Phi^{-1}(\text{FAR}_2)$
+
+**$K_1$** (This framework):
+- **Alignment-based**: Does the subject's claim match their actual epistemic state?
+- Assumption-free when using Phi coefficient
+- Bounded: $K_1 \in [-1, 1]$
+- Definition: $K_1 = \phi(\text{State}_0, \text{Claim}_1)$
+
+**Relationship**:
+- Both are high when metacognition is accurate
+- Both are low/zero when confidence is unrelated to accuracy
+- However, they are **not mathematically equivalent**
+
+**Why No Exact Correspondence**:
+1. meta-d' is defined via inverse normal CDFs; $K_1$ via correlation
+2. meta-d' depends on SDT model assumptions; $K_1$ is model-free
+3. meta-d' is unbounded; $K_1$ is bounded to $[-1, 1]$
+
+**Empirical Expectation**:
+- In well-calibrated populations with Gaussian confidence distributions:
+  $$\text{Cor}(K_1, \tanh(\text{meta-d}'/2)) > 0.6$$
+  (expected but not guaranteed)
+- In populations with non-Gaussian distributions or extreme base rates: divergence is expected
+
+**Recommendation**:
+- Report **both** $K_1$ and meta-d' when SDT framework assumptions are plausible
+- Prefer $K_1$ when SDT assumptions are questionable (e.g., non-binary responses, non-Gaussian confidence)
+- Do **not** use $K_1 \approx \tanh(\text{meta-d}'/2)$ as an identity or conversion formula
+
+**Complementary Use Case**:
+| Question | Preferred Metric |
+|:---------|:-----------------|
+| "How well does confidence separate correct from incorrect?" | meta-d' |
+| "Does the subject's claim align with their actual state?" | $K_1$ |
+| "What is the pattern of metacognitive (mis)alignment per item?" | $K_1^{(i)}$ (item-level) |
+
+---
+
+#### Proposition 1b: $K_1$-ECE Approximate Relationship
+
+**Proposition 1b** ($K_1$-ECE Approximate Relationship):
+
+Under specific conditions, $K_1$ can be approximated from Expected Calibration Error (ECE).
+
+**Statement**:
+Under fixed binning with $B$ bins and large sample size $N$:
+$$K_1 \approx 1 - 2 \cdot \text{ECE}$$
+
+where ECE is defined as:
+$$\text{ECE} = \sum_{b=1}^{B} \frac{|B_b|}{N} |\text{acc}(B_b) - \text{conf}(B_b)|$$
+
+**Critical Warnings**:
+
+| Issue | Description | Impact on $K_1 \approx 1 - 2 \cdot \text{ECE}$ |
+|:------|:------------|:----------------------------------------------|
+| **Binning-dependent** | Different $B$ $\to$ different ECE | Same data can yield different $K_1$ estimates |
+| **Sample-size dependent** | Small $N$ $\to$ high variance in ECE | Unreliable $K_1$ estimates |
+| **Always non-negative** | ECE $\geq 0$ by definition | Cannot distinguish over- from under-confidence |
+| **Aggregate only** | ECE is computed across all items | No item-level $K_1^{(i)}$ |
 
 **Scope of Validity**:
-This approximation holds when:
-1. Confidence ratings are normally distributed conditioned on correctness
-2. Type-2 criteria are symmetric around the Type-1 criterion
-3. meta-d' is computed using standard maximum-likelihood methods
+- Approximately valid for $B \geq 10$, $N \geq 500$, balanced confidence distribution
+- Breaks down for small samples, extreme base rates, or heavily skewed confidence
 
-**When the Approximation Fails**:
-- Non-Gaussian confidence distributions
-- Asymmetric Type-2 criteria
-- Small sample sizes where meta-d' estimation is unreliable
-
-**Note**: This is an approximate correspondence, not an exact equivalence. The relationship is useful for connecting $K$ framework results to the Type-2 SDT literature.
+**Recommendation**:
+- Use $K_1 = \phi$ (Phi coefficient) as the **primary** measure for the $K$ framework
+- Use $K_1 \approx 1 - 2 \cdot \text{ECE}$ only for **cross-study comparison** where ECE is the standard metric
+- Always report binning scheme $B$ and sample size $N$ when using ECE-based approximation
+- Consider Brier score decomposition for more stable calibration assessment
 
 ---
 
 #### Claim 1: Framework Novelty
 
-**Claim 1** (Framework Novelty — Survey-Based):
+**Claim 1** (Framework Novelty---Survey-Based):
 Based on our survey of existing approaches, the $K$ framework is the only approach satisfying ALL of the following properties:
 
 > **Note**: This is a survey-based claim, not a mathematically provable proposition. The uniqueness is established relative to the approaches reviewed (meta-d', ECE/Brier, IRT), not as an absolute logical necessity.
@@ -3540,6 +3930,122 @@ All $K_n$ estimates ($n = 0, 1, 2$) can be computed in polynomial time.
 | $K_2$ | ICC (two-way random effects) | $O(N \cdot T)$ where $T$ = measurement occasions |
 
 All operations are standard and available in common statistical software (R: `ltm`, `psych`; Python: `pymc`, `scipy`).
+
+---
+
+### Worked Example: Complete $K_2$ Computation
+
+This section provides a concrete, step-by-step example of computing $K_0$, $K_1$, and $K_2$ for a single subject responding to 10 items.
+
+#### Step 1: Raw Data Collection
+
+A subject completes 10 multiple-choice items with $\text{Claim}_1$ elicitation:
+
+| Item | Response | Correct? | $\text{Claim}_1$ |
+|:-----|:---------|:---------|:-----------------|
+| 1 | A | Yes | "I know" |
+| 2 | B | Yes | "I know" |
+| 3 | C | No | "I don't know" |
+| 4 | A | Abstain | "Uncertain" |
+| 5 | B | Yes | "I know" |
+| 6 | D | No | "I know" |
+| 7 | A | No | "Uncertain" |
+| 8 | C | Yes | "I know" |
+| 9 | B | Abstain | "I don't know" |
+| 10 | A | Yes | "I know" |
+
+#### Step 2: Compute $K_0$ per Item
+
+Using the embedding $g_0$: correct $\to$ +1, abstain $\to$ 0, incorrect $\to$ -1:
+
+| Item | Correct? | $K_0$ |
+|:-----|:---------|:------|
+| 1 | Yes | +1 |
+| 2 | Yes | +1 |
+| 3 | No | -1 |
+| 4 | Abstain | 0 |
+| 5 | Yes | +1 |
+| 6 | No | -1 |
+| 7 | No | -1 |
+| 8 | Yes | +1 |
+| 9 | Abstain | 0 |
+| 10 | Yes | +1 |
+
+**Aggregate $K_0$**: $\bar{K}_0 = \frac{1+1-1+0+1-1-1+1+0+1}{10} = \frac{2}{10} = 0.2$
+
+#### Step 3: Compute $K_1$ per Item
+
+Using $f_1$ decision rules (Default interpretation):
+
+| Item | $K_0$ | $\text{Claim}_1$ | $\text{State}_1$ | $K_1$ |
+|:-----|:------|:-----------------|:-----------------|:------|
+| 1 | +1 | "I know" | aligned | +1 |
+| 2 | +1 | "I know" | aligned | +1 |
+| 3 | -1 | "I don't know" | aligned* | +1 |
+| 4 | 0 | "Uncertain" | aligned | +1 |
+| 5 | +1 | "I know" | aligned | +1 |
+| 6 | -1 | "I know" | misaligned | -1 |
+| 7 | -1 | "Uncertain" | uncertain | 0 |
+| 8 | +1 | "I know" | aligned | +1 |
+| 9 | 0 | "I don't know" | aligned | +1 |
+| 10 | +1 | "I know" | aligned | +1 |
+
+*Item 3: $K_0 = -1$ with "I don't know" $\to$ aligned (Epistemic Improvement Criterion)
+
+**Aggregate $K_1$**: $\bar{K}_1 = \frac{1+1+1+1+1-1+0+1+1+1}{10} = \frac{7}{10} = 0.7$
+
+#### Step 4: Elicit $\text{Claim}_2$
+
+After completing all items, subject is asked:
+> "How accurate do you think your self-assessments were?"
+
+Subject responds: **"My self-assessments were accurate"** $\to$ $\text{Claim}_2$ = "Meta-aligned"
+
+#### Step 5: Compute $K_2$
+
+**Option A: Threshold-Based**
+
+Discretize $\bar{K}_1 = 0.7$ using equal-interval thresholds ($\tau^+ = 1/3$, $\tau^- = -1/3$):
+- $\bar{K}_1 = 0.7 > 1/3$ $\to$ Discrete $K_1$ = +1 (mostly aligned)
+
+Compare with $\text{Claim}_2$:
+- Claimed: "Meta-aligned" (expects alignment)
+- Actual: Discrete $K_1$ = +1 (aligned)
+- Match? **Yes** $\to$ $\text{State}_2$ = meta-aligned $\to$ $K_2 = +1$
+
+**Option B: Test-Retest ICC**
+
+If subject repeats the task at time $t_2$:
+
+| Item | $K_1(t_1)$ | $K_1(t_2)$ |
+|:-----|:-----------|:-----------|
+| 1 | +1 | +1 |
+| 2 | +1 | +1 |
+| 3 | +1 | +1 |
+| 4 | +1 | 0 |
+| 5 | +1 | +1 |
+| 6 | -1 | -1 |
+| 7 | 0 | +1 |
+| 8 | +1 | +1 |
+| 9 | +1 | +1 |
+| 10 | +1 | +1 |
+
+Compute ICC (Intraclass Correlation Coefficient):
+$$\text{ICC} = \frac{\sigma^2_{\text{between-item}}}{\sigma^2_{\text{between-item}} + \sigma^2_{\text{within-item}}} \approx 0.82$$
+
+$K_2 = 0.82$ (high metacognitive stability)
+
+#### Step 6: Summary
+
+| Metric | Value | Interpretation |
+|:-------|:------|:---------------|
+| $\bar{K}_0$ | 0.2 | Moderate knowledge (slightly above ignorance) |
+| $\bar{K}_1$ | 0.7 | Good metacognitive alignment |
+| $K_2$ (Option A) | +1 | Subject correctly recognizes their good metacognition |
+| $K_2$ (Option B) | 0.82 | Stable metacognition across time |
+
+**Pattern Classification** (using $(K_0, K_1, K_2) = (0, +1, +1)$ discretized):
+- Pattern #14: **Socratic Wisdom**---Subject has limited knowledge but accurately recognizes this and knows their self-assessment is reliable.
 
 ---
 

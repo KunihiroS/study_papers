@@ -1224,10 +1224,11 @@ awareness; coded as ``aligned'' for monotonicity.
 
 \textbf{Rationale: Epistemic Improvement Criterion}
 
-The coding of \(K_0 = -1\) (misconception) + ``I don't know'' → aligned
-(\(K_1 = +1\)) may appear counterintuitive. We justify this via the
-\textbf{Epistemic Improvement Criterion}: a claim is ``aligned'' if it
-represents the best available response given the subject's actual state.
+The coding of \(K_0 = -1\) (misconception) + ``I don't know'' \(\to\)
+aligned (\(K_1 = +1\)) may appear counterintuitive. We justify this via
+the \textbf{Epistemic Improvement Criterion}: a claim is ``aligned'' if
+it represents the best available response given the subject's actual
+state.
 
 \textbf{Argument}:
 
@@ -1270,9 +1271,9 @@ Socratic wisdom tradition.
 
 \textbf{Alternative: Graded Alignment (Future Extension)}
 
-A graded scheme could assign: - \(K_0 = -1\), Claim = ``I don't know'' →
-\(K_1 = 0.5\) (partial alignment) - \(K_0 = -1\), Claim = ``I know'' →
-\(K_1 = -1\) (full misalignment)
+A graded scheme could assign: - \(K_0 = -1\), Claim = ``I don't know''
+\(\to\) \(K_1 = 0.5\) (partial alignment) - \(K_0 = -1\), Claim = ``I
+know'' \(\to\) \(K_1 = -1\) (full misalignment)
 
 This is a valid design choice but complicates anchor semantics. We leave
 graded alignment for future extension.
@@ -1281,8 +1282,8 @@ graded alignment for future extension.
 \paragraph{Decision-Theoretic Analysis of Coding
 Choices}\label{decision-theoretic-analysis-of-coding-choices}}
 
-The coding of \(K_0 = -1\) (misconception) + ``I don't know'' → aligned
-(\(K_1 = +1\)) has been justified via the Epistemic Improvement
+The coding of \(K_0 = -1\) (misconception) + ``I don't know'' \(\to\)
+aligned (\(K_1 = +1\)) has been justified via the Epistemic Improvement
 Criterion above. Here we provide a complementary
 \textbf{decision-theoretic} analysis.
 
@@ -2821,15 +2822,15 @@ component theories.
 \paragraph{\texorpdfstring{Theorem 1: \(K_0\)-IRT
 Correspondence}{Theorem 1: K\_0-IRT Correspondence}}\label{theorem-1-k_0-irt-correspondence}}
 
-\textbf{Statement}: Under the 2-Parameter Logistic (2PL) Item Response
-Theory model, \(K_0\) is exactly determined by the latent ability
-parameter \(\theta\).
+\textbf{Theorem 1} (\(K_0\)-IRT Exact Correspondence):
 
-\textbf{Theorem 1} (\(K_0\)-IRT Correspondence): Let
-\((\theta, \{a_i, b_i\}_{i=1}^N)\) be a 2PL-IRT model with:
+\textbf{Assumptions}: - \textbf{(A1)} Item response follows the
+2-Parameter Logistic (2PL) IRT model:
 \[P(\text{correct} | \theta, a_i, b_i) = \frac{1}{1 + e^{-a_i(\theta - b_i)}}\]
+- \textbf{(A2)} \(K_0\) is defined as the signed expected accuracy:
+\[K_0^{(i)} := 2P(\text{correct} | \theta, a_i, b_i) - 1\]
 
-Define the item-level epistemic state as \(K_0^{(i)} := 2P - 1\). Then:
+\textbf{Statement}: Under (A1)-(A2), for each item \(i\):
 \[K_0^{(i)} = \tanh\left(\frac{a_i(\theta - b_i)}{2}\right)\]
 
 \textbf{Proof}: Starting from the 2PL probability:
@@ -2844,12 +2845,61 @@ Recall the hyperbolic tangent identity:
 Matching exponents with \(2x = a(\theta - b)\):
 \[K_0 = \tanh\left(\frac{a(\theta - b)}{2}\right) \quad \blacksquare\]
 
-\textbf{Corollary 1.1} (Standardized Form): Under standardization
-assumptions \(a = 2\) and \(b = 0\): \[K_0 \approx \tanh(\theta)\]
+\textbf{Corollary 1.1} (Standardized Form): Under additional assumption
+\textbf{(A3)}: \(a = 2\) and \(b = 0\): \[K_0 = \tanh(\theta)\]
 
 \textbf{Corollary 1.2} (Aggregate Form): For \(N\) items with varying
 \((a_i, b_i)\):
 \[\bar{K}_0 = \frac{1}{N} \sum_{i=1}^{N} \tanh\left(\frac{a_i(\theta - b_i)}{2}\right)\]
+
+\textbf{Boundary Condition} (Deviation from Standardization): When (A3)
+is violated (i.e., \(a \neq 2\) or \(b \neq 0\)), the deviation from
+\(\tanh(\theta)\) is:
+\[|K_0 - \tanh(\theta)| = |\tanh(a(\theta-b)/2) - \tanh(\theta)|\]
+
+For typical parameter ranges in educational and psychological testing:
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0641}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0641}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1282}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.3846}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2179}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1410}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\(a\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(b\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\theta\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K_0 = \tanh(a(\theta-b)/2)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\tanh(\theta)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Deviation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1.0 & 0.0 & 1.0 & 0.46 & 0.76 & 0.30 \\
+1.5 & 0.0 & 1.0 & 0.64 & 0.76 & 0.12 \\
+2.0 & 0.0 & 1.0 & 0.76 & 0.76 & 0.00 \\
+2.0 & 1.0 & 1.0 & 0.00 & 0.76 & 0.76 \\
+2.0 & -1.0 & 1.0 & 0.96 & 0.76 & 0.20 \\
+\end{longtable}
+
+\textbf{Interpretation}: The standardized form
+\(K_0 \approx \tanh(\theta)\) is a good approximation only when item
+discrimination \(a \approx 2\) and item difficulty \(b \approx 0\). For
+items with extreme difficulty or low discrimination, the item-specific
+form \(\tanh(a(\theta-b)/2)\) should be used.
+
+\textbf{Scope of Validity}: - Holds exactly for binary correct/incorrect
+responses - Does not hold for partial credit models (see Limitations) -
+Assumes no guessing or slipping (see Q6 in Limitations)
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -2876,7 +2926,7 @@ Then: 1. \(K_1 \in [-1, 1]\) 2. \(K_1 = +1\) iff
 
 \textbf{Proof}:
 
-Let the 2×2 contingency table be:
+Let the \(2 \times 2\) contingency table be:
 
 \begin{longtable}[]{@{}lcc@{}}
 \toprule\noalign{}
@@ -2972,8 +3022,8 @@ and \(\text{Claim}_1\) observations, \(K_1\) is identifiable iff: 1.
 
 \textbf{Proof}: The Phi coefficient \(\phi\) is undefined when any
 marginal frequency is zero (denominator becomes zero). Condition 1
-ensures both rows of the 2×2 table are populated. Condition 2 ensures
-both columns are populated. With all cells potentially non-zero,
+ensures both rows of the \(2 \times 2\) table are populated. Condition 2
+ensures both columns are populated. With all cells potentially non-zero,
 \(\phi\) is a well-defined estimator of alignment. \(\blacksquare\)
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -2995,6 +3045,132 @@ between-subject variance is zero. Condition 1 ensures between-subject
 variance. The temporal separation in Condition 2 ensures that repeated
 measurements are not autocorrelated beyond true stability.
 \(\blacksquare\)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{falsifiability-and-separation-axioms}{%
+\subsubsection{Falsifiability and Separation
+Axioms}\label{falsifiability-and-separation-axioms}}
+
+\hypertarget{axiom-f-falsifiability}{%
+\paragraph{Axiom F: Falsifiability}\label{axiom-f-falsifiability}}
+
+\textbf{Axiom F} (Falsifiability): The \(K\) framework is empirically
+falsifiable. We state five predictions whose violation would refute or
+severely constrain the framework:
+
+\textbf{Falsifiable Prediction 1} (K-C Dissociation):
+\[\exists \text{ subjects with } (K_1 = -1, C = \text{high}) \quad \text{[Dunning-Kruger pattern]}\]
+\[\exists \text{ subjects with } (K_1 = -1, C = \text{low}) \quad \text{[Imposter pattern]}\]
+
+If ALL subjects show \(K_1 = \text{sign}(2C - 1)\), the framework adds
+nothing beyond confidence.
+
+\textbf{Falsifiable Prediction 2} (Layer Independence):
+\[\text{Cor}(K_0, K_2 \mid K_1) \approx 0\]
+
+If \(K_2\) is strongly predicted by \(K_0\) after controlling for
+\(K_1\), layer separation is violated.
+
+\textbf{Falsifiable Prediction 3} (Intervention Sensitivity):
+Metacognitive training should increase \(K_1\) while \(K_0\) may remain
+constant.
+
+If \(K_1\) cannot be moved independently of \(K_0\), the distinction is
+spurious.
+
+\textbf{Falsifiable Prediction 4} (Quantitative Bounds): ``Metacognitive
+training improves \(K_1\) by at least \(\delta = 0.2\) on average, while
+\(K_0\) remains within \(\varepsilon = 0.1\) of pre-training level.''
+
+Formally: \[\mathbb{E}[K_{1,\text{post}} - K_{1,\text{pre}}] \geq 0.2\]
+\[|\mathbb{E}[K_{0,\text{post}} - K_{0,\text{pre}}]| \leq 0.1\]
+
+If training affects both \(K_0\) and \(K_1\) equally (i.e.,
+\(\Delta K_1 \approx \Delta K_0\)), then layer separation is empirically
+spurious for that intervention.
+
+\textbf{Falsifiable Prediction 5} (K-C Correlation Bound): ``In any
+population, \(\text{Cor}(K_1, C) < 0.85\).''
+
+If \(\text{Cor}(K_1, C) > 0.85\) consistently across multiple datasets,
+\(K_1\) and \(C\) are empirically redundant and the distinction adds no
+value.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2449}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4898}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2653}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Prediction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Falsification Condition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Consequence
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Pred 1 & All subjects show \(K_1 = \text{sign}(2C-1)\) & \(K\) reduces
+to confidence \\
+Pred 2 & \(\text{Cor}(K_0, K_2 \mid K_1) > 0.5\) & Layer hierarchy is
+spurious \\
+Pred 3 & \(\Delta K_1 = \Delta K_0\) under intervention & Levels not
+separable \\
+Pred 4 & \(\Delta K_1 < 0.2\) or \(|\Delta K_0| > 0.1\) & Bound
+violation \\
+Pred 5 & \(\text{Cor}(K_1, C) > 0.85\) & \(K_1 \approx C\), redundant \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{axiom-s-k-c-separation}{%
+\paragraph{Axiom S: K-C Separation}\label{axiom-s-k-c-separation}}
+
+\textbf{Axiom S} (K-C Separation): \(K\) (epistemic alignment) and \(C\)
+(phenomenological confidence) are theoretically and operationally
+distinct:
+
+\textbf{Theoretical Distinction}: - \(K\): Alignment between claim and
+actual state (requires feedback to compute) - \(C\): Subjective
+certainty (measured before feedback is revealed)
+
+\textbf{Operational Distinction}: - \(C\) is measured at \(t_1\) (during
+response, before feedback) - \(K_1\) is computed at \(t_2\) (after
+feedback reveals correctness)
+
+\textbf{Empirical Separability Criterion}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3958}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2708}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Correlation Range
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Implication
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\text{Cor}(K_1, C) < 0.5\) & Strongly separable & \(K_1\) captures
+distinct construct \\
+\(0.5 \leq \text{Cor}(K_1, C) < 0.7\) & Moderately separable & Both
+constructs useful \\
+\(0.7 \leq \text{Cor}(K_1, C) < 0.85\) & Weakly separable & Caution:
+possible redundancy \\
+\(\text{Cor}(K_1, C) \geq 0.85\) & Not separable & \(K_1\) adds no value
+over \(C\) \\
+\end{longtable}
+
+\textbf{Note}: The 0.85 threshold corresponds to \(R^2 > 0.72\), meaning
+more than 72\% of variance is shared.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -3250,6 +3426,168 @@ on this line, not a separate codomain. Experimental designs may choose
 discrete or continuous elicitation, but in all cases the resulting data
 are interpreted as points (or distributions) on the same underlying
 scale \([-1, 1]\).
+
+\hypertarget{continuous-k_n-generation-model}{%
+\subsubsection{\texorpdfstring{Continuous \(K_n\) Generation
+Model}{Continuous K\_n Generation Model}}\label{continuous-k_n-generation-model}}
+
+This section provides a complete specification of how continuous \(K_n\)
+values are generated from latent variables, and how they relate to
+discrete anchor categories.
+
+\hypertarget{latent-variable-model}{%
+\paragraph{Latent Variable Model}\label{latent-variable-model}}
+
+\textbf{Definition} (Latent Alignment Strength): For each layer \(n\),
+we posit a latent variable \(K_n^*\) representing the underlying
+alignment strength:
+
+\[K_n^* \sim \mathcal{N}(\mu_n, \sigma_n^2)\]
+
+where: - \(\mu_n\): population mean alignment at layer \(n\) -
+\(\sigma_n^2\): between-subject variance in alignment
+
+\hypertarget{link-functions}{%
+\paragraph{Link Functions}\label{link-functions}}
+
+A \textbf{link function} \(h: \mathbb{R} \to [-1, 1]\) maps the
+unbounded latent variable to the bounded \(K_n\) scale.
+
+\textbf{Definition} (Link Function): \[K_n = h(K_n^*)\]
+
+where \(h\) satisfies: - \(h(+\infty) = +1\) (anchor preservation at
+positive extreme) - \(h(0) = 0\) (anchor preservation at zero) -
+\(h(-\infty) = -1\) (anchor preservation at negative extreme) - \(h\) is
+strictly monotonically increasing
+
+\textbf{Available Link Functions}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1364}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2045}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2727}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3864}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Link
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Formula
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Properties
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Recommended Use
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{tanh} (default) & \(h(x) = \tanh(\beta x)\) & Smooth, symmetric,
+S-shaped & General purpose; \(\beta\) controls sensitivity \\
+\textbf{Scaled probit} & \(h(x) = 2\Phi(x) - 1\) & Probabilistic
+interpretation & When latent variable represents log-odds \\
+\textbf{Clipped linear} & \(h(x) = \max(-1, \min(1, x))\) & Simple,
+piecewise linear & Quick approximation; not differentiable at
+boundaries \\
+\end{longtable}
+
+\textbf{Default Parameterization}:
+\[K_n = \tanh(\beta \cdot K_n^*), \quad \beta = 1\]
+
+The sensitivity parameter \(\beta > 0\) controls how quickly \(K_n\)
+approaches the boundaries: - \(\beta < 1\): Compressed scale; more
+values near 0 - \(\beta = 1\): Standard sensitivity - \(\beta > 1\):
+Expanded scale; more values near \(\pm 1\)
+
+\hypertarget{discretization-from-continuous-to-categorical}{%
+\paragraph{Discretization: From Continuous to
+Categorical}\label{discretization-from-continuous-to-categorical}}
+
+\textbf{Definition} (Threshold-Based Discretization): Given thresholds
+\(\tau^-\) and \(\tau^+\) with \(-1 < \tau^- < \tau^+ < 1\):
+
+\[\text{Discrete}(K_n) = \begin{cases} 
++1 & \text{if } K_n > \tau^+ \\
+0 & \text{if } \tau^- \leq K_n \leq \tau^+ \\
+-1 & \text{if } K_n < \tau^-
+\end{cases}\]
+
+\textbf{Two Threshold Options}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2292}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3542}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Option
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Definition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Rationale
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Recommended For
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{A: Equal-interval} (fixed) & \(\tau^+ = +\frac{1}{3}\),
+\(\tau^- = -\frac{1}{3}\) & Divides \([-1,1]\) into three equal-length
+intervals & Cross-study comparability; theoretical analysis \\
+\textbf{B: Equal-frequency} (data-adaptive) & \(\tau^+ = Q_{67}(K_n)\),
+\(\tau^- = Q_{33}(K_n)\) & Tercile-based; each category contains
+\textasciitilde33\% of observations & Within-study analysis;
+population-specific interpretation \\
+\end{longtable}
+
+\textbf{Terminology Note}: ``Tercile'' refers to percentile-based
+cutoffs (Option B), not fixed values. Option A should be called
+``equal-interval'' discretization.
+
+\textbf{Selection Guideline}:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Criterion & Option A (Equal-interval) & Option B (Equal-frequency) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Cross-study comparability & Yes & No \\
+Adaptation to population & No & Yes \\
+Fixed interpretation & Yes & No \\
+Sensitivity to distribution & Low & High \\
+\end{longtable}
+
+\textbf{Decision-Theoretic Justification for Option A}
+(\(\tau = \pm 1/3\)): Under symmetric 0-1-2 loss (equal cost for
+adjacent vs.~non-adjacent misclassification) and uniform prior on
+\([-1, 1]\), the optimal decision boundaries are \(\pm 1/3\).
+
+\hypertarget{point-estimation-and-uncertainty}{%
+\paragraph{Point Estimation and
+Uncertainty}\label{point-estimation-and-uncertainty}}
+
+\textbf{Point Estimate}: For a subject with \(N\) items, the point
+estimate of \(K_n\) is:
+\[\hat{K}_n = \bar{K}_n = \frac{1}{N} \sum_{i=1}^{N} K_n^{(i)}\]
+
+\textbf{Confidence Interval} (Bootstrap): 1. Resample \(N\) items with
+replacement, \(B = 1000\) times 2. Compute \(\hat{K}_n^{(b)}\) for each
+bootstrap sample \(b\) 3. Report 95\% CI:
+\([\hat{K}_n^{(2.5\%)}, \hat{K}_n^{(97.5\%)}]\)
+
+\textbf{Bayesian Posterior} (alternative): With prior
+\(K_n^* \sim \mathcal{N}(0, \sigma_0^2)\) and likelihood based on
+observed responses:
+\[p(K_n^* | \text{data}) \propto p(\text{data} | K_n^*) \cdot p(K_n^*)\]
+
+Report posterior mean and 95\% credible interval.
+
+\textbf{Reliability Check}: If CI width \(> 0.4\), interpret the point
+estimate with caution; consider increasing sample size or reducing
+measurement noise.
 
 \hypertarget{aggregation-rules-across-items}{%
 \subsubsection{Aggregation Rules Across
@@ -3650,8 +3988,8 @@ When \(a = 2\) (unit discrimination) and \(b = 0\) (centered
 difficulty): \[K_0 \approx \tanh(\theta)\]
 
 \textbf{Dependency Note}: This mapping is item-parameter dependent: -
-High \(a\) (discriminating items) → sharper transition near
-\(\theta = b\) - High \(b\) (difficult items) → shift toward lower
+High \(a\) (discriminating items) \(\to\) sharper transition near
+\(\theta = b\) - High \(b\) (difficult items) \(\to\) shift toward lower
 \(K_0\) for fixed \(\theta\)
 
 For aggregate \(K_0\) across items with varying \((a_i, b_i)\):
@@ -4363,8 +4701,8 @@ Property
 \endlastfoot
 \textbf{Anchor Preservation} & \(K_0 \in \{-1, 0, +1\}\) at extremes &
 \(K_1 \in \{-1, 0, +1\}\) at extremes \\
-\textbf{Monotonicity} & Increases with accuracy × confidence & Increases
-with metacognitive sensitivity \\
+\textbf{Monotonicity} & Increases with accuracy \(\times\) confidence &
+Increases with metacognitive sensitivity \\
 \textbf{Properness} & Derived from strictly proper Brier & meta-d' is
 bias-free under SDT assumptions \\
 \textbf{Continuity} & Continuous in \(c\) & Continuous in meta-d' \\
@@ -4460,38 +4798,252 @@ This dissociation is empirically testable and clinically meaningful.
 \subsubsection{Claim Elicitation
 Protocol}\label{claim-elicitation-protocol}}
 
-This section specifies the empirical protocol for eliciting Claim\(_1\)
-and Claim\(_2\), addressing the question: ``How do we obtain the claims
-needed to compute \(K_1\) and \(K_2\)?''
+This section provides a \textbf{complete specification} of the protocol
+for eliciting \(\text{Claim}_1\) and \(\text{Claim}_2\), and the
+decision rules \(f_1\) and \(f_2\) for computing \(\text{State}_1\) and
+\(\text{State}_2\).
 
-\hypertarget{standard-protocol-categorical}{%
-\paragraph{Standard Protocol
-(Categorical)}\label{standard-protocol-categorical}}
+\hypertarget{protocol-1-textclaim_1-elicitation-complete-specification}{%
+\paragraph{\texorpdfstring{Protocol 1: \(\text{Claim}_1\) Elicitation
+(Complete
+Specification)}{Protocol 1: \textbackslash text\{Claim\}\_1 Elicitation (Complete Specification)}}\label{protocol-1-textclaim_1-elicitation-complete-specification}}
 
-\textbf{Claim\(_1\) Elicitation:}
+\textbf{Timing}: - \textbf{After} the subject's response to item \(x\) -
+\textbf{Before} feedback on correctness is provided
 
-After each response, present:
+\textbf{Instruction Template (Categorical)}: \textgreater{} ``How
+confident are you that your answer is correct? \textgreater{} - {[} {]}
+I'm confident I'm correct (''I know'') \textgreater{} - {[} {]} I'm not
+sure (``Uncertain'') \textgreater{} - {[} {]} I think I might be wrong
+(``I don't know'')''
 
-\begin{quote}
-``How confident are you in your answer?'' - {[} {]} I'm confident I'm
-correct (``I know'') - {[} {]} I'm not sure (``Not sure'') - {[} {]} I
-think I might be wrong (``I don't know'')
-\end{quote}
+\textbf{Instruction Template (Continuous)}: \textgreater{} ``What is the
+probability that your answer is correct?'' \textgreater{} {[}Slider: 0\%
+──────────────────── 100\%{]}
 
-\textbf{Claim\(_2\) Elicitation:}
+\textbf{Mapping (Continuous \(\to\) Categorical)}:
 
-After completing all items (or after \(K_1\) is computed), present:
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Reported Probability \(p\) & \(\text{Claim}_1\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(p \geq 0.70\) & ``I know'' \\
+\(0.30 < p < 0.70\) & ``Uncertain'' \\
+\(p \leq 0.30\) & ``I don't know'' \\
+\end{longtable}
 
-\begin{quote}
-``How accurate do you think your self-assessments were overall?'' - {[}
-{]} My self-assessments were accurate (``Meta-aligned'') - {[} {]} I'm
-not sure about my self-assessments (``Meta-uncertain'') - {[} {]} My
-self-assessments were probably inaccurate (``Meta-misaligned'')
-\end{quote}
+\textbf{Threshold Calibration Options}:
 
-\hypertarget{continuous-protocol-slider}{%
-\paragraph{Continuous Protocol
-(Slider)}\label{continuous-protocol-slider}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2759}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3793}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3448}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Method
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Procedure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Use Case
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Fixed thresholds} & \(p = 0.70\) and \(p = 0.30\) & Cross-study
+comparability \\
+\textbf{Pilot calibration} & Adjust to achieve \textasciitilde equal
+category frequencies & Within-study optimization \\
+\textbf{Percentile-based} & Top 30\%, middle 40\%, bottom 30\% &
+Population-adaptive \\
+\textbf{Domain-specific} & Higher thresholds for high-confidence domains
+& Context sensitivity \\
+\end{longtable}
+
+\textbf{Inter-Rater Reliability Requirement}: - Categorical: Cohen's
+\(\kappa > 0.80\) - Continuous: ICC \(> 0.70\)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{protocol-2-textclaim_2-elicitation-complete-specification}{%
+\paragraph{\texorpdfstring{Protocol 2: \(\text{Claim}_2\) Elicitation
+(Complete
+Specification)}{Protocol 2: \textbackslash text\{Claim\}\_2 Elicitation (Complete Specification)}}\label{protocol-2-textclaim_2-elicitation-complete-specification}}
+
+\textbf{Timing}: - \textbf{After} all items are completed -
+\textbf{After} \(K_1\) is computed (or after metacognitive feedback is
+provided)
+
+\textbf{Instruction Template (Aggregate)}: \textgreater{} ``Thinking
+about your self-assessments across all questions: \textgreater{} How
+accurate do you think your self-assessments were? \textgreater{} - {[}
+{]} My self-assessments were accurate (''Meta-aligned'') \textgreater{}
+- {[} {]} I'm not sure about my self-assessments (``Meta-uncertain'')
+\textgreater{} - {[} {]} My self-assessments were probably inaccurate
+(``Meta-misaligned'')''
+
+\textbf{Alternative: Item-Level \(\text{Claim}_2\)}: After revealing
+\(K_1\) for each item: \textgreater{} ``Was your confidence judgment
+appropriate for this item? \textgreater{} - {[} {]} Yes, appropriate
+\textgreater{} - {[} {]} Not sure \textgreater{} - {[} {]} No,
+inappropriate''
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{protocol-3-f_1-decision-rules-complete-specification}{%
+\paragraph{\texorpdfstring{Protocol 3: \(f_1\) Decision Rules (Complete
+Specification)}{Protocol 3: f\_1 Decision Rules (Complete Specification)}}\label{protocol-3-f_1-decision-rules-complete-specification}}
+
+\textbf{Input}: \((K_0, \text{Claim}_1)\) \textbf{Output}:
+\(\text{State}_1 \in \{\text{aligned}, \text{uncertain}, \text{misaligned}\}\)
+
+\textbf{Complete Decision Table}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0680}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2816}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3107}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3398}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(K_0\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\text{Claim}_1\) = ``I know''
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\text{Claim}_1\) = ``Uncertain''
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\text{Claim}_1\) = ``I don't know''
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(+1\) (correct) & aligned & uncertain & misaligned \\
+\(0\) (ignorance) & misaligned & aligned & aligned \\
+\(-1\) (misconception) & misaligned & uncertain & aligned* \\
+\end{longtable}
+
+\textbf{*Edge Case Rationale}: \(K_0 = -1\) and \(\text{Claim}_1\) = ``I
+don't know'' \(\to\) \textbf{aligned}
+
+This coding follows the \textbf{Epistemic Improvement Criterion}: a
+subject who has a misconception but recognizes they ``don't know'' is
+exhibiting Socratic awareness, which is metacognitively appropriate.
+
+\textbf{Alternative Interpretation (Stricter)}:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+\(K_0\) & \(\text{Claim}_1\) = ``I don't know'' & Alternative Output \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(-1\) & ``I don't know'' & \textbf{uncertain} (not aligned) \\
+\end{longtable}
+
+\textbf{Rationale for Alternative}: - ``I don't know'' does not
+explicitly acknowledge misconception - True alignment at \(K_0 = -1\)
+would require: ``I think I'm wrong''
+
+\textbf{Framework Choice Guidelines}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2105}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3421}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4474}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Choice
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Prioritizes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Recommended For
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{(a) Default (aligned)} & Recognition of non-knowledge (Socratic
+wisdom) & General metacognition research \\
+\textbf{(b) Alternative (uncertain)} & Recognition of specific error
+direction & Error diagnosis, clinical settings \\
+\end{longtable}
+
+\textbf{Recommendation}: Always report which interpretation is used. For
+replication, specify: ``We use interpretation (a)/(b) for the
+\(K_0 = -1\), \(\text{Claim}_1\) = `I don't know' case.''
+
+\textbf{\(g_1\) Embedding}:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+\(\text{State}_1\) & \(K_1\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+aligned & \(+1\) \\
+uncertain & \(0\) \\
+misaligned & \(-1\) \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{protocol-4-f_2-decision-rules}{%
+\paragraph{\texorpdfstring{Protocol 4: \(f_2\) Decision
+Rules}{Protocol 4: f\_2 Decision Rules}}\label{protocol-4-f_2-decision-rules}}
+
+\textbf{Input}: \((K_1, \text{Claim}_2)\) \textbf{Output}:
+\(\text{State}_2 \in \{\text{meta-aligned}, \text{meta-uncertain}, \text{meta-misaligned}\}\)
+
+The structure mirrors \(f_1\):
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1652}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2696}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2783}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2870}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(K_1\) (aggregate)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\text{Claim}_2\) = ``Accurate''
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\text{Claim}_2\) = ``Uncertain''
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\text{Claim}_2\) = ``Inaccurate''
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(+1\) (aligned) & meta-aligned & meta-uncertain & meta-misaligned \\
+\(0\) (uncertain) & meta-misaligned & meta-aligned & meta-aligned \\
+\(-1\) (misaligned) & meta-misaligned & meta-uncertain & meta-aligned \\
+\end{longtable}
+
+\textbf{\(g_2\) Embedding}:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+\(\text{State}_2\) & \(K_2\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+meta-aligned & \(+1\) \\
+meta-uncertain & \(0\) \\
+meta-misaligned & \(-1\) \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{continuous-claim-variants}{%
+\paragraph{Continuous Claim Variants}\label{continuous-claim-variants}}
 
 \textbf{Claim\(_1\) Elicitation:}
 
@@ -6026,9 +6578,9 @@ MGV Component & \(K\) Layer & Correspondence \\
 
 \textbf{Iteration Dynamics:}
 
-In MGV, the loop proceeds: 1. Generate response → observe \(K_0\)
-(against reference) 2. Monitor quality → compute \(K_1\)
-(self-assessment alignment) 3. Verify monitoring → compute \(K_2\)
+In MGV, the loop proceeds: 1. Generate response \(\to\) observe \(K_0\)
+(against reference) 2. Monitor quality \(\to\) compute \(K_1\)
+(self-assessment alignment) 3. Verify monitoring \(\to\) compute \(K_2\)
 (meta-monitoring accuracy) 4. If \(K_2 < \tau\), regenerate (loop back
 to step 1)
 
@@ -6335,9 +6887,11 @@ the following limitations:
   \begin{itemize}
   \tightlist
   \item
-    ``I'm 80\% confident'' matches \(K_0 = 0.6\) → partial alignment
+    ``I'm 80\% confident'' matches \(K_0 = 0.6\) \(\to\) partial
+    alignment
   \item
-    ``I'm 80\% confident'' matches \(K_0 = -0.2\) → partial misalignment
+    ``I'm 80\% confident'' matches \(K_0 = -0.2\) \(\to\) partial
+    misalignment
   \end{itemize}
 
   \textbf{When to Use Each Approach}:
@@ -6461,7 +7015,59 @@ the following limitations:
   \textbf{LLM Operationalization Incomplete:} Applying \(K_n\) to LLMs
   requires addressing question-side shortcuts and model-side signals.
   Specific methods (conformal coverage, debate protocols) are suggested
-  but not developed here.
+  but not developed here. \textbf{This is explicitly designated as
+  Future Work.} The current paper provides the conceptual framework;
+  LLM-specific operationalizations (token-level probability extraction,
+  multi-sample self-consistency, debate protocols) require separate
+  empirical validation.
+\item
+  \textbf{Normative vs Descriptive Interpretation:}
+
+  \textbf{The Tension}: Recent work (e.g., positive evidence bias
+  literature) suggests that some ``metacognitive biases'' may be
+  rational responses to high-dimensional hypothesis spaces, not
+  failures.
+
+  \textbf{Our Position}: The \(K\) framework is \textbf{DESCRIPTIVE},
+  not normative.
+
+  \(K_1 = -1\) means: ``The subject's claim does not match their actual
+  state relative to the experimenter-defined reference.''
+
+  This is a \textbf{COORDINATE}, not a \textbf{JUDGMENT}.
+
+  \textbf{When \(K_1 = -1\) Might Be ``Rational''}:
+
+  \begin{longtable}[]{@{}
+    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2381}}
+    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7619}}@{}}
+  \toprule\noalign{}
+  \begin{minipage}[b]{\linewidth}\raggedright
+  Scenario
+  \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+  Why \(K_1 = -1\) May Be Rational
+  \end{minipage} \\
+  \midrule\noalign{}
+  \endhead
+  \bottomrule\noalign{}
+  \endlastfoot
+  Contested reference & Experimenter's ``ground truth'' is incomplete or
+  biased \\
+  Different objective & Subject optimizes for social harmony, not
+  accuracy \\
+  Information asymmetry & Subject has valid information experimenter
+  lacks \\
+  Bayesian conservatism & Prior knowledge rationally weighted against
+  weak evidence \\
+  \end{longtable}
+
+  \textbf{Recommendation}: Report \(K_1\) alongside task context. Do not
+  interpret \(K_1 = -1\) as ``failure'' without considering whether the
+  reference standard is appropriate.
+
+  \textbf{Methodological Relativism (Reiterated)}: The framework does
+  NOT adjudicate what is ``correct.'' \(K_1 = -1\) is descriptive of a
+  state, not prescriptive of a norm.
 \end{enumerate}
 
 \hypertarget{validation-roadmap}{%
@@ -6663,8 +7269,8 @@ regardless of true alignment.
 
 \textbf{Proof}:
 
-The Phi coefficient achieves its maximum when the 2×2 table has
-deterministic structure. Given marginal constraint
+The Phi coefficient achieves its maximum when the \(2 \times 2\) table
+has deterministic structure. Given marginal constraint
 \(\pi = P(K_0 = +1)\), the maximum occurs when: - If \(\pi \leq 0.5\):
 All \(K_0 = +1\) cases have \(\text{Claim}_1\) = ``I know'', and the
 remaining ``I know'' claims are minimized. - The resulting maximum is:
@@ -6691,34 +7297,129 @@ interpretation.
 \subsubsection{Supplementary
 Propositions}\label{supplementary-propositions}}
 
-\hypertarget{proposition-1-k_1-meta-d-approximate-relationship}{%
-\paragraph{\texorpdfstring{Proposition 1: \(K_1\)-meta-d' Approximate
-Relationship}{Proposition 1: K\_1-meta-d' Approximate Relationship}}\label{proposition-1-k_1-meta-d-approximate-relationship}}
+\hypertarget{remark-1-k_1-and-meta-dcomplementary-perspectives}{%
+\paragraph{\texorpdfstring{Remark 1: \(K_1\) and meta-d'---Complementary
+Perspectives}{Remark 1: K\_1 and meta-d'---Complementary Perspectives}}\label{remark-1-k_1-and-meta-dcomplementary-perspectives}}
 
-\textbf{Proposition 1} (\(K_1\)-meta-d' Correspondence): Under Gaussian
-Signal Detection Theory assumptions:
-\[K_1 \approx \tanh\left(\frac{\text{meta-d}'}{2}\right)\]
+\begin{quote}
+\textbf{Note}: This remark clarifies the \emph{conceptual relationship}
+between \(K_1\) and meta-d'. We do \textbf{not} claim mathematical
+equivalence; rather, these measures capture related but distinct aspects
+of metacognition.
+\end{quote}
 
-\textbf{Scope of Validity}: This approximation holds when: 1. Confidence
-ratings are normally distributed conditioned on correctness 2. Type-2
-criteria are symmetric around the Type-1 criterion 3. meta-d' is
-computed using standard maximum-likelihood methods
+\textbf{Remark 1} (\(K_1\) and meta-d': Complementary Perspectives):
 
-\textbf{When the Approximation Fails}: - Non-Gaussian confidence
-distributions - Asymmetric Type-2 criteria - Small sample sizes where
-meta-d' estimation is unreliable
+\(K_1\) and meta-d' (Maniscalco \& Lau, 2012) measure related but
+distinct aspects of metacognition:
 
-\textbf{Note}: This is an approximate correspondence, not an exact
-equivalence. The relationship is useful for connecting \(K\) framework
-results to the Type-2 SDT literature.
+\textbf{meta-d'} (Signal Detection Theory): -
+\textbf{Sensitivity-based}: How well does confidence discriminate
+correct from incorrect responses? - Rooted in Signal Detection Theory
+(SDT) - Requires Gaussian assumptions on evidence distributions - Unit:
+d' scale (unbounded, typically in range \([0, 4]\)) - Definition:
+\(\text{meta-d}' = \Phi^{-1}(\text{HR}_2) - \Phi^{-1}(\text{FAR}_2)\)
+
+\textbf{\(K_1\)} (This framework): - \textbf{Alignment-based}: Does the
+subject's claim match their actual epistemic state? - Assumption-free
+when using Phi coefficient - Bounded: \(K_1 \in [-1, 1]\) - Definition:
+\(K_1 = \phi(\text{State}_0, \text{Claim}_1)\)
+
+\textbf{Relationship}: - Both are high when metacognition is accurate -
+Both are low/zero when confidence is unrelated to accuracy - However,
+they are \textbf{not mathematically equivalent}
+
+\textbf{Why No Exact Correspondence}: 1. meta-d' is defined via inverse
+normal CDFs; \(K_1\) via correlation 2. meta-d' depends on SDT model
+assumptions; \(K_1\) is model-free 3. meta-d' is unbounded; \(K_1\) is
+bounded to \([-1, 1]\)
+
+\textbf{Empirical Expectation}: - In well-calibrated populations with
+Gaussian confidence distributions:
+\[\text{Cor}(K_1, \tanh(\text{meta-d}'/2)) > 0.6\] (expected but not
+guaranteed) - In populations with non-Gaussian distributions or extreme
+base rates: divergence is expected
+
+\textbf{Recommendation}: - Report \textbf{both} \(K_1\) and meta-d' when
+SDT framework assumptions are plausible - Prefer \(K_1\) when SDT
+assumptions are questionable (e.g., non-binary responses, non-Gaussian
+confidence) - Do \textbf{not} use
+\(K_1 \approx \tanh(\text{meta-d}'/2)\) as an identity or conversion
+formula
+
+\textbf{Complementary Use Case}: \textbar{} Question \textbar{}
+Preferred Metric \textbar{}
+\textbar:---------\textbar:-----------------\textbar{} \textbar{} ``How
+well does confidence separate correct from incorrect?'' \textbar{}
+meta-d' \textbar{} \textbar{} ``Does the subject's claim align with
+their actual state?'' \textbar{} \(K_1\) \textbar{} \textbar{} ``What is
+the pattern of metacognitive (mis)alignment per item?'' \textbar{}
+\(K_1^{(i)}\) (item-level) \textbar{}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{proposition-1b-k_1-ece-approximate-relationship}{%
+\paragraph{\texorpdfstring{Proposition 1b: \(K_1\)-ECE Approximate
+Relationship}{Proposition 1b: K\_1-ECE Approximate Relationship}}\label{proposition-1b-k_1-ece-approximate-relationship}}
+
+\textbf{Proposition 1b} (\(K_1\)-ECE Approximate Relationship):
+
+Under specific conditions, \(K_1\) can be approximated from Expected
+Calibration Error (ECE).
+
+\textbf{Statement}: Under fixed binning with \(B\) bins and large sample
+size \(N\): \[K_1 \approx 1 - 2 \cdot \text{ECE}\]
+
+where ECE is defined as:
+\[\text{ECE} = \sum_{b=1}^{B} \frac{|B_b|}{N} |\text{acc}(B_b) - \text{conf}(B_b)|\]
+
+\textbf{Critical Warnings}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1045}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1940}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.7015}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Issue
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Impact on \(K_1 \approx 1 - 2 \cdot \text{ECE}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Binning-dependent} & Different \(B\) \(\to\) different ECE &
+Same data can yield different \(K_1\) estimates \\
+\textbf{Sample-size dependent} & Small \(N\) \(\to\) high variance in
+ECE & Unreliable \(K_1\) estimates \\
+\textbf{Always non-negative} & ECE \(\geq 0\) by definition & Cannot
+distinguish over- from under-confidence \\
+\textbf{Aggregate only} & ECE is computed across all items & No
+item-level \(K_1^{(i)}\) \\
+\end{longtable}
+
+\textbf{Scope of Validity}: - Approximately valid for \(B \geq 10\),
+\(N \geq 500\), balanced confidence distribution - Breaks down for small
+samples, extreme base rates, or heavily skewed confidence
+
+\textbf{Recommendation}: - Use \(K_1 = \phi\) (Phi coefficient) as the
+\textbf{primary} measure for the \(K\) framework - Use
+\(K_1 \approx 1 - 2 \cdot \text{ECE}\) only for \textbf{cross-study
+comparison} where ECE is the standard metric - Always report binning
+scheme \(B\) and sample size \(N\) when using ECE-based approximation -
+Consider Brier score decomposition for more stable calibration
+assessment
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{claim-1-framework-novelty}{%
 \paragraph{Claim 1: Framework Novelty}\label{claim-1-framework-novelty}}
 
-\textbf{Claim 1} (Framework Novelty --- Survey-Based): Based on our
-survey of existing approaches, the \(K\) framework is the only approach
+\textbf{Claim 1} (Framework Novelty---Survey-Based): Based on our survey
+of existing approaches, the \(K\) framework is the only approach
 satisfying ALL of the following properties:
 
 \begin{quote}
@@ -6826,6 +7527,186 @@ measurement occasions \\
 All operations are standard and available in common statistical software
 (R: \texttt{ltm}, \texttt{psych}; Python: \texttt{pymc},
 \texttt{scipy}).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{worked-example-complete-k_2-computation}{%
+\subsubsection{\texorpdfstring{Worked Example: Complete \(K_2\)
+Computation}{Worked Example: Complete K\_2 Computation}}\label{worked-example-complete-k_2-computation}}
+
+This section provides a concrete, step-by-step example of computing
+\(K_0\), \(K_1\), and \(K_2\) for a single subject responding to 10
+items.
+
+\hypertarget{step-1-raw-data-collection}{%
+\paragraph{Step 1: Raw Data
+Collection}\label{step-1-raw-data-collection}}
+
+A subject completes 10 multiple-choice items with \(\text{Claim}_1\)
+elicitation:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+Item & Response & Correct? & \(\text{Claim}_1\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & A & Yes & ``I know'' \\
+2 & B & Yes & ``I know'' \\
+3 & C & No & ``I don't know'' \\
+4 & A & Abstain & ``Uncertain'' \\
+5 & B & Yes & ``I know'' \\
+6 & D & No & ``I know'' \\
+7 & A & No & ``Uncertain'' \\
+8 & C & Yes & ``I know'' \\
+9 & B & Abstain & ``I don't know'' \\
+10 & A & Yes & ``I know'' \\
+\end{longtable}
+
+\hypertarget{step-2-compute-k_0-per-item}{%
+\paragraph{\texorpdfstring{Step 2: Compute \(K_0\) per
+Item}{Step 2: Compute K\_0 per Item}}\label{step-2-compute-k_0-per-item}}
+
+Using the embedding \(g_0\): correct \(\to\) +1, abstain \(\to\) 0,
+incorrect \(\to\) -1:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Item & Correct? & \(K_0\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Yes & +1 \\
+2 & Yes & +1 \\
+3 & No & -1 \\
+4 & Abstain & 0 \\
+5 & Yes & +1 \\
+6 & No & -1 \\
+7 & No & -1 \\
+8 & Yes & +1 \\
+9 & Abstain & 0 \\
+10 & Yes & +1 \\
+\end{longtable}
+
+\textbf{Aggregate \(K_0\)}:
+\(\bar{K}_0 = \frac{1+1-1+0+1-1-1+1+0+1}{10} = \frac{2}{10} = 0.2\)
+
+\hypertarget{step-3-compute-k_1-per-item}{%
+\paragraph{\texorpdfstring{Step 3: Compute \(K_1\) per
+Item}{Step 3: Compute K\_1 per Item}}\label{step-3-compute-k_1-per-item}}
+
+Using \(f_1\) decision rules (Default interpretation):
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+Item & \(K_0\) & \(\text{Claim}_1\) & \(\text{State}_1\) & \(K_1\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & +1 & ``I know'' & aligned & +1 \\
+2 & +1 & ``I know'' & aligned & +1 \\
+3 & -1 & ``I don't know'' & aligned* & +1 \\
+4 & 0 & ``Uncertain'' & aligned & +1 \\
+5 & +1 & ``I know'' & aligned & +1 \\
+6 & -1 & ``I know'' & misaligned & -1 \\
+7 & -1 & ``Uncertain'' & uncertain & 0 \\
+8 & +1 & ``I know'' & aligned & +1 \\
+9 & 0 & ``I don't know'' & aligned & +1 \\
+10 & +1 & ``I know'' & aligned & +1 \\
+\end{longtable}
+
+*Item 3: \(K_0 = -1\) with ``I don't know'' \(\to\) aligned (Epistemic
+Improvement Criterion)
+
+\textbf{Aggregate \(K_1\)}:
+\(\bar{K}_1 = \frac{1+1+1+1+1-1+0+1+1+1}{10} = \frac{7}{10} = 0.7\)
+
+\hypertarget{step-4-elicit-textclaim_2}{%
+\paragraph{\texorpdfstring{Step 4: Elicit
+\(\text{Claim}_2\)}{Step 4: Elicit \textbackslash text\{Claim\}\_2}}\label{step-4-elicit-textclaim_2}}
+
+After completing all items, subject is asked: \textgreater{} ``How
+accurate do you think your self-assessments were?''
+
+Subject responds: \textbf{``My self-assessments were accurate''} \(\to\)
+\(\text{Claim}_2\) = ``Meta-aligned''
+
+\hypertarget{step-5-compute-k_2}{%
+\paragraph{\texorpdfstring{Step 5: Compute
+\(K_2\)}{Step 5: Compute K\_2}}\label{step-5-compute-k_2}}
+
+\textbf{Option A: Threshold-Based}
+
+Discretize \(\bar{K}_1 = 0.7\) using equal-interval thresholds
+(\(\tau^+ = 1/3\), \(\tau^- = -1/3\)): - \(\bar{K}_1 = 0.7 > 1/3\)
+\(\to\) Discrete \(K_1\) = +1 (mostly aligned)
+
+Compare with \(\text{Claim}_2\): - Claimed: ``Meta-aligned'' (expects
+alignment) - Actual: Discrete \(K_1\) = +1 (aligned) - Match?
+\textbf{Yes} \(\to\) \(\text{State}_2\) = meta-aligned \(\to\)
+\(K_2 = +1\)
+
+\textbf{Option B: Test-Retest ICC}
+
+If subject repeats the task at time \(t_2\):
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Item & \(K_1(t_1)\) & \(K_1(t_2)\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & +1 & +1 \\
+2 & +1 & +1 \\
+3 & +1 & +1 \\
+4 & +1 & 0 \\
+5 & +1 & +1 \\
+6 & -1 & -1 \\
+7 & 0 & +1 \\
+8 & +1 & +1 \\
+9 & +1 & +1 \\
+10 & +1 & +1 \\
+\end{longtable}
+
+Compute ICC (Intraclass Correlation Coefficient):
+\[\text{ICC} = \frac{\sigma^2_{\text{between-item}}}{\sigma^2_{\text{between-item}} + \sigma^2_{\text{within-item}}} \approx 0.82\]
+
+\(K_2 = 0.82\) (high metacognitive stability)
+
+\hypertarget{step-6-summary}{%
+\paragraph{Step 6: Summary}\label{step-6-summary}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2581}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2258}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.5161}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Metric
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\bar{K}_0\) & 0.2 & Moderate knowledge (slightly above ignorance) \\
+\(\bar{K}_1\) & 0.7 & Good metacognitive alignment \\
+\(K_2\) (Option A) & +1 & Subject correctly recognizes their good
+metacognition \\
+\(K_2\) (Option B) & 0.82 & Stable metacognition across time \\
+\end{longtable}
+
+\textbf{Pattern Classification} (using \((K_0, K_1, K_2) = (0, +1, +1)\)
+discretized): - Pattern \#14: \textbf{Socratic Wisdom}---Subject has
+limited knowledge but accurately recognizes this and knows their
+self-assessment is reliable.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
