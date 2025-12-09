@@ -71,7 +71,9 @@ Cognition of
 Ignorance}\label{a-study-on-the-hierarchical-structure-of-knowledge-and-the-cognition-of-ignorance}}
 
 \emph{Kunihiro Sugiyama}\\
-kunihiros@gmail.com
+Independent Researcher\\
+Generative AI Study Group: Organizer / Tech Lead\\
+kunihiros@gmail.com / kunihiros@gasg.server-on.net
 
 \hypertarget{introduction}{%
 \subsection{Introduction}\label{introduction}}
@@ -185,7 +187,8 @@ contributions are:
   phenomenological confidence (\(C\))
 \item
   \textbf{Illustrative derivations} showing how the framework relates to
-  established metrics (IRT, meta-d', ECE)
+  established metrics (IRT, meta-d') and \textbf{contrasts} with
+  calibration metrics (ECE)
 \end{enumerate}
 
 \textbf{What This Paper Is NOT:}
@@ -353,12 +356,17 @@ Relationship
 \endlastfoot
 \(K_0\) & First-order accuracy & IRT ability \(\theta\) &
 \(K_0 \approx \tanh(\theta)\) \\
-\(K_1\) & Metacognitive alignment & meta-d'/d' &
+\(K_1\) & Metacognitive alignment & meta-d'/d' (Sensitivity) &
 \(K_1 \approx \tanh(\text{meta-d}'/2)\) \\
-\(K_1\) & Calibration & ECE & \(K_1 \approx 1 - 2 \cdot \text{ECE}\) \\
 \(K_2\) & Meta-metacognitive stability & Test-retest \(K_1\) & Novel
 contribution \\
 \end{longtable}
+
+\begin{quote}
+\textbf{Note}: \(K_n\) measures \textbf{sensitivity} (discrimination
+ability), NOT calibration bias. Calibration is captured by the
+\((K, C)\) joint distribution.
+\end{quote}
 
 \emph{See Related Work section for detailed correspondence analysis.}
 
@@ -3262,6 +3270,22 @@ correct only - Negative: incorrect + absent
 
 This preserves the interpretation that ``I know'' should predict
 correctness, not merely absence of misconception.
+
+\begin{quote}
+\textbf{Why Phi Coefficient Proves \(K_1\) is Pure Sensitivity}:
+
+The Phi coefficient is a \textbf{correlation measure}. Correlation
+captures \textbf{distributional shape} (co-variation between claims and
+states), NOT \textbf{absolute value bias}.
+
+A subject with systematic overconfidence (Bias) but perfect
+discrimination (always higher confidence when correct than when
+incorrect) will have \(K_1 = +1\).
+
+This property proves that \(K_1\) is \textbf{Pure
+Sensitivity}---independent of confidence magnitude bias. The bias
+dimension is captured separately by \(C\) (Confidence).
+\end{quote}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -6545,15 +6569,20 @@ Correspondence
 \(K_0 \approx 2\Phi(\theta) - 1\) (scaled) \\
 \textbf{\(K_0\)} & Epistemic state & Accuracy & \(K_0 = +1\) iff
 correct \\
-\textbf{\(K_1\)} & Metacognitive alignment & meta-d' &
+\textbf{\(K_1\)} & Metacognitive alignment & meta-d' (Sensitivity) &
 \(K_1 \propto \text{meta-}d' / d'\) (normalized sensitivity) \\
 \textbf{\(K_1\)} & Metacognitive alignment & AUC (Type-2) &
 \(K_1 = 2 \cdot \text{AUC} - 1\) \\
-\textbf{\(K_1\)} & Metacognitive alignment & Calibration (ECE) &
-\(K_1 \approx 1 - 2 \cdot \text{ECE}\) (inverse relationship) \\
 \textbf{\(K_2\)} & Meta-metacognitive alignment & Stability of \(K_1\)
 across contexts & Novel measure \\
 \end{longtable}
+
+\begin{quote}
+\textbf{Important}: In this framework, \textbf{Metacognitive Alignment
+(\(K_1\))} is formally equivalent to \textbf{Metacognitive Sensitivity}
+(discrimination ability). This represents pure discrimination ability,
+independent of the subject's confidence magnitude (Bias).
+\end{quote}
 
 \hypertarget{detailed-correspondences}{%
 \paragraph{Detailed Correspondences}\label{detailed-correspondences}}
@@ -6588,34 +6617,39 @@ distributions) \\
 \textbf{Approximate Translation:}
 \[K_1 \approx \tanh\left(\frac{\text{meta-}d'}{2}\right)\]
 
-\textbf{\(K_1\) vs Calibration Error (ECE):}
+\textbf{Why \(K\) and \(C\) are Decoupled (Not \(K\) and ECE):}
+
+This framework explicitly \textbf{decouples} sensitivity from
+calibration bias:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4706}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2353}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2941}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2895}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2632}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4474}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-Aspect
+Dimension
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\(K_1\)
+Captures
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-ECE
+NOT captured by
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\textbf{Direction} & +1 = perfect alignment & 0 = perfect calibration \\
-\textbf{Meaning of negative} & Systematic misalignment & N/A (always
-\(\geq\) 0) \\
-\textbf{Confidence dimension} & Implicit in State\(_1\) & Explicit
-(confidence bins) \\
+\textbf{\(K_n\)} & Sensitivity (discrimination ability) & Absolute
+confidence bias \\
+\textbf{\(C\)} & Confidence magnitude (bias) & Discrimination ability \\
+\textbf{\((K, C)\) joint} & Full metacognitive profile & N/A \\
 \end{longtable}
 
-\textbf{Note:} \(K_1\) captures \emph{direction} of miscalibration
-(over- vs under-confidence), while ECE captures \emph{magnitude} only.
-They are complementary, not redundant.
+\begin{quote}
+\textbf{Key insight}: A subject with \(K_1 = +1\) (perfect sensitivity)
+may still be severely miscalibrated if their \(C\) distribution is
+biased. Calibration is diagnosed from \((K, C)\) discrepancy, not from
+\(K\) alone.
+\end{quote}
 
 \hypertarget{joint-reporting-standard-proposed}{%
 \paragraph{Joint Reporting Standard
@@ -6641,15 +6675,15 @@ Information Captured
 \endlastfoot
 \textbf{\(K_0\)} & This framework & Epistemic state
 (knowledge/ignorance/misconception) \\
-\textbf{\(K_1\)} & This framework & Alignment direction and magnitude \\
-\textbf{\(K_2\)} & This framework & Meta-metacognitive calibration \\
+\textbf{\(K_1\)} & This framework & Alignment direction (sensitivity) \\
+\textbf{\(K_2\)} & This framework & Meta-metacognitive stability \\
+\textbf{\(C\)} & This framework & Confidence magnitude (bias
+dimension) \\
 \textbf{meta-d'} & SDT & Aggregate sensitivity under SDT assumptions \\
-\textbf{ECE} & Calibration & Confidence-accuracy gap magnitude \\
-\textbf{Brier} & Calibration & Combined accuracy + calibration \\
 \end{longtable}
 
 This joint profile provides a complete picture: \(K_n\) for item-level
-structure, aggregate metrics for overall performance.
+sensitivity structure, \(C\) for bias dimension.
 
 \hypertarget{positioning-among-related-frameworks}{%
 \subsubsection{Positioning Among Related
@@ -7928,6 +7962,100 @@ reify ``the subject'' as a separate entity with ``perceptions.''}
 All that exists are \textbf{states} and \textbf{observations}. \(K\)
 observes states. That's it.
 
+\hypertarget{why-k-times-c-joint-model-instead-of-splitting-k_1}{%
+\subsubsection{\texorpdfstring{Why \(K \times C\) Joint Model Instead of
+Splitting
+\(K_1\)}{Why K \textbackslash times C Joint Model Instead of Splitting K\_1}}\label{why-k-times-c-joint-model-instead-of-splitting-k_1}}
+
+One reviewer suggested splitting \(K_1\) into separate dimensions:
+\(K_1^{\text{sens}}\) (sensitivity) and \(K_1^{\text{cal}}\)
+(calibration), analogous to how meta-d' and ECE measure different
+aspects of metacognition.
+
+\textbf{We argue that our \((K, C)\) joint model provides a superior
+solution.}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1724}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3621}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2069}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2586}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Approach
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Separation Strategy
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Advantages
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Disadvantages
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Split \(K_1\)} & \(K_1^{\text{sens}} + K_1^{\text{cal}}\) &
+Directly maps to meta-d'/ECE & Destroys recursive unity of \(K\) \\
+\textbf{Our \((K, C)\) joint} & \(K\) (sensitivity) + \(C\) (bias) &
+Preserves recursion; explicit phenomenological dimension & Requires
+bivariate analysis \\
+\end{longtable}
+
+\textbf{Design Rationale:}
+
+Existing approaches treat sensitivity (meta-d') and calibration (ECE) as
+separate metrics. This framework \textbf{unifies} them differently:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(K_n\) dimension}: Sensitivity (discrimination ability) ---
+  bias-independent
+\item
+  \textbf{\(C\) dimension}: Confidence magnitude (bias) ---
+  sensitivity-independent
+\item
+  \textbf{\((K, C)\) joint model}: Captures complex phenomena like
+  Dunning-Kruger
+\end{itemize}
+
+This preserves the recursive unity of the \(K\) operator
+(\(K_0 \to K_1 \to K_2 \to \cdots\)) while maintaining orthogonal
+dimensions for structural state (\(K\)) and phenomenological feeling
+(\(C\)).
+
+\textbf{Practical Consequence:}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2182}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2364}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2364}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3091}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Phenomenon
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(K\) Pattern
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(C\) Pattern
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Joint Diagnosis
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dunning-Kruger & \(K_1 = -1\) (anti-correlation) & \(C = \text{High}\) &
+Misalignment + overconfidence \\
+Imposter Syndrome & \(K_1 = -1\) (anti-correlation) & \(C = \text{Low}\)
+& Misalignment + underconfidence \\
+Calibrated Expert & \(K_1 = +1\) (alignment) & \(C \propto K_0\) &
+Alignment + appropriate confidence \\
+\end{longtable}
+
+The \((K, C)\) representation is no less expressive than splitting
+\(K_1\), but retains the elegant recursive structure.
+
 \hypertarget{appendix-technical-lemmas-and-supplementary-propositions}{%
 \subsection{Appendix: Technical Lemmas and Supplementary
 Propositions}\label{appendix-technical-lemmas-and-supplementary-propositions}}
@@ -8061,60 +8189,33 @@ the pattern of metacognitive (mis)alignment per item?'' \textbar{}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{proposition-1b-k_1-ece-approximate-relationship}{%
-\paragraph{\texorpdfstring{Proposition 1b: \(K_1\)-ECE Approximate
-Relationship}{Proposition 1b: K\_1-ECE Approximate Relationship}}\label{proposition-1b-k_1-ece-approximate-relationship}}
+\begin{quote}
+\textbf{Note on Calibration Metrics (ECE)}:
 
-\textbf{Proposition 1b} (\(K_1\)-ECE Approximate Relationship):
+While widely used metrics like ECE (Expected Calibration Error)
+\textbf{conflate} sensitivity and calibration bias, this framework
+\textbf{decouples} them:
 
-Under specific conditions, \(K_1\) can be approximated from Expected
-Calibration Error (ECE).
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(K_n\)} captures the \textbf{sensitivity component}
+  (discrimination ability)
+\item
+  The \textbf{\((K, C)\) joint distribution} reveals the
+  \textbf{calibration bias}
+\end{itemize}
 
-\textbf{Statement}: Under fixed binning with \(B\) bins and large sample
-size \(N\): \[K_1 \approx 1 - 2 \cdot \text{ECE}\]
+ECE is NOT approximated by \(K_1\). Instead, calibration error is
+diagnosed by examining the discrepancy between \(K\) values and \(C\)
+values: - High \(K_1\) + systematically high \(C\) -\textgreater{}
+Overconfidence bias - High \(K_1\) + systematically low \(C\)
+-\textgreater{} Underconfidence bias
 
-where ECE is defined as:
-\[\text{ECE} = \sum_{b=1}^{B} \frac{|B_b|}{N} |\text{acc}(B_b) - \text{conf}(B_b)|\]
-
-\textbf{Critical Warnings}:
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1045}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1940}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.7015}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Issue
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Description
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Impact on \(K_1 \approx 1 - 2 \cdot \text{ECE}\)
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{Binning-dependent} & Different \(B\) \(\to\) different ECE &
-Same data can yield different \(K_1\) estimates \\
-\textbf{Sample-size dependent} & Small \(N\) \(\to\) high variance in
-ECE & Unreliable \(K_1\) estimates \\
-\textbf{Always non-negative} & ECE \(\geq 0\) by definition & Cannot
-distinguish over- from under-confidence \\
-\textbf{Aggregate only} & ECE is computed across all items & No
-item-level \(K_1^{(i)}\) \\
-\end{longtable}
-
-\textbf{Scope of Validity}: - Approximately valid for \(B \geq 10\),
-\(N \geq 500\), balanced confidence distribution - Breaks down for small
-samples, extreme base rates, or heavily skewed confidence
-
-\textbf{Recommendation}: - Use \(K_1 = \phi\) (Phi coefficient) as the
-\textbf{primary} measure for the \(K\) framework - Use
-\(K_1 \approx 1 - 2 \cdot \text{ECE}\) only for \textbf{cross-study
-comparison} where ECE is the standard metric - Always report binning
-scheme \(B\) and sample size \(N\) when using ECE-based approximation -
-Consider Brier score decomposition for more stable calibration
-assessment
+This separation preserves the recursive unity of the \(K\) operator
+while maintaining orthogonal dimensions for state (\(K\)) and feeling
+(\(C\)).
+\end{quote}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 

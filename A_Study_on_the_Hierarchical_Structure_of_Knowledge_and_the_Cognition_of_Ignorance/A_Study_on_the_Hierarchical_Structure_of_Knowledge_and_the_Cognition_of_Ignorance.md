@@ -4085,8 +4085,8 @@ One reviewer suggested splitting $K_1$ into separate dimensions: $K_1^{\text{sen
 
 Existing approaches treat sensitivity (meta-d') and calibration (ECE) as separate metrics. This framework **unifies** them differently:
 
-- **$K_n$ dimension**: Sensitivity (discrimination ability) — bias-independent
-- **$C$ dimension**: Confidence magnitude (bias) — sensitivity-independent
+- **$K_n$ dimension**: Sensitivity (discrimination ability) --- bias-independent
+- **$C$ dimension**: Confidence magnitude (bias) --- sensitivity-independent
 - **$(K, C)$ joint model**: Captures complex phenomena like Dunning-Kruger
 
 This preserves the recursive unity of the $K$ operator ($K_0 \to K_1 \to K_2 \to \cdots$) while maintaining orthogonal dimensions for structural state ($K$) and phenomenological feeling ($C$).
@@ -4210,8 +4210,8 @@ $K_1$ and meta-d' (Maniscalco & Lau, 2012) measure related but distinct aspects 
 > - The **$(K, C)$ joint distribution** reveals the **calibration bias**
 > 
 > ECE is NOT approximated by $K_1$. Instead, calibration error is diagnosed by examining the discrepancy between $K$ values and $C$ values:
-> - High $K_1$ + systematically high $C$ → Overconfidence bias
-> - High $K_1$ + systematically low $C$ → Underconfidence bias
+> - High $K_1$ + systematically high $C$ -> Overconfidence bias
+> - High $K_1$ + systematically low $C$ -> Underconfidence bias
 > 
 > This separation preserves the recursive unity of the $K$ operator while maintaining orthogonal dimensions for state ($K$) and feeling ($C$).
 
