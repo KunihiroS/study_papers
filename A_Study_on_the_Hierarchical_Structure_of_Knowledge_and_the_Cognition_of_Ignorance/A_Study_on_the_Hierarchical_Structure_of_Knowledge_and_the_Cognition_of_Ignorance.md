@@ -47,7 +47,7 @@ This paper is a **conceptual framework paper**. Its primary contributions are:
 1. A **unifying observational schema** (the $K_n$ family) that provides a common coordinate system for first-order accuracy, metacognitive alignment, and higher-order stability
 2. A **taxonomic vocabulary** (the 27-pattern classification) for discussing metacognitive phenomena
 3. A **principled separation** of epistemic state ($K$) from phenomenological confidence ($C$)
-4. **Illustrative derivations** showing how the framework relates to established metrics (IRT, meta-d', ECE)
+4. **Illustrative derivations** showing how the framework relates to established metrics (IRT, meta-d') and **contrasts** with calibration metrics (ECE)
 
 **What This Paper Is NOT:**
 
